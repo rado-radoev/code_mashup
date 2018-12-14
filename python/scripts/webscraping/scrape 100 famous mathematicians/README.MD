@@ -6,7 +6,7 @@ It then goes to https://xtools.wmflabs.org/articleinfo/en.wikipedia.org/ and che
 This code was 'borrowed' from [RealPtyon](https://realpython.com/python-web-scraping-practical-introduction/#using-beautifulsoup-to-get-mathematician-names)
 
 ### How to start
-Type 'python mathematicians.py' in your favorite terminal app, once you have browsed to the .py script folder.
+Type `python mathematicians.py` in your favorite terminal app, once you have browsed to the .py script folder.
 
 
 ### Sample Output
