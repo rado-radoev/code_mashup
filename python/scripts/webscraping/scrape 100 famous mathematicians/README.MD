@@ -3,8 +3,6 @@
 This script goes to: http://www.fabpedigree.com and scrapes the names of the first 100 most famous mathematicians.
 It then goes to https://xtools.wmflabs.org/articleinfo/en.wikipedia.org/ and checks their ranking
 
-This code was 'borrowed' from [RealPtyon](https://realpython.com/python-web-scraping-practical-introduction/#using-beautifulsoup-to-get-mathematician-names)
-
 ### How to start
 Type `python mathematicians.py` in your favorite terminal app, once you have browsed to the .py script folder.
 
@@ -46,3 +44,10 @@ Aristotle with 539367 pageviews
 Galileo Galilei with 411090 pageviews
 Srinivasa Ramanujan with 394523 pageviews
 ```
+## Built With
+
+* [BeautifulSoup4](https://www.crummy.com/software/BeautifulSoup/bs4/) - Beautiful Soup parses anything you give it.
+* [requests](http://docs.python-requests.org/en/master/) - Requests: HTTP for Humans
+
+### Acknowledgments
+* Thanks to [RealPtyon](https://realpython.com/python-web-scraping-practical-introduction/#using-beautifulsoup-to-get-mathematician-names) for providing this comprehensive beginner's tutorial
