@@ -2,7 +2,7 @@ package com.superklamer.keyboardstats.buffer;
 
 import com.superklamer.keyboardstats.exceptions.*;
 
-public class CircularBuffer<Integer> {
+public class CircularBuffer<E> {
 
 
 	private int capacity;
