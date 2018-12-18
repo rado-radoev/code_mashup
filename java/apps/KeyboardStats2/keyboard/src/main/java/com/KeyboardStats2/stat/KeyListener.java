@@ -1,5 +1,6 @@
 package com.KeyboardStats2.stat;
 
+import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -37,7 +38,6 @@ public class KeyListener implements NativeKeyListener {
 			
 			for (int i = 0; i <= buffer.getCurrentSize(); i++) {
 				sb.append(buffer.dequeue());
-				
 				if (occurances.containsKey(sb.toString())) {
 					occurances.put(sb.toString(), occurances.get(sb.toString()) + 1);
 				}
@@ -47,11 +47,11 @@ public class KeyListener implements NativeKeyListener {
 
 				sb.delete(0, sb.length());
 			}
-//			
-//			
-//			for (String key : occurances.keySet()) {
-//				System.out.println("Key: " + key + " Value: " + occurances.get(key));
-//			}
+			
+			
+			for (String key : occurances.keySet()) {
+				System.out.println("Key: " + key + " Value: " + occurances.get(key));
+			}
 			
 		}
 	}

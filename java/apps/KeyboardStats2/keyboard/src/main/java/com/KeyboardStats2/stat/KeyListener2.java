@@ -81,8 +81,6 @@ public class KeyListener2 implements NativeKeyListener {
 
 			System.exit(1);
 		}
-
 		GlobalScreen.addNativeKeyListener(new KeyListener2());
-		
-	}
+	} 
 }
