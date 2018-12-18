@@ -15,10 +15,10 @@ public class KeyListener implements NativeKeyListener {
 	private CircularQueue buffer = new CircularQueue<String>(256);
 	
 	public void nativeKeyPressed(NativeKeyEvent e) {
-		String keyPressed = NativeKeyEvent.getKeyText(e.getKeyCode())
+		String keyPressed = NativeKeyEvent.getKeyText(e.getKeyCode());
 		System.out.println("Key Pressed: " + keyPressed);
 		buffer.enqueue(keyPressed);
-
+		System.out.println(buffer);
 		if (e.getKeyCode() == NativeKeyEvent.VC_ESCAPE) {
 			try {
 				GlobalScreen.unregisterNativeHook();
