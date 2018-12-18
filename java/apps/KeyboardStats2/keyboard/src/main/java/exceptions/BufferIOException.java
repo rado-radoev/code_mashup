@@ -1,4 +1,4 @@
-package com.superklamer.keyboardstats.exceptions;
+package exceptions;
 
 public class BufferIOException extends Exception {
 

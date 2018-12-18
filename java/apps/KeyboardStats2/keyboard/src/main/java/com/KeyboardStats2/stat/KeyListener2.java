@@ -1,5 +1,7 @@
-package com.superklamer.keyboardstats;
+package com.KeyboardStats2.stat;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -8,23 +10,49 @@ import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 
-import com.superklamer.keyboardstats.buffer.CircularQueue;
+import buffer.CircularQueue;
 
-public class KeyListener implements NativeKeyListener {
+public class KeyListener2 implements NativeKeyListener {
 	
-	private CircularQueue buffer = new CircularQueue<String>(256);
+	private CircularQueue buffer = new CircularQueue<String>(3);
+	private static Map<String, Integer> occurances = new HashMap<String, Integer>();
 	
 	public void nativeKeyPressed(NativeKeyEvent e) {
 		String keyPressed = NativeKeyEvent.getKeyText(e.getKeyCode());
 		System.out.println("Key Pressed: " + keyPressed);
-		buffer.enqueue(keyPressed);
+		buffer.enqueue(e.getKeyCode());
 		System.out.println(buffer);
+		
 		if (e.getKeyCode() == NativeKeyEvent.VC_ESCAPE) {
 			try {
 				GlobalScreen.unregisterNativeHook();
 			} catch (NativeHookException e1) {
 				e1.printStackTrace();
 			}
+		}
+		
+		
+		if (buffer.getCurrentSize() == buffer.getMaxSize() -1) {
+			StringBuffer sb = new StringBuffer();
+			
+			for (int i = 0; i <= buffer.getCurrentSize(); i++) {
+				sb.append(buffer.dequeue());
+				
+				if (occurances.containsKey(sb.toString())) {
+					occurances.put(sb.toString(), occurances.get(sb.toString()) + 1);
+				}
+				else {
+					occurances.put(sb.toString(), 1);
+				}
+
+				sb.delete(0, sb.length());
+			}
+//			
+//			
+//			for (String key : occurances.keySet()) {
+//				System.out.println("Key: " + key + " Value: " + occurances.get(key));
+//			}
+			
 		}
 	}
 
@@ -37,10 +65,6 @@ public class KeyListener implements NativeKeyListener {
 	}
 
 	public static void main(String[] args) {
-		
-		
-		
-		
 		try {
 			// Get the logger for "org.jnativehook" and set the level to warning.
 			Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
@@ -58,6 +82,7 @@ public class KeyListener implements NativeKeyListener {
 			System.exit(1);
 		}
 
-		GlobalScreen.addNativeKeyListener(new KeyListener());
+		GlobalScreen.addNativeKeyListener(new KeyListener2());
+		
 	}
 }

@@ -1,6 +1,6 @@
-package com.superklamer.keyboardstats.buffer;
+package buffer;
 
-import com.superklamer.keyboardstats.exceptions.*;
+import exceptions.*;
 
 public class CircularBuffer<E> {
 

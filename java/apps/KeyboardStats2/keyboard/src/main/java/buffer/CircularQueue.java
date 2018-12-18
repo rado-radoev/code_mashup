@@ -1,4 +1,4 @@
-package com.superklamer.keyboardstats.buffer;
+package buffer;
 
 import java.util.Arrays;
 
@@ -21,6 +21,16 @@ public class CircularQueue<E> {
 	}
 	
 	
+	public int getCurrentSize() {
+		return currentSize;
+	}
+
+
+	public int getMaxSize() {
+		return maxSize;
+	}
+
+
 	public void enqueue (E item) throws QueueFullException {
 		if (isFull()) {
 			throw new QueueFullException("CircularQueue if full. Cannot add element.");
