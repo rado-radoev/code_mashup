@@ -1,6 +1,11 @@
 package buffer;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+
+import exceptions.QueueFullException;
+import exceptions.QueueEmptyException;
 
 public class CircularQueue<E> {
 
@@ -59,6 +64,15 @@ public class CircularQueue<E> {
 		return dequeueElement;
 	}
 	
+	public List<E> drain() {
+		List<E> drainage = new ArrayList<E>();
+		for (int i = 0; i <= currentSize; i++) {
+			drainage.add(dequeue());
+		}
+		
+		return drainage;
+	}
+	
 	
 	public boolean isFull() {
 		return currentSize == circularQueueElements.length;
@@ -76,31 +90,7 @@ public class CircularQueue<E> {
  }
 
 
-class QueueFullException extends RuntimeException {
 
-	private static final long serialVersionUID = 1L;
-
-	public QueueFullException() {
-		super();
-	}
-	
-	public QueueFullException(String message) {
-		super(message);
-	}
-}
-
-class QueueEmptyException extends RuntimeException {
-	
-	private static final long serialVersionUID = 1L;
-	
-	public QueueEmptyException() {
-		super();
-	}
-	
-	public QueueEmptyException(String message) {
-		super(message);
-	}
-}
 
 
 

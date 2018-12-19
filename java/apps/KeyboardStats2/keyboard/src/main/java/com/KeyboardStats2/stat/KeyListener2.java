@@ -1,7 +1,6 @@
 package com.KeyboardStats2.stat;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -11,17 +10,15 @@ import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 
 import buffer.CircularQueue;
+import stats.Statistics;
 
 public class KeyListener2 implements NativeKeyListener {
 	
-	private CircularQueue buffer = new CircularQueue<String>(3);
-	private static Map<String, Integer> occurances = new HashMap<String, Integer>();
+	private CircularQueue<String> buffer = new CircularQueue<String>(3);
 	
 	public void nativeKeyPressed(NativeKeyEvent e) {
-		String keyPressed = NativeKeyEvent.getKeyText(e.getKeyCode());
-		System.out.println("Key Pressed: " + keyPressed);
-		buffer.enqueue(e.getKeyCode());
-		System.out.println(buffer);
+		
+		buffer.enqueue(NativeKeyEvent.getKeyText(e.getKeyCode()));
 		
 		if (e.getKeyCode() == NativeKeyEvent.VC_ESCAPE) {
 			try {
@@ -32,28 +29,17 @@ public class KeyListener2 implements NativeKeyListener {
 		}
 		
 		
-		if (buffer.getCurrentSize() == buffer.getMaxSize() -1) {
-			StringBuffer sb = new StringBuffer();
+		if (buffer.getCurrentSize() == buffer.getMaxSize()) {
 			
-			for (int i = 0; i <= buffer.getCurrentSize(); i++) {
-				sb.append(buffer.dequeue());
-				
-				if (occurances.containsKey(sb.toString())) {
-					occurances.put(sb.toString(), occurances.get(sb.toString()) + 1);
-				}
-				else {
-					occurances.put(sb.toString(), 1);
-				}
-
-				sb.delete(0, sb.length());
+			List<String> drainedBuffer = buffer.drain();
+			
+			for (String key : drainedBuffer) {
+				Statistics.loadOccurances(key);
 			}
-//			
-//			
-//			for (String key : occurances.keySet()) {
-//				System.out.println("Key: " + key + " Value: " + occurances.get(key));
-//			}
-			
+		
 		}
+		
+		Statistics.displayStats();
 	}
 
 	public void nativeKeyReleased(NativeKeyEvent e) {

@@ -21,10 +21,7 @@ public class KeyScrapper {
 				System.out.println(row.select("td code a").text());	
 				System.out.println(row.select(".colLast").text());	
 			}
-			
-			
-			
-			
+		
 //			System.out.println(row.text());
 //			if (row.text().toLowerCase().contains("java.awt.event")) {
 //				System.out.println(row);
@@ -53,14 +50,6 @@ public class KeyScrapper {
 //			}
 			
 //			sb.delete(0, sb.length());
-			
-			
-			
-			
-			
-			
-			
-
 		}
 	}
 }
