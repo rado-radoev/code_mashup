@@ -1,6 +1,7 @@
 package stats;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Statistics {
@@ -27,8 +28,10 @@ public class Statistics {
 	
 	
 	public static void displayStats() {
-		for (String key : occurances.keySet()) {
-			System.out.println("Key: " + key + " Value: " + occurances.get(key));
+		List<Integer> stats = StatsVisualizer.getNTopResults(5, occurances);
+		
+		for (Integer i : stats) {
+			System.out.println("Top results: " + i);
 		}
 	}
 	
