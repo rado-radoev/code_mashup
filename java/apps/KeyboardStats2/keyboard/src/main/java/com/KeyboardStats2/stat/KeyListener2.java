@@ -14,7 +14,7 @@ import stats.Statistics;
 
 public class KeyListener2 implements NativeKeyListener {
 	
-	private CircularQueue<String> buffer = new CircularQueue<String>(3);
+	private CircularQueue<String> buffer = new CircularQueue<String>(20);
 	
 	public void nativeKeyPressed(NativeKeyEvent e) {
 		
@@ -29,17 +29,15 @@ public class KeyListener2 implements NativeKeyListener {
 		}
 		
 		
-		if (buffer.getCurrentSize() == buffer.getMaxSize()) {
+		if (buffer.getCurrentSize() == buffer.getMaxSize() - 1) {
 			
 			List<String> drainedBuffer = buffer.drain();
 			
 			for (String key : drainedBuffer) {
 				Statistics.loadOccurances(key);
 			}
-		
-		}
-		
 		Statistics.displayStats();
+		}
 	}
 
 	public void nativeKeyReleased(NativeKeyEvent e) {
