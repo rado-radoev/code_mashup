@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import java.util.TreeMap;
 
 import exceptions.InsufficientResultsList;
 
@@ -17,9 +18,12 @@ public class StatsVisualizer{
 		super();
 	}
 	
-	private static <V, K> List<V> stripValuesFromMap(Map<K, V> inputMap) {
+	private static <V, K> List[] stripMap(Map<K, V> inputMap) {
 		
-		List<V> output = new ArrayList<V>();
+		List<V> occurancesOutput = new ArrayList<V>();
+		List<V> keysOutput = new ArrayList<V>();
+		
+		List[] output = {occurancesOutput, keysOutput}; 
 		
 		Set<Map.Entry<K, V>> entrySet = inputMap.entrySet();
 		Iterator<Entry<K, V>> entrySetIterator = entrySet.iterator();
@@ -27,25 +31,33 @@ public class StatsVisualizer{
 		while (entrySetIterator.hasNext()) {
 			Entry entry = entrySetIterator.next();
 			
-			output.add((V) entry.getValue());
+			occurancesOutput.add((V) entry.getValue());
+			keysOutput.add((V) entry.getKey());
 		}
 		
 		return output;
 		
 	}
 	
-	public static <T, K, V> List<V> getNTopResults(int numberOfTopResults, Map<K, V> inputMap) {
-		List<V> resultValues = stripValuesFromMap(inputMap);
+	public static <T, K, V> Map<K, V> getNTopResults(int numberOfTopResults, Map<K, V> inputMap) {
+		Map<K, V> output = new TreeMap<K, V>();
+		
+		List[] strippedMap = stripMap(inputMap);
+		
+		List<V> resultValues = strippedMap[0];
+		List<V> resultKeys = strippedMap[1];
 		
 		
 		if (resultValues.size() < numberOfTopResults) {
 			throw new InsufficientResultsList("Result List does not have enough data");
 		}
 		
-		Collections.sort(resultValues, Collections.reverseOrder());
 		
-		return resultValues.subList(0, numberOfTopResults + 1);
+		
+
+		return output;
 				
 	}
+	
 	
 }
