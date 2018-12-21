@@ -1,4 +1,4 @@
-package com.KeyboardStats2.stat;
+package unused;
 
 import java.nio.ByteBuffer;
 import java.util.HashMap;

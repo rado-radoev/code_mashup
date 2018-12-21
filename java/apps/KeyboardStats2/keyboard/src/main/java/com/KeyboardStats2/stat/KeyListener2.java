@@ -17,9 +17,9 @@ public class KeyListener2 implements NativeKeyListener {
 	private CircularQueue<String> buffer = new CircularQueue<String>(20);
 	
 	public void nativeKeyPressed(NativeKeyEvent e) {
-		
+		//System.out.println(NativeKeyEvent.getKeyText(e.getKeyCode()));
 		buffer.enqueue(NativeKeyEvent.getKeyText(e.getKeyCode()));
-		
+		//System.out.println(buffer);
 		if (e.getKeyCode() == NativeKeyEvent.VC_ESCAPE) {
 			try {
 				GlobalScreen.unregisterNativeHook();

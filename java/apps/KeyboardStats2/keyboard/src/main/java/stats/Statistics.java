@@ -1,18 +1,18 @@
 package stats;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Statistics {
 
 
-	private final static Map<String, Integer> occurances = new HashMap<String, Integer>();
+	private final static Map<String, Integer> occurances = new TreeMap<String, Integer>();
 	
 	
 	private Statistics() {
 		super();
-	}	
+	}
+	
 	public static Map<String, Integer> getOccurances() {
 		return occurances;
 	}
@@ -28,10 +28,10 @@ public class Statistics {
 	
 	
 	public static void displayStats() {
-		List<Integer> stats = StatsVisualizer.getNTopResults(5, occurances);
+		TreeMap<String, Integer> map = StatsVisualizer3.getNTopResults(10, occurances);
 		
-		for (Integer i : stats) {
-			System.out.println("Top results: " + i);
+		for (String key : map.keySet()) {
+			System.out.println("Key: " + key + " Value: " + map.get(key));
 		}
 	}
 	
