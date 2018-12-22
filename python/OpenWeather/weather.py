@@ -15,6 +15,7 @@ response_json = response.json()
 
 
 if response_json['cod'] != 404:
+   
     city_weather = response_json['main']
 
     curr_temp = city_weather['temp']
@@ -22,4 +23,7 @@ if response_json['cod'] != 404:
     curr_humidity = city_weather['humidity']
     curr_weather = response_json['weather']
     weather_description = curr_weather[0]['description']
-    print('Temp: {0}\nPressure: {1}\nHumidity: {2}\nWeather: {3}\n'.format(curr_temp,curr_pressure,curr_humidity,weather_description))
+    print(f'Temp: {curr_temp}\n'
+          f'Pressure: {curr_pressure}\n'
+          f'Humidity: {curr_humidity}\n'
+          f'Weather: {weather_description}\n')
