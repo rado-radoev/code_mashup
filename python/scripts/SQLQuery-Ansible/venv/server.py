@@ -10,7 +10,4 @@ class Server:
         self.patch_group = patch_group
 
     def __str__(self):
-        return (f'Hostname: {self.hostname}\t'
-                f'Role: {self.role}\t'
-                f'Site: {self.site}\t'
-                f'Patch Group: {self.patch_group}')
+        return ('Hostname: {}\tRole: {}\tSite: {}\tPatch Group: {}'.format(self.hostname,self.role,self.site,self.patch_group))
