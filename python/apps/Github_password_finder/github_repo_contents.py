@@ -1,4 +1,4 @@
-import json, requests, queue
+import json, requests, queue, re
 """
 browse the contents of the repo
 if type is dir -> store url
@@ -31,7 +31,14 @@ def get_parent_dirs():
             files_download_url_list.append(dir['download_url'])
 
 
+def find_passwords(text):
+    x = re.search('JVM', text)
+    print(x)
 
 get_parent_dirs()
-print(list(parent_contents_queue.queue))
+# print(list(parent_contents_queue.queue))
 print(files_download_url_list)
+
+for txt in files_download_url_list:
+    extracted_text = (requests.get(txt)).text
+    find_passwords(extracted_text)
