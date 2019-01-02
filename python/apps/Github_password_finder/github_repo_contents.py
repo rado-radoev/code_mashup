@@ -32,8 +32,9 @@ def get_parent_dirs():
 
 
 def find_passwords(text):
-    x = re.search('JVM', text)
-    print(x)
+    x = re.search('JAVA', text)
+    if x:
+        print(x.group())
 
 get_parent_dirs()
 # print(list(parent_contents_queue.queue))
