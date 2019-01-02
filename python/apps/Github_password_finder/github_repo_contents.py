@@ -1,3 +1,4 @@
+import json, requests, queue
 """
 browse the contents of the repo
 if type is dir -> store url
@@ -13,3 +14,24 @@ parse through each download url searching for passwords
 
 
 """
+
+repo_url = 'https://api.github.com/repos/superklamer/Android/contents/Whatsapp?ref=master'
+parent_contents_queue = queue.Queue()
+files_download_url_list = []
+response = requests.get(repo_url)
+json_response = response.json()
+
+
+
+def get_parent_dirs():
+    for dir in json_response:
+        if dir['type'] == 'dir':
+            parent_contents_queue.put(dir['url'])
+        elif dir['type'] == 'file':
+            files_download_url_list.append(dir['download_url'])
+
+
+
+get_parent_dirs()
+print(list(parent_contents_queue.queue))
+print(files_download_url_list)
