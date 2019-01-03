@@ -1,4 +1,5 @@
 import json, requests, queue, re
+from multiprocessing.pool import  ThreadPool
 """
 browse the contents of the repo
 if type is dir -> store url
@@ -29,6 +30,25 @@ def get_parent_dirs():
             parent_contents_queue.put(dir['url'])
         elif dir['type'] == 'file':
             files_download_url_list.append(dir['download_url'])
+
+def traverse_directory_tree(directory_url):
+
+
+
+def search_child_dirs():
+    pool = ThreadPool()
+
+    try:
+        if parent_contents_queue.qsize() > 0:
+            while not parent_contents_queue.empty():
+                url = parent_contents_queue.get()
+
+                
+
+
+
+    except queue.Empty as empty:
+        print("No more objects in parent queue")
 
 
 def find_passwords(text):
