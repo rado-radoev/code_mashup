@@ -1,5 +1,4 @@
 import json, requests, queue, re
-from multiprocessing.pool import  ThreadPool
 """
 browse the contents of the repo
 if type is dir -> store url
@@ -22,8 +21,6 @@ files_download_url_list = []
 response = requests.get(repo_url)
 json_response = response.json()
 
-
-
 def get_parent_dirs():
     for dir in json_response:
         if dir['type'] == 'dir':
@@ -36,8 +33,6 @@ def traverse_directory_tree(directory_url):
 
 
 def search_child_dirs():
-    pool = ThreadPool()
-
     try:
         if parent_contents_queue.qsize() > 0:
             while not parent_contents_queue.empty():
