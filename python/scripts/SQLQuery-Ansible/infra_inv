@@ -1,0 +1,2 @@
+!/bin/bash
+/usr/bin/python /home/radra/ansib_test/infrastructure_query.py --list

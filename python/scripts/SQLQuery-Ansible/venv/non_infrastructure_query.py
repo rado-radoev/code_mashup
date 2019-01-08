@@ -4,13 +4,13 @@ import pyodbc
 import json
 import sys
 import argparse
-from utility import *
-from database import *
 
 try:
+    from utility import *
+    from database import *
     from server import Server
 except ImportError:
-    print("Are you missing server.py", )
+    print("Missing python module!", )
     sys.exit(1)
 
 pyodbc.pooling = False
@@ -28,7 +28,7 @@ class Query_Inventory(object):
 
             db = connect_to_db('ansibledata.dbo.AnsibleNonInfrastructure')
             cursor = db[0]
-            get_non_infra_servers_from_db(cursor, self.servers)
+            self.servers = get_db_data(cursor)
             close_db_connection(*db)
 
             self.inventory = self.load_inventory(self.servers)

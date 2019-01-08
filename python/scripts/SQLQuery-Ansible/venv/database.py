@@ -28,7 +28,21 @@ def get_column_names(cursor):
 
     return colum_names
 
-def get_infra_servers_from_db(cursor, server_list):
+def get_db_data(cursor):
+    columns = get_column_names(cursor)
+    server_list = []
+
+    if "patchgroup" in columns:
+        server_list = get_infra_servers_from_db(cursor)
+    elif "builddesc" in columns:
+        server_list = get_non_infra_servers_from_db(cursor)
+
+    return server_list
+
+def get_infra_servers_from_db(cursor):
+
+    server_list = []
+
     # Sanitize all the data
     for row in cursor:
         hostname = row[0].strip().lower()
@@ -38,7 +52,11 @@ def get_infra_servers_from_db(cursor, server_list):
 
         server_list.append(Server(hostname=hostname, role=role, site=site, patch_group=patch_group))
 
-def get_non_infra_servers_from_db(cursor, server_list):
+    return server_list
+
+def get_non_infra_servers_from_db(cursor):
+    server_list = []
+
     # Sanitize all the data
     for row in cursor:
         hostname = row[0].strip().lower()
@@ -48,6 +66,7 @@ def get_non_infra_servers_from_db(cursor, server_list):
 
         server_list.append(Server(hostname=hostname, build_desc=build_desc, site=site, td_type=td_type))
 
+    return server_list
 
 def close_db_connection(cursor, cnxn):
     cursor.close()

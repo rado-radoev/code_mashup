@@ -7,36 +7,38 @@ from utility import *
 from database import *
 
 try:
+    from utility import *
+    from database import *
     from server import Server
 except ImportError:
-    print("Are you missing server.py", )
+    print("Missing python module!", )
     sys.exit(1)
 
 pyodbc.pooling = False
 
-'''Connect to SQL Database and query Citrix Servers.'''
+'''Connect to SQL Database and query Infrastructure Citrix Servers.'''
 class Query_Inventory(object):
 
     def __init__(self):
+        '''Setting up some variables'''
         self.read_cli_args()
         self.servers = []
         self.inventory = self.build_empty_inventory()
 
-        # Called with `--list`.
-        if self.args.list:
-
+        if self.args.list:  # Called with `--list`.
+            # region Connect to DB and get server list
             db = connect_to_db('ansibledata.dbo.AnsibleInfrastructure')
             cursor = db[0]
-            get_infra_servers_from_db(cursor, self.servers)
+            self.servers = get_db_data(cursor)
             close_db_connection(*db)
-
+            # endregion
             self.inventory = self.load_inventory(self.servers)
-        # Called with `--host [hostname]`.
+            # Called with `--host [hostname]`.
         elif self.args.host:
             # Not implemented, since we return _meta info `--list`.
             self.inventory = self.empty_inventory()
-        # If no groups or vars are present, return an empty inventory.
         else:
+            # If no groups or vars are present, return an empty inventory.
             self.inventory = self.empty_inventory()
 
         self.convert_to_json(self.inventory)
@@ -59,13 +61,11 @@ class Query_Inventory(object):
         for srv in server_list:
 
             hostname = srv.hostname
-
             # Check if server is in correct site
             site = validate_site(srv.hostname, srv.site)
-
             # Groups consist of the server site and the server role
             key = generate_group_name(site, srv.role)
-            # Reboot groups are determined in SQL
+            # Reboot groups are determined in SQL column 'PatchGroup'
             patch_group = 'patch_group_' + srv.patch_group
 
             dict_keys = [site, key, patch_group]
@@ -77,12 +77,11 @@ class Query_Inventory(object):
                 add_dict_key(inv, dict_key)
                 add_dict_entry(hostname, inv, dict_key)
 
-
-            if key not in inv:
-                inv[key] = {}
-                inv[key]['hosts'] = []
-                inv[key]['vars'] = {'group_vars' : False}
-                inv['all']['children'].append(key)
+            # if key not in inv:
+            #     inv[key] = {}
+            #     inv[key]['hosts'] = []
+            #     inv[key]['vars'] = {'group_vars' : False}
+            #     inv['all']['children'].append(key)
 
             # region all and _meta entries
             add_dict_entry(hostname, inv, 'all')
