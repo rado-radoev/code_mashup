@@ -15,7 +15,14 @@ console.log('Process:', process.argv);
 console.log('Yargs:', argv);
 
 if (command === 'add') {
-  notes.addNote(argv.title, argv.body)
+  var note = notes.addNote(argv.title, argv.body)
+  if (typeof note === 'undefined') {
+    console.log("Note already exists.");
+  } else {
+    console.log("Note added.");
+    console.log("---");
+    console.log(`Title: ${note.title}. Body: ${note.body}`);
+  }
 } else if (command === 'list') {
   notes.getAll();
 } else if (command === 'read') {
