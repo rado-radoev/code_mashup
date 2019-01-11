@@ -38,6 +38,8 @@ var removeNote = (title) => {
     var notes = fetchNotes();
     var newNotes = notes.filter((note) => note.title !== title);
     saveNotes(newNotes);
+
+    return notes.length !== newNotes.length;
 };
 
 var getNote = (title) => {
