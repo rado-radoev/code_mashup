@@ -31,7 +31,7 @@ var addNote = (title, body) => {
 };
 
 var getAll = () => {
-  console.log('Returning list of notes');
+  return fetchNotes();
 };
 
 var removeNote = (title) => {
@@ -43,7 +43,9 @@ var removeNote = (title) => {
 };
 
 var getNote = (title) => {
-  console.log('Reading note', title);
+  var notes = fetchNotes();
+
+  return notes.filter((note) => note.title === title);
 };
 
 module.exports = {
