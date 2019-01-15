@@ -20,7 +20,7 @@ if (command === 'add') {
     console.log("Note already exists.");
   } else {
     console.log("Note added.");
-    notes.logNote(note);
+    notes.logNote(note); 
   }
 } else if (command === 'list') {
   var all = notes.getAll();
