@@ -36,7 +36,7 @@ var readNote = (title) => {
   return note[0];
 };
 
-var fatchNotes = () => {
+var fetchNotes = () => {
   try {
     return JSON.parse(fs.readFileSync('./notes-data.json'));
   } catch (e) {
@@ -50,10 +50,14 @@ var saveNotes = (notes) => {
     (err) => {
       if (err) throw err;
       console.log('Data has been saved to file');
-    };);
+    });
 };
 
-var logNote = () => {};
+var logNote = (note) => {
+  console.log("---");
+  console.log(`Title: ${note.title}`);
+  console.log(`Body: ${note.body}`);
+};
 
 module.exports = {
   addNote,

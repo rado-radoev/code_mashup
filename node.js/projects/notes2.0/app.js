@@ -22,6 +22,14 @@ var argv = yargs
               title: titleOptions,
               body: bodyOptions
             })
+            .command('list', 'List all notes')
+            .command('read', 'Read a note', {
+              title: titleOptions
+            })
+            .command('remove', 'Remove a note', {
+              title: titleOptions
+            })
+            .help()
             .argv;
 var command = argv._[0];
 
@@ -30,7 +38,13 @@ if (typeof command === 'string') {
 }
 
 if (command === 'add') {
-  console.log('Add note');
+  var note = notes.addNote(argv.title, argv.body)
+  if (typeof note === 'undefined') {
+    console.log('Note already exists');
+  } else {
+    console.log('Note added.');
+    notes.logNote(note);
+  }
 } else if (command === 'remove') {
   console.log('Removing note');
 } else if (command === 'list') {
