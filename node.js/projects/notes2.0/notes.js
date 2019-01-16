@@ -27,13 +27,19 @@ var removeNote = (title) => {
 };
 
 var getAllNotes = () => {
-  return fetchNotes();
+  var notes = fetchNotes();
+  notes.forEach((note) => {logNote(note)});
 };
 
 var readNote = (title) => {
   var notes = fetchNotes();
   var note = notes.filter((note) => note.title === title);
-  return note[0];
+  if (note.length > 0) {
+    return note[0];
+  } else {
+    return undefined;
+  }
+
 };
 
 var fetchNotes = () => {

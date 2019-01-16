@@ -47,11 +47,21 @@ if (command === 'add') {
     notes.logNote(note);
   }
 } else if (command === 'remove') {
-  console.log('Removing note');
+  var removedNote = notes.removeNote(argv.title);
+  if (removedNote) {
+    console.log(`Note "${argv.title}" removed!`);
+  } else {
+    console.log(`Note with title "${argv.title}" not found!`);
+  }
 } else if (command === 'list') {
-  console.log('Getting all notes');
+  console.log(notes.getAllNotes());
 } else if (command === 'read') {
-  console.log('Read a note');
+  var noteRead = notes.readNote(argv.title);
+  if (noteRead === 'undefined') {
+    console.log('Note not found!');
+  } else {
+    console.log(notes.logNote(noteRead));
+  }
 } else {
   console.log('Command not recognized');
 }
