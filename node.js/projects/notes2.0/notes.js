@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-var addNote = (note) => {
+var addNote = (title, body) => {
   var notes = fetchNotes();
   var note = {
     title,

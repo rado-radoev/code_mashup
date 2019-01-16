@@ -38,6 +38,7 @@ if (typeof command === 'string') {
 }
 
 if (command === 'add') {
+  debugger;
   var note = notes.addNote(argv.title, argv.body)
   if (typeof note === 'undefined') {
     console.log('Note already exists');
