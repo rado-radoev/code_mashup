@@ -15,7 +15,7 @@ var constructURL = (address) => {
   return `http://www.mapquestapi.com/geocoding/v1/address?key=${api_key}&location=${encodedAddress}`;
 };
 
-var req = (address) => {
+var req = (address, callback) => {
   url = constructURL(address);
 
   request({
@@ -23,25 +23,23 @@ var req = (address) => {
     json: true
   }, (error, response, body) => {
     if (error) {
-      console.log('Unable to connect to weather server');
-      console.log(error);
+      callback('Unable to connect to weather server');
     } else if (body.info.statuscode === 400) {
-      console.log((body.info.messages[0]).split(': ', 2)[1]);
+      callback((body.info.messages[0]).split(': ', 2)[1]);
     } else {
-      // console.log(response);
-      console.log('Status code: ' + response.statusCode);
-      // console.log(JSON.stringify(body, undefined, 2));
-      console.log('street:' + body.results[0].providedLocation.location );
-      console.log('lat:' + body.results[0].locations[0].latLng.lat);
-      console.log('lng:' + body.results[0].locations[0].latLng.lng);
-      // console.log(urlString);
+      callback(undefined, {
+        statusCode: response.statusCode,
+        street: body.results[0].providedLocation.location,
+        latitude: body.results[0].locations[0].latLng.lat,
+        longitude: body.results[0].locations[0].latLng.lng
+      });
     }
   });
 
 };
 
-var geocodeAddress = (address) => {
-  req(address);
+var geocodeAddress = (address, callback) => {
+  req(address, callback);
 };
 
 module.exports = {
