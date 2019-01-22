@@ -69,8 +69,6 @@ var req = (address, callback) => {
     });
 
   });
-
-
 };
 
 
