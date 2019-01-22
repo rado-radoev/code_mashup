@@ -18,7 +18,7 @@ weather.req(argv.address, (errorMessage, status) => {
     if (errorMessage) {
       console.log(errorMessage);
     } else {
-      console.log("Curr temp: " + status.temp.curTemp);
-      console.log("Feels like:" + status.temp.feelsLike);
+      console.log("Curr temp: " + status.curTemp);
+      console.log("Feels like:" + status.feelsLike);
     }
 });

@@ -33,45 +33,44 @@ var get_longitude = (address) => {
   return get_latlngFromAddress(address, 'lng');
 }
 
-var constructURL = (address) => {
+var constructURL = (lat, lng) => {
   api_key = get_api();
-  lat = get_latitude(address);
-  lng = get_longitude(address);
   url = `https://api.darksky.net/forecast/${api_key}/${lat},${lng}`;
 
   return url;
 };
 
-var queryAddress = (address) => {
-  debugger;
+var queryAddress = (address, callback) => {
   geocode.geocodeAddress(address, (errorMessage, results) => {
     if (errorMessage) {
-      throw errorMessage;
+      console.log(erroMessage);
     } else {
-      return JSON.stringify(results, undefined, 2);
+      callback(results);
     }
   });
 }
 
-
 var req = (address, callback) => {
+  queryAddress(address, (locationResults) => {
+    var url = constructURL(locationResults.latitude, locationResults.longitude);
 
-  debugger;
-  var addr = queryAddress(address);
-  var url = constructURL(addr);
+    request({
+      url,
+      json: true
+    }, (error, response, body) => {
+        if (!error && response.statusCode === 200) {
+          callback(undefined, {
+            curTemp: body.currently.temperature,
+            feelsLike: body.currently.apparentTemperature
+          });
+        } else {
+          callback('Unable to fetch weather');
+        }
+    });
 
-  request({
-    url,
-    json: true
-  }, (error, response, body) => {
-      debugger;
-      if (!error && response.statusCode === 200) {
-        callback(undefined, temp = {curTemp: body.currently.temperature,
-        feelsLike: body.currently.apparentTemperature})
-      } else {
-        callback('Unable to fetch weather');
-      }
-  })
+  });
+
+
 };
 
 

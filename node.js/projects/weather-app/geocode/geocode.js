@@ -6,7 +6,8 @@ var encodeAddress = (address) => {
 };
 
 var getAPIKey = (file) => {
-  return fs.readFileSync(file, 'utf-8');
+  var key = fs.readFileSync(file, 'utf-8');
+  return key.substring(0, key.length - 1);
 }
 
 var constructURL = (address) => {
