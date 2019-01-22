@@ -53,23 +53,20 @@ var queryAddress = (address, callback) => {
 var req = (address, callback) => {
   queryAddress(address, (locationResults) => {
     var url = constructURL(locationResults.latitude, locationResults.longitude);
-
-    request({
-      url,
-      json: true
-    }, (error, response, body) => {
-        if (!error && response.statusCode === 200) {
-          callback(undefined, {
-            curTemp: body.currently.temperature,
-            feelsLike: body.currently.apparentTemperature
-          });
-        } else {
-          callback('Unable to fetch weather');
-        }
-    });
-
   });
-
+  request({
+    url,
+    json: true
+  }, (error, response, body) => {
+      if (!error && response.statusCode === 200) {
+        callback(undefined, {
+          curTemp: body.currently.temperature,
+          feelsLike: body.currently.apparentTemperature
+        });
+      } else {
+        callback('Unable to fetch weather');
+      }
+  });
 
 };
 
