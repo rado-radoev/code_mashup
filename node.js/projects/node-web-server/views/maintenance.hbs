@@ -5,12 +5,9 @@
     <title>Some Website</title>
   </head>
   <body>
-    {{> header}}
+    <h1> {{maintenanceMessage}} </h1>
     <p>
-      {{screamIt welcomeMessage}}
-    </p>
-    <p>
-      Some Paragraph
+      {{printMessage 'We aplogize for any inconvenience'}}
     </p>
     {{> footer}}
   </body>
