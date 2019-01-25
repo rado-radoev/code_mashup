@@ -23,11 +23,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  res.render('maintenance.hbs', {
-    maintenanceMessage: 'Website is under maintenance'
-  });
-});
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs', {
+//     maintenanceMessage: 'Website is under maintenance'
+//   });
+// });
 
 app.use(express.static(__dirname + '/public'));
 
@@ -41,6 +41,15 @@ hbs.registerHelper('getCurrentYear', () => {
 
 hbs.registerHelper('screamIt', (text) => {
   return text.toUpperCase();
+});
+
+hbs.registerHelper('list', (items, options) => {
+  var out = "<ul>";
+
+  for (var i = 0, l = items.length; i < l; i++) {
+    out = out + "<li>" + options.fn(items[i]) + "</li>";
+  }
+  return out + "</ul>";
 });
 
 app.get('/', (req, res) => {
@@ -71,6 +80,11 @@ app.get('/bad', (req, res) => {
   });
 });
 
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    projectList: ['Project1', 'Project2', 'Project3']
+  });
+});
 
 app.listen(port, () => {
   console.log(`Server is up on port ${port}`);
