@@ -10,6 +10,14 @@ it('should add two numbers', () => {
     .toBeA('number', `Expected typeof number, got ${typeof res} instead.`)
 });
 
+it ('shold add number async', (done) => {
+  var res = utils.asyncAdd(3, 4, (sum) => {
+    expect(sum)
+      .toBeA('number')
+      .toBe(7);
+    done();
+  });
+});
 
 it('should square a number', () => {
   var res = utils.square(5);
@@ -17,6 +25,15 @@ it('should square a number', () => {
   expect(res)
     .toBe(25, `Expected 25, but got ${res}`)
     .toBeA('number', `Expected typeof number, got ${typeof res} instead.`)
+});
+
+it ('should square a number async', (done) => {
+  var res = utils.asyncSquare(3, (sqr) => {
+    expect(sqr)
+      .toBeA('number')
+      .toBe(9);
+    done();
+  });
 });
 
 it ('should return username', () => {
