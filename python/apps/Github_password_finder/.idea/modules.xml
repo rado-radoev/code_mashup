@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Github_password_finder.iml" filepath="$PROJECT_DIR$/.idea/Github_password_finder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/.idea/SQLQuery-Ansible.iml" filepath="$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/.idea/SQLQuery-Ansible.iml" />
     </modules>
   </component>
 </project>
