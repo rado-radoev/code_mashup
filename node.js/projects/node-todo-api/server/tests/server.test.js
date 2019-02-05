@@ -114,3 +114,42 @@ describe('POST /todos', () => {
       });
   });
 });
+
+
+describe('DELETE /todos/:id', () => {
+  it('should fail if invalid id is provided', (done) => {
+    var invalidId = '123abc';
+
+    request(app)
+      .delete(`/todos:${invalidId}`)
+      .expect(404)
+      .end(done);
+  });
+
+
+  it('should return an error if id is not found', (done) => {
+    var nonExistingId = new ObjectID().toHexString();
+
+    request(app)
+      .delete(`/todos/:${nonExistingId}`)
+      .expect(400)
+      .end(done);
+  });
+
+  it('should return a todo doc that was deleted', (done) => {
+
+    request(app)
+      .delete(`/todos/:${todos[0]._id.toHexString()}`)
+      .expect(200)
+      .expect((res) => {
+        expect(res.body.text).toBe(todos[0].text);
+      })
+      .end(err, res) => {
+        if (err) {
+          return done(err);
+        }
+
+        done(res);
+      });
+  });
+});
