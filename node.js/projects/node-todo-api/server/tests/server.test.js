@@ -121,7 +121,7 @@ describe('DELETE /todos/:id', () => {
     var invalidId = '123abc';
 
     request(app)
-      .delete(`/todos:${invalidId}`)
+      .delete(`/todos/${invalidId}`)
       .expect(404)
       .end(done);
   });
@@ -131,25 +131,29 @@ describe('DELETE /todos/:id', () => {
     var nonExistingId = new ObjectID().toHexString();
 
     request(app)
-      .delete(`/todos/:${nonExistingId}`)
+      .delete(`/todos/${nonExistingId}`)
       .expect(400)
       .end(done);
   });
 
   it('should return a todo doc that was deleted', (done) => {
+    var id = todos[0]._id.toHexString();
 
     request(app)
-      .delete(`/todos/:${todos[0]._id.toHexString()}`)
+      .delete(`/todos/${id}`)
       .expect(200)
       .expect((res) => {
-        expect(res.body.text).toBe(todos[0].text);
+        expect(res.body.todo._id).toBe(id);
       })
-      .end(err, res) => {
+      .end((err, res) => {
         if (err) {
           return done(err);
         }
 
-        done(res);
+        Todo.findById(id).then((todo) => {
+          expect(todo).toBeFalsy();
+          done();
+        }).catch((e) => done(e));
       });
   });
 });
