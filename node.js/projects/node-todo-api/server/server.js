@@ -8,6 +8,7 @@ var {mongoose} = require('./db/mongoose');
 var {Todo} = require('./models/todo');
 var {User} = require('./models/user');
 var {ObjectID} = require('mongodb');
+var {authenticate} = require('./middleware/authenticate');
 
 const port = process.env.PORT || 3000;
 
@@ -111,6 +112,21 @@ app.post('/users', (req, res) => {
   }).catch((e) => {
     res.status(400).send(e);
   });
+});
+
+app.get('/users/me', authenticate ,(req, res) => {
+  res.send(req.user);
+  // var token = req.header('x-auth');
+  //
+  // User.findByToken(token).then((user) => {
+  //   if (!user) {
+  //     return Promise.reject();
+  //   }
+  //
+  //   res.send(user);
+  // }).catch((e) => {
+  //   res.status(401).send(e);
+  // });
 });
 
 
