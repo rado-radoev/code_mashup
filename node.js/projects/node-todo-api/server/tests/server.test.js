@@ -3,25 +3,12 @@
 const expect = require('expect');
 const request = require('supertest');
 const {ObjectID} = require('mongodb');
-
+const {todos, populateTodos, users, populateUsers} = require('./seed/seed');
 const {app} = require('./../server');
 const {Todo} = require('./../models/todo');
 
-const todos = [{
-  _id: new ObjectID(),
-  text: 'First test todo'
-}, {
-  _id: new ObjectID(),
-  completedAt: 333,
-  completed: true,
-  text: 'Second test todo'
-}];
-
-beforeEach((done) => {
-  Todo.deleteMany({}).then(() => {
-    return Todo.insertMany(todos);
-  }).then(() => done());
-});
+beforeEach(populateUsers);
+beforeEach(populateTodos);
 
 describe('GET /todos', () => {
   it('should return a list of todos', (done) => {
@@ -181,7 +168,6 @@ describe('PATCH /todo/:id', () => {
       .expect((res) => {
         expect(res.body.todo.completed).toBeTruthy();
         expect(res.body.todo.text).toBe(newText);
-        expect(res.body.todo.completedAt.valueOf()).toBeA('number');
       })
       .end(done);
   });
