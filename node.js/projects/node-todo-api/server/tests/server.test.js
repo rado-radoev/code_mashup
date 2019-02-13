@@ -211,7 +211,7 @@ describe('POST /users', () => {
           expect(user).toBeTruthy();
           //expect(user.password).toNotEqual(password);
           done();
-        });
+        }).catch((e) => done(e));
       });
   });
 
@@ -266,5 +266,50 @@ describe('GET /users/me', () => {
         expect(res.body).toEqual({}); // equal empty body
       })
       .end(done);
+  });
+});
+
+describe('POST /users/login', () => {
+  it('should login user and return auth token', (done) => {
+    var user = users[0];
+    var email = user.email;
+    var password = user.password;
+
+    request(app)
+      .post('/users/login')
+      .send({email, password})
+      .expect(200)
+      .expect((res) => {
+        // expect(res.body._id).toBe(user._id.toHexString());
+        // expect(res.body.email).toBe(email);
+        expect(res.headers['x-auth']).toBeTruthy();
+      })
+      .end((err, res) => {
+        if (err) {
+          return done(err);
+        }
+
+        User.findOne(user._id).then((user) => {
+          expect(user.tokens[0]).toInclude({
+            access: 'auth',
+            token: res.headers['x-auth']
+          });
+          done();
+        }).catch((e) => done(e));
+      });
+  });
+
+  it('should reject invalid login', (done) => {
+      var email = (users[1].email).substr(1);
+      var password = (users[1].password).substr(1);
+
+      request(app)
+        .post('/users/login')
+        .send({email, password})
+        .expect(400)
+        .expect((res) => {
+          expect(res.body).toEqual({});
+        })
+        .end(done);
   });
 });
