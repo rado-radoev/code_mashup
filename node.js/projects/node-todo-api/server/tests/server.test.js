@@ -290,10 +290,10 @@ describe('POST /users/login', () => {
         }
 
         User.findOne(user._id).then((user) => {
-          expect(user.tokens[0]).toInclude({
-            access: 'auth',
-            token: res.headers['x-auth']
-          });
+          expect(user.tokens[0]).toMatchObject(
+            {access: 'auth'},
+            {token: res.headers['x-auth']}
+          );
           done();
         }).catch((e) => done(e));
       });
