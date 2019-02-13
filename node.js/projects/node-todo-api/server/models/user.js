@@ -71,6 +71,25 @@ var userSchema = new mongoose.Schema(
     });
   };
 
+   userSchema.statics.findByCredentials = function (email, password) {
+     var User = this;
+     return User.findOne({email}).then((user) => {
+       if (!user) {
+         return Promise.reject();
+       }
+
+       return user;
+     }).then((user) => {
+       return bcrypt.compare(password, user.password).then((res) => {
+         if (!res) {
+           return Promise.reject();
+         }
+
+         return user;
+       });
+     });
+   };
+
   userSchema.pre('save', function (next) {
     var user = this;
 
@@ -83,7 +102,7 @@ var userSchema = new mongoose.Schema(
       });
     } else {
       next();
-    }  
+    }
   });
 
 
