@@ -42,7 +42,7 @@ app.get('/todos', authenticate,  (req, res) => {
   });
 });
 
-app.get('/todos/:id', (req, res) => {
+app.get('/todos/:id',authenticate, (req, res) => {
   var id = req.params.id;
   // res.send(req.params);
 
@@ -52,7 +52,10 @@ app.get('/todos/:id', (req, res) => {
   }
 
   // findById
-    Todo.findById(id).then((todo) => {
+    Todo.findById({
+      _id: id,
+      _creator: req.user._id
+    }).then((todo) => {
       if (todo) {
         res.send(todo);
       } else {
@@ -63,14 +66,17 @@ app.get('/todos/:id', (req, res) => {
     });
 });
 
-app.delete('/todos/:id', (req, res) => {
+app.delete('/todos/:id', authenticate, (req, res) => {
   var id = req.params.id;
 
   if (!ObjectID.isValid(id)) {
     return res.status(404).send({});
   }
 
-  Todo.findByIdAndDelete(id).then((todo) => {
+  Todo.findOneAndDelete({
+    _id: id,
+    _creator: req.user._id
+  }).then((todo) => {
     if (!todo) {
       return res.status(400).send({});
     }
@@ -81,7 +87,7 @@ app.delete('/todos/:id', (req, res) => {
   });
 });
 
-app.patch('/todos/:id', (req, res) => {
+app.patch('/todos/:id', authenticate, (req, res) => {
   var id = req.params.id;
   var body = _.pick(req.body, ['text', 'completed']);
 
