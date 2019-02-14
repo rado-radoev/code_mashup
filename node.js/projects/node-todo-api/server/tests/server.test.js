@@ -196,6 +196,7 @@ describe('PATCH /todo/:id', () => {
       .expect((res) => {
         expect(res.body.todo.completed).toBeTruthy();
         expect(res.body.todo.text).toBe(newText);
+        expect(typeof res.body.todo.completedAt).toBe('number');
       })
       .end(done);
   });
@@ -252,7 +253,7 @@ describe('POST /users', () => {
 
         User.findOne({email}).then((user) => {
           expect(user).toBeTruthy();
-          //expect(user.password).toNotEqual(password);
+          expect(user.password).non.toBe(password);
           done();
         }).catch((e) => done(e));
       });
