@@ -313,3 +313,9 @@ describe('POST /users/login', () => {
         .end(done);
   });
 });
+
+describe('DELETE /users/me/token', () => {
+  it('should remove auth toke on logout', (done) => {
+
+  });
+});
