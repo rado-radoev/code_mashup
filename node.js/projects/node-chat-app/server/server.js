@@ -17,6 +17,28 @@ app.use(express.static(publicPath));
 
 io.on('connection', (socket) => {
   console.log('New User connected');
+
+  socket.emit('newMessage', {
+    from: 'johnwick@example.com',
+    text: 'baba yaga',
+    createdAt: Date.now()
+  });
+
+  // socket.emit('newEmail', {
+  //   from: 'mike@example.com',
+  //   text: 'Hey. What is going on?',
+  //   createdAt: 123
+  // });
+  //
+  // socket.on('createEmail', (newEmail) => {
+  //   console.log('createEmail', newEmail);
+  // });
+
+  socket.on('createMessage', (message) => {
+    console.log('createMessage', message);
+  });
+
+
   socket.on('disconnect', (reason) => {
     if (reason === 'server namespace disconnect') {
       console.log('Server closed connection');
