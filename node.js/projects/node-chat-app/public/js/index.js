@@ -38,3 +38,30 @@ jQuery('#message-form').on('submit', function (e) {
 
   });
 });
+
+
+var locationButton = jQuery('#send-location');
+locationButton.on('click', function () {
+  if (!navigator.geolocation) {
+    return alert('Geolocation not supported by your browser');
+  }
+
+  let options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+  }
+
+  function success(position) {
+    socket.emit('createLocationMessage', {
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude
+    });
+  }
+
+  function error () {
+    alert('Unable to fetch location');
+  }
+
+  navigator.geolocation.getCurrentPosition(success, error, options);
+})
