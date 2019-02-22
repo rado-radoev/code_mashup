@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Github_password_finder.iml" filepath="$PROJECT_DIR$/.idea/Github_password_finder.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/.idea/SQLQuery-Ansible.iml" filepath="$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/.idea/SQLQuery-Ansible.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../scripts/sockets.io/.idea/sockets.io.iml" filepath="$PROJECT_DIR$/../../scripts/sockets.io/.idea/sockets.io.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../sockets_io/.idea/sockets_io.iml" filepath="$PROJECT_DIR$/../sockets_io/.idea/sockets_io.iml" />
     </modules>
   </component>
 </project>
