@@ -1,17 +1,50 @@
 const socket = io();
 
+// Elements
+const $messageForm = document.querySelector('#message-form');
+const $messageFormInput = $messageForm.querySelector('input');
+const $messageFormButton = $messageForm.querySelector('button');
+const $sendLocationButton = document.getElementById('send-location');
+const $messages = document.getElementById('messages');
+
+//Templates
+const messageTemplate = document.getElementById('message-template').innerHTML;
+
 socket.on('message', (message) => {
     console.log(message);
+    const html = Mustache.render(messageTemplate, {
+        message
+    })
+    $messages.insertAdjacentHTML('beforeend', html)
 })
 
-document.getElementById('message-form').addEventListener('submit', (e) => {
+$messageForm.addEventListener('submit', (e) => {
     e.preventDefault( )
+    
+    // disable
+    $messageFormButton.setAttribute('disabled', 'disabled');
+
     // let inputMessage = document.getElementsByName('message')[0].value;
     let inputMessage = e.target.elements.message.value;
-    socket.emit('sendMessage', inputMessage);
+    
+    socket.emit('sendMessage', inputMessage, (callbackMessage) => {
+        $messageFormButton.removeAttribute('disabled');
+        $messageFormInput.value = ''
+        $messageFormInput.focus()
+
+        if (callbackMessage) {
+            return console.log(callbackMessage)
+        }
+
+        console.log('Message delivered')
+        
+    });
+
+
 })
 
-document.getElementById('send-location').addEventListener('click', () => {
+$sendLocationButton.addEventListener('click', () => {
+    
     if (!navigator.geolocation) {
         return alert('Geolocaiton is not supported by your browser');
     }
@@ -24,14 +57,13 @@ document.getElementById('send-location').addEventListener('click', () => {
 
     function success(pos) {
         var crd = pos.coords;
-        // console.log('Your current position is:');
-        // console.log(`Latitude : ${crd.latitude}`);
-        // console.log(`Longitude: ${crd.longitude}`);
-        // console.log(`More or less ${crd.accuracy} meters.`);
 
         socket.emit('sendLocation', {
             'latitude': crd.latitude,
             'longitude': crd.longitude
+        }, () => {
+            $sendLocationButton.removeAttribute('disabled');
+            console.log('Location received')
         });
     }
 
@@ -39,16 +71,6 @@ document.getElementById('send-location').addEventListener('click', () => {
         console.warn(`ERROR(${err.code}): ${err.message}`);
     }
 
-
-    navigator.geolocation.getCurrentPosition(success, error, options);
-
+    $sendLocationButton.setAttribute('disabled', 'disabled');
+    navigator.geolocation.getCurrentPosition(success, error, options);   
 });
-
-// socket.on('countUpdated', (count) => {
-//     console.log('The count has been updated', count);
-// });
-
-// document.querySelector('#increment').addEventListener('click', () => {
-//     console.log('Clicked')
-//     socket.emit('increment')
-// });
