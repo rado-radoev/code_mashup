@@ -9,6 +9,7 @@ const $messages = document.getElementById('messages');
 
 //Templates
 const messageTemplate = document.getElementById('message-template').innerHTML;
+const locationTemplate = document.getElementById('location-template').innerHTML;
 
 socket.on('message', (message) => {
     console.log(message);
@@ -17,6 +18,16 @@ socket.on('message', (message) => {
     })
     $messages.insertAdjacentHTML('beforeend', html)
 })
+
+socket.on('locationMessage', (locationURL) => {
+    console.log(locationURL)
+    const html = Mustache.render(locationTemplate, {
+        'mapLink': locationURL,
+        'locationText': 'My current location'
+    });
+
+    $messages.insertAdjacentHTML('beforeend', html);
+});
 
 $messageForm.addEventListener('submit', (e) => {
     e.preventDefault( )
@@ -52,7 +63,7 @@ $sendLocationButton.addEventListener('click', () => {
     var options = {
         enableHighAccuracy: true,
         timeout: 5000,
-        maximumAge: 0
+        maximumAge: 6000
       };
 
     function success(pos) {
