@@ -4,33 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="/css/styles.min.css">
+    <title>Chat App</title>
+    
 </head>
 <body>
-    Chat App
 
-    <div id="messages"></div>
+    <div class="chat">
+        
+        <div class="chat__sidebar">
+        
+        </div>
 
-    <form id="message-form" method="submit">
-        <input type="text" name="message" placeholder="Message" autofocus autocomplete="off"/>
-        <button type="submit">Send</button>
-    </form>
+        <div class="chat__main">
+            <div id="messages" class="chat__messages"></div>
+            <div class="compose">
+                <form id="message-form" method="submit">
+                    <input type="text" name="message" placeholder="Message" autofocus autocomplete="off"/>
+                    <button type="submit">Send</button>
+                </form>
 
-    <button id="send-location">Send location</button>
-
+                <button id="send-location">Send location</button>
+            </div>
+        </div>
+    </div>
 
     <script id="message-template" type="text/html">
-        <div>
+        <div class="message">
             <p>
-                {{createdAt}} - {{message}}
+                <span class="message__name">Some User name</span>
+                <span class="message__meta">{{createdAt}}</span>
             </p>
+            <p> {{message}}</p>
         </div>
     </script>
 
     <script id="location-template" type="text/html">
-        <div>
+        <div class="message">
             <p>
-                {{createdAt}} - <a href="{{mapLink}}" target="_blank">{{locationText}}</a>
+                <span class="message__name">Some User name</span>
+                <span class="message__meta">{{createdAt}}</span>
+            </p>
+            <p>
+                <a href="{{mapLink}}" target="_blank">{{locationText}}</a>
             </p>
         </div>
     </script>
@@ -40,8 +57,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
     <script src="/socket.io/socket.io.js"> </script>
     <script src="/js/chat.js"></script>
-
-
-
 </body>
 </html>
