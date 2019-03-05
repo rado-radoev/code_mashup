@@ -11,11 +11,14 @@ const $messages = document.getElementById('messages');
 const messageTemplate = document.getElementById('message-template').innerHTML;
 const locationTemplate = document.getElementById('location-template').innerHTML;
 
+// Misc
+const timeFormat = 'h:mm a'
+
 socket.on('message', (message) => {
     console.log(message);
     const html = Mustache.render(messageTemplate, {
         'message': message.text,
-        'createdAt': moment(message.createdAt).format('h:mm A')
+        'createdAt': moment(message.createdAt).format(timeFormat)
     })
     $messages.insertAdjacentHTML('beforeend', html)
 })
@@ -23,8 +26,9 @@ socket.on('message', (message) => {
 socket.on('locationMessage', (locationURL) => {
     console.log(locationURL)
     const html = Mustache.render(locationTemplate, {
-        'mapLink': locationURL,
-        'locationText': 'My current location'
+        'mapLink': locationURL.text,
+        'locationText': 'My current location',
+        'createdAt' : moment(locationURL.createdAt).format(timeFormat)
     });
 
     $messages.insertAdjacentHTML('beforeend', html);
