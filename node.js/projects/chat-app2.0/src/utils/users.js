@@ -55,3 +55,14 @@ module.exports = {
   getUser,
   getUsersInRoom
 }
+
+
+// addUser({
+//   id: 22,
+//   username: 'rado',
+//   room: 'room'
+// })
+
+// var {room} = getUser(22)
+
+// console.log(room)

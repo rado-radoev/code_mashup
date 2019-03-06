@@ -1,15 +1,16 @@
 const moment = require('moment')
 
-const generateMessage = (text) => {
+const generateMessage = (username, text) => {
     return {
         text,
+        username,
         'createdAt': new Date().getTime()
     }
 }
 
 
-const generateLocationMessage = (url) => {
-    return generateMessage(url);
+const generateLocationMessage = (username, url) => {
+    return generateMessage(username, url);
 }
 
 module.exports = {
