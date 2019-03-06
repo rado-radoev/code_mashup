@@ -39,13 +39,13 @@ socket.on('locationMessage', (locationURL) => {
 
 $messageForm.addEventListener('submit', (e) => {
     e.preventDefault( )
-    
+
     // disable
     $messageFormButton.setAttribute('disabled', 'disabled');
 
     // let inputMessage = document.getElementsByName('message')[0].value;
     let inputMessage = e.target.elements.message.value;
-    
+
     socket.emit('sendMessage', inputMessage, (callbackMessage) => {
         $messageFormButton.removeAttribute('disabled');
         $messageFormInput.value = ''
@@ -56,14 +56,14 @@ $messageForm.addEventListener('submit', (e) => {
         }
 
         console.log('Message delivered')
-        
+
     });
 
 
 })
 
 $sendLocationButton.addEventListener('click', () => {
-    
+
     if (!navigator.geolocation) {
         return alert('Geolocaiton is not supported by your browser');
     }
@@ -91,8 +91,13 @@ $sendLocationButton.addEventListener('click', () => {
     }
 
     $sendLocationButton.setAttribute('disabled', 'disabled');
-    navigator.geolocation.getCurrentPosition(success, error, options);   
+    navigator.geolocation.getCurrentPosition(success, error, options);
 });
 
 
-socket.emit('join', { username, room })
+socket.emit('join', { username, room }, (error) => {
+  if (error) {
+    alert(error)
+    location.href = '/'
+  }
+})
