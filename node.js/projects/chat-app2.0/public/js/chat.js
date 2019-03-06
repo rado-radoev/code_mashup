@@ -14,6 +14,9 @@ const locationTemplate = document.getElementById('location-template').innerHTML;
 // Misc
 const timeFormat = 'h:mm a'
 
+// Options
+var { username, room } = Qs.parse(location.search, { ignoreQueryPrefix: true })
+
 socket.on('message', (message) => {
     console.log(message);
     const html = Mustache.render(messageTemplate, {
@@ -90,3 +93,6 @@ $sendLocationButton.addEventListener('click', () => {
     $sendLocationButton.setAttribute('disabled', 'disabled');
     navigator.geolocation.getCurrentPosition(success, error, options);   
 });
+
+
+socket.emit('join', { username, room })
