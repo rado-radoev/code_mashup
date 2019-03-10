@@ -3,11 +3,16 @@ package com.superklamer.weather_api;
 import com.sun.jersey.api.client.ClientResponse;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
+
+import javassist.expr.Instanceof;
 
 public class WeatherAPI {
 
@@ -34,11 +39,17 @@ public class WeatherAPI {
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		JsonNode jsonNode = objectMapper.readTree(output); 
+		System.out.println(jsonNode.get("weather").get(0).get("main"));
 		
-		Weather weather = objectMapper.readValue(output, Weather.class);
+//		Weather weather = objectMapper.readValue(output, Weather.class);
+//		
+//		System.out.println(weather);
+
+//		Map<String, Object> jsonMap = objectMapper.readValue(output,
+//			    new TypeReference<Map<String,Object>>(){});
 		
-		System.out.println(weather);
-		
+//		System.out.println( ((Map) jsonMap.get("coord")).get("lon") ) ;
+//		System.out.println(jsonMap.get("weather"));
 	}
 
 }
