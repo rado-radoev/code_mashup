@@ -15,10 +15,12 @@ import javax.json.JsonValue;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.google.gson.JsonArray;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
+
 
 import javassist.expr.Instanceof;
 
@@ -48,28 +50,33 @@ public class WeatherAPI {
 //		System.out.println(output);
 		
 		ObjectMapper objectMapper = new ObjectMapper();
-		JsonNode jsonNode = objectMapper.readTree(output); 
-		System.out.println(jsonNode.get("weather").get(0).get("main"));
-		
-		JsonReader reader = Json.createReader(new StringReader(output));
-		JsonObject obj = reader.readObject();
-		
-		reader.close();
-		
-		System.out.println(obj.getJsonArray("weather").get(0));
-		
-		ArrayNode arr = (ArrayNode) jsonNode.get("weather"); 
-		System.out.println(arr.get(0).get("id"));
-		
-//		Weather weather = objectMapper.readValue(output, Weather.class);
+		JsonNode jsonNode = objectMapper.readTree(output);
+		System.out.println(jsonNode);
+//		System.out.println(jsonNode.get("weather").get(0).get("main"));
 //		
-//		System.out.println(weather);
+//		JsonReader reader = Json.createReader(new StringReader(output));
+//		JsonObject obj = reader.readObject();
+//		
+//		reader.close();
+//		
+//		System.out.println(obj.getJsonArray("weather").get(0));
+//		
+//		ArrayNode arr = (ArrayNode) jsonNode.get("weather"); 
+//		System.out.println(arr.get(0).get("id"));
+		
+		Weather weather = objectMapper.readValue(output, Weather.class);
+		
+		System.out.println(weather.getCoord().getLon());
 
 //		Map<String, Object> jsonMap = objectMapper.readValue(output,
 //			    new TypeReference<Map<String,Object>>(){});
 		
 //		System.out.println( ((Map) jsonMap.get("coord")).get("lon") ) ;
 //		System.out.println(jsonMap.get("weather"));
+		
+		
+		
+		
 	}
 
 }

@@ -9,8 +9,8 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 
 public class Weather {
 
-	private double lon;
-	private double lat;
+	@JsonProperty("coord")
+	private Coord coord;
 
 	private double temp;
 	private double pressure;
@@ -31,21 +31,13 @@ public class Weather {
 	
 	private Map<String, Object> conditions = new HashMap();
 	
-	
-	public double getLon() {
-		return lon;
+	public Coord getCoord() {
+		return coord;
 	}
-	//@JsonProperty("coord")
-	public void setLon(double longitude) {
-		this.lon = longitude;
-	}
-	public double getLat() {
-		return lat;
+	public void setCoord(Coord coord) {
+		this.coord = coord;
 	}
 
-	public void setLat(double latitude) {
-		this.lat = latitude;
-	}
 	public double getTemp() {
 		return temp;
 	}
@@ -134,14 +126,14 @@ public class Weather {
 	public Object get(String fieldName) {
 		return this.conditions.get(fieldName);
 	}
-	
 	@Override
 	public String toString() {
-		return "Weather [longitude=" + lon + ", latitude=" + lat + ", temp=" + temp + ", pressure="
-				+ pressure + ", humidity=" + humidity + ", tempMin=" + tempMin + ", tempMax=" + tempMax + ", windSpeed="
-				+ windSpeed + ", windDeg=" + windDeg + ", cityCode=" + cityCode + ", cityId=" + cityId + ", cityName="
-				+ cityName + ", weatherDescriptionMain=" + weatherDescriptionMain + ", weatherDescription="
-				+ weatherDescription + ", weatherIcon=" + weatherIcon + ", conditions=" + conditions + "]";
+		return "Weather [coord=" + coord + ", temp=" + temp + ", pressure=" + pressure + ", humidity=" + humidity
+				+ ", tempMin=" + tempMin + ", tempMax=" + tempMax + ", windSpeed=" + windSpeed + ", windDeg=" + windDeg
+				+ ", cityCode=" + cityCode + ", cityId=" + cityId + ", cityName=" + cityName
+				+ ", weatherDescriptionMain=" + weatherDescriptionMain + ", weatherDescription=" + weatherDescription
+				+ ", weatherIcon=" + weatherIcon + ", conditions=" + conditions + "]";
 	}
-
+	
+	
 }
