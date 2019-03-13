@@ -28,7 +28,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 
 public class WeatherAPI {
 
-	public static void main(String[] args) throws IOException {
+	public static Weather getWeather() throws IOException {
 		
 		//6a0326b54ac62aae38ee842128683084
 		
@@ -51,7 +51,7 @@ public class WeatherAPI {
 		
 		ObjectMapper objectMapper = new ObjectMapper();
 		JsonNode jsonNode = objectMapper.readTree(output);
-		System.out.println(jsonNode);
+//		System.out.println(jsonNode);
 //		System.out.println(jsonNode.get("weather").get(0).get("main"));
 //		
 //		JsonReader reader = Json.createReader(new StringReader(output));
@@ -75,7 +75,7 @@ public class WeatherAPI {
 //		System.out.println(jsonMap.get("weather"));
 		
 		
-		
+		return weather;
 		
 	}
 

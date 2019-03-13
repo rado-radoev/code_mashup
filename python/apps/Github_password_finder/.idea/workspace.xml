@@ -2,16 +2,307 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="862af53d-429e-4b66-bfc7-f03174662a63" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../java/OpenWeatherMapAPI/weather-api/.classpath" afterPath="$PROJECT_DIR$/../../../java/OpenWeatherMapAPI/weather-api/.classpath" />
-      <change beforePath="$PROJECT_DIR$/../../../java/OpenWeatherMapAPI/weather-api/.settings/org.eclipse.wst.common.component" afterPath="$PROJECT_DIR$/../../../java/OpenWeatherMapAPI/weather-api/.settings/org.eclipse.wst.common.component" />
-      <change beforePath="$PROJECT_DIR$/../../../java/OpenWeatherMapAPI/weather-api/src/main/java/com/superklamer/weather_api/Weather.java" afterPath="$PROJECT_DIR$/../../../java/OpenWeatherMapAPI/weather-api/src/main/java/com/superklamer/weather_api/Weather.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/py4j_first_test.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j-0.10.8.1.dist-info/INSTALLER" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j-0.10.8.1.dist-info/METADATA" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j-0.10.8.1.dist-info/RECORD" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j-0.10.8.1.dist-info/WHEEL" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j-0.10.8.1.dist-info/top_level.txt" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/__init__.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/clientserver.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/compat.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/finalizer.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/java_collections.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/java_gateway.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/protocol.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/signals.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/__init__.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/benchmark1.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/byte_string_test.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/client_server_test.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/finalizer_test.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/instrumented.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/java_array_test.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/java_callback_test.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/java_dir_test.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/java_gateway_test.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/java_help_test.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/java_list_test.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/java_map_test.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/java_set_test.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/java_tls_test.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/memory_leak_test.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/multithreadtest.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/py4j_callback_example.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/py4j_callback_example2.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/py4j_callback_listener_example.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/py4j_callback_recursive_example.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/py4j_example.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/py4j_signals_test.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/signals_test.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/version.py" />
       <change beforePath="$PROJECT_DIR$/../../../java/OpenWeatherMapAPI/weather-api/src/main/java/com/superklamer/weather_api/WeatherAPI.java" afterPath="$PROJECT_DIR$/../../../java/OpenWeatherMapAPI/weather-api/src/main/java/com/superklamer/weather_api/WeatherAPI.java" />
-      <change beforePath="$PROJECT_DIR$/../../../java/OpenWeatherMapAPI/weather-api/target/classes/com/superklamer/weather_api/Weather.class" afterPath="$PROJECT_DIR$/../../../java/OpenWeatherMapAPI/weather-api/target/classes/com/superklamer/weather_api/Weather.class" />
       <change beforePath="$PROJECT_DIR$/../../../java/OpenWeatherMapAPI/weather-api/target/classes/com/superklamer/weather_api/WeatherAPI.class" afterPath="$PROJECT_DIR$/../../../java/OpenWeatherMapAPI/weather-api/target/classes/com/superklamer/weather_api/WeatherAPI.class" />
-      <change beforePath="$PROJECT_DIR$/.idea/Github_password_finder.iml" afterPath="$PROJECT_DIR$/.idea/Github_password_finder.iml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/pip-selfcheck.json" afterPath="$PROJECT_DIR$/../sockets_io/sockets_io/pip-selfcheck.json" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/bin/pip" afterPath="$PROJECT_DIR$/../sockets_io/sockets_io/bin/pip" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/bin/pip3" afterPath="$PROJECT_DIR$/../sockets_io/sockets_io/bin/pip3" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/bin/pip3.6" afterPath="$PROJECT_DIR$/../sockets_io/sockets_io/bin/pip3.6" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/easy-install.pth" afterPath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/easy-install.pth" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/EGG-INFO/PKG-INFO" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/EGG-INFO/SOURCES.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/EGG-INFO/dependency_links.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/EGG-INFO/entry_points.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/EGG-INFO/not-zip-safe" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/EGG-INFO/requires.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/EGG-INFO/top_level.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/__main__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/appdirs.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/_cmd.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/adapter.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/cache.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/caches/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/caches/file_cache.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/caches/redis_cache.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/compat.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/controller.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/filewrapper.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/heuristics.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/serialize.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/cachecontrol/wrapper.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/colorama/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/colorama/ansi.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/colorama/ansitowin32.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/colorama/initialise.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/colorama/win32.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/colorama/winterm.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/_backport/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/_backport/misc.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/_backport/shutil.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/_backport/sysconfig.cfg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/_backport/sysconfig.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/_backport/tarfile.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/compat.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/database.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/index.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/locators.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/manifest.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/markers.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/metadata.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/resources.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/scripts.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/t32.exe" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/t64.exe" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/util.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/version.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/w32.exe" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/w64.exe" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distlib/wheel.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/distro.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/_ihatexml.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/_inputstream.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/_tokenizer.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/_trie/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/_trie/_base.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/_trie/datrie.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/_trie/py.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/_utils.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/constants.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/filters/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/filters/alphabeticalattributes.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/filters/base.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/filters/inject_meta_charset.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/filters/lint.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/filters/optionaltags.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/filters/sanitizer.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/filters/whitespace.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/html5parser.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/serializer.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treeadapters/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treeadapters/genshi.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treeadapters/sax.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treebuilders/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treebuilders/base.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treebuilders/dom.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treebuilders/etree.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treebuilders/etree_lxml.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/base.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/dom.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/etree.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/etree_lxml.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/html5lib/treewalkers/genshi.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/ipaddress.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/lockfile/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/lockfile/linklockfile.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/lockfile/mkdirlockfile.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/lockfile/pidlockfile.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/lockfile/sqlitelockfile.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/lockfile/symlinklockfile.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/ordereddict.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/__about__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/_compat.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/_structures.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/markers.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/requirements.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/specifiers.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/utils.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/packaging/version.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/pkg_resources/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/progress/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/progress/bar.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/progress/counter.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/progress/helpers.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/progress/spinner.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/pyparsing.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/re-vendor.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/adapters.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/api.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/auth.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/cacert.pem" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/certs.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/compat.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/cookies.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/exceptions.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/hooks.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/models.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/big5freq.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/big5prober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/chardetect.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/chardistribution.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/charsetgroupprober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/charsetprober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/codingstatemachine.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/compat.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/constants.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/cp949prober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/escprober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/escsm.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/eucjpprober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/euckrfreq.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/euckrprober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/euctwfreq.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/euctwprober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/gb2312freq.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/gb2312prober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/hebrewprober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/jisfreq.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/jpcntx.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/langbulgarianmodel.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/langcyrillicmodel.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/langgreekmodel.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/langhebrewmodel.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/langhungarianmodel.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/langthaimodel.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/latin1prober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/mbcharsetprober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/mbcsgroupprober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/mbcssm.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/sbcharsetprober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/sbcsgroupprober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/sjisprober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/universaldetector.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/chardet/utf8prober.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/_collections.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/connection.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/connectionpool.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/contrib/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/contrib/appengine.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/contrib/ntlmpool.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/contrib/pyopenssl.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/contrib/socks.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/exceptions.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/fields.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/filepost.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/packages/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/packages/ordered_dict.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/packages/six.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/packages/ssl_match_hostname/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/packages/ssl_match_hostname/_implementation.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/poolmanager.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/request.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/response.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/util/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/util/connection.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/util/request.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/util/response.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/util/retry.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/util/ssl_.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/util/timeout.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/packages/urllib3/util/url.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/sessions.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/status_codes.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/structures.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/requests/utils.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/retrying.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/six.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/webencodings/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/webencodings/labels.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/webencodings/mklabels.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/webencodings/tests.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/_vendor/webencodings/x_user_defined.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/basecommand.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/baseparser.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/cmdoptions.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/commands/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/commands/check.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/commands/completion.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/commands/download.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/commands/freeze.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/commands/hash.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/commands/help.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/commands/install.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/commands/list.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/commands/search.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/commands/show.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/commands/uninstall.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/commands/wheel.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/compat/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/compat/dictconfig.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/download.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/exceptions.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/index.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/locations.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/models/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/models/index.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/operations/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/operations/check.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/operations/freeze.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/pep425tags.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/req/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/req/req_file.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/req/req_install.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/req/req_set.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/req/req_uninstall.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/status_codes.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/utils/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/utils/appdirs.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/utils/build.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/utils/deprecation.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/utils/encoding.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/utils/filesystem.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/utils/glibc.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/utils/hashes.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/utils/logging.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/utils/outdated.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/utils/packaging.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/utils/setuptools_build.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/utils/ui.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/vcs/__init__.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/vcs/bazaar.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/vcs/git.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/vcs/mercurial.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/vcs/subversion.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../sockets_io/sockets_io/lib/python3.6/site-packages/pip-9.0.1-py3.6.egg/pip/wheel.py" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,11 +314,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="sockets.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sockets.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../sockets_io/sockets_io/sockets.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
-              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="non_infrastructure_query.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/venv/non_infrastructure_query.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="hostname_query.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/venv/hostname_query.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-374">
+              <caret line="39" column="11" lean-forward="true" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/venv/server.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="utility.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/venv/utility.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="616">
+              <caret line="47" column="51" lean-forward="false" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="py4j_first_test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../py4j/py4j_first_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -50,6 +391,7 @@
       <list>
         <option value="$PROJECT_DIR$/../../scripts/sockets.io/venv/playground/async_io.py" />
         <option value="$PROJECT_DIR$/../sockets_io/sockets_io/sockets.py" />
+        <option value="$PROJECT_DIR$/../py4j/py4j_first_test.py" />
       </list>
     </option>
   </component>
@@ -92,6 +434,39 @@
               <item name="sockets_io" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Github_password_finder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="py4j" type="462c0819:PsiDirectoryNode" />
+              <item name="sockets_io" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="python3.6" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Github_password_finder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="py4j" type="462c0819:PsiDirectoryNode" />
+              <item name="sockets_io" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="python3.6" type="462c0819:PsiDirectoryNode" />
+              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Github_password_finder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sockets_io" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Github_password_finder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sockets_io" type="462c0819:PsiDirectoryNode" />
+              <item name="sockets_io" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Github_password_finder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SQLQuery-Ansible" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Github_password_finder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SQLQuery-Ansible" type="462c0819:PsiDirectoryNode" />
+              <item name="venv" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -102,6 +477,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -115,7 +495,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.sockets">
+  <component name="RunManager" selected="Python.py4j_first_test">
     <configuration name="async_io" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -129,6 +509,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="sockets.io" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../../scripts/sockets.io/venv/playground/async_io.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="py4j_first_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../py4j" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="py4j" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../py4j/py4j_first_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -170,16 +568,18 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Python.socket_io" />
       <item index="1" class="java.lang.String" itemvalue="Python.sockets" />
       <item index="2" class="java.lang.String" itemvalue="Python.async_io" />
+      <item index="3" class="java.lang.String" itemvalue="Python.py4j_first_test" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Python.sockets" />
-        <item index="1" class="java.lang.String" itemvalue="Python.async_io" />
-        <item index="2" class="java.lang.String" itemvalue="Python.socket_io" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Python.py4j_first_test" />
+        <item index="1" class="java.lang.String" itemvalue="Python.sockets" />
+        <item index="2" class="java.lang.String" itemvalue="Python.async_io" />
+        <item index="3" class="java.lang.String" itemvalue="Python.socket_io" />
       </list>
     </recent_temporary>
   </component>
@@ -201,17 +601,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="995" y="23" width="1532" height="1336" extended-state="1" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20714758" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32990506" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25785658" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25785658" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32957292" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32957292" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3996777" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -225,8 +626,31 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/../py4j/py4j_first_test.py</url>
+          <line>7</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="4" />
+    </breakpoint-manager>
     <watches-manager />
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>weather.getCoord().getLon()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>weather</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../sockets_io/sockets_io/sockets.py">
@@ -356,21 +780,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/venv/hostname_query.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="116" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/venv/infrastructure_query.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/venv/non_infrastructure_query.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -384,24 +794,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/venv/server.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/dictionaries.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/venv/utility.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="51" lean-forward="false" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
         </state>
       </provider>
     </entry>
@@ -419,10 +815,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../py4j/sockets_io/lib/python3.6/site-packages/py4j/tests/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../py4j/py4j_first_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../sockets_io/sockets_io/sockets.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/venv/non_infrastructure_query.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/venv/hostname_query.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-374">
+          <caret line="39" column="11" lean-forward="true" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/venv/server.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../scripts/SQLQuery-Ansible/venv/utility.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="47" column="51" lean-forward="false" selection-start-line="47" selection-start-column="51" selection-end-line="47" selection-end-column="51" />
           <folding />
         </state>
       </provider>
