@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" type="text/css" href="./CSS/page-layout.css"></li> -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+    crossorigin=""></script>
+
+    
+
+</head>
+<body>
+    
+    <div class="split left">
+        <div class="centered">
+            <h2>Weather Map</h2>    
+           
+            <div id="mapid"></div>
+            <p>
+                <table>
+                    <tr>
+                        <td>lon: 32.556566</td>
+                        <td>lat: -117.550066</td>
+                    </tr>
+                </table>
+            </p>
+        </div>
+    </div>
+
+    <div class="split right">
+        <div class="centered">
+            <div class="weather-details">
+
+            </div>
+            <h1 id="weather-icon">Weather Icon</h1>
+            <h2 id="city name">City Name</h2>
+            <p>
+                <table>
+                    <tr>
+                        <td>Temp: 100</td>
+                        <td>Humidity: 100</td>
+                    </tr>
+                    <tr>
+                        <td>Min Temp: 0</td>
+                        <td>Pressure: 100</td>
+                    </tr>
+                    <tr>
+                        <td>Max Temp: 200</td>
+                        <td>Wind Speed: 5</td>
+                    </tr>
+                </table>
+            </p>
+        </div>
+    </div>
+
+
+<script>
+
+
+    var map1 = L.map('mapid');
+        //map1.setView([38.642433, -90.255372]),9); //Thanks!
+        map1.setView([42.910956, 27.838769],9);
+
+        // add an OpenStreetMap tile layer
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '&amp;copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map1);
+
+
+    // var mymap = L.map('mapid').setView([32.71, -117.14], 10)
+
+
+    // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+	// 	maxZoom: 18,
+	// 	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+	// 		'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+	// 		'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+	// 	id: 'mapbox.streets'
+	// }).addTo(mymap);
+
+</script>
+
+
+</body>
+
+</html>
