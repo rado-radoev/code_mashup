@@ -5,29 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <!-- <link rel="stylesheet" type="text/css" href="./CSS/page-layout.css"></li> -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-    crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-    integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-    crossorigin=""></script>
-
-    
+    <link rel="stylesheet" type="text/css" href="./CSS/page-layout.css"></li>  
 
 </head>
 <body>
     
     <div class="split left">
         <div class="centered">
-            <h2>Weather Map</h2>    
-           
             <div id="mapid"></div>
+            <iframe src="https://weather.com/weather/radar/interactive/l/34.05,-118.25" frameborder="0" width="800" height="900" ></iframe>
             <p>
                 <table>
                     <tr>
-                        <td>lon: 32.556566</td>
-                        <td>lat: -117.550066</td>
+                        <td>lon: {{Longitude}}</td>
+                        <td>lat: {{Latitude}}</td>
                     </tr>
                 </table>
             </p>
@@ -39,55 +30,27 @@
             <div class="weather-details">
 
             </div>
-            <h1 id="weather-icon">Weather Icon</h1>
-            <h2 id="city name">City Name</h2>
+            <h1 id="weather-icon">{{Weather_Icon}}</h1>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKT2lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVNnVFPpFj333vRCS4iAlEtvUhUIIFJCi4AUkSYqIQkQSoghodkVUcERRUUEG8igiAOOjoCMFVEsDIoK2AfkIaKOg6OIisr74Xuja9a89+bN/rXXPues852zzwfACAyWSDNRNYAMqUIeEeCDx8TG4eQuQIEKJHAAEAizZCFz/SMBAPh+PDwrIsAHvgABeNMLCADATZvAMByH/w/qQplcAYCEAcB0kThLCIAUAEB6jkKmAEBGAYCdmCZTAKAEAGDLY2LjAFAtAGAnf+bTAICd+Jl7AQBblCEVAaCRACATZYhEAGg7AKzPVopFAFgwABRmS8Q5ANgtADBJV2ZIALC3AMDOEAuyAAgMADBRiIUpAAR7AGDIIyN4AISZABRG8lc88SuuEOcqAAB4mbI8uSQ5RYFbCC1xB1dXLh4ozkkXKxQ2YQJhmkAuwnmZGTKBNA/g88wAAKCRFRHgg/P9eM4Ors7ONo62Dl8t6r8G/yJiYuP+5c+rcEAAAOF0ftH+LC+zGoA7BoBt/qIl7gRoXgugdfeLZrIPQLUAoOnaV/Nw+H48PEWhkLnZ2eXk5NhKxEJbYcpXff5nwl/AV/1s+X48/Pf14L7iJIEyXYFHBPjgwsz0TKUcz5IJhGLc5o9H/LcL//wd0yLESWK5WCoU41EScY5EmozzMqUiiUKSKcUl0v9k4t8s+wM+3zUAsGo+AXuRLahdYwP2SycQWHTA4vcAAPK7b8HUKAgDgGiD4c93/+8//UegJQCAZkmScQAAXkQkLlTKsz/HCAAARKCBKrBBG/TBGCzABhzBBdzBC/xgNoRCJMTCQhBCCmSAHHJgKayCQiiGzbAdKmAv1EAdNMBRaIaTcA4uwlW4Dj1wD/phCJ7BKLyBCQRByAgTYSHaiAFiilgjjggXmYX4IcFIBBKLJCDJiBRRIkuRNUgxUopUIFVIHfI9cgI5h1xGupE7yAAygvyGvEcxlIGyUT3UDLVDuag3GoRGogvQZHQxmo8WoJvQcrQaPYw2oefQq2gP2o8+Q8cwwOgYBzPEbDAuxsNCsTgsCZNjy7EirAyrxhqwVqwDu4n1Y8+xdwQSgUXACTYEd0IgYR5BSFhMWE7YSKggHCQ0EdoJNwkDhFHCJyKTqEu0JroR+cQYYjIxh1hILCPWEo8TLxB7iEPENyQSiUMyJ7mQAkmxpFTSEtJG0m5SI+ksqZs0SBojk8naZGuyBzmULCAryIXkneTD5DPkG+Qh8lsKnWJAcaT4U+IoUspqShnlEOU05QZlmDJBVaOaUt2ooVQRNY9aQq2htlKvUYeoEzR1mjnNgxZJS6WtopXTGmgXaPdpr+h0uhHdlR5Ol9BX0svpR+iX6AP0dwwNhhWDx4hnKBmbGAcYZxl3GK+YTKYZ04sZx1QwNzHrmOeZD5lvVVgqtip8FZHKCpVKlSaVGyovVKmqpqreqgtV81XLVI+pXlN9rkZVM1PjqQnUlqtVqp1Q61MbU2epO6iHqmeob1Q/pH5Z/YkGWcNMw09DpFGgsV/jvMYgC2MZs3gsIWsNq4Z1gTXEJrHN2Xx2KruY/R27iz2qqaE5QzNKM1ezUvOUZj8H45hx+Jx0TgnnKKeX836K3hTvKeIpG6Y0TLkxZVxrqpaXllirSKtRq0frvTau7aedpr1Fu1n7gQ5Bx0onXCdHZ4/OBZ3nU9lT3acKpxZNPTr1ri6qa6UbobtEd79up+6Ynr5egJ5Mb6feeb3n+hx9L/1U/W36p/VHDFgGswwkBtsMzhg8xTVxbzwdL8fb8VFDXcNAQ6VhlWGX4YSRudE8o9VGjUYPjGnGXOMk423GbcajJgYmISZLTepN7ppSTbmmKaY7TDtMx83MzaLN1pk1mz0x1zLnm+eb15vft2BaeFostqi2uGVJsuRaplnutrxuhVo5WaVYVVpds0atna0l1rutu6cRp7lOk06rntZnw7Dxtsm2qbcZsOXYBtuutm22fWFnYhdnt8Wuw+6TvZN9un2N/T0HDYfZDqsdWh1+c7RyFDpWOt6azpzuP33F9JbpL2dYzxDP2DPjthPLKcRpnVOb00dnF2e5c4PziIuJS4LLLpc+Lpsbxt3IveRKdPVxXeF60vWdm7Obwu2o26/uNu5p7ofcn8w0nymeWTNz0MPIQ+BR5dE/C5+VMGvfrH5PQ0+BZ7XnIy9jL5FXrdewt6V3qvdh7xc+9j5yn+M+4zw33jLeWV/MN8C3yLfLT8Nvnl+F30N/I/9k/3r/0QCngCUBZwOJgUGBWwL7+Hp8Ib+OPzrbZfay2e1BjKC5QRVBj4KtguXBrSFoyOyQrSH355jOkc5pDoVQfujW0Adh5mGLw34MJ4WHhVeGP45wiFga0TGXNXfR3ENz30T6RJZE3ptnMU85ry1KNSo+qi5qPNo3ujS6P8YuZlnM1VidWElsSxw5LiquNm5svt/87fOH4p3iC+N7F5gvyF1weaHOwvSFpxapLhIsOpZATIhOOJTwQRAqqBaMJfITdyWOCnnCHcJnIi/RNtGI2ENcKh5O8kgqTXqS7JG8NXkkxTOlLOW5hCepkLxMDUzdmzqeFpp2IG0yPTq9MYOSkZBxQqohTZO2Z+pn5mZ2y6xlhbL+xW6Lty8elQfJa7OQrAVZLQq2QqboVFoo1yoHsmdlV2a/zYnKOZarnivN7cyzytuQN5zvn//tEsIS4ZK2pYZLVy0dWOa9rGo5sjxxedsK4xUFK4ZWBqw8uIq2Km3VT6vtV5eufr0mek1rgV7ByoLBtQFr6wtVCuWFfevc1+1dT1gvWd+1YfqGnRs+FYmKrhTbF5cVf9go3HjlG4dvyr+Z3JS0qavEuWTPZtJm6ebeLZ5bDpaql+aXDm4N2dq0Dd9WtO319kXbL5fNKNu7g7ZDuaO/PLi8ZafJzs07P1SkVPRU+lQ27tLdtWHX+G7R7ht7vPY07NXbW7z3/T7JvttVAVVN1WbVZftJ+7P3P66Jqun4lvttXa1ObXHtxwPSA/0HIw6217nU1R3SPVRSj9Yr60cOxx++/p3vdy0NNg1VjZzG4iNwRHnk6fcJ3/ceDTradox7rOEH0x92HWcdL2pCmvKaRptTmvtbYlu6T8w+0dbq3nr8R9sfD5w0PFl5SvNUyWna6YLTk2fyz4ydlZ19fi753GDborZ752PO32oPb++6EHTh0kX/i+c7vDvOXPK4dPKy2+UTV7hXmq86X23qdOo8/pPTT8e7nLuarrlca7nuer21e2b36RueN87d9L158Rb/1tWeOT3dvfN6b/fF9/XfFt1+cif9zsu72Xcn7q28T7xf9EDtQdlD3YfVP1v+3Njv3H9qwHeg89HcR/cGhYPP/pH1jw9DBY+Zj8uGDYbrnjg+OTniP3L96fynQ89kzyaeF/6i/suuFxYvfvjV69fO0ZjRoZfyl5O/bXyl/erA6xmv28bCxh6+yXgzMV70VvvtwXfcdx3vo98PT+R8IH8o/2j5sfVT0Kf7kxmTk/8EA5jz/GMzLdsAAAAgY0hSTQAAeiUAAICDAAD5/wAAgOkAAHUwAADqYAAAOpgAABdvkl/FRgAADjRJREFUeNrsnX+IHGcZxz/PzO7ebe6SO9cEIoGESqoQiVRSIpZKSyTSElFaIikVpSJYCimKRQhYWpQWRUEqLQpBiSgtlhYFsVgshgaDYrG0KAaKwWIgEM1x9ZK927vdmXn8Y2Z333nnndk77253L50Xhr2ZeWfmnef7Pt/nx/vOe6KqlGV8ileKoASkLCUgJSBlKQEpASlLCUgJSFlKQEpAylICUpYSkBKQspSAlICUZaNLZb030DkZh/eYBnYBbw/7wbJT39UachLws72CrxHxdM41X3FeU1LWukuDZZ6CjOD3sMzXWeQYcId17qHkmttLQP7/sgv4pkMLjrOIzyIPQeVUzLYViCrfZVmm6QgE/lNQ8ZNzn2bZf5pFoMMJx3PuBz5WAjKoROxniceA3yXgxIJv+8cRgRWBZf12ItDbWYrup0vji3oL8GXgMG39BUuRjwi0vRN9oKgBP2SFZwk4eMMZ9U0AZC8tIPCOst17A+E+4AJtPdKrsxSB753B4zIdQKR7LbS9J/DDkKWo3qvf1gZTHAUuQOWXLEaHWFaY0v3jJoFRa8gpoJEGxN+PCAQKC+EeAn0V5QUCjXt7d2tqjSY3Ze64FDS4rrtQoy4CgT5GxBtciw6xoiBA5O21+mQ9cRx2vzsBaXES5V/AE1BpQAVC9hp2A66rzyJHYgnGsu1tqqhIenPVi5/1Ma5FDULjWMT+hCjqUDmJ8g+WeZqI9qhEIuudl7WuOOQd/opykLoHk14T4TSL0e20OZxuZRcfyRwrbpxZXTPHqMg82+VbKN9gRXexHEGo0KCCEI4iDhktIP/1XiXSO3oCnhQIErqyQcg8RvKBUQcixq6Yx+s+tILY/sRlgYY/C8ENHRjWgXuAmZQ/4bGQEvAycQ+VGAgVMWjHsAmp4y4pdTfLjiQ/KWprhfTsTXztvOXv+MARYM+N42UpLTo8RZW9COehchY4h8d8T9jJj3YF1xOuOBRD1vRw1LpO+6CjINKtI+DpAnAQuAsqd0BwhA51fN47jO47PMp6hzNEPEDVgypQEegIrERpehIHEDYI4qCuPOOhDnB6u3270qMxT2C6Au0AOhrTZ6R/o8GHXY/aurmsKq/03NmWQlN7YKToCZM+bLoRx4Zjy6ln0l4PdEnTWKSw0Inb2EkArHgvMaQc6vDCoqr/Cu0o3fslRyvENtqS1YrVelmiliYZ9IRxrktjKmkKU4Uq52JRBVuWsmag6+PzNlTmUeCd8K+IHCwGIw8I27YMsiU2PRn8pdb5HnVZFKZJBDMt76Uqrdg5CQ4kV10BLm80ZW2Ohig+Ia8C0/gGlVSEbmA2EIyeDTHrFdkSuw0mgKYmdLVG0tqiavwamgJ1qrLUu03YI/uP43F5q1DWPNd4BuVULNjQsAkFYNha4dSabAyihSZeraNqUJS4j5mgoPBO1Nee+MRZZji/GRZ487ysJXbRkn8iTGfsRkbQNhh2/NEXtcoq7YhBUaI2jSW/6jqWpi9RB7VV5E52ROe2lpc1yVU8Tqe6rZiRdw4YYvwaYKgkYKS8JpdXlT3euxbb28p5vtE+zVAmZ9km57ZectGrwIR8L+Yrm6osUHKEYQo07eYWub6uc4775HUKR7tS7a7K96jIprH9RlLWLcDxJHV9C1T2ELGbhchNVZleme2x6qIvp1tckMuy/07oSWya6u27KaxHXdsrUIkWgIsQXAAuA2dlp74yXoAEzNDmDSJuIvTiF4kchtwGJRMEku7Nha6wY19dkbrbxRXbZqT+JrMvpr3xJeYXL2pR5VZ5n14YL8ryWWCFe1mhRdgFI8f9EbG8pbRnpXnAOSnLlViUnPoUgJ7Trjz3LVBoKyzz4EaBsbGACLCdNxEett9C815QLIufoSaX92VpVNFG1jlwxji57SBr4NPonJYP6M/H16hXgCn/J8BPcnuWK5Yw7YbjWNr7cv2dZ+Qdf1v3UxzPKBpv6e+/yYQ8PO5els+EHGNCZvLTHK5eaRhxcaRLcnt7QXIxV6uynUEdbcnVnF7nkxZT3gmdq86Mm5flx2MH3APcQ8dvsKLQ6WYwcoy3I+Zwurd5zoAJYualrLyVbaxNbyox5uI87jb2ohqngWpATdpI8DLwHPCS7NTmqAE5QJvf0mZvPDVA3GkSyQvK+unv/DrWMQwXGkdmpP9yFigOYRvHxAYh5zqxo/qqwgQtqnxWdulLo6WskAss8lFWeN3ZXWEAFRTQhbgNrbrGS7qbYdBVxO1AyBrbMSjX35YrNLlzvWBsDCA+MMMVKtwJvIzzHcXtleWO/Enaw0nlslyZYbLTfmxQMh5W0TPzMHANAXARj9vkA/ra+Bh1D9hBk5p8CvjpmnxloXjCggvYzECWpSmCOzUz6P6r1Yh+OY/PR+XmaMM+g9jgOMQ7wYTclY0/YFWDGLlCsTO9OLLCODLEZDPEa+4MWVvVe6+Kdws7/Id0rlofN0AOA3+mrc/S0TVPw9SCly+ST1q4kk+NA+8jmXGV1dlPnWZZn0D5u87JPSN3e3VOasCPCfg8i0AoWf4udHltD8s6h6teQXaYPBeXrAeFw5sq8rRcrm933wO2KdQ4B9wnO/XKSDREdmqbJt9hgbNDGP/PV62832GVCLjORa7x/fWAsTGUVecCVT4B3BunpP8/85ORpA7kt/RBVffJVd1HB1m3orIAPILPh+T9+uvxSb+3gZbUCHka4cvmfCfnaKBFUTqA1jLRvGtcxDUOkhuFZ+lIXMc1O2bSH9bV88Bn5OZofvy8rBow4x9iQo6viXO6HVtXQ0/Z6Tq9i9W4kT32YU8Jyru/kh1PKUymymFm/U+Pa3LxOIH+nrY2cudDuQTg5BBNG+nUhAUHKPZmnBcbFNVVPLOIGo3djtZo6xmdq35z3AA5SZsXuBbWizuX5vRCzdEadVxngaIWGjYF4ej5usZ2FL3UYgRLwWM6J2cSr3PkgBxkmS9x3dHuQfumQU3xtJ2ttbUlFraoi27ie2UTi3bPT58XLWjkoPdoAU2OAuumr/Ub9X8LNIGA/cD9iJwADpjxQq5hJ29WiCPj60qZrGZelubEJ5lMr2XsGWjQQbkCPI/qi/JBPT/ywDDlZYWJp7UiEPEAcGatKXjnmEgmCLTBKJh24gIlM9vENQNlVan303g8KPujDQ1pNmPm4i5W/DdYjPYUR+y4p/90PwtwDbvmfT+S2zgXMC4BF0wHyovQa7SZ8m6TnZ3Xx9XLipPxEc/SivakAy7LM3IZWpcRtXs0rrRHwYbVyzOelg5oh+WxmXVWtEagL+icNMYZkCdocrQ3QzzXgbFyHOoI5Fycnxe0ZdxpzalPwbysnHYVecjXo5tQfjaugBxliVPxWHr269eslqjDA+qfk4Kh1ozbmtIKy23OoSHR/A7hCkLFFVxGCk2O6ZycGj8b0gGuAXAI2AOyG+EQ8AAitcwc2UGzGI3jSk66ZIBNd6ZRMq5w8WzFXra43yGeA16PPSx9C7goH9SF8TXqQZL9jIDQO8aK/iblAufOIil2cTXPmGcGs1w0Zn6WUOAKs4oppFV5lIo8iYTgg+zeSgsHtP0/04wO2wLe0t+H1L156rIPgmYyBMG42pCsTWmFh7OGnME9NG9+VBKYdSNx6Q0oaWqAqb913dT8+xWB4XRElqMGGpzcLKFtnoZ0+APXkpXcHEHd5n9jmGdHCoy5BYbYgHXPb2OeOvuA5tb46BMOsEQd+BVwNfmE7zLKcYSD3dUTtPthZurbPjGEJjHfqCl9NcY/hvIV7gLKk8D+ZL9OiwNMcgzh+a2hISFxfsszSNHzfdr6H0JtDPU79aJvRZyg2C6uQt3bR6iXIOp/iVuPx4C2hobEk+dslA6xnES1hiZkNMXUhJS2mCDp6sfNNU9j1Kk54gKpJsfwwh8xhDK8pTUCjhCpUyCSyaI6xjs0L12CY8upR35aRVTdYAC0g6Gtajo8QDocs170PKpvmS5oRiB2FJ+JxFcBEo40i3VvSbvBV1F9ORnliOsF3MWQ1v4d3npZbRrAM8BnUJ3Fl4/j86adPklrCw5hrjKxWHRd91lurZinKncDs6h+EvgObd4m/qh108twlmdS4skyVWMT4Lr3Ozp61Bl1D2NFOZd98bnCjP8+COJ0UHebclvcreL2ZmU36xJcNNNfmYd4oTM0RGQ6JbzesiRmDKJOmefFIs41FyFEdQFzZdRIG71Vf7qdZ4hltKuSKl2vq4XyDMLNCK+kJy/07UGXYgQzSs8a9V6kbtTNjKfHz7iEsA94FGU++ZS7lji1IymjBqQG/ABhH5P6MDN6mYpcdI5t4J72I5l0ibqnBbmMu8dFZv0mdX0S0X3AI0kg23i3AvIRJvkqs1xlKmmNH12yBp7OAvdljHnh7DprSlB8v8chWXulW8XTt5Eg1of30GSK7+PxfpSr705AZpnvAYHRa/s9+ltU9JNMey8SLxhmyvw1lB84PKuXUJ7LYFX3fsqEPIjq51BtxasxGP9vRIBJYJYm3ugWUh4tIOKM8i8B88Dd1HmcHYTUwhDRF43efhFfPsWkPAqpRcRCqvIINfkiyllDq/7ERHiJqQimeQ7hVuAtPMc/gBnx/6cZv/+O4HER4SPs4GW2GcdrvUTeVXy9m+3RVepRE9HHDe04zbboLaajNlW9F/RviS/5fO9NJ4AZLuBzKz5nx+31R7uydV6JHF0lwGeBv+PxBXbwWi9uXsGnyV+AvUxyM1PJQshx7LOHkD8yxW1MWsvxdU3QOrvkjbXU+FrLf9nNNFcy0dMCtxNykPfwoxTlRMACu5nhymZxwdgBUpYb3YaUgJSlBKQsJSAlIGUpASkBKUsJSAlIWUpASkDKUgJSlhKQEpCyrL38bwAw/W3e4hXQiwAAAABJRU5ErkJggg==" alt="" style="width:300px;height:300px;">
+            <h2 id="city name">{{City_Name}}</h2>
             <p>
                 <table>
                     <tr>
-                        <td>Temp: 100</td>
-                        <td>Humidity: 100</td>
+                        <td>Temp: {{Temp}}</td>
+                        <td>Humidity: {{Humidity}}</td>
                     </tr>
                     <tr>
-                        <td>Min Temp: 0</td>
-                        <td>Pressure: 100</td>
+                        <td>Min Temp: {{Min_Temp}}</td>
+                        <td>Pressure: {{Pressure}}</td>
                     </tr>
                     <tr>
-                        <td>Max Temp: 200</td>
-                        <td>Wind Speed: 5</td>
+                        <td>Max Temp: {{Max_Temp}}</td>
+                        <td>Wind Speed: {{Win_Speed}}</td>
                     </tr>
                 </table>
             </p>
         </div>
     </div>
-
-
-<script>
-
-
-    var map1 = L.map('mapid');
-        //map1.setView([38.642433, -90.255372]),9); //Thanks!
-        map1.setView([42.910956, 27.838769],9);
-
-        // add an OpenStreetMap tile layer
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-                attribution: '&amp;copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map1);
-
-
-    // var mymap = L.map('mapid').setView([32.71, -117.14], 10)
-
-
-    // L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-	// 	maxZoom: 18,
-	// 	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-	// 		'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-	// 		'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-	// 	id: 'mapbox.streets'
-	// }).addTo(mymap);
-
-</script>
-
-
 </body>
 
 </html>
