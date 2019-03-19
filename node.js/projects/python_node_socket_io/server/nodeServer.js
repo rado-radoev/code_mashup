@@ -18,6 +18,8 @@ const port = 3000
 const viewPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
 
+app.use(express.static(path.join(__dirname, '../public')))
+
 // Setup handlebars engine and views location
 app.set('view engine', 'hbs')
 app.set('views', viewPath)
@@ -32,6 +34,21 @@ app.get('/', (req, res) => {
       'lat': latlon.lat,
       'lon': latlon.lon
       
+  })
+})
+
+app.get('/index2', (req, res) => {
+  res.render('index2.hbs', {
+    'Longitude': 200,
+    'Latitude': 100,
+    'City_Name': 'San Diego',
+    'WeatherDescription': 'Clear Sky',
+    'Temp': 27,
+    'Humidity': 58,
+    'Min_Temp': 8,
+    'Max_Temp': 33,
+    'Pressure': 1058,
+    'Wind_Speed': 2
   })
 })
 

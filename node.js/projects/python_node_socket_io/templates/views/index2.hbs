@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>What's the Weather</title>
+    <link rel="stylesheet" href="/css/page-layout.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="split left">
+        {{!-- TO DO: UPDATE COORDINATES HERE --}}
+            <iframe id="map" src="https://weather.com/weather/radar/interactive/l/34.05,-118.25" frameborder="0" allowfullscreen></iframe>
+            <p>{{>coords}}</p>
+    </div>
+
+    <div class="split right">
+        <div class="centered">
+            {{>weather_icon}}
+
+            <div id="city_details">
+                <p>
+                    <div id="cityname">{{City_Name}}</div>
+                    <div id="weatherdescription">{{WeatherDescription}}</div>
+                </p>
+            </div>
+
+            <div id="weather-details" class="centered">
+                <table>
+                    <tr>
+                        <td>Temp: {{Temp}}</td>
+                        <td>Humidity: {{Humidity}}</td>
+                    </tr>
+                    <tr>
+                        <td>Min Temp: {{Min_Temp}}</td>
+                        <td>Pressure: {{Pressure}}</td>
+                    </tr>
+                    <tr>
+                        <td>Max Temp: {{Max_Temp}}</td>
+                        <td>Wind Speed: {{Wind_Speed}}</td>
+                    </tr>
+                </table>
+            </div>  
+        </div>
+    </div>
+</body>
+</html>
