@@ -25,7 +25,8 @@ app.set('view engine', 'hbs')
 app.set('views', viewPath)
 hbs.registerPartials(partialsPath)
 
-const latlon = { 'lat': 0, 'lon': 55 }
+const latlon = { 'lat': 32.7157, 'lon': -117.1611 }
+const weatherInfo = {'name': 'San Diego'}
 
 app.get('/', (req, res) => {
   res.render('index', {
@@ -37,11 +38,15 @@ app.get('/', (req, res) => {
   })
 })
 
+hbs.registerHelper('generateURL', () => {
+  return `https://weather.com/weather/radar/interactive/l/${latlon.lat},${latlon.lon}`
+})
+
 app.get('/index2', (req, res) => {
   res.render('index2.hbs', {
-    'Longitude': 200,
-    'Latitude': 100,
-    'City_Name': 'San Diego',
+    'Latitude': latlon.lat,
+    'Longitude': latlon.lon,
+    'City_Name': weatherInfo.name,
     'WeatherDescription': 'Clear Sky',
     'Temp': 27,
     'Humidity': 58,
@@ -60,6 +65,7 @@ io.on('connection', (socket) => {
   socket.on('weather_message', (weatheData) => {
     console.log('in weather_message')
     console.log(weatheData.Lon)
+    weatheInfo = weatheData
     latlon.lon = weatheData.Lon
     latlon.lat = weatheData.Lat
   })
