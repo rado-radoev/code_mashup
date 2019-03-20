@@ -11,8 +11,10 @@
 <body>
     
     <div class="split left">
-        {{!-- TO DO: UPDATE COORDINATES HERE --}}
-            <iframe id="map" src={{generateURL}} frameborder="0" allowfullscreen></iframe>
+            <div id="map-frame">
+            </div>
+
+            {{!-- <iframe id="map" src={{generateURL}} frameborder="0" allowfullscreen></iframe> --}}
             <p>{{>coords}}</p>
     </div>
 
@@ -45,5 +47,13 @@
             </div>  
         </div>
     </div>
+
+    <script id="map-frame-template" type="text/html">
+        <div>
+            <p>This is a message {{URL}}</p>
+        </div>
+    </script>
+
+    {{>scripts}}
 </body>
 </html>

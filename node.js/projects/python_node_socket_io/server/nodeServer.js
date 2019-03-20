@@ -60,6 +60,18 @@ app.get('/index2', (req, res) => {
 io.on('connection', (socket) => {
   console.log('New websocket connection')
 
+    // Elements
+    const $mapFrame = document.querySelector('#map-frame')
+    
+    // Templates
+    const mapFrameTemplate = document.querySelector('#map-frame-template').innerHTML
+
+    // Render iFrame with Mustache
+    const html = Mustache.render(mapFrameTemplate, {
+      URL: 'http://google.com'
+    })
+    $mapFrame.insertAdjacentHTML('beforeend', html)
+
   socket.emit('my message', 'This is message from the future!')
 
   socket.on('weather_message', (weatheData) => {
@@ -75,7 +87,7 @@ server.listen(port, () => {
   console.log('Server is up and running on port ', port)
 })
 
-var coords = () => {
+function getUserCoordinates() {
   if (!navigator.geolocation) {
     return alert('Geolocation is not supported by your browser')
   
