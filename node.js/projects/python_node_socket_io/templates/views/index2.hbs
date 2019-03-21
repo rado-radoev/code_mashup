@@ -11,8 +11,9 @@
 <body>
     
     <div class="split left">
-            <div id="map-frame">
-            </div>
+            <div class="clock"> currTime </div>
+            
+            <div id="map-frame"> </div>
 
             {{!-- <iframe id="map" src={{generateURL}} frameborder="0" allowfullscreen></iframe> --}}
             <p>{{>coords}}</p>
@@ -48,12 +49,10 @@
         </div>
     </div>
 
-    <script id="map-frame-template" type="text/html">
-        <div>
-            <p>This is a message {{URL}}</p>
-        </div>
+    <script id="map-frame-template" type="x-tmpl-mustache">
+            {{TESTTEST}}
     </script>
-
+    
     {{>scripts}}
 </body>
 </html>
