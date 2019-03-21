@@ -1,19 +1,24 @@
+$(function() {
 
-$(document).ready(function() {
-    run_mustache()  
+    run_mustache()
+
 })
 
 function run_mustache() {
-    
-    // Elements
-    const $messages = document.querySelector('#messages')
 
-    // Templates
-    const messageTemplate = document.querySelector('#message-template').innerHTML
+    // Change Default Mustache Tags to avoid conflicts with handlebars
+    Mustache.tags = ["[[", "]]"];
 
-    const html = Mustache.render(messageTemplate, {
-        text: 'Play safe'
-    })
-    $messages.insertAdjacentHTML('beforeend', html)    
- }
+    //Get Template
+    var template = $('#template').html();
 
+    //Prepare Template for Mustache
+    Mustache.parse(template)
+
+    //Render template
+    var rendered = Mustache.render(template, {name: "Luke"});
+
+    //Update ID messages with new template
+    $('#messages').html(rendered)
+ 
+}
