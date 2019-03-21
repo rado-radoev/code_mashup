@@ -1,12 +1,6 @@
 $(function() {
 
-    Mustache.tags = ["[[", "]]"];
-    var template = $('#template').html();
-    Mustache.parse(template)
-    console.log(template)
-    var rendered = Mustache.render(template, {name: "Luke"});
-    console.log(rendered)
-    $('#messages').html(rendered)
+    run_mustache()
 
 })
 
