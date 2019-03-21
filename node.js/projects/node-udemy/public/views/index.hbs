@@ -5,16 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{document-title}}</title>
+    {{> scripts}}
 </head>
 <body>
     <h1>
         {{> welcome}}
     </h1>
 
-    <div id="messages"></div>
-  
-    {{> scripts}}
+    <div id="messages">Loading...</div>
 
+    <script id="template" type="x-tmpl-mustachee">
+        <div>
+            <h1>
+            [[name]]
+            </h1>
+        </div>
+    </script>
 
 </body>
 </html>
