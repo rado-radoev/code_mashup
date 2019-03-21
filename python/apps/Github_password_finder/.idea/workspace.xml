@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="862af53d-429e-4b66-bfc7-f03174662a63" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../node.js/projects/python_node_socket_io/package-lock.json" afterPath="$PROJECT_DIR$/../../../node.js/projects/python_node_socket_io/package-lock.json" />
-      <change beforePath="$PROJECT_DIR$/../../../node.js/projects/python_node_socket_io/package.json" afterPath="$PROJECT_DIR$/../../../node.js/projects/python_node_socket_io/package.json" />
-      <change beforePath="$PROJECT_DIR$/../../../node.js/projects/python_node_socket_io/server/nodeServer.js" afterPath="$PROJECT_DIR$/../../../node.js/projects/python_node_socket_io/server/nodeServer.js" />
-      <change beforePath="$PROJECT_DIR$/../../../node.js/projects/python_node_socket_io/templates/views/index2.hbs" afterPath="$PROJECT_DIR$/../../../node.js/projects/python_node_socket_io/templates/views/index2.hbs" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="862af53d-429e-4b66-bfc7-f03174662a63" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
