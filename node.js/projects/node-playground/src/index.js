@@ -25,7 +25,6 @@ hbs.registerHelper('welcome-message', (message) => {
 app.get('/', (req, res) => {
     res.render('index', {
         'document-title': 'Node.js Playground',
-        text: 'TeeEEEEeeest'
     })
 })
 

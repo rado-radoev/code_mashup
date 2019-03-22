@@ -17,3 +17,12 @@ body {
     box-shadow: 0 0 7px #222;
     text-shadow: 0 0 3px #fff;
   }
+
+#tables {
+  margin: auto;
+}
+
+table {
+  margin: auto;
+  padding: 10px;
+}
