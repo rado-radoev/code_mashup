@@ -1,5 +1,7 @@
 package com.superlamer.weatherapp;
 
+import org.apache.commons.lang3.SystemUtils;
+
 import com.superlamer.weatherapp.Logger.Log;
 
 /**
@@ -10,7 +12,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-        Log.log().info("Test");
+    	
+    	Log.log().info(SystemUtils.OS_NAME);
+        
     }
 }
