@@ -1,8 +1,10 @@
 package com.superlamer.weatherapp;
 
-import org.apache.commons.lang3.SystemUtils;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-import com.superlamer.weatherapp.Logger.Log;
+import com.superlamer.weatherapp.City.ListDownloader;
+
 
 /**
  * Hello world!
@@ -10,10 +12,12 @@ import com.superlamer.weatherapp.Logger.Log;
  */
 public class App 
 {
-    public static void main( String[] args )
+    public static void main( String[] args ) throws MalformedURLException
     {
     	
-    	Log.log().info(SystemUtils.OS_NAME);
+    	ListDownloader download = new ListDownloader();
+    	String url = "https://raw.githubusercontent.com/superklamer/code_mashup/master/java/apps/city.list.json";
+    	download.downloadFile(new URL(url));
         
     }
 }
