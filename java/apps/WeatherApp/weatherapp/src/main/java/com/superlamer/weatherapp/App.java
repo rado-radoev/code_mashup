@@ -2,8 +2,6 @@ package com.superlamer.weatherapp;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import com.superlamer.weatherapp.City.JSONParser;
 import com.superlamer.weatherapp.City.ListDownloader;
@@ -23,6 +21,6 @@ public class App
     	//download.downloadFile(new URL(url));
         
     	JSONParser jp = new JSONParser();
-    	jp.findCity("Novinki", new File("/tmp/city.list.json"));
+    	jp.findCity("Murava", new File("/tmp/city.list.json"));
     }
 }

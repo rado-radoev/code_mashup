@@ -3,12 +3,16 @@ package com.superlamer.weatherapp.City;
 public class City {
 	
 	private String name;
-	private int id;
+	private String country;
+	private long id;
+	private Coord coord;
 	
 	public City() {}
-	public City(String name, int id) {
+	public City(String name, String county, long id, Coord coord) {
 		this.name = name;
+		this.country = county;
 		this.id = id;
+		this.coord = coord;
 	}
 	
 	public String getName() {
@@ -17,19 +21,31 @@ public class City {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getId() {
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
-	
-	
+	public Coord getCoord() {
+		return coord;
+	}
+	public void setCoord(Coord coord) {
+		this.coord = coord;
+	}
 	@Override
 	public String toString() {
-		return "City [name=" + name + ", id=" + id + "]";
-	}
-	
-		
+		return "City [getName()=" + getName() + 
+				", getCountry=" + getCountry() +
+				", getId()=" + getId() + 
+				", lon=" + getCoord().getLon() + 
+				", lat=" + getCoord().getLat() + "]";
+	}		
 
 }
