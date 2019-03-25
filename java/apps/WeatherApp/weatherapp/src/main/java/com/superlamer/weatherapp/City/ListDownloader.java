@@ -44,6 +44,7 @@ public class ListDownloader {
 		File destination = new File(String.format("%s/%s", tempFolder, fileName));
 		
 		try {
+			Log.log().info("Copying file now.");
 			FileUtils.copyURLToFile(url, destination, 5000, 10000);
 			fileDownlaoded = true;
 			return fileDownlaoded;
