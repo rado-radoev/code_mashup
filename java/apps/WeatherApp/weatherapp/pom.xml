@@ -59,6 +59,12 @@
 	    <version>3.8.1</version>
 	</dependency>
   	
+  	<!-- Mongo DB -->
+  	<dependency>
+        <groupId>org.mongodb</groupId>
+        <artifactId>mongodb-driver-sync</artifactId>
+        <version>3.10.1</version>
+    </dependency>
     
   </dependencies>
 </project>
