@@ -1,10 +1,12 @@
 package com.superlamer.weatherapp.DB;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.Calendar;
 
 import org.bson.Document;
 
@@ -12,14 +14,17 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.superlamer.weatherapp.City.City;
 
 public class Database {
 	
 	private MongoClient mongoClient;
+	private MongoCollection<Document> mongoCollection;
 	
 	public Database () {
 		if (mongoClient == null) {
-			setMongoClient();	
+			setMongoClient();
+			setMongoCollection("Cities");
 		}
 	}
 	
@@ -29,6 +34,20 @@ public class Database {
 	
 	private final void setMongoClient() {
 		this.mongoClient = connectToDB();
+	}
+	
+	/**
+	 * Method to get collection from Mongo DB database
+	 * @return MongoCollection object with database collection
+	 * @param mongoDatabase Mongo Database and Mongo Collection name 
+	 */
+	public MongoCollection<Document> getMongoCollection() {
+		return mongoCollection;
+	}
+	
+	private final void setMongoCollection(String mongoDatabase) {
+		MongoDatabase database = getMongoClient().getDatabase(mongoDatabase);		
+		MongoCollection<Document> collection = database.getCollection(mongoDatabase);
 	}
 	
 	/**
@@ -46,16 +65,27 @@ public class Database {
 		return mongoClient;
 	}
 	
-	/**
-	 * Method to get collection from Mongo DB database
-	 * @return MongoCollection object with database collection
-	 * @param mongoDatabase Mongo Database and Mongo Collection name 
-	 */
-	public MongoCollection getCollection(String mongoDatabase) {
-		MongoDatabase database = getMongoClient().getDatabase(mongoDatabase);
-		MongoCollection<Document> collection = database.getCollection(mongoDatabase);
+
+	public boolean addNewDBEntry(Document documentToInsert) {
+		boolean addedSuccesfully = false;
 		
-		return collection;
+		getMongoCollection().insertOne(documentToInsert);
+		
+		return addedSuccesfully;
+	}
+	
+	/**
+	 * Method to generate new Document object from City
+	 * @param city City object to be added to database
+	 * @return City object coverted to BSON document
+	 */
+	public Document toDocument(City city) {
+		return new Document("_id", Calendar.getInstance())
+					.append("city", city.getName())
+					.append("contry", city.getCountry())
+					.append("id", city.getId())
+					.append("coord", new Document("lon", city.getCoord().getLon())
+												.append("lat", city.getCoord().getLat()));
 	}
 	
 	/**
@@ -65,8 +95,8 @@ public class Database {
 	 */
 	private Properties getDBConnecitonProperties() {
 		Properties props = new Properties();
-		
-		try (InputStream input = new FileInputStream("Dbconnection.properties");) {
+		ClassLoader classLoader = getClass().getClassLoader();
+		try (InputStream input = new FileInputStream(new File(classLoader.getResource("Dbconnection.properties").getFile()));) {
 		
 			props.load(input);
 

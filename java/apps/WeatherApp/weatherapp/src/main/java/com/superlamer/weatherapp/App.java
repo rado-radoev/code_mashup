@@ -3,8 +3,13 @@ package com.superlamer.weatherapp;
 import java.io.File;
 import java.io.IOException;
 
+import org.bson.Document;
+
+import com.superlamer.weatherapp.City.City;
 import com.superlamer.weatherapp.City.JSONParser;
 import com.superlamer.weatherapp.City.ListDownloader;
+import com.superlamer.weatherapp.DB.Database;
+import com.superlamer.weatherapp.Logger.Log;
 
 
 /**
@@ -21,6 +26,12 @@ public class App
     	//download.downloadFile(new URL(url));
         
     	JSONParser jp = new JSONParser();
-    	jp.findCity("Murava", new File("/tmp/city.list.json"));
+    	City sd = jp.findCity("Murava", new File("/tmp/city.list.json"));
+    	
+    	Database monDb = new Database();
+    	Document doc = monDb.toDocument(sd);
+    	boolean added = monDb.addNewDBEntry(doc);
+    	Log.log().info(added);
+    	
     }
 }

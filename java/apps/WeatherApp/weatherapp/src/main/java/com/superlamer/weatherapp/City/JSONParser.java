@@ -14,7 +14,8 @@ import com.superlamer.weatherapp.Logger.Log;
 public class JSONParser {
 	
 
-	public static String findCity(String city, File file) throws IOException {
+	public static City findCity(String city, File file) throws IOException {
+			City city1 = null;
 			try (InputStream stream = new FileInputStream(file);
 				 JsonReader reader = new JsonReader(new InputStreamReader(stream, "UTF-8"));
 			) {
@@ -24,16 +25,16 @@ public class JSONParser {
 				reader.beginArray();
 				
 				while (reader.hasNext()) {
-					City city1 = gson.fromJson(reader, City.class);
+					city1 = gson.fromJson(reader, City.class);
 					if (city1.getName().equals(city)) {
 						Log.log().info("Found city: " + city1.toString());
-						break;
+						return city1;
 					}
 				}
 			} catch (Exception e) {
 				Log.log().error(e.getMessage());
 			}
 			
-			return city;
+			return city1;
 	}
 }
