@@ -10,14 +10,16 @@ import java.util.Calendar;
 
 import org.bson.Document;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBObject;
+import com.mongodb.MongoCommandException;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.CreateCollectionOptions;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.ValidationOptions;
+
 import static com.mongodb.client.model.Filters.*;
 
 import com.superlamer.weatherapp.City.City;
@@ -55,7 +57,21 @@ public class Database {
 	
 	private final void setMongoCollection(String mongoDBName, String mongoCollName) {
 		database = getMongoClient().getDatabase(mongoDBName);		
-		mongoCollection = database.getCollection(mongoCollName);
+
+		try {
+			ValidationOptions collOptions = new ValidationOptions().validator(
+					Filters.and(Filters.type("_id", "long"),
+								Filters.type("country", "string"),
+								Filters.type("coord", "object")));
+			
+			database.createCollection(mongoCollName, 
+				new CreateCollectionOptions().validationOptions(collOptions));
+		} catch (MongoCommandException mce) {
+			Log.log().error(mce.getMessage());
+		}
+		
+		
+		this.mongoCollection = database.getCollection(mongoCollName);
 	}
 	
 	/**
@@ -74,6 +90,11 @@ public class Database {
 	}
 	
 
+	/**
+	 * Method to add new Document object to database
+	 * @param documentToInsert BSON document to insert
+	 * @return true or false if document has been successfully added or not
+	 */
 	public boolean addNewDBEntry(Document documentToInsert) {
 		boolean addSuccessfull = false;
 		long dbEntryId = (long) documentToInsert.get("_id");
@@ -91,16 +112,20 @@ public class Database {
 	/**
 	 * Method to generate new Document object from City
 	 * @param city City object to be added to database
-	 * @return City object coverted to BSON document
+	 * @return City object converted to BSON document
 	 */
 	public Document toDocument(City city) {
 		return new Document("_id", Calendar.getInstance().getTimeInMillis())
 					.append("city", city.getName())
-					.append("contry", city.getCountry())
+					.append("country", city.getCountry())
 					.append("id", city.getId())
 					.append("coord", new Document("lon", city.getCoord().getLon())
 												.append("lat", city.getCoord().getLat()));
 	}
+	
+//	public Document toDocument(Weather weather) {
+//		return new Document();
+//	}
 	
 	/**
 	 * Method to extract connection details
