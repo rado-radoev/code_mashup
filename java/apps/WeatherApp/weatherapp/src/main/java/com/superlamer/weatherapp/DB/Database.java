@@ -57,11 +57,12 @@ public class Database {
 	
 	private final void setMongoCollection(String mongoDBName, String mongoCollName) {
 		database = getMongoClient().getDatabase(mongoDBName);		
-
+		
 		try {
 			ValidationOptions collOptions = new ValidationOptions().validator(
 					Filters.and(Filters.type("_id", "long"),
 								Filters.type("country", "string"),
+								Filters.regex("country", "^[A-Za-z]{2,3}$"),
 								Filters.type("coord", "object")));
 			
 			database.createCollection(mongoCollName, 
