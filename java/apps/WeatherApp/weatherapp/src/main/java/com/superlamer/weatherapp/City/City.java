@@ -16,16 +16,16 @@ public class City {
 	}
 	
 	public String getName() {
-		return name;
+		return name.trim();
 	}
 	public void setName(String name) {
-		this.name = name;
+		this.name = name.trim();
 	}
 	public String getCountry() {
-		return country;
+		return country.trim();
 	}
 	public void setCountry(String country) {
-		this.country = country;
+		this.country = country.trim();
 	}
 	public long getId() {
 		return id;

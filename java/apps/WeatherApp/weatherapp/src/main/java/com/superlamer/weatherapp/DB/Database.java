@@ -10,21 +10,29 @@ import java.util.Calendar;
 
 import org.bson.Document;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBObject;
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import static com.mongodb.client.model.Filters.*;
+
 import com.superlamer.weatherapp.City.City;
+import com.superlamer.weatherapp.Logger.Log;
 
 public class Database {
 	
 	private MongoClient mongoClient;
 	private MongoCollection<Document> mongoCollection;
+	private MongoDatabase database;
 	
 	public Database () {
 		if (mongoClient == null) {
 			setMongoClient();
-			setMongoCollection("Cities");
+			setMongoCollection("Weather", "Cities");
 		}
 	}
 	
@@ -45,9 +53,9 @@ public class Database {
 		return mongoCollection;
 	}
 	
-	private final void setMongoCollection(String mongoDatabase) {
-		MongoDatabase database = getMongoClient().getDatabase(mongoDatabase);		
-		MongoCollection<Document> collection = database.getCollection(mongoDatabase);
+	private final void setMongoCollection(String mongoDBName, String mongoCollName) {
+		database = getMongoClient().getDatabase(mongoDBName);		
+		mongoCollection = database.getCollection(mongoCollName);
 	}
 	
 	/**
@@ -67,11 +75,17 @@ public class Database {
 	
 
 	public boolean addNewDBEntry(Document documentToInsert) {
-		boolean addedSuccesfully = false;
+		boolean addSuccessfull = false;
+		long dbEntryId = (long) documentToInsert.get("_id");
 		
 		getMongoCollection().insertOne(documentToInsert);
 		
-		return addedSuccesfully;
+		FindIterable<Document> d = getMongoCollection().find(eq("_id", dbEntryId));
+		if (d != null) {
+			addSuccessfull = true;
+		}
+		
+		return addSuccessfull;
 	}
 	
 	/**
@@ -80,7 +94,7 @@ public class Database {
 	 * @return City object coverted to BSON document
 	 */
 	public Document toDocument(City city) {
-		return new Document("_id", Calendar.getInstance())
+		return new Document("_id", Calendar.getInstance().getTimeInMillis())
 					.append("city", city.getName())
 					.append("contry", city.getCountry())
 					.append("id", city.getId())
