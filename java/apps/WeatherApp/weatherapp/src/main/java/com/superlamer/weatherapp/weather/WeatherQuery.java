@@ -1,11 +1,22 @@
 package com.superlamer.weatherapp.weather;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+
+import javax.ws.rs.client.AsyncInvoker;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import org.bson.json.JsonParseException;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.superlamer.weatherapp.City.JSONParser;
 
 public class WeatherQuery { 
 	
@@ -129,7 +140,7 @@ public class WeatherQuery {
 				+ getSys() + ", getWeather()=" + getWeather() + "]";
 	}
 
-	public void queryWeather() {
+	public String queryWeather() throws InterruptedException, ExecutionException {
 		String webURI = "https://api.openweathermap.org/data/2.5/weather";
 		
 		Client client = ClientBuilder.newClient();
@@ -139,11 +150,22 @@ public class WeatherQuery {
 				 .queryParam("mode", "json")
 				 .queryParam("units", "metric");
 		
-		WeatherQuery wQuery = target.request(MediaType.APPLICATION_JSON)
-			 					 .get(WeatherQuery.class);
+		Invocation.Builder reqBuilder = target.request();
+		
+		AsyncInvoker asyncInvoker = reqBuilder.async();
+		Future<Response> futureResp = asyncInvoker.get();
+		
+		Response response = futureResp.get(); // block until client responds
+		
+		
+		WeatherQuery wQuery = response.readEntity(WeatherQuery.class);
+		
+		Gson gson = new Gson();
+		
+		client.close();
+		
+		return gson.toJson(wQuery);
 
-		System.out.println(target.getUri().toString());
-		System.out.println(wQuery.toString());
 
 	}
 }
