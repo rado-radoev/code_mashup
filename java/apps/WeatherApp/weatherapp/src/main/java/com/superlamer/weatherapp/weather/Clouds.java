@@ -4,7 +4,8 @@ public class Clouds {
 
 	private double all;
 	
-	public Clouds(double all) {
+	public Clouds() {}
+ 	public Clouds(double all) {
 		this.all = all;
 	}
 	
@@ -14,5 +15,11 @@ public class Clouds {
 	public void setAll(double all) {
 		this.all = all;
 	}
+	@Override
+	public String toString() {
+		return "Clouds [all=" + all + "]";
+	}
+
+
 	
 }

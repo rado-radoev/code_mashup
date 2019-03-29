@@ -1,37 +1,62 @@
 package com.superlamer.weatherapp.weather;
 
 public class Weather {
+	
+	private int id;
+	private String main;
+	private String description;
+	private String icon;
+	
+	public Weather() {}
+	/**
+	 * @param id Weather condition id
+	 * @param main Group of weather parameters (Rain, Snow, Extreme etc.)
+	 * @param description Weather condition within the group
+	 * @param icon Weather icon id
+	 */
+	public Weather(int id, String main, String description, String icon) {
+		super();
+		this.id = id;
+		this.main = main;
+		this.description = description;
+		this.icon = icon;
+	}
 
-	public Weather() {
-		getWeather();
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getMain() {
+		return main;
+	}
+
+	public void setMain(String main) {
+		this.main = main;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 	
-//	public String getWeather(int id) {
-//		
-//	}
-//	
-//	public String getWeather(String cityName) {
-//		
-//	}
-//	
-//	public String getWeather(Coord coord) {
-//		
-//	}
-	
-	private void getWeather() {
-//https://api.openweathermap.org/data/2.5/weather?q=London&appid=6a0326b54ac62aae38ee842128683084"		
-		String webURI = "https://api.openweathermap.org/data/2.5/weather";
-		
-		Client client = ClientBuilder.newClient();
-		client.target(webURI)
-				 .queryParam("id", 5391811)
-				 .queryParam("appid", "6a0326b54ac62aae38ee842128683084")
-				 .queryParam("mode", "json")
-				 .queryParam("units", "metric")
-				 .request(MediaType.APPLICATION_JSON)
-				 .buildGet();
+	@Override
+	public String toString() {
+		return "Weather [id=" + id + ", main=" + main + ", description=" + description + ", icon=" + icon + "]";
+	}	
 
-		System.out.println(client);
-
-	}
 }

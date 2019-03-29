@@ -10,7 +10,7 @@ import com.superlamer.weatherapp.City.JSONParser;
 import com.superlamer.weatherapp.City.ListDownloader;
 import com.superlamer.weatherapp.DB.Database;
 import com.superlamer.weatherapp.Logger.Log;
-import com.superlamer.weatherapp.weather.Weather;
+import com.superlamer.weatherapp.weather.WeatherQuery;
 
 
 /**
@@ -34,7 +34,8 @@ public class App
 //    	boolean added = monDb.addNewDBEntry(doc);
 //    	Log.log().info(added);
 
-    	Weather w = new Weather();
+    	WeatherQuery w = new WeatherQuery();
+    	w.queryWeather();
     	
     }
 }

@@ -98,7 +98,7 @@ public class Database {
 	 */
 	public boolean addNewDBEntry(Document documentToInsert) {
 		boolean addSuccessfull = false;
-		long dbEntryId = (long) documentToInsert.get("_id");
+		long dbEntryId = Long.parseLong((documentToInsert.get("_id")).toString());
 		
 		getMongoCollection().insertOne(documentToInsert);
 		

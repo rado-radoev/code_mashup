@@ -2,29 +2,34 @@ package com.superlamer.weatherapp.weather;
 
 public class Coord {
 	
-	private long lon;
-	private long lat;
+	private double lon;
+	private double lat;
 	
-	public Coord(long lon, long lat) {
+	public Coord() {}
+	public Coord(double lon, double lat) {
 		super();
 		this.lon = lon;
 		this.lat = lat;
 	}
 
-	public long getLon() {
+	public double getLon() {
 		return lon;
 	}
 
-	public void setLon(long lon) {
+	public void setLon(double lon) {
 		this.lon = lon;
 	}
 
-	public long getLat() {
+	public double getLat() {
 		return lat;
 	}
 
-	public void setLat(long lat) {
+	public void setLat(double lat) {
 		this.lat = lat;
+	}
+	@Override
+	public String toString() {
+		return "Coord [lon=" + lon + ", lat=" + lat + "]";
 	}
 	
 	

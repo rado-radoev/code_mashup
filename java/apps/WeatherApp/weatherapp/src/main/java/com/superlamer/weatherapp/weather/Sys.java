@@ -5,6 +5,8 @@ public class Sys {
 	private long sunrise;
 	private long sunset;
 	
+	
+	public Sys() {}
 	public Sys(long sunrise, long sunset) {
 		super();
 		this.sunrise = sunrise;
@@ -26,4 +28,12 @@ public class Sys {
 	public void setSunrise(long sunrise) {
 		this.sunrise = sunrise;
 	}
+	
+	@Override
+	public String toString() {
+		return "Sys [sunrise=" + sunrise + ", sunset=" + sunset + "]";
+	}
+
+	
+	
 }
