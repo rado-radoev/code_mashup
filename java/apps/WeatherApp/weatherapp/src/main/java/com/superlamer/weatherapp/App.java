@@ -40,6 +40,7 @@ public class App
 
     	WeatherQuery w = new WeatherQuery();
     	String js =  w.queryWeather();
+    	System.out.println(js);
     	WeatherQuery wet = new Gson().fromJson(js, WeatherQuery.class);
     	System.out.println(wet);
 //    	System.out.println(js);

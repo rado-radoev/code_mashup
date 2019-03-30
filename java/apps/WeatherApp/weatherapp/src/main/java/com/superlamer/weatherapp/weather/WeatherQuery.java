@@ -8,15 +8,11 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.bson.json.JsonParseException;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.superlamer.weatherapp.City.JSONParser;
+import com.google.gson.GsonBuilder;
 
 public class WeatherQuery { 
 	
@@ -148,7 +144,10 @@ public class WeatherQuery {
 		
 		WeatherQuery wQuery = response.readEntity(WeatherQuery.class);
 		
-		Gson gson = new Gson();
+		GsonBuilder gsonBuilder = new GsonBuilder();  
+		gsonBuilder.serializeNulls();  
+		Gson gson = gsonBuilder.create();
+
 		
 		client.close();
 		

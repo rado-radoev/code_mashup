@@ -6,7 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 import org.bson.Document;
 
@@ -24,6 +26,8 @@ import static com.mongodb.client.model.Filters.*;
 
 import com.superlamer.weatherapp.City.City;
 import com.superlamer.weatherapp.Logger.Log;
+import com.superlamer.weatherapp.weather.Rain;
+import com.superlamer.weatherapp.weather.Snow;
 import com.superlamer.weatherapp.weather.Weather;
 import com.superlamer.weatherapp.weather.WeatherQuery;
 
@@ -100,7 +104,9 @@ public class Database {
 	 */
 	public boolean addNewDBEntry(Document documentToInsert) {
 		boolean addSuccessfull = false;
-		long dbEntryId = Long.parseLong((documentToInsert.get("_id")).toString());
+						
+		System.out.println(documentToInsert.getEmbedded(Arrays.asList("citi", "id"), Long.class));
+		long dbEntryId = Long.parseLong((documentToInsert.get("citi").toString()));
 		
 		getMongoCollection().insertOne(documentToInsert);
 		
@@ -130,9 +136,9 @@ public class Database {
 		return new Document("clouds", weatherQuery.getClouds().toDocument())
 				.append("coord", weatherQuery.getClouds().toDocument())
 				.append("main", weatherQuery.getMain().toDocument())
-				.append("rain", weatherQuery.getRain().toDocument())
-				.append("snow", weatherQuery.getSnow().toDocument())
-				.append("weather", weatherQuery.getSnow().toDocument())
+				.append("rain", weatherQuery.getRain() == null ? new Rain() : weatherQuery.getRain().toDocument())
+				.append("snow", weatherQuery.getSnow() == null ? new Snow() : weatherQuery.getSnow().toDocument())
+				.append("weather", weatherQuery.getWeather().toDocument())
 				.append("win", weatherQuery.getWind().toDocument())
 				.append("sys", weatherQuery.getSys().toDocument());
 	}
