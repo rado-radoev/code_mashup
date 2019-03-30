@@ -55,18 +55,6 @@ public class WeatherQuery {
 	public WeatherQuery() {
 	}
 	
-//	public String getWeather(int id) {
-//		
-//	}
-//	
-//	public String getWeather(String cityName) {
-//		
-//	}
-//	
-//	public String getWeather(Coord coord) {
-//		
-//	}
-	
 	public Clouds getClouds() {
 		return clouds;
 	}

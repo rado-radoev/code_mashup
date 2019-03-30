@@ -24,6 +24,8 @@ import static com.mongodb.client.model.Filters.*;
 
 import com.superlamer.weatherapp.City.City;
 import com.superlamer.weatherapp.Logger.Log;
+import com.superlamer.weatherapp.weather.Weather;
+import com.superlamer.weatherapp.weather.WeatherQuery;
 
 public class Database {
 	
@@ -124,10 +126,17 @@ public class Database {
 												.append("lat", city.getCoord().getLat()));
 	}
 	
-//	public Document toDocument(Weather weather) {
-//		return new Document();
-//	}
-	
+	public Document toDocument(WeatherQuery weatherQuery) {
+		return new Document("clouds", weatherQuery.getClouds().toDocument())
+				.append("coord", weatherQuery.getClouds().toDocument())
+				.append("main", weatherQuery.getMain().toDocument())
+				.append("rain", weatherQuery.getRain().toDocument())
+				.append("snow", weatherQuery.getSnow().toDocument())
+				.append("weather", weatherQuery.getSnow().toDocument())
+				.append("win", weatherQuery.getWind().toDocument())
+				.append("sys", weatherQuery.getSys().toDocument());
+	}
+
 	/**
 	 * Method to extract connection details
 	 * from properties file

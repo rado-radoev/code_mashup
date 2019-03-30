@@ -1,6 +1,8 @@
 package com.superlamer.weatherapp.weather;
 
-public class Weather {
+import org.bson.Document;
+
+public class Weather implements Documentable {
 	
 	private int id;
 	private String main;
@@ -58,5 +60,12 @@ public class Weather {
 	public String toString() {
 		return "Weather [id=" + id + ", main=" + main + ", description=" + description + ", icon=" + icon + "]";
 	}	
+	
+	public Document toDocument() {
+		return new Document("id", id)
+				.append("main", main)
+				.append("description", description)
+				.append("icon", icon);	
+	}
 
 }

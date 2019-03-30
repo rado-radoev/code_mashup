@@ -1,11 +1,11 @@
 package com.superlamer.weatherapp.weather;
 
+import org.bson.Document;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Snow {
+public class Snow implements Documentable {
 
-	// TO DO: REVISIT THIS
-	// THE PROPS SHOULD BE 1H AND 3H
 	
 	@SerializedName("1h")
 	private double oneHour;
@@ -45,5 +45,11 @@ public class Snow {
 	@Override
 	public String toString() {
 		return "Snow [oneHour=" + oneHour + ", threeHours=" + threeHours + "]";
-	}	
+	}
+	
+	public Document toDocument() {
+		return new Document("oneHour", oneHour)
+							.append("threeHours", threeHours);	
+	}
+	
 }

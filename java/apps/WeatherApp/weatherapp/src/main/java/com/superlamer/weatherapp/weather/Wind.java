@@ -1,6 +1,8 @@
 package com.superlamer.weatherapp.weather;
 
-public class Wind {
+import org.bson.Document;
+
+public class Wind implements Documentable {
 	
 	private double speed;
 	private double deg;
@@ -35,7 +37,11 @@ public class Wind {
 		return "Wind [speed=" + speed + ", deg=" + deg + "]";
 	}
 
-
+	public Document toDocument() {
+		return new Document("spped", speed)
+				.append("deg", deg);	
+	}
+	
 
 
 }

@@ -1,6 +1,8 @@
 package com.superlamer.weatherapp.weather;
 
-public class Sys {
+import org.bson.Document;
+
+public class Sys implements Documentable {
 
 	private long sunrise;
 	private long sunset;
@@ -35,5 +37,9 @@ public class Sys {
 	}
 
 	
+	public Document toDocument() {
+		return new Document("sunrise", sunrise)
+				.append("sunset", sunset);	
+	}
 	
 }

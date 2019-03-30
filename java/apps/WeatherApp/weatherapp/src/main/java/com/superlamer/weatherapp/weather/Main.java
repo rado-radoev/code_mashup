@@ -1,6 +1,8 @@
 package com.superlamer.weatherapp.weather;
 
-public class Main {
+import org.bson.Document;
+
+public class Main implements Documentable {
 
 	private double temp;
 	private double pressure;
@@ -10,7 +12,7 @@ public class Main {
 	private double sea_level;
 	private double grnd_level;
 
-	private Main () {}
+	public Main () {}
 	
 
 	/**
@@ -98,5 +100,13 @@ public class Main {
 				+ ", max_temp=" + temp_max + ", sea_level=" + sea_level + ", grnd_level=" + grnd_level + "]";
 	}
 	
-	
+	public Document toDocument() {
+		return new Document("temp", temp)
+				.append("pressure", pressure)
+				.append("humidity", humidity)
+				.append("main_temp", temp_min)
+				.append("max_temp", temp_max)
+				.append("sea_level", sea_level)
+				.append("grnd_level", grnd_level);	
+	}
 }

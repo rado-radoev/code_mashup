@@ -1,6 +1,8 @@
 package com.superlamer.weatherapp.weather;
 
-public class Clouds {
+import org.bson.Document;
+
+public class Clouds implements Documentable {
 
 	private double all;
 	
@@ -20,6 +22,9 @@ public class Clouds {
 		return "Clouds [all=" + all + "]";
 	}
 
-
+	public Document toDocument() {
+		return new Document("all", all);	
+	}
+	
 	
 }

@@ -1,6 +1,8 @@
 package com.superlamer.weatherapp.weather;
 
-public class Coord {
+import org.bson.Document;
+
+public class Coord implements Documentable {
 	
 	private double lon;
 	private double lat;
@@ -32,6 +34,10 @@ public class Coord {
 		return "Coord [lon=" + lon + ", lat=" + lat + "]";
 	}
 	
+	public Document toDocument() {
+		return new Document("lon", lon)
+				.append("lat", lat);	
+	}
 	
 
 }

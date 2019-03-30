@@ -1,14 +1,16 @@
 package com.superlamer.weatherapp.weather;
 
+import org.bson.Document;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Rain {
+public class Rain implements Documentable {
 
 	@SerializedName("1h")
-	private double oneHour;
+	private double oneHour = .0;
 	
 	@SerializedName("3h")
-	private double threeHours;
+	private double threeHours = .0;
 
 	
 	public Rain() {}
@@ -44,5 +46,9 @@ public class Rain {
 		return "Rain [oneHour=" + oneHour + ", threeHours=" + threeHours + "]";
 	}
 
+	public Document toDocument() {
+		return new Document("oneHour", oneHour)
+				.append("threeHours", threeHours);	
+	}
 	
 }
