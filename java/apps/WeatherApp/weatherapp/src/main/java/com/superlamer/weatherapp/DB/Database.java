@@ -30,8 +30,8 @@ import com.superlamer.weatherapp.City.City;
 import com.superlamer.weatherapp.Logger.Log;
 import com.superlamer.weatherapp.weather.Rain;
 import com.superlamer.weatherapp.weather.Snow;
+import com.superlamer.weatherapp.weather.WeatherMain;
 import com.superlamer.weatherapp.weather.Weather;
-import com.superlamer.weatherapp.weather.WeatherQuery;
 
 public class Database {
 	
@@ -113,14 +113,15 @@ public class Database {
 	public boolean addNewDBEntry(Document documentToInsert) {
 		boolean addSuccessfull = false;
 						
-		documentToInsert.put("_id", Calendar.getInstance().getTimeInMillis());
+		long currUnixTime = Calendar.getInstance().getTimeInMillis();
+		documentToInsert.put("_id", currUnixTime);
 		
 		//System.out.println(documentToInsert.getEmbedded(Arrays.asList("citi", "_id"), Long.class));
-		long dbEntryId = documentToInsert.getEmbedded(Arrays.asList("citi", "_id"), Long.class);
+		//long dbEntryId = documentToInsert.getEmbedded(Arrays.asList("citi", "_id"), Long.class);
 		
 		getMongoCollection().insertOne(documentToInsert);
 		
-		FindIterable<Document> d = getMongoCollection().find(eq("_id", dbEntryId));
+		FindIterable<Document> d = getMongoCollection().find(eq("_id", currUnixTime));
 		if (d != null) {
 			addSuccessfull = true;
 		}
@@ -128,16 +129,7 @@ public class Database {
 		return addSuccessfull;
 	}
 		
-	public Document toDocument(WeatherQuery weatherQuery) {
-		return new Document("clouds", weatherQuery.getClouds().toDocument())
-				.append("coord", weatherQuery.getClouds().toDocument())
-				.append("main", weatherQuery.getMain().toDocument())
-				.append("rain", weatherQuery.getRain() == null ? new Rain().toDocument() : weatherQuery.getRain().toDocument())
-				.append("snow", weatherQuery.getSnow() == null ? new Snow().toDocument() : weatherQuery.getSnow().toDocument())
-				.append("weather", weatherQuery.getWeather().toDocument())
-				.append("win", weatherQuery.getWind().toDocument())
-				.append("sys", weatherQuery.getSys().toDocument());
-	}
+
 
 	/**
 	 * Method to extract connection details

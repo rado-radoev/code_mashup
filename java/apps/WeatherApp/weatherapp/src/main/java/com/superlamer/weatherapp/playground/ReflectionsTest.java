@@ -3,11 +3,11 @@ package com.superlamer.weatherapp.playground;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import com.superlamer.weatherapp.weather.WeatherQuery;
+import com.superlamer.weatherapp.weather.Weather;
 
 public class ReflectionsTest {
 	
-	private static WeatherQuery wq = new WeatherQuery();
+	private static Weather wq = new Weather();
 	
 	public static void main(String[] args) throws IllegalAccessException, NoSuchFieldException, ClassNotFoundException, InstantiationException {
 		Field[] fields = wq.getClass().getDeclaredFields();

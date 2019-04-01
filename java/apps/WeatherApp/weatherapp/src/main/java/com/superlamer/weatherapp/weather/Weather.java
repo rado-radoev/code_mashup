@@ -4,71 +4,123 @@ import org.bson.Document;
 
 import com.superlamer.weatherapp.Interface.Documentable;
 
-public class Weather implements Documentable {
+public class Weather implements Documentable { 
 	
-	private int id;
-	private String main;
-	private String description;
-	private String icon;
+	private Clouds clouds;
+	private Coord coord;
+	private WeatherMain weather;
+	private Main main;
+	private Rain rain;
+	private Snow snow;
+	private Wind wind;
+	private Sys sys;
 	
-	public Weather() {}
 	/**
-	 * @param id Weather condition id
-	 * @param main Group of weather parameters (Rain, Snow, Extreme etc.)
-	 * @param description Weather condition within the group
-	 * @param icon Weather icon id
+	 * @param clouds
+	 * @param coord
+	 * @param weather
+	 * @param main
+	 * @param rain
+	 * @param snow
+	 * @param wind
+	 * @param sys
 	 */
-	public Weather(int id, String main, String description, String icon) {
+	public Weather(Clouds clouds, Coord coord, WeatherMain weather, Main main, Rain rain, Snow snow, Wind wind,
+			Sys sys) {
 		super();
-		this.id = id;
+		this.clouds = clouds;
+		this.coord = coord;
+		this.weather = weather;
 		this.main = main;
-		this.description = description;
-		this.icon = icon;
+		this.rain = rain;
+		this.snow = snow;
+		this.wind = wind;
+		this.sys = sys;
 	}
 
-	public int getId() {
-		return id;
+	public Weather() {
+	}
+	
+	public Clouds getClouds() {
+		return clouds;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setClouds(Clouds clouds) {
+		this.clouds = clouds;
 	}
 
-	public String getMain() {
+	public Coord getCoord() {
+		return coord;
+	}
+
+	public void setCoord(Coord coord) {
+		this.coord = coord;
+	}
+
+	public Main getMain() {
 		return main;
 	}
 
-	public void setMain(String main) {
+	public void setMain(Main main) {
 		this.main = main;
 	}
 
-	public String getDescription() {
-		return description;
+	public Rain getRain() {
+		return rain;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setRain(Rain rain) {
+		this.rain = rain;
 	}
 
-	public String getIcon() {
-		return icon;
+	public Snow getSnow() {
+		return snow;
 	}
 
-	public void setIcon(String icon) {
-		this.icon = icon;
+	public void setSnow(Snow snow) {
+		this.snow = snow;
+	}
+
+	public Wind getWind() {
+		return wind;
+	}
+
+	public void setWind(Wind wind) {
+		this.wind = wind;
+	}
+
+	public Sys getSys() {
+		return sys;
+	}
+
+	public void setSys(Sys sys) {
+		this.sys = sys;
+	}
+	
+	public WeatherMain getWeather() {
+		return weather;
+	}
+
+	public void setWeather(WeatherMain weather) {
+		this.weather = weather;
 	}
 	
 	@Override
 	public String toString() {
-		return "Weather [id=" + id + ", main=" + main + ", description=" + description + ", icon=" + icon + "]";
-	}	
-	
-	@Override
-	public Document toDocument() {
-		return new Document("id", getId())
-				.append("main", getMain())
-				.append("description", getDescription())
-				.append("icon", getIcon());	
+		return "WeatherQuery [getClouds()=" + getClouds() + ", getCoord()=" + getCoord() + ", getMain()=" + getMain()
+				+ ", getRain()=" + getRain() + ", getSnow()=" + getSnow() + ", getWind()=" + getWind() + ", getSys()="
+				+ getSys() + ", getWeather()=" + getWeather() + "]";
 	}
 
+	@Override
+	public Document toDocument() {
+		return new Document("clouds", getClouds().toDocument())
+				.append("coord", getClouds().toDocument())
+				.append("main", getMain().toDocument())
+				.append("rain", getRain() == null ? new Rain().toDocument() : getRain().toDocument())
+				.append("snow", getSnow() == null ? new Snow().toDocument() : getSnow().toDocument())
+				.append("weather", getWeather().toDocument())
+				.append("win", getWind().toDocument())
+				.append("sys", getSys().toDocument());
+	}
 }

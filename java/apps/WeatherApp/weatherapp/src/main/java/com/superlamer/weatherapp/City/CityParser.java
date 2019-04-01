@@ -5,24 +5,35 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Optional;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.stream.JsonReader;
 import com.superlamer.weatherapp.Logger.Log;
 
 public class CityParser {
 	
 
+
 	/**
-	 * Finds a city in file containing a list of cities
-	 * @param cityName The City to search for
-	 * @param file The file location
-	 * @return City object
+	 * Query the city list and return the city if found. If only City name is provided and
+	 * multiple cities with the same name exist, only the first occurance will be returned.
+	 * @param cityName The city name to search for
+	 * @param country The country name to search for
+	 * @param id The City Id as it appears in the list
+	 * @param file The city list file location
+	 * @return a City object
 	 * @throws IOException
 	 */
-	public static City findCity(String cityName, File file) throws IOException {
+	private static City findCity(String cityName, String country, Long id, File file) {
 			City tempCity = null;
+
+		    Optional<String> _cityName = Optional.ofNullable(cityName);
+		    Optional<String> _country = Optional.ofNullable(country);
+		    Optional<Long> _id = Optional.ofNullable(id);
 			
 			try (InputStream stream = new FileInputStream(file);
 				 JsonReader reader = new JsonReader(new InputStreamReader(stream, "UTF-8"));) {
@@ -35,16 +46,49 @@ public class CityParser {
 				while (reader.hasNext()) {
 					tempCity = gson.fromJson(reader, City.class);
 					
-					if (tempCity.getName().equals(cityName)) {
-						Log.log().info("Found city: " + tempCity.toString());
-						return tempCity;
+					// Check by city name only
+					if (_cityName.isPresent() && _country.isPresent()) {
+						if (tempCity.getName().equals(_cityName.get()) &&
+								tempCity.getCountry().equals(_country.get())) {
+							Log.log().info(String.format("Found city: " + tempCity.toString()));
+							return tempCity;
+						}
 					}
+					 // check by city name and county
+					 else if (_cityName.isPresent()) {
+							if (tempCity.getName().equals(_cityName.get())) {
+								Log.log().info(String.format("Found city: " + tempCity.toString()));
+								return tempCity;
+							}
+						}
+					// check by id
+					else if (_id.isPresent()) {
+						if (tempCity.getId() == _id.get()) {
+							Log.log().info(String.format("Found city: " + tempCity.toString()));
+							return tempCity;
+						}
+					}
+					else {
+						Log.log().error("Wrong parameters provided");
+					}
+					
 				}
-				
 			} catch (Exception e) {
 				Log.log().error(e.getMessage());
 			}
 			
 			return tempCity;
+	}
+	
+	public static City findCityById(Long id, File file) {
+		return findCity(null, null, id, file);
+	}
+	
+	public static City findCityByName(String cityName, File file) { 
+		return findCity(cityName, null, null, file);
+	}
+	
+	public static City findCityByNameAndCountry(String cityName, String country, File file) { 
+		return findCity(cityName, country, null, file);
 	}
 }
