@@ -20,6 +20,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.CreateCollectionOptions;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.ValidationAction;
+import com.mongodb.client.model.ValidationLevel;
 import com.mongodb.client.model.ValidationOptions;
 
 import static com.mongodb.client.model.Filters.*;
@@ -65,14 +67,20 @@ public class Database {
 		database = getMongoClient().getDatabase(mongoDBName);		
 		
 		try {
-			ValidationOptions collOptions = new ValidationOptions().validator(
-					Filters.and(Filters.type("_id", "long"),
-								Filters.type("country", "string"),
-								Filters.regex("country", "^[A-Za-z]{2,3}$"),
-								Filters.type("coord", "object")));
+//			ValidationOptions collOptions = new ValidationOptions().validator(
+//					Filters.and(Filters.type("_id", "long"),
+//								Filters.type("country", "string"),
+//								Filters.regex("country", "^[A-Za-z]{2,3}$"),
+//								Filters.type("coord", "object")));
+//			
+//			collOptions.validationAction(ValidationAction.WARN);
+//			collOptions.validationLevel(ValidationLevel.OFF);
+//			
+//			database.createCollection(mongoCollName, 
+//				new CreateCollectionOptions().validationOptions(collOptions));
 			
-			database.createCollection(mongoCollName, 
-				new CreateCollectionOptions().validationOptions(collOptions));
+			database.createCollection(mongoCollName);
+			
 		} catch (MongoCommandException mce) {
 			Log.log().error(mce.getMessage());
 		}
@@ -105,8 +113,9 @@ public class Database {
 	public boolean addNewDBEntry(Document documentToInsert) {
 		boolean addSuccessfull = false;
 						
-		System.out.println(documentToInsert.getEmbedded(Arrays.asList("citi", "id"), Long.class));
-		long dbEntryId = Long.parseLong((documentToInsert.get("citi").toString()));
+		
+		//System.out.println(documentToInsert.getEmbedded(Arrays.asList("citi", "_id"), Long.class));
+		long dbEntryId = documentToInsert.getEmbedded(Arrays.asList("citi", "_id"), Long.class);
 		
 		getMongoCollection().insertOne(documentToInsert);
 		
@@ -136,8 +145,8 @@ public class Database {
 		return new Document("clouds", weatherQuery.getClouds().toDocument())
 				.append("coord", weatherQuery.getClouds().toDocument())
 				.append("main", weatherQuery.getMain().toDocument())
-				.append("rain", weatherQuery.getRain() == null ? new Rain() : weatherQuery.getRain().toDocument())
-				.append("snow", weatherQuery.getSnow() == null ? new Snow() : weatherQuery.getSnow().toDocument())
+				.append("rain", weatherQuery.getRain() == null ? new Rain().toDocument() : weatherQuery.getRain().toDocument())
+				.append("snow", weatherQuery.getSnow() == null ? new Snow().toDocument() : weatherQuery.getSnow().toDocument())
 				.append("weather", weatherQuery.getWeather().toDocument())
 				.append("win", weatherQuery.getWind().toDocument())
 				.append("sys", weatherQuery.getSys().toDocument());
