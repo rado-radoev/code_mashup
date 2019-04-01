@@ -39,7 +39,7 @@ public class App
     	//Log.log().info(added);
 
     	
-    	String weatherJson =  WeatherQuery.queryWeather();
+    	String weatherJson =  WeatherQuery.queryWeatherByCity("San Diego");
     	System.out.println(weatherJson);
     	Weather weather = new Gson().fromJson(weatherJson, Weather.class);
     	System.out.println(weather);
