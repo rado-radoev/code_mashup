@@ -6,9 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.List;
 
 import org.bson.Document;
 
@@ -20,18 +18,12 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.CreateCollectionOptions;
 import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.ValidationAction;
-import com.mongodb.client.model.ValidationLevel;
 import com.mongodb.client.model.ValidationOptions;
 
 import static com.mongodb.client.model.Filters.*;
 
-import com.superlamer.weatherapp.City.City;
 import com.superlamer.weatherapp.Logger.Log;
-import com.superlamer.weatherapp.weather.Rain;
-import com.superlamer.weatherapp.weather.Snow;
-import com.superlamer.weatherapp.weather.WeatherMain;
-import com.superlamer.weatherapp.weather.Weather;
+import com.superlamer.weatherapp.properties.PropertiesReader;
 
 public class Database {
 	
@@ -95,7 +87,8 @@ public class Database {
 	 * @return Mongo client object
 	 */
 	private final MongoClient connectToDB() {
-		Properties dbProps = getDBConnecitonProperties();
+		PropertiesReader propertiesReader = new PropertiesReader();
+		Properties dbProps = propertiesReader.getProperties("Dbconnection.properties");
 		
 		MongoClient mongoClient = MongoClients.create(
 				"mongodb+srv://" + dbProps.getProperty("user") +
@@ -128,29 +121,5 @@ public class Database {
 		}
 		
 		return addSuccessfull;
-	}
-		
-
-
-	/**
-	 * Method to extract connection details
-	 * from properties file
-	 * @return Properties file with connection data
-	 */
-	private Properties getDBConnecitonProperties() {
-		Properties props = new Properties();
-		ClassLoader classLoader = getClass().getClassLoader();
-		try (InputStream input = new FileInputStream(new File(classLoader.getResource("Dbconnection.properties").getFile()));) {
-		
-			props.load(input);
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return props;
-
 	}
 }

@@ -2,20 +2,14 @@ package com.superlamer.weatherapp;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
 import org.bson.Document;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.stream.JsonReader;
 import com.superlamer.weatherapp.City.City;
 import com.superlamer.weatherapp.City.CityParser;
-import com.superlamer.weatherapp.City.FileDownloader;
 import com.superlamer.weatherapp.DB.Database;
-import com.superlamer.weatherapp.Logger.Log;
 import com.superlamer.weatherapp.weather.Weather;
 import com.superlamer.weatherapp.weather.WeatherQuery;
 
@@ -51,8 +45,8 @@ public class App
     	System.out.println(weather);
 //    	System.out.println(js);
     	
-    	Document wetDoc = new Document("citi", sd.toDocument())
-    							.append("weter", weather.toDocument());
+    	Document wetDoc = new Document("city", sd.toDocument())
+    							.append("weather", weather.toDocument());
     	boolean weatherinfoAdded = monDb.addNewDBEntry(wetDoc);
     	System.out.println(weatherinfoAdded);
     }
