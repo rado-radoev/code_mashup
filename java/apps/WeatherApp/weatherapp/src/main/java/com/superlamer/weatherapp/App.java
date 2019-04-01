@@ -11,8 +11,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 import com.superlamer.weatherapp.City.City;
-import com.superlamer.weatherapp.City.JSONParser;
-import com.superlamer.weatherapp.City.ListDownloader;
+import com.superlamer.weatherapp.City.CityParser;
+import com.superlamer.weatherapp.City.FileDownloader;
 import com.superlamer.weatherapp.DB.Database;
 import com.superlamer.weatherapp.Logger.Log;
 import com.superlamer.weatherapp.weather.WeatherQuery;
@@ -31,7 +31,7 @@ public class App
 //    	String url = "https://raw.githubusercontent.com/superklamer/code_mashup/master/java/apps/city.list.json";
 //    	download.downloadFile(new URL(url));
 //        
-    	JSONParser jp = new JSONParser();
+    	CityParser jp = new CityParser();
     	City sd = jp.findCity("Murava", new File("/tmp/city.list.json"));
     	
     	Database monDb = new Database();

@@ -1,4 +1,4 @@
-package com.superlamer.weatherapp.weather;
+package com.superlamer.weatherapp.Interface;
 
 import org.bson.Document;
 

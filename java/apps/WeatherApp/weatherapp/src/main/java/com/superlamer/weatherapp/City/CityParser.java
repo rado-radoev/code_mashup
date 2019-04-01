@@ -11,30 +11,40 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonReader;
 import com.superlamer.weatherapp.Logger.Log;
 
-public class JSONParser {
+public class CityParser {
 	
 
-	public static City findCity(String city, File file) throws IOException {
-			City city1 = null;
+	/**
+	 * Finds a city in file containing a list of cities
+	 * @param cityName The City to search for
+	 * @param file The file location
+	 * @return City object
+	 * @throws IOException
+	 */
+	public static City findCity(String cityName, File file) throws IOException {
+			City tempCity = null;
+			
 			try (InputStream stream = new FileInputStream(file);
-				 JsonReader reader = new JsonReader(new InputStreamReader(stream, "UTF-8"));
-			) {
+				 JsonReader reader = new JsonReader(new InputStreamReader(stream, "UTF-8"));) {
+				
 				Gson gson = new GsonBuilder().create();
 				
 				// Read file in stream mode
 				reader.beginArray();
 				
 				while (reader.hasNext()) {
-					city1 = gson.fromJson(reader, City.class);
-					if (city1.getName().equals(city)) {
-						Log.log().info("Found city: " + city1.toString());
-						return city1;
+					tempCity = gson.fromJson(reader, City.class);
+					
+					if (tempCity.getName().equals(cityName)) {
+						Log.log().info("Found city: " + tempCity.toString());
+						return tempCity;
 					}
 				}
+				
 			} catch (Exception e) {
 				Log.log().error(e.getMessage());
 			}
 			
-			return city1;
+			return tempCity;
 	}
 }

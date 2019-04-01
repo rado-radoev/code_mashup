@@ -3,6 +3,7 @@ package com.superlamer.weatherapp.weather;
 import org.bson.Document;
 
 import com.google.gson.annotations.SerializedName;
+import com.superlamer.weatherapp.Interface.Documentable;
 
 public class Snow implements Documentable {
 
@@ -47,9 +48,10 @@ public class Snow implements Documentable {
 		return "Snow [oneHour=" + oneHour + ", threeHours=" + threeHours + "]";
 	}
 	
+	@Override
 	public Document toDocument() {
-		return new Document("oneHour", oneHour)
-							.append("threeHours", threeHours);	
+		return new Document("oneHour", getOneHour())
+							.append("threeHours", getThreeHours());	
 	}
 	
 }

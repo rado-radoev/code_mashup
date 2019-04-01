@@ -113,6 +113,7 @@ public class Database {
 	public boolean addNewDBEntry(Document documentToInsert) {
 		boolean addSuccessfull = false;
 						
+		documentToInsert.put("_id", Calendar.getInstance().getTimeInMillis());
 		
 		//System.out.println(documentToInsert.getEmbedded(Arrays.asList("citi", "_id"), Long.class));
 		long dbEntryId = documentToInsert.getEmbedded(Arrays.asList("citi", "_id"), Long.class);
@@ -126,21 +127,7 @@ public class Database {
 		
 		return addSuccessfull;
 	}
-	
-	/**
-	 * Method to generate new Document object from City
-	 * @param city City object to be added to database
-	 * @return City object converted to BSON document
-	 */
-	public Document toDocument(City city) {
-		return new Document("_id", Calendar.getInstance().getTimeInMillis())
-					.append("city", city.getName())
-					.append("country", city.getCountry())
-					.append("id", city.getId())
-					.append("coord", new Document("lon", city.getCoord().getLon())
-												.append("lat", city.getCoord().getLat()));
-	}
-	
+		
 	public Document toDocument(WeatherQuery weatherQuery) {
 		return new Document("clouds", weatherQuery.getClouds().toDocument())
 				.append("coord", weatherQuery.getClouds().toDocument())

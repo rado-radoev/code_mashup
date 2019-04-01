@@ -2,6 +2,8 @@ package com.superlamer.weatherapp.weather;
 
 import org.bson.Document;
 
+import com.superlamer.weatherapp.Interface.Documentable;
+
 public class Weather implements Documentable {
 	
 	private int id;
@@ -61,11 +63,12 @@ public class Weather implements Documentable {
 		return "Weather [id=" + id + ", main=" + main + ", description=" + description + ", icon=" + icon + "]";
 	}	
 	
+	@Override
 	public Document toDocument() {
-		return new Document("id", id)
-				.append("main", main)
-				.append("description", description)
-				.append("icon", icon);	
+		return new Document("id", getId())
+				.append("main", getMain())
+				.append("description", getDescription())
+				.append("icon", getIcon());	
 	}
 
 }

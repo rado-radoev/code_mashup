@@ -1,6 +1,10 @@
 package com.superlamer.weatherapp.City;
 
-public class City {
+import org.bson.Document;
+
+import com.superlamer.weatherapp.Interface.Documentable;
+
+public class City implements Documentable {
 	
 	private String name;
 	private String country;
@@ -8,6 +12,7 @@ public class City {
 	private Coord coord;
 	
 	public City() {}
+	
 	public City(String name, String county, long id, Coord coord) {
 		this.name = name;
 		this.country = county;
@@ -46,6 +51,21 @@ public class City {
 				", getId()=" + getId() + 
 				", lon=" + getCoord().getLon() + 
 				", lat=" + getCoord().getLat() + "]";
-	}		
+	}	
+	
+	/**
+	 * Method to generate new Document object from City
+	 * @param city City object to be added to database
+	 * @return City object converted to BSON document
+	 */
+	@Override
+	public Document toDocument() {
+		return new Document("city", getName())
+					.append("country", getCountry())
+					.append("id", getId())
+					.append("coord", new Document("lon", getCoord().getLon())
+												.append("lat", getCoord().getLat()));
+	}
+
 
 }

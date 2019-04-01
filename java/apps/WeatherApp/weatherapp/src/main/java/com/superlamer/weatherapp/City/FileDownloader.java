@@ -11,8 +11,13 @@ import org.apache.commons.lang3.SystemUtils;
 
 import com.superlamer.weatherapp.Logger.Log;
 
-public class ListDownloader {
+public class FileDownloader {
 	
+	/**
+	 * Gets the system temporary folder location
+	 * @param osName OS Name
+	 * @return string representing the temp folder location
+	 */
 	private String getTempFolder(String osName) {
 			
 		// By default will be returning UNIX os temp folder
@@ -29,12 +34,21 @@ public class ListDownloader {
 		return tempFolder;
 	}
 	
+	/**
+	 * Gets the full name of the downloaded file
+	 * @param url URL to file to be downloaded
+	 * @return Name of downloaded file
+	 */
 	private String getDownloadedFileName(String url) {
 		return url.substring(url.lastIndexOf('/') + 1);
 	}
 	
 	
-//	https://raw.githubusercontent.com/superklamer/code_mashup/master/java/apps/city.list.json
+	/**
+	 * Goes to the interent and downloads a file to the OS temporary folder
+	 * @param url URL to file to be downloaded
+	 * @return True or False if file was successfully downloaded or not
+	 */
 	public boolean downloadFile(URL url) {
 		
 		boolean fileDownlaoded = false;
@@ -54,6 +68,4 @@ public class ListDownloader {
 			return fileDownlaoded;
 		}
 	}
-	
-	
 }

@@ -2,6 +2,8 @@ package com.superlamer.weatherapp.weather;
 
 import org.bson.Document;
 
+import com.superlamer.weatherapp.Interface.Documentable;
+
 public class Coord implements Documentable {
 	
 	private double lon;
@@ -29,14 +31,16 @@ public class Coord implements Documentable {
 	public void setLat(double lat) {
 		this.lat = lat;
 	}
+	
 	@Override
 	public String toString() {
 		return "Coord [lon=" + lon + ", lat=" + lat + "]";
 	}
 	
+	@Override
 	public Document toDocument() {
-		return new Document("lon", lon)
-				.append("lat", lat);	
+		return new Document("lon", getLon())
+				.append("lat", getLat());	
 	}
 	
 
