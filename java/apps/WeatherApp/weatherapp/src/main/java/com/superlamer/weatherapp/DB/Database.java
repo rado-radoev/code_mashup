@@ -67,17 +67,18 @@ public class Database {
 		database = getMongoClient().getDatabase(mongoDBName);		
 		
 		try {
-//			ValidationOptions collOptions = new ValidationOptions().validator(
-//					Filters.and(Filters.type("_id", "long"),
-//								Filters.type("country", "string"),
-//								Filters.regex("country", "^[A-Za-z]{2,3}$"),
-//								Filters.type("coord", "object")));
-//			
+			ValidationOptions collOptions = new ValidationOptions().validator(
+					Filters.and(Filters.type("_id", "long"),
+								Filters.type("citi", "object"),
+								Filters.exists("temp_max"),
+								Filters.regex("country", "^[A-Za-z]{2,3}$"),
+								Filters.type("weter", "object")));
+			
 //			collOptions.validationAction(ValidationAction.WARN);
 //			collOptions.validationLevel(ValidationLevel.OFF);
-//			
-//			database.createCollection(mongoCollName, 
-//				new CreateCollectionOptions().validationOptions(collOptions));
+			
+			database.createCollection(mongoCollName, 
+				new CreateCollectionOptions().validationOptions(collOptions));
 			
 			database.createCollection(mongoCollName);
 			
