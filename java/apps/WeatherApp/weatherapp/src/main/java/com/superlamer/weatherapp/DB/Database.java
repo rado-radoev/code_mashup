@@ -1,5 +1,6 @@
 package com.superlamer.weatherapp.DB;
 
+import java.util.ArrayList;
 import java.util.Properties;
 
 import org.bson.Document;
@@ -92,5 +93,30 @@ public class Database {
 	 */
 	public boolean addNewDBEntry(Document documentToInsert) {
 		return new DocumentModeler().addNewDBEntry(documentToInsert, mongoCollection);
+	}
+	
+	/**
+	 * Find the last element added to the colleciton
+	 * @return last elements as Document, that was added to the collection
+	 */
+	public Document findFirstDocument() {
+		return new DocumentModeler().findFirstDocument(getMongoCollection());
+	}
+	
+	/**
+	 * Convert a <strong>Bson document</strong> to JSON
+	 * @param documentToConvert Bson document to convert to JSON String
+	 * @return JSON as a string
+	 */
+	public String convertDocumentToJSON(Document documentToConvert) {
+		return new DocumentModeler().convertDocumentToJSON(documentToConvert);
+	}
+	
+	/**
+	 * Gets all documents in collection
+	 * @return ArrayList containing all documents in the collection
+	 */
+	public ArrayList<Document> getAllDocuments() {
+		return new DocumentModeler().getAllDocuments(getMongoCollection());
 	}
 }

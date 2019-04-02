@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.superlamer.weatherapp.City.City;
 import com.superlamer.weatherapp.City.CityParser;
 import com.superlamer.weatherapp.DB.Database;
+import com.superlamer.weatherapp.Logger.Log;
 import com.superlamer.weatherapp.weather.Weather;
 import com.superlamer.weatherapp.weather.WeatherQuery;
 
@@ -49,5 +50,8 @@ public class App
     							.append("weather", weather.toDocument());
     	boolean weatherinfoAdded = monDb.addNewDBEntry(wetDoc);
     	System.out.println(weatherinfoAdded);
+    	
+    	Document retrievedDoc = monDb.findFirstDocument();
+    	Log.log().info(monDb.convertDocumentToJSON(retrievedDoc));
     }
 }
