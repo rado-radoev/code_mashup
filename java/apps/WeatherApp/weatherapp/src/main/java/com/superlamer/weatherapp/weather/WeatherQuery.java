@@ -19,12 +19,21 @@ import com.superlamer.weatherapp.properties.PropertiesReader;
 
 public class WeatherQuery {
 	
+	// API Address
 	private static final String webURI = "https://api.openweathermap.org/data/2.5/weather";
 	
+	// Class cannot be instatiated
 	private WeatherQuery() {}
 	
-	private static String queryWeather(String cityName, String country, Long id, Coord coord) {
-		
+	/**
+	 * Query OpenWeather API for city weather details
+	 * @param cityName City name to query data for
+	 * @param country Country where City is located if muliple city names exist
+	 * @param id City ID as it appears in the JSON file
+	 * @param coord City <var>lat</var> and <var>lon</var> 
+	 * @return
+	 */
+	private static String queryWeather(String cityName, String country, Long id, Coord coord) {		
 		Optional<String> _cityName = Optional.ofNullable(cityName);
 		Optional<String> _country = Optional.ofNullable(country);
 		Optional<Long> _id = Optional.ofNullable(id);
@@ -40,29 +49,28 @@ public class WeatherQuery {
 		Response response = null;
 		
 		Client client = ClientBuilder.newClient();
-		
-		WebTarget target = client.target(webURI);
-		target.queryParam("q", _cityName.get());
-		
+		UriBuilder uriBuilder = UriBuilder.fromPath(webURI);
+	
 		if (_cityName.isPresent() && _country.isPresent()) {
-			target.queryParam("q", String.format("%s,%s", _cityName.get(), _country.get()));
+			uriBuilder.queryParam("q", String.format("%s,%s", _cityName.get(), _country.get()));
 		}
 		else if (_cityName.isPresent()) {
-			target.queryParam("q", _cityName.get());
+			uriBuilder.queryParam("q", _cityName.get());
 		}
 		else if (_id.isPresent()) {
-			target.queryParam("id", _id.get());
+			uriBuilder.queryParam("id", _id.get());
 		}
 		else if (_coord.isPresent()) {
-			target.queryParam("lat", _coord.get().getLat());
-			target.queryParam("lon", _coord.get().getLon());
+			uriBuilder.queryParam("lat", _coord.get().getLat());
+			uriBuilder.queryParam("lon", _coord.get().getLon());
 		}
 		
-		target.queryParam("appid", props.getProperty("appid"))
+		uriBuilder.queryParam("appid", props.getProperty("appid"))
 			  .queryParam("mode", "json")
 			  .queryParam("units", "metric");
 		
-
+		WebTarget target = client.target(uriBuilder);
+		
 		Invocation.Builder reqBuilder = target.request();
 		
 		AsyncInvoker asyncInvoker = reqBuilder.async();
