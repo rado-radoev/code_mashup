@@ -20,20 +20,19 @@ import com.superlamer.weatherapp.properties.PropertiesReader;
 public class WeatherQuery {
 	
 	// API Address
-	private static final String webURI = "https://api.openweathermap.org/data/2.5/weather";
+	private final String webURI = "https://api.openweathermap.org/data/2.5/weather";
 	
-	// Class cannot be instatiated
-	private WeatherQuery() {}
+	public WeatherQuery() {}
 	
 	/**
 	 * Query OpenWeather API for city weather details
 	 * @param cityName City name to query data for
-	 * @param country Country where City is located if muliple city names exist
+	 * @param country Country where City is located if multiple city names exist
 	 * @param id City ID as it appears in the JSON file
 	 * @param coord City <var>lat</var> and <var>lon</var> 
 	 * @return
 	 */
-	private static String queryWeather(String cityName, String country, Long id, Coord coord) {		
+	private String queryWeather(String cityName, String country, Long id, Coord coord) {		
 		Optional<String> _cityName = Optional.ofNullable(cityName);
 		Optional<String> _country = Optional.ofNullable(country);
 		Optional<Long> _id = Optional.ofNullable(id);
@@ -89,19 +88,19 @@ public class WeatherQuery {
 		return gson.toJson(wQuery);
 	}
 	
-	public static String queryWeatherByCity(String cityName) {
+	public String queryWeatherByCity(String cityName) {
 		return queryWeather(cityName, null, null, null);
 	}
 	
-	public static String queryWeatherByCityAndCountry(String cityName, String country) {
+	public String queryWeatherByCityAndCountry(String cityName, String country) {
 		return queryWeather(cityName, country, null, null);
 	}
 	
-	public static String queryWeatherById(long id) {
+	public String queryWeatherById(long id) {
 		return queryWeather(null, null, id, null);
 	}
 	
-	public static String queryWeatherByCoord(Coord coord) {
+	public String queryWeatherByCoord(Coord coord) {
 		return queryWeather(null, null, null, coord);
 	}
 }

@@ -1,10 +1,5 @@
 package com.superlamer.weatherapp.DB;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 import java.util.Calendar;
 
@@ -46,11 +41,6 @@ public class Database {
 		this.mongoClient = connectToDB();
 	}
 	
-	/**
-	 * Method to get collection from Mongo DB database
-	 * @return MongoCollection object with database collection
-	 * @param mongoDatabase Mongo Database and Mongo Collection name 
-	 */
 	public MongoCollection<Document> getMongoCollection() {
 		return mongoCollection;
 	}
@@ -69,16 +59,16 @@ public class Database {
 //			collOptions.validationAction(ValidationAction.WARN);
 //			collOptions.validationLevel(ValidationLevel.OFF);
 			
-			database.createCollection(mongoCollName, 
-				new CreateCollectionOptions().validationOptions(collOptions));
-			
-			database.createCollection(mongoCollName);
-			
+			MongoCollection<Document> collExits = database.getCollection(mongoCollName);
+			if (collExits == null) {
+				database.createCollection(mongoCollName, 
+						new CreateCollectionOptions().validationOptions(collOptions));
+			}
+			collExits = null;	
 		} catch (MongoCommandException mce) {
 			Log.log().error(mce.getMessage());
 		}
-		
-		
+	
 		this.mongoCollection = database.getCollection(mongoCollName);
 	}
 	
@@ -105,21 +95,6 @@ public class Database {
 	 * @return true or false if document has been successfully added or not
 	 */
 	public boolean addNewDBEntry(Document documentToInsert) {
-		boolean addSuccessfull = false;
-						
-		long currUnixTime = Calendar.getInstance().getTimeInMillis();
-		documentToInsert.put("_id", currUnixTime);
-		
-		//System.out.println(documentToInsert.getEmbedded(Arrays.asList("citi", "_id"), Long.class));
-		//long dbEntryId = documentToInsert.getEmbedded(Arrays.asList("citi", "_id"), Long.class);
-		
-		getMongoCollection().insertOne(documentToInsert);
-		
-		FindIterable<Document> d = getMongoCollection().find(eq("_id", currUnixTime));
-		if (d != null) {
-			addSuccessfull = true;
-		}
-		
-		return addSuccessfull;
+		return new DocumentModeler().addNewDBEntry(documentToInsert, mongoCollection);
 	}
 }

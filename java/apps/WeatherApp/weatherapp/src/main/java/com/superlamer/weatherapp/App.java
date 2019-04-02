@@ -30,7 +30,7 @@ public class App
 //    	download.downloadFile(new URL(url));
 //        	
     	Long id = 5391811L;
-    	City sd = CityParser.findCityById(id, new File("/tmp/city.list.json"));
+    	City sd = new CityParser().findCityById(id, new File("/tmp/city.list.json"));
 //    	City sd = CityParser.findCityByName("San Diego", new File("/tmp/city.list.json"));
     	
     	Database monDb = new Database();
@@ -39,7 +39,7 @@ public class App
     	//Log.log().info(added);
 
     	
-    	String weatherJson =  WeatherQuery.queryWeatherByCity("San Diego");
+    	String weatherJson =  new WeatherQuery().queryWeatherByCity("San Diego");
     	System.out.println(weatherJson);
     	Weather weather = new Gson().fromJson(weatherJson, Weather.class);
     	System.out.println(weather);

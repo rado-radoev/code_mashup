@@ -15,9 +15,7 @@ import com.google.gson.stream.JsonReader;
 import com.superlamer.weatherapp.Logger.Log;
 
 public class CityParser {
-	
-
-
+		
 	/**
 	 * Query the city list and return the city if found. If only City name is provided and
 	 * multiple cities with the same name exist, only the first occurance will be returned.
@@ -28,7 +26,7 @@ public class CityParser {
 	 * @return a City object
 	 * @throws IOException
 	 */
-	private static City findCity(String cityName, String country, Long id, File file) {
+	private City findCity(String cityName, String country, Long id, File file) {
 			City tempCity = null;
 
 		    Optional<String> _cityName = Optional.ofNullable(cityName);
@@ -80,15 +78,15 @@ public class CityParser {
 			return tempCity;
 	}
 	
-	public static City findCityById(Long id, File file) {
+	public City findCityById(Long id, File file) {
 		return findCity(null, null, id, file);
 	}
 	
-	public static City findCityByName(String cityName, File file) { 
+	public City findCityByName(String cityName, File file) { 
 		return findCity(cityName, null, null, file);
 	}
 	
-	public static City findCityByNameAndCountry(String cityName, String country, File file) { 
+	public City findCityByNameAndCountry(String cityName, String country, File file) { 
 		return findCity(cityName, country, null, file);
 	}
 }
