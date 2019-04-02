@@ -1,12 +1,10 @@
 package com.superlamer.weatherapp.DB;
 
 import java.util.Properties;
-import java.util.Calendar;
 
 import org.bson.Document;
 
 import com.mongodb.MongoCommandException;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -14,8 +12,6 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.CreateCollectionOptions;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.ValidationOptions;
-
-import static com.mongodb.client.model.Filters.*;
 
 import com.superlamer.weatherapp.Logger.Log;
 import com.superlamer.weatherapp.properties.PropertiesReader;

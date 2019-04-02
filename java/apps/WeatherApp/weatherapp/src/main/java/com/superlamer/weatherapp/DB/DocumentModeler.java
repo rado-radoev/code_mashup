@@ -2,12 +2,16 @@ package com.superlamer.weatherapp.DB;
 
 import static com.mongodb.client.model.Filters.eq;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import org.bson.Document;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 
 public class DocumentModeler {
 	
@@ -36,5 +40,65 @@ public class DocumentModeler {
 		
 		return addSuccessfull;
 	}
+	
+	/**
+	 * Find first document in collection and return it
+	 * @param mongoCollection the Mongo collection to search
+	 * @return BSON Document containing first element
+	 */
+	public Document findFirstDocument(MongoCollection<Document> mongoCollection) {
+		return mongoCollection.find().first();
+	}
+	
+	/**
+	 * Convert <strong>BSON Document</strong> to JSON string
+	 * @param documentToConvert BSON document to convert
+	 * @return JSON as String
+	 */
+	public String convertDocumentToJSON(Document documentToConvert) {
+		GsonBuilder gsonBuilder = new GsonBuilder();  
+		gsonBuilder.serializeNulls();  
+		Gson gson = gsonBuilder.create();
+				
+		return gson.toJson(documentToConvert);
+	}
+	
+	/**
+	 * Retrieve all documents in collection
+	 * @param mongoCollection the collection to search
+	 * @return ArrayList of all documents in the collection
+	 */
+	public ArrayList<Document> getAllDocuments(MongoCollection<Document> mongoCollection) {
+		MongoCursor<Document> cursor = mongoCollection.find().iterator();
+		ArrayList<Document> documents = new ArrayList<Document>(); 		
+		
+		try {
+			while (cursor.hasNext()) {
+				documents.add(cursor.next());
+			}
+		} finally {
+			cursor.close();
+		}
+		
+		return documents;
+	}
 
+	// TO DO:
+	// 		IN THE FUTURE ADD FUNCTIONALITY TO FILTER SEARCHES
+	//		http://mongodb.github.io/mongo-java-driver/3.4/driver/getting-started/quick-start/
+	//		SEARCH BY: City, Country, Id, Coords, _id (range)
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
