@@ -11,8 +11,11 @@ import com.superlamer.weatherapp.City.City;
 import com.superlamer.weatherapp.City.CityParser;
 import com.superlamer.weatherapp.DB.Database;
 import com.superlamer.weatherapp.Logger.Log;
+import com.superlamer.weatherapp.python.PythonEntryPoint;
 import com.superlamer.weatherapp.weather.Weather;
 import com.superlamer.weatherapp.weather.WeatherQuery;
+
+import py4j.GatewayServer;
 
 
 public class App 
@@ -34,7 +37,7 @@ public class App
     	//Log.log().info(added);
 
     	
-    	String weatherJson =  new WeatherQuery().queryWeatherByCity("San Diego");
+    	String weatherJson =  new WeatherQuery().queryWeatherById(id);
     	System.out.println(weatherJson);
     	Weather weather = new Gson().fromJson(weatherJson, Weather.class);
     	System.out.println(weather);
@@ -47,5 +50,11 @@ public class App
     	
     	Document retrievedDoc = monDb.findFirstDocument();
     	Log.log().info(monDb.convertDocumentToJSON(retrievedDoc));
+    	
+    	GatewayServer gatewayServer = new GatewayServer(new PythonEntryPoint());
+    	Runnable runnable = () -> { gatewayServer.start();
+    								System.out.println("Gateway server started"); };
+    	Thread thread = new Thread(runnable);
+    	thread.start();
     }
 }

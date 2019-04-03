@@ -1,8 +1,20 @@
 package com.superlamer.weatherapp.python;
 
-import py4j.GatewayServer;
+import org.bson.Document;
 
-public class PythonEntryPoint {
+import com.superlamer.weatherapp.DB.Database;
 
+public class PythonEntryPoint  {
+
+	private Document firstDocument;
+	
+	public PythonEntryPoint( ) {
+		Database monDb = new Database();
+		firstDocument = monDb.findFirstDocument();
+	}
+
+	public Document getFirstDocument() {
+		return firstDocument;
+	}
 	
 }
