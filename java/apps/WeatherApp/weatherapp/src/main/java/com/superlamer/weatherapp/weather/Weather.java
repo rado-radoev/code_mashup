@@ -120,7 +120,7 @@ public class Weather implements Documentable {
 				.append("rain", getRain() == null ? new Rain().toDocument() : getRain().toDocument())
 				.append("snow", getSnow() == null ? new Snow().toDocument() : getSnow().toDocument())
 				.append("weather", getWeather().toDocument())
-				.append("win", getWind().toDocument())
+				.append("wind", getWind().toDocument())
 				.append("sys", getSys().toDocument());
 	}
 }
