@@ -1,14 +1,14 @@
-import socketio, requests, json, asyncio
+import socketio
 
-sio = socketio.AsyncClient()
-
-async def start_server():
-    await sio.connect('http://localhost:3000')
+sio = socketio.Client()
 
 @sio.on('connect')
 def on_connect():
-    print('I\'m connected')
+    print('connection established')
 
 @sio.on('disconnect')
 def on_disconnect():
-    print('I\'m disconnected')
+    print('disconnected from server')
+
+sio.connect('http://localhost:3000')
+sio.wait()
