@@ -22,10 +22,18 @@ app.set('view engine', 'hbs')
 app.set('views', viewPath)
 hbs.registerPartials(partialsPath)
 
+weatherData = ''
+
 app.get('/', (req, res) => {
     res.render('index', {
-        'document-title': 'Wather App',
-        'greeting': 'Welcome!'
+        'Temp': weatherData['weather']['main']['temp'],
+        'Humidity': weatherData['weather']['main']['humidity'],
+        'Min_Temp': weatherData['weather']['main']['temp_min'],
+        'Pressure': weatherData['weather']['main']['pressure'],
+        'Max_Temp': weatherData['weather']['main']['temp_max'],
+        'Wind_Speed': weatherData['weather']['win']['speed'],
+        'City_Name': weatherData['city']['city'],
+        'WeatherDescription': weatherData['weather']['weather']['description']
     })
 })
 
@@ -36,9 +44,7 @@ io.on('connection', (socket) => {
         console.log('in socket.on weather_data')
         console.log(weather_data)
         json_data = JSON.parse(weather_data)
-        console.log(json_data['_id'])
-        console.log(json_data['city']['city'])
-        console.log(json_data['weather']['main']['temp'])
+        weatherData = json_data
     })
 })
 
