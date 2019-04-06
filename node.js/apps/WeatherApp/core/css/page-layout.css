@@ -1,0 +1,42 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #A0D0F8;
+}
+
+
+.split {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#cityname {
+    font-size: 100px;
+    color: #EC807F;
+}
+
+
+#weatherdescription {
+    font-size: 25px;    
+}
+
+#coords {
+    position: absolute;
+    font-weight: bold;
+    bottom: 0;
+    left: 0;
+}
+
+#weather-details td {
+    text-align: left;
+    font-size: 25px;
+    overflow: auto;
+    
+}
+
+#weather-details table {
+    border-collapse: separate; border-spacing: 40px 5px;
+    padding-top: 1%;
+    margin: auto;
+}

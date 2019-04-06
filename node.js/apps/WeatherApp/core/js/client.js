@@ -1,7 +1,6 @@
 $(document).ready(function() {
-
-})
-
-function func() {
     
-}
+    var clock = $('.clock').FlipClock({
+        clockFace: 'TwelveHourClock'
+        });
+})

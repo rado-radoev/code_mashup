@@ -4,6 +4,7 @@ const http = require('http')
 const express = require('express')
 const socketio = require('socket.io')
 const hbs = require('hbs')
+const moment = require('moment')
 
 const app = express()
 const server = http.createServer(app)
@@ -13,6 +14,8 @@ const port = 3000;
 
 const viewPath = path.join(__dirname, './core/views')
 const partialsPath = path.join(__dirname, './core/views/partials')
+
+app.use(express.static(path.join(__dirname, './core')))
 
 app.use(helmet())
 app.set('view engine', 'hbs')
