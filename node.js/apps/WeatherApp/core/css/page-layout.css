@@ -10,6 +10,9 @@ body {
     align-items: center;
  }
 
+ .centered {
+    text-align: center;
+ }
 
 #cityname {
     font-size: 100px;
@@ -18,7 +21,7 @@ body {
 
 
 #weatherdescription {
-    font-size: 25px;    
+    font-size: 25px;
 }
 
 #coords {

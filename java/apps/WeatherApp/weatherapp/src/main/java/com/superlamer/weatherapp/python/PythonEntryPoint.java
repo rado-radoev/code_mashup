@@ -21,4 +21,9 @@ public class PythonEntryPoint  {
 		return monDb.convertDocumentToJSON(doc);
 	}
 	
+	// TO DO:
+	//	METHOD TO GET A WEATHER UPDATE
+	//	IT WILL BE PASSED FROM THE PYTHON SOCKET IO CLIENT
+	// 	TO NODE.JS SERVER
+	
 }

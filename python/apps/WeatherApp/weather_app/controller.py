@@ -27,6 +27,8 @@ def on_weather_data():
     sio.emit('weather_data', json_str)
 
 
+# implement method to query weather from the java server
+
 sio.connect('http://localhost:3000')
 on_weather_data()
 sio.wait()

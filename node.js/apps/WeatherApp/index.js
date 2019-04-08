@@ -40,6 +40,11 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
     console.log('New websocket connection')
 
+    // on io.on execute a method to query 
+    // weather data from python
+    // python will return the data 
+    // and then we will execute the socket.on('weather_data')
+
     socket.on('weather_data', (weather_data) => {
         console.log('in socket.on weather_data')
         console.log(weather_data)
