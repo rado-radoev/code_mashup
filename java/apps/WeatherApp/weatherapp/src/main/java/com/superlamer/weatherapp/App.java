@@ -2,6 +2,8 @@ package com.superlamer.weatherapp;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
 import org.bson.Document;
@@ -9,8 +11,8 @@ import org.bson.Document;
 import com.google.gson.Gson;
 import com.superlamer.weatherapp.City.City;
 import com.superlamer.weatherapp.City.CityParser;
+import com.superlamer.weatherapp.City.FileDownloader;
 import com.superlamer.weatherapp.DB.Database;
-import com.superlamer.weatherapp.Logger.Log;
 import com.superlamer.weatherapp.python.PythonEntryPoint;
 import com.superlamer.weatherapp.weather.Weather;
 import com.superlamer.weatherapp.weather.WeatherQuery;
@@ -23,10 +25,14 @@ public class App
     public static void main( String[] args ) throws IOException, InterruptedException, ExecutionException
     {
     	
-//    	ListDownloader download = new ListDownloader();
-//    	String url = "https://raw.githubusercontent.com/superklamer/code_mashup/master/java/apps/city.list.json";
-//    	download.downloadFile(new URL(url));
-//        	
+    	FileDownloader download = new FileDownloader();
+    	String url = "https://raw.githubusercontent.com/superklamer/code_mashup/master/java/apps/city.list.json";
+    	try {
+			download.downloadFile(new URL(url));
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+ 	
     	Long id = 5391811L;
     	City sd = new CityParser().findCityById(id, new File("/tmp/city.list.json"));
 //    	City sd = CityParser.findCityByName("San Diego", new File("/tmp/city.list.json"));
@@ -48,8 +54,8 @@ public class App
     	boolean weatherinfoAdded = monDb.addNewDBEntry(wetDoc);
     	System.out.println(weatherinfoAdded);
     	
-    	Document retrievedDoc = monDb.findFirstDocument();
-    	Log.log().info(monDb.convertDocumentToJSON(retrievedDoc));
+//    	Document retrievedDoc = monDb.findFirstDocument();
+//    	Log.log().info(monDb.convertDocumentToJSON(retrievedDoc));
     	
     	GatewayServer gatewayServer = new GatewayServer(new PythonEntryPoint());
     	Runnable runnable = () -> { gatewayServer.start();

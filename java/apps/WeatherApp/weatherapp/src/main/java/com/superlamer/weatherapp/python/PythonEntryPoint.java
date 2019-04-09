@@ -3,6 +3,7 @@ package com.superlamer.weatherapp.python;
 import org.bson.Document;
 
 import com.superlamer.weatherapp.DB.Database;
+import com.superlamer.weatherapp.weather.WeatherQuery;
 
 public class PythonEntryPoint  {
 
@@ -10,7 +11,7 @@ public class PythonEntryPoint  {
 	Database monDb = new Database();
 	
 	public PythonEntryPoint( ) {	
-		firstDocument = monDb.findFirstDocument();
+		firstDocument = monDb.findFirstDocument();	
 	}
 
 	public Document getFirstDocument() {
@@ -21,9 +22,8 @@ public class PythonEntryPoint  {
 		return monDb.convertDocumentToJSON(doc);
 	}
 	
-	// TO DO:
-	//	METHOD TO GET A WEATHER UPDATE
-	//	IT WILL BE PASSED FROM THE PYTHON SOCKET IO CLIENT
-	// 	TO NODE.JS SERVER
-	
+	public String updateWeather(String cityName) {
+		return new WeatherQuery().queryWeatherByCity(cityName);
+	}
 }
+	

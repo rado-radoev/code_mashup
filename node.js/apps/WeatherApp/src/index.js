@@ -24,18 +24,18 @@ hbs.registerPartials(partialsPath)
 
 weatherData = ''
 
-app.get('/', (req, res) => {
-    res.render('index', {
-        'Temp': weatherData['weather']['main']['temp'],
-        'Humidity': weatherData['weather']['main']['humidity'],
-        'Min_Temp': weatherData['weather']['main']['temp_min'],
-        'Pressure': weatherData['weather']['main']['pressure'],
-        'Max_Temp': weatherData['weather']['main']['temp_max'],
-        'Wind_Speed': weatherData['weather']['win']['speed'],
-        'City_Name': weatherData['city']['city'],
-        'WeatherDescription': weatherData['weather']['weather']['description']
-    })
-})
+// app.get('/', (req, res) => {
+//     res.render('index', {
+//         'Temp': weatherData['weather']['main']['temp'],
+//         'Humidity': weatherData['weather']['main']['humidity'],
+//         'Min_Temp': weatherData['weather']['main']['temp_min'],
+//         'Pressure': weatherData['weather']['main']['pressure'],
+//         'Max_Temp': weatherData['weather']['main']['temp_max'],
+//         'Wind_Speed': weatherData['weather']['win']['speed'],
+//         'City_Name': weatherData['city']['city'],
+//         'WeatherDescription': weatherData['weather']['weather']['description']
+//     })
+// })
 
 io.on('connection', (socket) => {
     console.log('New websocket connection')
