@@ -7,15 +7,19 @@ import com.superlamer.weatherapp.weather.WeatherQuery;
 
 public class PythonEntryPoint  {
 
-	private Document firstDocument;
+	private Document weatherDocument;
 	Database monDb = new Database();
 	
 	public PythonEntryPoint( ) {	
-		firstDocument = monDb.findFirstDocument();	
+		//weatherDocument = monDb.findLastDocument();	
 	}
 
 	public Document getFirstDocument() {
-		return firstDocument;
+		return weatherDocument = monDb.findFirstDocument();
+	}
+	
+	public Document getLastDocument() {
+		return weatherDocument = monDb.findLastDocument();
 	}
 	
 	public String convertDocToJson(Document doc ) {

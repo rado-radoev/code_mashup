@@ -3,7 +3,7 @@ import json
 import socketio
 
 gateway = JavaGateway()
-weather_data = gateway.entry_point.getFirstDocument()
+weather_data = gateway.entry_point.getLastDocument()
 json_str = gateway.entry_point.convertDocToJson(weather_data)
 print(json_str)
 

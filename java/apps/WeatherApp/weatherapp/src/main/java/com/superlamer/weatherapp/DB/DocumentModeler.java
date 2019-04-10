@@ -13,6 +13,9 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 
+import static com.mongodb.client.model.Sorts.orderBy;
+import static com.mongodb.client.model.Sorts.descending;
+
 public class DocumentModeler {
 	
 	public DocumentModeler() {}
@@ -48,6 +51,17 @@ public class DocumentModeler {
 	 */
 	public Document findFirstDocument(MongoCollection<Document> mongoCollection) {
 		return mongoCollection.find().first();
+	}
+	
+	/**
+	 * Find last document in collection and return it
+	 * @param mongoCollection
+	 * @return
+	 */
+	public Document findLastDocument(MongoCollection<Document> mongoCollection) {
+		FindIterable<Document> docs = mongoCollection.find().limit(1).sort(orderBy(descending("_id")));
+		
+		return docs.first();
 	}
 	
 	/**

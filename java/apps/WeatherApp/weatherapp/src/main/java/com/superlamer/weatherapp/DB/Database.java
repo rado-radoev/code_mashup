@@ -96,11 +96,19 @@ public class Database {
 	}
 	
 	/**
-	 * Find the last element added to the colleciton
+	 * Find the first element added to the collection
 	 * @return last elements as Document, that was added to the collection
 	 */
 	public Document findFirstDocument() {
 		return new DocumentModeler().findFirstDocument(getMongoCollection());
+	}
+	
+	/**
+	 * Find the last document added to the collection
+	 * @return
+	 */
+	public Document findLastDocument() {
+		return new DocumentModeler().findLastDocument(getMongoCollection());
 	}
 	
 	/**
