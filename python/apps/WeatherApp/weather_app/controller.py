@@ -29,7 +29,9 @@ def on_weather_data():
 @sio.on('update_weather')
 def on_update_weather(cityName):
     updated_weather = gateway.entry_point.updateWeather(cityName)
-    sio.emit('update_weather', updated_weather)
+    print('Updating weather')
+    #sio.emit('update_weather', updated_weather)
+    sio.emit('weather_data', updated_weather)
 
 
 # implement method to query weather from the java server

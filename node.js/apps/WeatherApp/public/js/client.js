@@ -27,10 +27,3 @@ function run_mustache() {
         $('#template').html(rendered);
      
     }
-
-socket.on('weather_data', (weather_data) => {
-    console.log('in socket.on weather_data')
-    console.log(weather_data)
-    json_data = JSON.parse(weather_data)
-    weatherData = json_data
-})
