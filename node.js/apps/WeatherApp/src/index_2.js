@@ -24,6 +24,29 @@ hbs.registerPartials(partialsPath)
 
 weatherData = ''
 
+io.on('connection', (socket) => {
+    console.log('New websocket connection')
+
+    socket.emit('update_weather', ()  => {
+        console.log('requesting weather update')
+    })
+
+    // on io.on execute a method to query 
+    // weather data from python
+    // python will return the data 
+    // and then we will execute the socket.osn('weather_data')
+
+    socket.on('weather', (weather_data) => {
+        console.log('in socket.on weather_data')
+        weatherData = weather_data
+        //console.log(weather_data)
+        // json_data = JSON.parse(weather_data)
+        // weatherData = json_data
+    })   
+})
+
+
+
 // app.use((req, res, next) => {
 //     io.on('connection', (socket) => {
 //         console.log('New websocket connection')
@@ -45,43 +68,13 @@ weatherData = ''
 // })
 
 app.get('/', (req, res) => {
-
-    io.on('connection', (socket) => {
-        console.log('New websocket connection')
-
-        socket.emit('update_weather', city='San Diego')
-    
-        // on io.on execute a method to query 
-        // weather data from python
-        // python will return the data 
-        // and then we will execute the socket.osn('weather_data')
-    
-        socket.on('weather_data', (weather_data) => {
-            console.log('in socket.on weather_data')
-            console.log(weather_data)
-            json_data = JSON.parse(weather_data)
-            weatherData = json_data
-        })
-
-
-        
-    })
-
+    var weather = { 'Temp': weatherData['weather']['main']['temp'] }
     console.log(weatherData)
-    res.render('index', {
-        'Temp': weatherData['weather']['main']['temp'],
-        'Humidity': weatherData['weather']['main']['humidity'],
-        'Min_Temp': weatherData['weather']['main']['temp_min'],
-        'Pressure': weatherData['weather']['main']['pressure'],
-        'Max_Temp': weatherData['weather']['main']['temp_max'],
-        'Wind_Speed': weatherData['wind']['speed'],
-        'City_Name': weatherData['city']['city'],
-        'WeatherDescription': weatherData['weather']['weather']['description']
-    })
+    res.render('index', weather)
 })
 
-io.on('connection', (socket) => {
-    console.log('New websocket connection')
+// io.on('connection', (socket) => {
+//     console.log('New websocket connection')
 
     // on io.on execute a method to query 
     // weather data from python
@@ -94,7 +87,7 @@ io.on('connection', (socket) => {
     //     json_data = JSON.parse(weather_data)
     //     weatherData = json_data
     // })
-})
+// })
 
 server.listen(port, () => {
     console.log('Server is running on port', port)

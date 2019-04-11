@@ -5,7 +5,7 @@ import socketio
 gateway = JavaGateway()
 weather_data = gateway.entry_point.getLastDocument()
 json_str = gateway.entry_point.convertDocToJson(weather_data)
-print(json_str)
+#print(json_str)
 
 sio = socketio.Client()
 
@@ -19,18 +19,17 @@ def on_disconnect():
 
 def convert_json_to_obj(source_json):
     x = json.loads(source_json)
-    print(x["city"]['city'])
+    #print(x["city"]['city'])
 
 @sio.on('weather_data')
 def on_weather_data():
-    data_obj = convert_json_to_obj(json_str)
+    #data_obj = convert_json_to_obj(json_str)
     sio.emit('weather_data', json_str)
 
 @sio.on('update_weather')
-def on_update_weather(cityName):
-    updated_weather = gateway.entry_point.updateWeather(cityName)
-    print('Updating weather')
-    #sio.emit('update_weather', updated_weather)
+def on_update_weather(city):
+    updated_weather = gateway.entry_point.updateWeather(city)
+    print(type(updated_weather))
     sio.emit('weather_data', updated_weather)
 
 
