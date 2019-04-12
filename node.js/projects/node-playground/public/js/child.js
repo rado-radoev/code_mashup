@@ -16,6 +16,7 @@ socket.on('w', (weatherData) =>  {
     $( "#temp_min" ).text( weatherDataJson['weather']['main']['temp_min'] );
 });
 
-$(document).ready(function() {
+$(function() {
     alert('hi')
+    socket.emit('update')
 })

@@ -15,6 +15,7 @@ def get_weather():
     gateway = connect_gateway()
     weather_data = gateway.entry_point.getLastDocument()
     weather_data_json = gateway.entry_point.convertDocToJson(weather_data)
+    print(weather_data_json)
     return weather_data_json
 
 

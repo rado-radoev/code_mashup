@@ -42,7 +42,14 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path')
 
+var myLogger = function (req, res, next) {
+  console.log('LOGGED')
+  next()
+}
+
+app.use(myLogger)
 app.use(express.static(path.join(__dirname, '../public')))
+
 
 app.get('/', function(req, res){
     console.log(__dirname)
@@ -51,6 +58,11 @@ app.get('/', function(req, res){
 
 io.on('connection', (socket) => {
   console.log('an user connected');
+
+  socket.on('update', () => {
+    console.log('weahter update requested by user')
+    io.emit('update_weather')
+  });
 
   socket.emit('update_weather', ()  => {
     console.log('requesting weather update')
@@ -68,3 +80,4 @@ socket.on('weather', (weather_data) => {
 http.listen(3000, function(){
   console.log('listening on *:3000');
 });
+
