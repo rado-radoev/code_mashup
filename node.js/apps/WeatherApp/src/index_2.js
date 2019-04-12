@@ -42,6 +42,9 @@ io.on('connection', (socket) => {
         //console.log(weather_data)
         // json_data = JSON.parse(weather_data)
         // weatherData = json_data
+        socket.emit('w', (weatherData) => {
+            console.log('emitting weather data - w')
+        })
     })   
 })
 
