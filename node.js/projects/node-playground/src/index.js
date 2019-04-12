@@ -43,7 +43,7 @@ var io = require('socket.io')(http);
 var path = require('path')
 
 var myLogger = function (req, res, next) {
-  console.log('LOGGED')
+  console.log('MIDDLEWARE')
   next()
 }
 

@@ -18,5 +18,9 @@ socket.on('w', (weatherData) =>  {
 
 $(function() {
     alert('hi')
-    socket.emit('update')
+    setInterval( upd , 2000)
 })
+
+function upd() {
+    socket.emit('update')
+}
