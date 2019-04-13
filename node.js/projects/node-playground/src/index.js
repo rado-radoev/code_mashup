@@ -36,12 +36,15 @@
 //     console.log('Server is running on port ' + port)
 // })
 
-const express = require('express')
+const hbs = require('handlebars');
+const express = require('express');
+
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path')
 
+// Middleware
 var myLogger = function (req, res, next) {
   console.log('MIDDLEWARE')
   next()
@@ -50,6 +53,8 @@ var myLogger = function (req, res, next) {
 app.use(myLogger)
 app.use(express.static(path.join(__dirname, '../public')))
 
+app.set('view engine', 'hbs')
+app.set('views', path.join(__dirname, '../public/views/'))
 
 app.get('/', function(req, res){
     console.log(__dirname)

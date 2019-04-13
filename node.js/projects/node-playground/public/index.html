@@ -7,20 +7,24 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Weather</h1>
     <div id="Weather">
-        <div id="city">CityName</div>
-        <div id="temp">Temp</div>
-        <div id="humidity">Humidity</div>
-        <div id="temp_min">Temp_min</div>
-    </div> 
+        <h1>{{weather}}</h1>
    
+        <div id="city">{{city}}</div>
+        <div id="temp">{{temp}}</div>
+        <div id="humidity">{{humidity}}</div>
+        <div id="temp_min">{{temp_min}}</div>
+    </div> 
+
+
     <script
     src="https://code.jquery.com/jquery-3.4.0.js"
     integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
     crossorigin="anonymous"></script>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.1/handlebars.runtime.js"></script>
     <script type="text/javascript" src="js/child.js"></script>
-    
+    <script type="text/javascript" src="views/templates/color-template.js"></script>
+    <script type="text/javascript" src="views/templates/show-weather.js"></script>
 </body>
 </html>
