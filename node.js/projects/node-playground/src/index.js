@@ -1,40 +1,4 @@
-// const path = require('path')
-// const hbs = require('hbs')
-// const express = require('express')
 
-// var app = express();
-// var http = require('http').Server(app);
-// var io = require('socket.io')(http);
-
-// const port = 3000
-
-// const viewPath = path.join(__dirname, '../public/views')
-// const partialsPath = path.join(__dirname, '../public/views/partials')
-// const public = path.join(__dirname, '../public')
-
-// app.use(express.static(path.join(__dirname, '../public')))
-// app.set('view engine', 'hbs')
-// app.set('views', viewPath)
-// hbs.registerPartials(partialsPath)
-
-// hbs.registerHelper('welcome-message', (message) => {
-//     return message
-// })
-
-// app.get('/', (req, res) => {
-//     res.render('index', {
-//         'document-title': 'Node.js Playground',
-//     })
-// })
-
-// io.on('connection', (socket) => {
-//     console.log('new user connected')
-// })
-
-
-// app.listen(port, () => {
-//     console.log('Server is running on port ' + port)
-// })
 
 const hbs = require('handlebars');
 const express = require('express');
@@ -85,4 +49,53 @@ socket.on('weather', (weather_data) => {
 http.listen(3000, function(){
   console.log('listening on *:3000');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+// const path = require('path')
+// const hbs = require('hbs')
+// const express = require('express')
+
+// var app = express();
+// var http = require('http').Server(app);
+// var io = require('socket.io')(http);
+
+// const port = 3000
+
+// const viewPath = path.join(__dirname, '../public/views')
+// const partialsPath = path.join(__dirname, '../public/views/partials')
+// const public = path.join(__dirname, '../public')
+
+// app.use(express.static(path.join(__dirname, '../public')))
+// app.set('view engine', 'hbs')
+// app.set('views', viewPath)
+// hbs.registerPartials(partialsPath)
+
+// hbs.registerHelper('welcome-message', (message) => {
+//     return message
+// })
+
+// app.get('/', (req, res) => {
+//     res.render('index', {
+//         'document-title': 'Node.js Playground',
+//     })
+// })
+
+// io.on('connection', (socket) => {
+//     console.log('new user connected')
+// })
+
+
+// app.listen(port, () => {
+//     console.log('Server is running on port ' + port)
+// })
 
