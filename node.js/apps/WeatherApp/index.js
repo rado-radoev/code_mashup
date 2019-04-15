@@ -1,7 +1,7 @@
 const hbs     = require('hbs');
 const express = require('express');
 const path    = require('paht');
-const hbs     = require('hbs');
+const hbs     = require('handlebars');
 
 var app     = express();
 var http    = require('http').Server(app);
@@ -29,7 +29,7 @@ app.use(myLogger);
 
 app.get('/', (req, res) => {
     res.render('index');
-})
+});
 
 io.on('connection', (socket) => {
     console.log('user connected');
@@ -50,9 +50,9 @@ io.on('connection', (socket) => {
   }) 
   
     socket.emit('test')
-  });
+});
   
-  http.listen(3000, function(){
+http.listen(3000, function(){
     console.log('listening on *:3000');
-  });
+});
   
