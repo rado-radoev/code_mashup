@@ -1,35 +1,46 @@
-const socket = io()
+const socket = io();
 
-$(document).ready(function() {
-    
-    var clock = $('.clock').FlipClock({
-        clockFace: 'TwelveHourClock'
-    });
+// https://www.w3schools.com/jquery/jquery_ref_selectors.asp
 
-    run_mustache();
+socket.on('test', () => {
+    console.log('testtttttt')
+});
 
+
+socket.on('w', (weatherData) =>  {
+    console.log(weatherData)
+    weatherDataJson = JSON.parse(weatherData)
+
+    custObj = {
+        weather: 'The Weather Today',
+        city: weatherDataJson['city']['city'],
+        temp: weatherDataJson['weather']['main']['temp'],
+        humidity: weatherDataJson['weather']['main']['humidity'],
+        temp_min: weatherDataJson['weather']['main']['temp_min']
+    }
+
+    html = Handlebars.templates['show-weather'](custObj)
+    $('#Weather').html(html)
+
+
+
+    // $( "#city" ).text( weatherDataJson['city']['city'] );
+    // $( "#temp" ).text( weatherDataJson['weather']['main']['temp'] );
+    // $( "#humidity" ).text( weatherDataJson['weather']['main']['humidity'] );
+    // $( "#temp_min" ).text( weatherDataJson['weather']['main']['temp_min'] );
+});
+
+$(function() {
+    alert('hi')
+    setInterval( upd , 10000)
 })
 
-function run_mustache() {
-    
-    // Change Default Mustache Tags to avoid conflicts with handlebars
-    Mustache.tags = ["[[", "]]"];
-
-    //Get Template
-    var template = $('#template').html();
-
-    //Prepare Template for Mustache
-    Mustache.parse(template);
-
-    //Render template
-    var rendered = Mustache.render(template, {TESTTEST: "Luke"});
-
-    //Update ID messages with new template
-    $('#template').html(rendered);
- 
+function upd() {
+    socket.emit('update')
 }
 
-socket.on('w', (weatherData) => {
-    console.log('weather')
-    console.log(weatherData)
-});
+function getDate() {
+    var date = new Date()
+    setInterval(date.toLocaleString(), 1000)
+}
+ 
