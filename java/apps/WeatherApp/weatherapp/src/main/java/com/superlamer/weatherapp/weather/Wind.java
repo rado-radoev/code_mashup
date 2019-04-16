@@ -41,7 +41,7 @@ public class Wind implements Documentable {
 
 	@Override
 	public Document toDocument() {
-		return new Document("spped", getSpeed())
+		return new Document("speed", getSpeed())
 				.append("deg", getDeg());	
 	}
 	

@@ -33,6 +33,7 @@ body {
 
 #weather-details td {
     font-size: 25px;
+    text-align: left;
 }
 
 #weather-details table {

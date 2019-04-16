@@ -1,7 +1,6 @@
-const hbs     = require('hbs');
 const express = require('express');
-const path    = require('paht');
-const hbs     = require('handlebars');
+const path    = require('path');
+const hbs     = require('hbs');
 
 var app     = express();
 var http    = require('http').Server(app);
@@ -15,8 +14,11 @@ const viewPath = path.join(__dirname, './views/');
 const partialsPath = path.join(__dirname, './views/partials/');
 const templatesPath = path.join(__dirname, './views/templates/');
 
+
 app.set('view engine', 'hbs');
 app.set('views', viewPath);
+
+hbs.registerPartials(partialsPath)
 
 var myLogger = function (req, res, next) {
     console.log(req.method, req.url);
@@ -46,7 +48,7 @@ io.on('connection', (socket) => {
   socket.on('weather', (weather_data) => {
     console.log('weather_data received from client')
     weatherData = weather_data
-    io.emit('w', weather_data)
+    io.emit('w', weatherData)
   }) 
   
     socket.emit('test')

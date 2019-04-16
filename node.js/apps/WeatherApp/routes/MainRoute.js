@@ -5,4 +5,4 @@ mainRoute.get('/', (req, res) => {
     res.redner('index', {});
 })
 
-module.exports = mainRouter;
+module.exports = mainRoute;
