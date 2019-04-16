@@ -23,14 +23,20 @@ socket.on('w', (weatherData) =>  {
         Wind_Speed: weatherDataJson['weather']['wind']['speed'],
     }
 
+    weatherIcon = {
+        icon: weatherDataJson['weather']['weather']['icon']
+    }
+
     weatherhtml = Handlebars.templates['weather_info.hbs'](weatherObj)
     $('#weather-details').html(weatherhtml)
     
     cityhtml = Handlebars.templates['city_details.hbs'](cityObj)
     $('#city_details').html(cityhtml)
-
-    let icon = weatherDataJson['weather']['weather']['icon']
-    let iconPath = getWeatherIcon(icon)
+    
+    debugger;
+    var ico = getWeatherIcon(iconId)
+    iconHtml = Handlebars.templates['weather_icon.hbs'](weatherIcon)
+    $('#weather_icon').html(iconHtml)
 
 });
 

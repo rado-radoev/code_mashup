@@ -35,7 +35,9 @@ app.get('/', (req, res) => {
 });
 
 app.post('/weathericon', (req, res) => {
-    const name = req.body.name
+    const name = req.body
+    console.log(name)
+    var icon = getWeatherIcon('01d')
     res.send({icon});
 })
 
