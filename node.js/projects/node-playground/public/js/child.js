@@ -33,6 +33,22 @@ socket.on('w', (weatherData) =>  {
 $(function() {
     alert('hi')
     setInterval( upd , 10000)
+
+    let url = 'http://localhost:3000/test'
+
+    let data = {
+        endPoint: url
+    };
+
+    $.ajax({
+        url: url,
+        method: 'POST',
+        data: url,
+        dataType: 'json' 
+      }).done(function(response) {
+          console.log(typeof response)
+          console.log(response['message']);
+      });
 })
 
 function upd() {

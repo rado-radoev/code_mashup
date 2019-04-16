@@ -25,6 +25,12 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
 });
 
+app.post('/test', function(req, res) {
+  // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  //res.setHeader('Access-Control-Allow-Methods', 'POST');
+  res.send({ message: 'Hello World' });
+});
+
 io.on('connection', (socket) => {
   console.log('an user connected');
 
