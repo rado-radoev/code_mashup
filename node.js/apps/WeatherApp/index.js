@@ -1,5 +1,6 @@
 const express = require('express');
 const path    = require('path');
+const fs      = require('fs')
 const hbs     = require('hbs');
 
 var app     = express();
@@ -33,6 +34,11 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.post('/weathericon', (req, res) => {
+    const name = req.body.name
+    res.send({icon});
+})
+
 io.on('connection', (socket) => {
     console.log('user connected');
   
@@ -53,6 +59,20 @@ io.on('connection', (socket) => {
   
     socket.emit('test')
 });
+
+// get weather icons
+function displayWeatherIcon(iconId) {
+
+    let dir = path.join(__dirname, '/public/img/weather_icons')
+    var files = fs.readdirSync(dir);
+    for(var i in files){
+        if (!files.hasOwnProperty(i)) continue;
+        if (files[i].startsWith(iconId)) {
+            return dir +'/' +files[i]; 
+        }
+    }
+}
+
   
 http.listen(3000, function(){
     console.log('listening on *:3000');

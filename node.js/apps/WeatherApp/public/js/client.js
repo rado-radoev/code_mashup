@@ -28,6 +28,10 @@ socket.on('w', (weatherData) =>  {
     
     cityhtml = Handlebars.templates['city_details.hbs'](cityObj)
     $('#city_details').html(cityhtml)
+
+    let icon = weatherDataJson['weather']['weather']['icon']
+    let iconPath = getWeatherIcon(icon)
+
 });
 
 $(function() {
@@ -46,18 +50,24 @@ function getDate() {
     setInterval(date.toLocaleString(), 1000)
 }
 
-function displayWeatherIcon(weatherIconCode) {
-    fileList = [];
-    
-       var files = fs.readdirSync(dir);
-       for(var i in files){
-           if (!files.hasOwnProperty(i)) continue;
-           var name = dir+'/'+files[i];
-           if (!fs.statSync(name).isDirectory()){
-               fileList.push(name);
-           }
-       }
-       return fileList;
+function getWeatherIcon(iconId) {
+    let url = 'http://localhost:3000/weathericon'
+
+    let data = {
+        endPoint: url
+    }
+
+    $.ajax({
+        url,
+        method: 'POST',
+        data: {
+            url,
+            iconId
+        },
+        dataType: 'json'
+    }).done ((response) => {
+        return response
+    })
 }
 
 var clock = $('.clock').FlipClock({

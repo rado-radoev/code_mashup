@@ -43,7 +43,7 @@ $(function() {
     $.ajax({
         url: url,
         method: 'POST',
-        data: url,
+        data: data,
         dataType: 'json' 
       }).done(function(response) {
           console.log(typeof response)
