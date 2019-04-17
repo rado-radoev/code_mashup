@@ -33,10 +33,12 @@ socket.on('w', (weatherData) =>  {
     var ico = weatherDataJson['weather']['weather']['icon']
     $.get('/weathericon/' + ico, function(data) {
         var objSentFromSrv = JSON.parse(data);
-        console.log(objSentFromSrv)
+        var index = objSentFromSrv['icon'].indexOf('/img')
+        var modObjSentFromSrv = objSentFromSrv['icon'].substring(index)
+        console.log(modObjSentFromSrv)
 
         weatherIcon = {
-            icon: objSentFromSrv['icon']
+            icon: modObjSentFromSrv
         }
     
         iconHtml = Handlebars.templates['weather_icon.hbs'](weatherIcon)
