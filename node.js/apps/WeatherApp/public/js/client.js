@@ -23,20 +23,44 @@ socket.on('w', (weatherData) =>  {
         Wind_Speed: weatherDataJson['weather']['wind']['speed'],
     }
 
-    weatherIcon = {
-        icon: weatherDataJson['weather']['weather']['icon']
-    }
-
     weatherhtml = Handlebars.templates['weather_info.hbs'](weatherObj)
     $('#weather-details').html(weatherhtml)
     
     cityhtml = Handlebars.templates['city_details.hbs'](cityObj)
     $('#city_details').html(cityhtml)
     
-    debugger;
-    var ico = getWeatherIcon(iconId)
-    iconHtml = Handlebars.templates['weather_icon.hbs'](weatherIcon)
-    $('#weather_icon').html(iconHtml)
+    // debugger;
+    var ico = weatherDataJson['weather']['weather']['icon']
+    $.get('/weathericon/' + ico, function(data) {
+        var objSentFromSrv = JSON.parse(data);
+        console.log(objSentFromSrv)
+
+        weatherIcon = {
+            icon: objSentFromSrv['icon']
+        }
+    
+        iconHtml = Handlebars.templates['weather_icon.hbs'](weatherIcon)
+        $('#weather_icon').html(iconHtml)
+    });
+    // var request = $.ajax({
+    //     url: 'http://localhost:3000/weather' + ico,
+    //     data: {id: ico},
+    //     dataType: 'json'
+    // })
+
+    // var d = request.done((data) => {
+    //     console.log(data)
+    //     return data
+    // })
+
+    // console.log(d)
+
+    // weatherIcon = {
+    //     icon: iconPath['icon']
+    // }
+
+    // iconHtml = Handlebars.templates['weather_icon.hbs'](weatherIcon)
+    // $('#weather_icon').html(iconHtml)
 
 });
 
@@ -45,6 +69,7 @@ $(function() {
     upd()
     setInterval( upd , 10000)
     clock;
+    
 })
 
 function upd() {
@@ -56,25 +81,24 @@ function getDate() {
     setInterval(date.toLocaleString(), 1000)
 }
 
-function getWeatherIcon(iconId) {
-    let url = 'http://localhost:3000/weathericon'
+// function getWeatherIcon(iconId) {
+//     let url = 'http://localhost:3000/weathericon'
 
-    let data = {
-        endPoint: url
-    }
+//     let data = {
+//         endPoint: url
+//     }
 
-    $.ajax({
-        url,
-        method: 'POST',
-        data: {
-            url,
-            iconId
-        },
-        dataType: 'json'
-    }).done ((response) => {
-        return response
-    })
-}
+//     $.ajax({
+//         url,
+//         method: 'GET',
+//         data: {
+//             url
+//         },
+//         dataType: 'json'
+//     }).done ((response) => {
+//         return response
+//     })
+// }
 
 var clock = $('.clock').FlipClock({
     clockFace: 'TwelveHourClock',

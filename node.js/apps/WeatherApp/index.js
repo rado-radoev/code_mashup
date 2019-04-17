@@ -26,7 +26,7 @@ var myLogger = function (req, res, next) {
     next();
 }  
 
-
+app.use(express.json());
 app.use(express.static(path.join(__dirname, './public/')));
 app.use(myLogger);
 
@@ -34,12 +34,16 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.post('/weathericon', (req, res) => {
-    const name = req.body
-    console.log(name)
-    var icon = getWeatherIcon('01d')
-    res.send({icon});
+app.get('/weathericon/:id', (req, res) => {
+    let iconId = req.params.id;
+    var icon = displayWeatherIcon(iconId)
+    console.log(icon)
+    res.send(JSON.stringify({icon}));
 })
+
+app.post('/test', (req, res) => {
+    console.log(req.body);
+});
 
 io.on('connection', (socket) => {
     console.log('user connected');
