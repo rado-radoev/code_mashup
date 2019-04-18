@@ -3,7 +3,7 @@ const socket = io();
 // https://www.w3schools.com/jquery/jquery_ref_selectors.asp
 
 socket.on('test', () => {
-    console.log('testtttttt')
+    // console.log('testtttttt')
 });
 
 
@@ -31,24 +31,12 @@ socket.on('w', (weatherData) =>  {
 });
 
 $(function() {
-    alert('hi')
-    setInterval( upd , 10000)
+    //alert('hi')
+    //setInterval( upd , 10000)
 
-    let url = 'http://localhost:3000/test'
-
-    let data = {
-        endPoint: url
-    };
-
-    $.ajax({
-        url: url,
-        method: 'POST',
-        data: data,
-        dataType: 'json' 
-      }).done(function(response) {
-          console.log(typeof response)
-          console.log(response['message']);
-      });
+    var jqxr = $.post('http://localhost:3000/test', () => {
+        alert('success')
+    })
 })
 
 function upd() {

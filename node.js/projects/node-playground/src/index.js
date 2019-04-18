@@ -28,7 +28,7 @@ app.get('/', function(req, res){
 app.post('/test', function(req, res) {
   // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   //res.setHeader('Access-Control-Allow-Methods', 'POST');
-  res.send({ message: 'Hello World' });
+  console.log(req.body)
 });
 
 io.on('connection', (socket) => {
