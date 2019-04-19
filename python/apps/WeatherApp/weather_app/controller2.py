@@ -56,6 +56,7 @@ async def start_server():
 
 if __name__ == '__main__':
     loop.run_until_complete(start_server())
+    sys.stdout.flush()
 
 
 

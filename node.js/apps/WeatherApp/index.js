@@ -7,11 +7,14 @@ const spawn   = require("child_process").spawn
 var app     = express();
 var http    = require('http').Server(app);
 var io      = require('socket.io')(http);
-var {log}   = require('./routes/MainRoute');
-var {mainRoute} = require('./middleware/Logger');
+var { log }   = require('./routes/MainRoute');
+var { mainRoute } = require('./middleware/Logger');
 
 function launchPython() {
-    const pythonProcess = spawn('python',["utils/python/controller2"]);
+    const pythonProcess = spawn('python',["utils/python/controller2.py"]);
+    pythonProcess.stdout.on('data', (data) => {
+        console.log(data.toString())
+     });
 }
 
 launchPython()
@@ -61,7 +64,7 @@ app.get('/weathericon/:id', (req, res) => {
 
 // Post not used
 app.post('/test', (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
 });
 
 // Socket io, responsible for

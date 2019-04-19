@@ -35,7 +35,8 @@ socket.on('w', (weatherData) =>  {
     
     cityhtml = Handlebars.templates['city_details.hbs'](cityObj)
     $('#city_details').html(cityhtml)
-    
+
+   
     // debugger;
     // Get relative path for weather icon
     var ico = weatherDataJson['weather']['weather']['icon']
@@ -58,12 +59,29 @@ socket.on('w', (weatherData) =>  {
 // On document load
 $(function() {
     //alert('hiiiiiiiiiiii')
+    geoFindMe()
+        .then((position) => {
+        console.log(position);
+        locObj = {
+            Longitude: position.longitude,
+            Latitude: position.latitude
+        }
+        console.log(locObj)
+        lochtml = Handlebars.templates['coords.hbs'](locObj)
+        $('#weather-details').html(lochtml)
+        
+        })
+        .catch((err) => {
+        console.error(err.message);
+        });
     upd()
+    
     setInterval( upd , 600000)
     clock;
 
     // PUll new weather from the interenet
-    socket.emit('pull_new_weather')
+    socket.emit('pull_new_weather')  
+
     
 })
 
@@ -82,4 +100,50 @@ var clock = $('.clock').FlipClock({
     clockFace: 'TwelveHourClock',
     showSeconds: false
 });
+
+// Doing a post request. Copied from POSTMAN (best tool ever)
+function sendLocation(lng, lat) {
+    var data = JSON.stringify({
+        "longitude": lng,
+        "latitude": lat
+      });
+      
+      var xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
+      
+      xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+          console.log(this.responseText);
+        }
+      });
+      
+      xhr.open("POST", "/test");
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.setRequestHeader("cache-control", "no-cache");
+      
+      xhr.send(data);
+}
+
+function geoFindMe() {
+    
+   function success(position) {
+     const latitude  = position.coords.latitude;
+     const longitude = position.coords.longitude;
+     sendLocation(longitude, latitude)
+   }
+ 
+   function error() {
+     console.error('Unable to retrieve your location');
+   }
+ 
+   if (!navigator.geolocation) {
+     console.error('Geolocation is not supported by your browser');
+   } else {
+    //  console.log('Locating…');
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(success, error);
+    })
+     
+   }
+ }
  

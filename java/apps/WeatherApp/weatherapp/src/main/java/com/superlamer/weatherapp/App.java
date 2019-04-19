@@ -33,26 +33,26 @@ public class App
 			e.printStackTrace();
 		}
  	
-    	Long id = 5391811L;
-    	City sd = new CityParser().findCityById(id, new File("/tmp/city.list.json"));
+//    	Long id = 5391811L;
+//    	City sd = new CityParser().findCityById(id, new File("/tmp/city.list.json"));
 //    	City sd = CityParser.findCityByName("San Diego", new File("/tmp/city.list.json"));
     	
-    	Database monDb = new Database();
+//    	Database monDb = new Database();
     	//Document doc = monDb.toDocument(sd);
     	//boolean added = monDb.addNewDBEntry(doc);
     	//Log.log().info(added);
 
     	
-    	String weatherJson =  new WeatherQuery().queryWeatherById(id);
-    	System.out.println(weatherJson);
-    	Weather weather = new Gson().fromJson(weatherJson, Weather.class);
-    	System.out.println(weather);
+//    	String weatherJson =  new WeatherQuery().queryWeatherById(id);
+//    	System.out.println(weatherJson);
+//    	Weather weather = new Gson().fromJson(weatherJson, Weather.class);
+//    	System.out.println(weather);
 //    	System.out.println(js);
     	
-    	Document wetDoc = new Document("city", sd.toDocument())
-    							.append("weather", weather.toDocument());
-    	boolean weatherinfoAdded = monDb.addNewDBEntry(wetDoc);
-    	System.out.println(weatherinfoAdded);
+//    	Document wetDoc = new Document("city", sd.toDocument())
+//    							.append("weather", weather.toDocument());
+//    	boolean weatherinfoAdded = monDb.addNewDBEntry(wetDoc);
+//    	System.out.println(weatherinfoAdded);
     	
 //    	Document retrievedDoc = monDb.findFirstDocument();
 //    	Log.log().info(monDb.convertDocumentToJSON(retrievedDoc));

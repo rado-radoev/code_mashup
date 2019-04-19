@@ -14,7 +14,8 @@ var myLogger = function (req, res, next) {
   next()
 }
 
-app.use(myLogger)
+app.use(express.json())
+// app.use(myLogger)
 app.use(express.static(path.join(__dirname, '../public')))
 
 app.set('view engine', 'hbs')
@@ -22,10 +23,15 @@ app.set('views', path.join(__dirname, '../public/views/'))
 
 app.get('/', function(req, res){
     console.log(__dirname)
-  res.sendFile(__dirname + '/index.html');
+  //res.sendFile(__dirname + '/index.html');
+  res.render(__dirname + '/index.html', {
+    Latitude: 100,
+    Longitude: 200
+  })
 });
 
 app.post('/test', function(req, res) {
+  // res.send("testing")
   // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   //res.setHeader('Access-Control-Allow-Methods', 'POST');
   console.log(req.body)
