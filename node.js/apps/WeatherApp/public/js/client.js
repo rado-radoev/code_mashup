@@ -1,18 +1,5 @@
 const socket = io();
 
-// On document load
-$(function() {
-    //alert('hiiiiiiiiiiii')
-    geoFindMe()
-    upd()
-    
-    setInterval( [upd, geoFindMe] , 600000)
-    clock;
-
-    // PUll new weather from the interenet
-    socket.emit('pull_new_weather')  
-})
-
 // https://www.w3schools.com/jquery/jquery_ref_selectors.asp
 
 // Unused
@@ -126,17 +113,29 @@ function geoFindMe() {
     $('#coords').html(lochtml)
    }
  
-   function error() {
+   function error(e) {
      console.error('Unable to retrieve your location');
+     console.error(e)
    }
  
    if (!navigator.geolocation) {
      console.error('Geolocation is not supported by your browser');
    } else {
     //  console.log('Locating…');
-    return new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(success, error);
-    })
+      navigator.geolocation.getCurrentPosition(success, error);
    }
  }
  
+
+ // On document load
+$(function() {
+  //alert('hiiiiiiiiiiii')
+  geoFindMe()
+  upd()
+  
+  setInterval( [upd, geoFindMe] , 600000)
+  clock;
+
+  // PUll new weather from the interenet
+  socket.emit('pull_new_weather')  
+})

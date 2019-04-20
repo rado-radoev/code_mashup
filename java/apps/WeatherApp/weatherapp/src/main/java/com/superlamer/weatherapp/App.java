@@ -40,7 +40,7 @@ public class App
 //    	Weather weather = new Gson().fromJson(weatherJson, Weather.class);
 //    	System.out.println(weather);
 //    	System.out.println(js);
-    	
+//    	
 //    	Document wetDoc = new Document("city", sd.toDocument())
 //    							.append("weather", weather.toDocument());
 //    	boolean weatherinfoAdded = monDb.addNewDBEntry(wetDoc);

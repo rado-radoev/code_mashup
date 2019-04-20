@@ -86,6 +86,7 @@ public class PythonEntryPoint  {
 	 * @return BSON with latest weather data
 	 */
 	public Document getUpdatedWeather() {
+		System.out.println("java updating weather");
     	City sd = getCity(id);
     	String weatherJson =  new WeatherQuery().queryWeatherById(id);
     	System.out.println(weatherJson);

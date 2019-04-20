@@ -69,6 +69,7 @@ public class WeatherQuery {
 			  .queryParam("units", "metric");
 		
 		WebTarget target = client.target(uriBuilder);
+		System.out.println(uriBuilder.toString());
 		
 		Invocation.Builder reqBuilder = target.request();
 		
