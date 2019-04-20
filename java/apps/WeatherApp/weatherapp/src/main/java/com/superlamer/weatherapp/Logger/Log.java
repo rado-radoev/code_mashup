@@ -11,6 +11,7 @@ public class Log {
 	public static Logger log() {
 		if (logger == null) {
 			logger = LogManager.getLogger();
+			
 		}
 		return logger;
 	}

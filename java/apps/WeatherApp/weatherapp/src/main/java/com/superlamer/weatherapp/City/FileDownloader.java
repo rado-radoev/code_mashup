@@ -9,7 +9,7 @@ import java.util.Map;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.SystemUtils;
 
-import com.superlamer.weatherapp.Logger.Log;
+//import com.superlamer.weatherapp.Logger.Log;
 
 public class FileDownloader {
 	
@@ -58,13 +58,13 @@ public class FileDownloader {
 		File destination = new File(String.format("%s/%s", tempFolder, fileName));
 		
 		try {
-			Log.log().info("Copying file now.");
+//			Log.log().info("Copying file now.");
 			FileUtils.copyURLToFile(url, destination, 5000, 10000);
 			fileDownlaoded = true;
 			return fileDownlaoded;
 		} catch (IOException ioe) {
-			Log.log().error("Could not copy JSON file");
-			Log.log().error(ioe.getMessage());
+//			Log.log().error("Could not copy JSON file");
+//			Log.log().error(ioe.getMessage());
 			return fileDownlaoded;
 		}
 	}

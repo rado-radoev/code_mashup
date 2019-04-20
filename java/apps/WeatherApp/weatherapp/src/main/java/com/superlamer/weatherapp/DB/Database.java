@@ -14,7 +14,7 @@ import com.mongodb.client.model.CreateCollectionOptions;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.ValidationOptions;
 
-import com.superlamer.weatherapp.Logger.Log;
+//import com.superlamer.weatherapp.Logger.Log;
 import com.superlamer.weatherapp.properties.PropertiesReader;
 
 public class Database {
@@ -63,7 +63,7 @@ public class Database {
 			}
 			collExits = null;	
 		} catch (MongoCommandException mce) {
-			Log.log().error(mce.getMessage());
+//			Log.log().error(mce.getMessage());
 		}
 	
 		this.mongoCollection = database.getCollection(mongoCollName);

@@ -48,31 +48,31 @@ public class CityParser {
 					if (_cityName.isPresent() && _country.isPresent()) {
 						if (tempCity.getName().equals(_cityName.get()) &&
 								tempCity.getCountry().equals(_country.get())) {
-							Log.log().info(String.format("Found city: " + tempCity.toString()));
+//							Log.log().info(String.format("Found city: " + tempCity.toString()));
 							return tempCity;
 						}
 					}
 					 // check by city name and county
 					 else if (_cityName.isPresent()) {
 							if (tempCity.getName().equals(_cityName.get())) {
-								Log.log().info(String.format("Found city: " + tempCity.toString()));
+//								Log.log().info(String.format("Found city: " + tempCity.toString()));
 								return tempCity;
 							}
 						}
 					// check by id
 					else if (_id.isPresent()) {
 						if (tempCity.getId() == _id.get()) {
-							Log.log().info(String.format("Found city: " + tempCity.toString()));
+//							Log.log().info(String.format("Found city: " + tempCity.toString()));
 							return tempCity;
 						}
 					}
 					else {
-						Log.log().error("Wrong parameters provided");
+//						Log.log().error("Wrong parameters provided");
 					}
 					
 				}
 			} catch (Exception e) {
-				Log.log().error(e.getMessage());
+//				Log.log().error(e.getMessage());
 			}
 			
 			return tempCity;
