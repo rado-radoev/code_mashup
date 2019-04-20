@@ -1,5 +1,18 @@
 const socket = io();
 
+// On document load
+$(function() {
+    //alert('hiiiiiiiiiiii')
+    geoFindMe()
+    upd()
+    
+    setInterval( [upd, geoFindMe] , 600000)
+    clock;
+
+    // PUll new weather from the interenet
+    socket.emit('pull_new_weather')  
+})
+
 // https://www.w3schools.com/jquery/jquery_ref_selectors.asp
 
 // Unused
@@ -56,18 +69,7 @@ socket.on('w', (weatherData) =>  {
     });
 });
 
-// On document load
-$(function() {
-    //alert('hiiiiiiiiiiii')
-    geoFindMe()
-    upd()
-    
-    setInterval( upd , 600000)
-    clock;
 
-    // PUll new weather from the interenet
-    socket.emit('pull_new_weather')  
-})
 
 // Request weather update from python
 function upd() {
@@ -116,8 +118,8 @@ function geoFindMe() {
      //sendLocation(longitude, latitude)
 
      locObj = {
-        Longitude: longitude,
-        Latitude: latitude
+        Longitude: longitude.toFixed(6),
+        Latitude: latitude.toFixed(6)
     }
     // console.log(locObj)
     lochtml = Handlebars.templates['coords.hbs'](locObj)
@@ -135,7 +137,6 @@ function geoFindMe() {
     return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(success, error);
     })
-     
    }
  }
  
