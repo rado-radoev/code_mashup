@@ -62,6 +62,7 @@ app.get('/weathericon/:id', (req, res) => {
     res.send(JSON.stringify({icon}));
 })
 
+
 // Post not used
 app.post('/test', (req, res) => {
     // console.log(req.body);

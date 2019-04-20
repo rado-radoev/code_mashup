@@ -60,20 +60,6 @@ socket.on('w', (weatherData) =>  {
 $(function() {
     //alert('hiiiiiiiiiiii')
     geoFindMe()
-        .then((position) => {
-        console.log(position);
-        locObj = {
-            Longitude: position.longitude,
-            Latitude: position.latitude
-        }
-        console.log(locObj)
-        lochtml = Handlebars.templates['coords.hbs'](locObj)
-        $('#weather-details').html(lochtml)
-        
-        })
-        .catch((err) => {
-        console.error(err.message);
-        });
     upd()
     
     setInterval( upd , 600000)
@@ -81,8 +67,6 @@ $(function() {
 
     // PUll new weather from the interenet
     socket.emit('pull_new_weather')  
-
-    
 })
 
 // Request weather update from python
@@ -129,7 +113,15 @@ function geoFindMe() {
    function success(position) {
      const latitude  = position.coords.latitude;
      const longitude = position.coords.longitude;
-     sendLocation(longitude, latitude)
+     //sendLocation(longitude, latitude)
+
+     locObj = {
+        Longitude: longitude,
+        Latitude: latitude
+    }
+    // console.log(locObj)
+    lochtml = Handlebars.templates['coords.hbs'](locObj)
+    $('#coords').html(lochtml)
    }
  
    function error() {

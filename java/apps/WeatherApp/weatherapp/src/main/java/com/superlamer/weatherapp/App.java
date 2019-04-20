@@ -1,21 +1,13 @@
 package com.superlamer.weatherapp;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
-import org.bson.Document;
 
-import com.google.gson.Gson;
-import com.superlamer.weatherapp.City.City;
-import com.superlamer.weatherapp.City.CityParser;
 import com.superlamer.weatherapp.City.FileDownloader;
-import com.superlamer.weatherapp.DB.Database;
 import com.superlamer.weatherapp.python.PythonEntryPoint;
-import com.superlamer.weatherapp.weather.Weather;
-import com.superlamer.weatherapp.weather.WeatherQuery;
 
 import py4j.GatewayServer;
 
