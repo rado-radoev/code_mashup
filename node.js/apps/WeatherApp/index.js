@@ -17,6 +17,19 @@ function launchPython() {
      });
 }
 
+function launchJava() {
+    var exec = require('child_process').exec, child;
+    child = exec('java -jar /Users/superlamer/GitHub/code_mashup/node.js/apps/WeatherApp/utils/java/weather.jar',
+    function (error, stdout, stderr){
+    console.log('stdout: ' + stdout);
+    console.log('stderr: ' + stderr);
+    if(error !== null){
+    console.log('exec error: ' + error);
+    }
+    });
+}
+
+launchJava()
 launchPython()
 
 // Default applicaiton port
