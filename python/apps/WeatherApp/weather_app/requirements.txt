@@ -2,3 +2,6 @@
 aiohttp
 py4j
 python-socketio
+pymongo
+pymongo[srv]
+pymongo[tls]

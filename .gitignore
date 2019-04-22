@@ -196,6 +196,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Configuration INI files
+properties.ini
 -----   END PYTHON  ------/
 
 
