@@ -198,8 +198,7 @@ dmypy.json
 .pyre/
 
 # Configuration INI files
-properties.ini
-*.ini
+/python/apps/WeatherApp/weather_app/PiWeather/properties.ini
 -----   END PYTHON  ------/
 
 
