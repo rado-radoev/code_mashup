@@ -5,3 +5,4 @@ python-socketio
 pymongo
 pymongo[srv]
 pymongo[tls]
+mongoengine
