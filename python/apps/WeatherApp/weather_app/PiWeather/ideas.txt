@@ -1,0 +1,13 @@
+Ideas:
+
+1. Get indoor temp and humidity and display them on the webpage
+2. blink the led of course
+3. use the motion sensor to activate raspbery pi screen when motion is detected
+https://raspberrypi.stackexchange.com/questions/46225/adjusting-the-brightness-of-the-official-touchscreen-display
+4. May be also use the light sensor !!!
+5. if time of day is after 1 AM and if there is a light sensor, if motion is detected
+   turn on the screen with white background (probably a webpage) and turn on full brighteness
+
+   If no motion is detected for a minute turn it off
+
+
