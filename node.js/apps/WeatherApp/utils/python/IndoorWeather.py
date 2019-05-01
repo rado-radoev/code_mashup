@@ -8,10 +8,11 @@ class IndoorWeather(Weather):
     def indoor_to_json(self):
         return json.dumps({temp: self.temperature, humidity: self.humidity})
 
-    # create new socket io client
-    # get time by running the py script
-    # need to run a script and get output
-    # upon data received shoudl emit socket io
-    # with temp and humidity
-    #
-    
+
+'''
+Java 
+    Execute code on raspberry pi
+    wait for inpput
+    pass output to python controller
+    python controller send output to node
+'''

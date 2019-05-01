@@ -8,6 +8,7 @@ sio = socketio.AsyncClient()
 
 def connect_gateway():
     gateway = _JavaGateway()
+    gateway.entry_point.getMonDb().setMongoCollection("Weather", "Cities")
     return gateway
 
 def get_weather():

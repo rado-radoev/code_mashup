@@ -19,7 +19,8 @@ public class PythonEntryPoint  {
 	private City city;
 	
 	public PythonEntryPoint( ) {	
-		//weatherDocument = monDb.findLastDocument();	
+		//weatherDocument = monDb.findLastDocument();
+		//monDb.setMongoCollection("Weather", "Cities");
 	}
 
 	/**
@@ -81,6 +82,10 @@ public class PythonEntryPoint  {
 		return new CityParser().findCityById(id, new File("/tmp/city.list.json"));
 	}
 	
+	public Database getMonDb() {
+		return monDb;
+	}
+
 	/**
 	 * Get latest date form Open Weather
 	 * @return BSON with latest weather data

@@ -26,7 +26,7 @@ public class Database {
 	public Database () {
 		if (mongoClient == null) {
 			setMongoClient();
-			setMongoCollection("Weather", "Cities");
+			//setMongoCollection("Weather", "Cities");
 		}
 	}
 	
@@ -42,7 +42,7 @@ public class Database {
 		return mongoCollection;
 	}
 	
-	private final void setMongoCollection(String mongoDBName, String mongoCollName) {
+	public final void setMongoCollection(String mongoDBName, String mongoCollName) {
 		database = getMongoClient().getDatabase(mongoDBName);		
 		
 		try {
@@ -51,7 +51,7 @@ public class Database {
 								Filters.type("citi", "object"),
 								Filters.exists("temp_max"),
 								Filters.regex("country", "^[A-Za-z]{2,3}$"),
-								Filters.type("weter", "object")));
+								Filters.type("weather", "object")));
 			
 //			collOptions.validationAction(ValidationAction.WARN);
 //			collOptions.validationLevel(ValidationLevel.OFF);
