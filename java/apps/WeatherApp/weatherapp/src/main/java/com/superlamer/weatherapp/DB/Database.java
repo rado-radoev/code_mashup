@@ -42,7 +42,22 @@ public class Database {
 		return mongoCollection;
 	}
 	
-	public final void setMongoCollection(String mongoDBName, String mongoCollName) {
+	public void setMongoCollection(String mongoDBName, String mongoCollName) {
+		if (mongoCollName.equalsIgnoreCase("cities")) {
+			setMongoCityCollection(mongoDBName, mongoCollName);
+		}
+		else {
+			MongoCollection<Document> collExits = database.getCollection(mongoCollName);
+			if (collExits == null) {
+				database.createCollection(mongoCollName);
+			}
+			collExits = null;
+			
+			this.mongoCollection = database.getCollection(mongoCollName);
+		}
+	}
+	
+	private final void setMongoCityCollection(String mongoDBName, String mongoCollName) {
 		database = getMongoClient().getDatabase(mongoDBName);		
 		
 		try {

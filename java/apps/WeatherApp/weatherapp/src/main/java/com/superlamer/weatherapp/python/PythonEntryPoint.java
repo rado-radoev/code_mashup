@@ -5,6 +5,7 @@ import java.io.File;
 import org.bson.Document;
 
 import com.superlamer.weatherapp.DB.Database;
+import com.superlamer.weatherapp.weather.IndoorWeather;
 import com.superlamer.weatherapp.weather.Weather;
 import com.superlamer.weatherapp.weather.WeatherQuery;
 import com.google.gson.Gson;
@@ -104,6 +105,17 @@ public class PythonEntryPoint  {
     	System.out.println(weatherinfoAdded);
     	
     	return getLastDocument();
+	}
+	
+	public Document getUpdatedIndoorIndexes() {
+		System.out.println("Java requesting indoor index");
+		return new Document();
+		
+	}
+	
+	public boolean setIndoorIndexes(String indoorIndexes) {
+		System.out.println(indoorIndexes);
+		return true;
 	}
 	
 }
