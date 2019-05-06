@@ -2,6 +2,7 @@ import socket, sys
 from threading import Thread
 from time import sleep
 import schedule
+import json
 
 host = ''
 port = 8888
@@ -44,10 +45,12 @@ def clientthread(conn):
         #conn.sendall(data)
 
         data = conn.recv(1024)
-        reply = 'OK.' + data.decode()
+        reply = data.decode()
+        j = json.dumps(reply)
         if not data:
             break
-        print(reply)
+        o = json.loads(j)
+        print(o['temp'])
 
     conn.close()
 
