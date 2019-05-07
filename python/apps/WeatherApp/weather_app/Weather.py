@@ -7,5 +7,3 @@ class Weather:
 
     def __str__(self):
         return f"Temp: {self.temperature}, Humidity: {self.humidity}"
-
-

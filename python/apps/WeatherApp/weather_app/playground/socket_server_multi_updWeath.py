@@ -1,8 +1,9 @@
 import socket, sys
 from threading import Thread
 from time import sleep
-import schedule
 import json
+import pickle
+import schedule
 
 host = ''
 port = 8888
@@ -32,7 +33,24 @@ def weather_update_request(conn):
     upd_message = 'UPD'
     print('Sending ' + upd_message)
 
-    conn.send(upd_message.encode())
+    conn.sendall(upd_message.encode())
+
+def clientthread2(conn):
+    schedule.every(1).seconds.do(weather_update_request, conn)
+    while True:
+        sleep(3)
+        schedule.run_pending()
+
+        data = conn.recv(1024)
+        if not data:
+            break
+        else:
+            reply = pickle.loads(data)
+            print(f"Temp: {(reply['temp']): .2f}")
+            print(f"Humidity: {(reply['humid']): .2f}")
+            #conn.sendall(data)
+    
+    conn.close()
 
 def clientthread(conn):
     welcome_message = 'Welcome to the server. Update my weather now'
@@ -46,11 +64,9 @@ def clientthread(conn):
 
         data = conn.recv(1024)
         reply = data.decode()
-        j = json.dumps(reply)
         if not data:
             break
-        o = json.loads(j)
-        print(o['temp'])
+        print (reply)
 
     conn.close()
 
@@ -71,7 +87,7 @@ def clientthread1(conn):
 while True:
     conn, addr = s.accept()
     print('Connected with ' + addr[0] + ':' + str(addr[1]))
-    th = Thread(target = clientthread,  args = (conn,))
+    th = Thread(target = clientthread2,  args = (conn,))
     th.start()
 
 s.close(0)
