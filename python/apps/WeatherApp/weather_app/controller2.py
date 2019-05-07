@@ -26,6 +26,12 @@ def request_updated_weather(id):
     weather_data_json = gateway.entry_point.convertDocToJson(weather_data)
     return weather_data_json
 
+def get_new_indoor_data():
+    pass
+
+def update_indoor_data(data):
+    pass
+
 @sio.on('connect')
 async def on_connect():
     print('Connected to server')
