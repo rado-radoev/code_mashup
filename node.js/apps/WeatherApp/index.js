@@ -29,8 +29,8 @@ function launchJava() {
     });
 }
 
-// launchJava()
-launchPython()
+//launchJava()
+//launchPython()
 
 // Default applicaiton port
 const port = 3000;
@@ -102,6 +102,17 @@ io.on('connection', (socket) => {
     // Request weather updat from Python
     socket.emit('update_weather', ()  => {
       console.log('requesting weather update')
+  })
+
+  socket.on('update_indoor_data', () => {
+    console.log('node server requsting indoor data')
+    io.emit('new_indoor_data')
+  })
+
+  socket.on('update_indoor' ,(indoor_data) => {
+      console.log('in server update_indoor')
+      console.log('indoor_data: ', indoor_data)
+      socket.broadcast.emit('indoor', indoor_data)
   })
   
   // Weather data received

@@ -1,10 +1,11 @@
-import asyncio, socketio, json, sys
+import asyncio, socketio, json, sys, socket
 from py4j.java_gateway import JavaGateway
 from java_gateway import _JavaGateway
 
 # https://github.com/miguelgrinberg/python-socketio/blob/master/examples/client/asyncio/latency_client.py
 loop = asyncio.get_event_loop()
 sio = socketio.AsyncClient()
+global indoor
 
 def connect_gateway():
     gateway = _JavaGateway()
@@ -26,11 +27,13 @@ def request_updated_weather(id):
     weather_data_json = gateway.entry_point.convertDocToJson(weather_data)
     return weather_data_json
 
-def get_new_indoor_data():
-    pass
 
 def update_indoor_data(data):
-    pass
+    if data:
+        data_to_str = json.dumps(data)
+        data_to_json = json.loads(data_to_str)
+        indoor = data_to_json
+       
 
 @sio.on('connect')
 async def on_connect():
@@ -55,6 +58,14 @@ async def on_update_weather():
 async def on_pull_new_weather(id):
     weather = request_updated_weather(id)
     await sio.emit('weather', weather)
+
+@sio.on('update_indoor_data')
+async def on_update_indoor_data():
+    print('Indoor data requested')
+    if not indoor:
+        indoor = -999
+    await sio.emit('update_indoor', indoor)
+    
 
 async def start_server():
     await sio.connect('http://localhost:3000')

@@ -4,6 +4,7 @@ from time import sleep
 import json
 import pickle
 import schedule
+import functools
 
 host = ''
 port = 8888

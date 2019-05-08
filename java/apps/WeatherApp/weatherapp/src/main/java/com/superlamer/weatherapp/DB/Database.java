@@ -26,7 +26,7 @@ public class Database {
 	public Database () {
 		if (mongoClient == null) {
 			setMongoClient();
-			//setMongoCollection("Weather", "Cities");
+			setMongoCollection("Weather", "Cities");
 		}
 	}
 	

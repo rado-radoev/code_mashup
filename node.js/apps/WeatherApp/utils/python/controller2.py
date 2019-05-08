@@ -5,6 +5,7 @@ from java_gateway import _JavaGateway
 # https://github.com/miguelgrinberg/python-socketio/blob/master/examples/client/asyncio/latency_client.py
 loop = asyncio.get_event_loop()
 sio = socketio.AsyncClient()
+indoor = None
 
 def connect_gateway():
     gateway = _JavaGateway()
@@ -25,6 +26,23 @@ def request_updated_weather(id):
     weather_data = gateway.entry_point.getUpdatedWeather()
     weather_data_json = gateway.entry_point.convertDocToJson(weather_data)
     return weather_data_json
+
+def update_indoor_data(data):
+    print('data received from raspberry: ', data)
+    global indoor
+
+    if not data:
+        indoor = -999
+    else:
+        data_to_str = json.dumps(data)
+        data_to_json = json.loads(data_to_str)
+        indoor  = data_to_json
+        #print('json converted data: ', indoor)
+        print('indoor is now', indoor)
+
+def get_indoor():
+    global indoor
+    return indoor
 
 @sio.on('connect')
 async def on_connect():
@@ -49,6 +67,13 @@ async def on_update_weather():
 async def on_pull_new_weather(id):
     weather = request_updated_weather(id)
     await sio.emit('weather', weather)
+
+@sio.on('new_indoor_data')
+async def on_new_indoor_data():
+    a =  get_indoor()
+    print('Indoor data requested')
+    print(f'sending {a} to web client')
+    await sio.emit('update_indoor', a)
 
 async def start_server():
     await sio.connect('http://localhost:3000')

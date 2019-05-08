@@ -20,8 +20,8 @@ public class PythonEntryPoint  {
 	private City city;
 	
 	public PythonEntryPoint( ) {	
-		//weatherDocument = monDb.findLastDocument();
-		//monDb.setMongoCollection("Weather", "Cities");
+		weatherDocument = monDb.findLastDocument();
+		monDb.setMongoCollection("Weather", "Cities");
 	}
 
 	/**

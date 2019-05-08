@@ -29,16 +29,18 @@ def weather_update_request(conn):
     conn.sendall(upd_message.encode())
 
 def client_thread(conn):
-    schedule.every(1).seconds.do(weather_update_request, conn)
+    #schedule.every(1).seconds.do(weather_update_request, conn)
     
     while True:
-        schedule.run_pending()
-
+        #schedule.run_pending()
+        sleep(2)
+        weather_update_request(conn)
         data = conn.recv(1024)
         if not data:
             break
         else:
             reply = pickle.loads(data)
+            #print('sending data to contorller')
             update_indoor_data(reply)
             # print(f"Temp: {(reply['temp']): .2f}")
             # print(f"Humidity: {(reply['humid']): .2f}")
