@@ -41,7 +41,9 @@ def update_indoor_data(data):
         print('indoor is now', indoor)
 
 def get_indoor():
+    print('getting indoor')
     global indoor
+    print('global indoor is', indoor)
     return indoor
 
 @sio.on('connect')

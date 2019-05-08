@@ -1,6 +1,6 @@
 from Weather import Weather
 from threading import Thread
-from controller2 import update_indoor_data
+from controller2 import *
 from time import sleep
 import pickle, socket, json
 import schedule
@@ -42,16 +42,18 @@ def client_thread(conn):
             reply = pickle.loads(data)
             #print('sending data to contorller')
             update_indoor_data(reply)
+            print(controller2.indoor)
             # print(f"Temp: {(reply['temp']): .2f}")
             # print(f"Humidity: {(reply['humid']): .2f}")
             #conn.sendall(data)
     
     conn.close()
 
-while True:
-    conn, addr = srv.accept()
-    print(f'Connected with {addr[0]} : {str(addr[1])}')
-    th = Thread(target=client_thread, args=(conn,))
-    th.start()
+if __name__ == '__main__':
+    while True:
+        conn, addr = srv.accept()
+        print(f'Connected with {addr[0]} : {str(addr[1])}')
+        th = Thread(target=client_thread, args=(conn,))
+        th.start()
 
-srv.close()
+    srv.close()
