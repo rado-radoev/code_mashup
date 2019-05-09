@@ -110,11 +110,11 @@ io.on('connection', (socket) => {
   })
 
   socket.on('update_indoor' ,(indoor_data) => {
-      console.log('in server update_indoor')
-      console.log('indoor_data: ', indoor_data)
-      socket.broadcast.emit('indoor', indoor_data)
-  })
-  
+    console.log('in server update_indoor')
+    console.log('indoor_data: ', indoor_data)
+    io.emit('indoor', indoor_data)
+})
+
   // Weather data received
   socket.on('weather', (weather_data) => {
     console.log('weather_data received from client')
@@ -127,6 +127,8 @@ io.on('connection', (socket) => {
     // Unused emdt
     // socket.emit('test')
 });
+
+
 
 // get weather icons
 function displayWeatherIcon(iconId) {

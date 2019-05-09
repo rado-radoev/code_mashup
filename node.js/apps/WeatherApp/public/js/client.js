@@ -58,7 +58,6 @@ socket.on('w', (weatherData) =>  {
 
 socket.on('indoor', (data) => {
   console.log(data)
-
 })
 
 // Request weather update from python
@@ -141,8 +140,4 @@ $(function() {
 
   // PUll new weather from the interenet
   socket.emit('pull_new_weather')  
-
-  // PULL new indoor data
-  console.log('requesting indoor data')
-  socket.emit('update_indoor_data')
 })

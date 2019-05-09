@@ -1,13 +1,12 @@
 from Weather import Weather
 from threading import Thread
-from controller2 import *
+from controller3 import update_indoor_data, on_new_indoor_data
 from time import sleep
-import pickle, socket, json
+import pickle, socket, json, socketio
 import schedule
 
 class Indoors(Weather):
     pass
-
 
 HOST = '0.0.0.0'
 PORT = 8888
@@ -40,9 +39,8 @@ def client_thread(conn):
             break
         else:
             reply = pickle.loads(data)
-            #print('sending data to contorller')
+            print('sending data to contorller')
             update_indoor_data(reply)
-            print(controller2.indoor)
             # print(f"Temp: {(reply['temp']): .2f}")
             # print(f"Humidity: {(reply['humid']): .2f}")
             #conn.sendall(data)
