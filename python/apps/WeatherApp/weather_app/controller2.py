@@ -1,10 +1,12 @@
 import asyncio, socketio, json, sys, socket
 from py4j.java_gateway import JavaGateway
 from java_gateway import _JavaGateway
+from threading import Thread
+import socket, pickle
 
 # https://github.com/miguelgrinberg/python-socketio/blob/master/examples/client/asyncio/latency_client.py
 loop = asyncio.get_event_loop()
-sio = socketio.AsyncClient()
+sio = socketio.Client()
 global indoor
 
 def connect_gateway():
@@ -36,44 +38,63 @@ def update_indoor_data(data):
        
 
 @sio.on('connect')
-async def on_connect():
+def on_connect():
     print('Connected to server')
 
 @sio.on('disconnect')
-async def on_disconnect():
+def on_disconnect():
     print('Disconnected from server')
 
 @sio.on('weather_data')
-async def on_weather_data():
+def on_weather_data():
     print('in weather_data')
     weather = get_weather()
-    await sio.emit('weather', weather)
+    sio.emit('weather', weather)
 
 @sio.on('update_weather')
-async def on_update_weather():
+def on_update_weather():
     print('in update_weather')
-    await on_weather_data()
+    on_weather_data()
 
 @sio.on('pull_new_weather')
-async def on_pull_new_weather(id):
+def on_pull_new_weather(id):
     weather = request_updated_weather(id)
-    await sio.emit('weather', weather)
+    sio.emit('weather', weather)
 
 @sio.on('update_indoor_data')
-async def on_update_indoor_data():
+def on_update_indoor_data():
     print('Indoor data requested')
     if not indoor:
         indoor = -999
-    await sio.emit('update_indoor', indoor)
+    sio.emit('update_indoor', indoor)
     
 
-async def start_server():
-    await sio.connect('http://localhost:3000')
-    await sio.wait()
+def start_server():
+    print('Started socket io client')
+    sio.connect('http://localhost:3000')
+    sio.wait()
+
+def socket_client():
+    HOST = '0.0.0.0'
+    PORT = 8888
+
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.connect((HOST, PORT))
+        s.send('req'.encode())
+        data = s.recv(1024)
+        print(pickle.loads(data))
 
 
 if __name__ == '__main__':
-    loop.run_until_complete(start_server())
+    threads = [Thread(target=start_server), Thread(target=socket_client)]
+    for t in threads:
+        t.daemon = True
+        t.start()
+    for t in threads:
+        t.join()
+   
+    
+    # loop.run_until_complete(start_server())
     sys.stdout.flush()
 
 

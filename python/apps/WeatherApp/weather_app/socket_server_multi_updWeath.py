@@ -29,8 +29,19 @@ s.listen(10)
 
 print('Socket is ready')
 
-def pp():
-    print(tem_hum)
+def pp(conn):
+    print('in pp func')
+    while True:
+        sleep(1)
+        data = conn.recv(1024)
+        if data:
+            print('data received')
+            msg = pickle.loads(data)
+            print('unpacked')
+            if data == 'req':
+                print('data is reqeusted')
+                conn.sendall(pickle.dumps(tem_hum))
+    
 
 def weather_update_request(conn):
     upd_message = 'UPD'
@@ -53,8 +64,7 @@ def clientthread2(conn):
         else:
             reply = pickle.loads(data)
             # print(f"Temp: {(reply['temp']): .2f}")
-            # print(f"Humidity: {(reply['humid']): .2f}")
-            
+            # print(f"Humidity: {(reply['humid']): .2f}")      
             with lock:
                 tem_hum = reply
 
@@ -98,10 +108,12 @@ def main():
         conn, addr = s.accept()
         print('Connected with ' + addr[0] + ':' + str(addr[1]))
         th = Thread(target = clientthread2,  args = (conn,))
+        th2 = Thread(target=pp, args=conn)
         th.start()
-        th.join()
-        print(pp())
+        th2.start()
+        # th.join()
+        # print(pp())
 
     s.close()
 
-main()
+# main()
