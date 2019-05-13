@@ -2,7 +2,7 @@ import asyncio, socketio, json, sys, socket
 from py4j.java_gateway import JavaGateway
 from java_gateway import _JavaGateway
 from threading import Thread
-import socket, pickle
+import socket, pickle, time
 
 # https://github.com/miguelgrinberg/python-socketio/blob/master/examples/client/asyncio/latency_client.py
 loop = asyncio.get_event_loop()
@@ -80,9 +80,25 @@ def socket_client():
 
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.connect((HOST, PORT))
-        s.send('req'.encode())
-        data = s.recv(1024)
-        print(pickle.loads(data))
+        
+        while True:
+            time.sleep(1)
+            print('sending "req" to server')
+            s.sendall(pickle.dumps('req'))
+
+            print('receiving data from server')
+            data = s.recv(2048)
+            if not data:
+                print('no data received breaking')
+                break
+            else:
+                print('data received')
+                reply = pickle.loads(data)
+                print('data received', reply)
+
+                print('checking', reply[0])
+                if (reply[0] == 'req_resp'):
+                    print('Reply received: ', repr(reply[1]))
 
 
 if __name__ == '__main__':

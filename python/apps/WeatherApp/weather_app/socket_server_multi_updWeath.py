@@ -38,9 +38,12 @@ def pp(conn):
             print('data received')
             msg = pickle.loads(data)
             print('unpacked')
-            if data == 'req':
+            print(msg)
+            if msg == 'req':
                 print('data is reqeusted')
-                conn.sendall(pickle.dumps(tem_hum))
+                cust_obj = pickle.dumps(('req_resp', tem_hum))
+                
+                conn.sendall(cust_obj)
     
 
 def weather_update_request(conn):
@@ -55,7 +58,7 @@ def clientthread2(conn):
             
     global tem_hum
     while True:
-        sleep(3)
+        sleep(1)
         schedule.run_pending()
 
         data = conn.recv(1024)
@@ -63,10 +66,12 @@ def clientthread2(conn):
             break
         else:
             reply = pickle.loads(data)
-            # print(f"Temp: {(reply['temp']): .2f}")
-            # print(f"Humidity: {(reply['humid']): .2f}")      
-            with lock:
-                tem_hum = reply
+            if reply[0] == 'indoor_data':
+                # print(f"Temp: {(reply['temp']): .2f}")
+                # print(f"Humidity: {(reply['humid']): .2f}")      
+                with lock:
+                    print('updating temp and humidity', tem_hum)
+                    tem_hum = reply
 
     conn.close()
 
@@ -108,12 +113,12 @@ def main():
         conn, addr = s.accept()
         print('Connected with ' + addr[0] + ':' + str(addr[1]))
         th = Thread(target = clientthread2,  args = (conn,))
-        th2 = Thread(target=pp, args=conn)
         th.start()
-        th2.start()
+        # th2 = Thread(target=pp, args=(conn, ))
+        # th2.start()
         # th.join()
         # print(pp())
 
     s.close()
 
-# main()
+main()
