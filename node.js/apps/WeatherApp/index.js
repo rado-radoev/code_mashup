@@ -29,7 +29,7 @@ function launchJava() {
     });
 }
 
-launchJava()
+//launchJava()
 //launchPython()
 
 // Default applicaiton port

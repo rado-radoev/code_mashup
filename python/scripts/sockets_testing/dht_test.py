@@ -16,16 +16,16 @@ time.sleep(.5)
 
 
 try:
-  client = Socket_Client('127.0.0.1', 8888, socket)
+  client = Socket_Client('192.168.86.73', 8888, socket)
   while (True): 
     s.trigger()
     temp = (s.temperature() / 1.)
     humid = (s.humidity() / 1.)
-    dic = { "temp": temp, "humid": humid  }
-    js = json.dumps(dic)
-    # pic = pickle.dumps(dic)
-    print(js)
-    client.send_data(js)
+    # dic = { "temp": temp, "humid": humid  }
+    # js = json.dumps(dic)
+    # # pic = pickle.dumps(dic)
+    # print(js)
+    client.send_data('this is a test: temp_data')
     #print('Humidity: {:3.2f}'.format(s.humidity() / 1.))
     #print('Temp {:3.2f}'.format(s.temperature() / 1.))
     #data = sock.recv(1024)

@@ -140,4 +140,6 @@ $(function() {
 
   // PUll new weather from the interenet
   socket.emit('pull_new_weather')  
+
+  socket.emit('update_indoor_data')
 })
