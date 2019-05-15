@@ -41,7 +41,7 @@ class Socket_Client():
             server.sendall(message)
             print(f'{data} broadcasted')
         
-        # server.close()
+        server.close()
 
 if __name__ == '__main__':
     client = Socket_Client('192.168.86.73', 8888, socket)
