@@ -8,6 +8,7 @@ class Socket_Client():
         self.srv = sock.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.host = host
         self.port = port
+        self.time_data = None
 
         self.srv.connect((self.host, self.port))
 
@@ -22,9 +23,16 @@ class Socket_Client():
                 if socks == server:
                     msg = socks.recv(2048)
                     message = msg.decode()
-                    print(message)
+                    self.time_data = message
         
-        server.close()
+            if 'temp_data' in self.time_data:
+                server.close()
+                return
+                # return self.get_time_data()
+
+
+    def get_time_data(self):
+        return self.time_data
 
     def send_data(self, data):
         if data:
@@ -33,9 +41,9 @@ class Socket_Client():
             server.sendall(message)
             print(f'{data} broadcasted')
         
-        server.close()
+        # server.close()
 
 if __name__ == '__main__':
-    client = Socket_Client('127.0.0.1', 8888, socket)
+    client = Socket_Client('192.168.86.73', 8888, socket)
     client.listen()
     client.send_data('data to be send')
