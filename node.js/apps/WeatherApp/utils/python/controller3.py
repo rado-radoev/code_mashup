@@ -42,7 +42,7 @@ def start_socket_client():
         client.listen()
         tempObj.temp_data = client.get_time_data()
         sleep(2)
-        print('received temp data: ', tempObj.temp_data)
+        print(tempObj.temp_data)
      
 
 # async def update_indoor_data(data):

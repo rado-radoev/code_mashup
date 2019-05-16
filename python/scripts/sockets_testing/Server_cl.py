@@ -29,9 +29,9 @@ class Socket_Server():
                 message = msg.decode()
 
                 if message:
-                    print(f'< {addr[0]} > {message}')
-                    message_to_send = f'< {addr[0]} > {message}'
-                    self.broadcast(message_to_send, conn)
+                    # print(f'< {addr[0]} > {message}')
+                    # message_to_send = f'< {addr[0]} > {message}'
+                    self.broadcast(message, conn)
                 else:
                     self.remove(conn)
                     break

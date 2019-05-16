@@ -58,6 +58,16 @@ socket.on('w', (weatherData) =>  {
 
 socket.on('indoor', (data) => {
   console.log(data)
+
+  indoorDataJson = JSON.parse(data)
+
+  indoorObj = {
+    indoor_temp: indoorDataJson['temp_data']['temp'],
+    indoor_humidity: indoorDataJson['temp_data']['humidity']
+  }
+
+  indoorHtml = Handlebars.templates['indoors'](indoorObj)
+  $('#indoors-temp-humidity').html(indoorHtml)
 })
 
 // Request weather update from python

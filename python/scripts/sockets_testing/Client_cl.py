@@ -39,7 +39,7 @@ class Socket_Client():
             message = data.encode()
             server = self.srv
             server.sendall(message)
-            print(f'{data} broadcasted')
+            print(f'{data}')
         
         server.close()
 

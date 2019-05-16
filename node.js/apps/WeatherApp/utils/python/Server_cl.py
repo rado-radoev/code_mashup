@@ -30,8 +30,8 @@ class Socket_Server():
 
                 if message:
                     print(f'< {addr[0]} > {message}')
-                    message_to_send = f'< {addr[0]} > {message}'
-                    self.broadcast(message_to_send, conn)
+                    # message_to_send = f'< {addr[0]} > {message}'
+                    self.broadcast(message, conn)
                 else:
                     self.remove(conn)
                     break
