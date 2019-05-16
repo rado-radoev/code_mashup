@@ -60,10 +60,12 @@ socket.on('indoor', (data) => {
   console.log(data)
 
   indoorDataJson = JSON.parse(data)
+  t = (indoorDataJson['temp_data']['temp']).toFixed(2)
+  h = (indoorDataJson['temp_data']['humidity']).toFixed(2)
 
   indoorObj = {
-    indoor_temp: indoorDataJson['temp_data']['temp'],
-    indoor_humidity: indoorDataJson['temp_data']['humidity']
+    indoor_temp: t,
+    indoor_humidity: h
   }
 
   indoorHtml = Handlebars.templates['indoors'](indoorObj)
@@ -73,6 +75,10 @@ socket.on('indoor', (data) => {
 // Request weather update from python
 function upd() {
     socket.emit('update')
+}
+
+function upd_indoor_data() {
+  socket.emit('update_indoor_data') 
 }
 
 function getDate() {
@@ -151,5 +157,6 @@ $(function() {
   // PUll new weather from the interenet
   socket.emit('pull_new_weather')  
 
-  socket.emit('update_indoor_data')
+  setInterval(upd_indoor_data, 5000)
+  
 })
