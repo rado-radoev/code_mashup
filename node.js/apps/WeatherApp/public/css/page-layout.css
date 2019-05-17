@@ -31,13 +31,23 @@ body {
     left: 0;
 }
 
-#weather-details td {
+#weather-details td{
     font-size: 25px;
     text-align: left;
 }
 
-#weather-details table {
+#weather-details table, #indoors-temp-humidity table {
     border-collapse: separate; border-spacing: 40px 5px;
     padding-top: 1%;
     margin: auto;
+}
+
+#indoors-temp-humidity td {
+    font-size: 25px;
+    text-align: center;
+}
+
+#indoors-temp-humidity th {
+    font-size: 25px;
+    padding-top: 5%;
 }

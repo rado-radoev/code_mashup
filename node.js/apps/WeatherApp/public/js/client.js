@@ -152,11 +152,10 @@ $(function() {
   upd()
   
   setInterval( [upd, geoFindMe] , 600000)
+  setInterval(upd_indoor_data, 5000)
   clock;
 
   // PUll new weather from the interenet
   socket.emit('pull_new_weather')  
-
-  setInterval(upd_indoor_data, 5000)
   
 })
