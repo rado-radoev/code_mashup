@@ -90,12 +90,16 @@ public class Database {
 	 */
 	private final MongoClient connectToDB() {
 		PropertiesReader propertiesReader = new PropertiesReader();
-		Properties dbProps = propertiesReader.getProperties("Dbconnection.properties");
+//		Properties dbProps = propertiesReader.getProperties("Dbconnection.properties");
+//		
+//		MongoClient mongoClient = MongoClients.create(
+//				"mongodb+srv://" + dbProps.getProperty("user") +
+//				":" + dbProps.getProperty("pass") + 
+//				dbProps.getProperty("db"));
+		
 		
 		MongoClient mongoClient = MongoClients.create(
-				"mongodb+srv://" + dbProps.getProperty("user") +
-				":" + dbProps.getProperty("pass") + 
-				dbProps.getProperty("db"));
+				"mongodb+srv://rradoev:M34M26kb8b@cluster0-yc4wz.mongodb.net/test?retryWrites=true");
 		
 		return mongoClient;
 	}

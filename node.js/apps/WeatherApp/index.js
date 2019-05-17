@@ -10,8 +10,15 @@ var io      = require('socket.io')(http);
 var { log }   = require('./routes/MainRoute');
 var { mainRoute } = require('./middleware/Logger');
 
-function launchPython() {
-    const pythonProcess = spawn('python',["utils/python/controller2.py"]);
+function launchPythonClient() {
+    const pythonProcess = spawn('python',["utils/python/controller3.py"]);
+    pythonProcess.stdout.on('data', (data) => {
+        console.log(data.toString())
+     });
+}
+
+function launchPythonServer() {
+    const pythonProcess = spawn('python',["utils/python/Server_cl.py"]);
     pythonProcess.stdout.on('data', (data) => {
         console.log(data.toString())
      });
@@ -19,7 +26,7 @@ function launchPython() {
 
 function launchJava() {
     var exec = require('child_process').exec, child;
-    child = exec('java -jar /Users/superlamer/GitHub/code_mashup/node.js/apps/WeatherApp/utils/java/weather.jar',
+    child = exec('java -jar utils/java/weatherapp.jar',
     function (error, stdout, stderr){
     console.log('stdout: ' + stdout);
     console.log('stderr: ' + stderr);
@@ -30,7 +37,8 @@ function launchJava() {
 }
 
 //launchJava()
-//launchPython()
+//launchPythonServer()
+//launchPythonClient()
 
 // Default applicaiton port
 const port = 3000;

@@ -43,7 +43,7 @@ public class WeatherQuery {
 		Gson gson = gsonBuilder.create();
 		
 		PropertiesReader propertiesReader = new PropertiesReader();
-		Properties props = propertiesReader.getProperties("OpenWeatherAPI.properties");
+//		Properties props = propertiesReader.getProperties("OpenWeatherAPI.properties");
 		
 		Response response = null;
 		
@@ -64,9 +64,14 @@ public class WeatherQuery {
 			uriBuilder.queryParam("lon", _coord.get().getLon());
 		}
 		
-		uriBuilder.queryParam("appid", props.getProperty("appid"))
-			  .queryParam("mode", "json")
-			  .queryParam("units", "metric");
+//		uriBuilder.queryParam("appid", props.getProperty("appid"))
+//			  .queryParam("mode", "json")
+//			  .queryParam("units", "metric");
+	
+
+		uriBuilder.queryParam("appid", "6a0326b54ac62aae38ee842128683084")
+		  .queryParam("mode", "json")
+		  .queryParam("units", "metric");
 		
 		WebTarget target = client.target(uriBuilder);
 		System.out.println(uriBuilder.toString());

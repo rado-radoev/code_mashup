@@ -5,7 +5,6 @@ import java.io.File;
 import org.bson.Document;
 
 import com.superlamer.weatherapp.DB.Database;
-import com.superlamer.weatherapp.weather.IndoorWeather;
 import com.superlamer.weatherapp.weather.Weather;
 import com.superlamer.weatherapp.weather.WeatherQuery;
 import com.google.gson.Gson;
@@ -93,7 +92,7 @@ public class PythonEntryPoint  {
 	 */
 	public Document getUpdatedWeather() {
 		System.out.println("java updating weather");
-    	City sd = getCity(id);
+    	City sd = getCity(id);  
     	String weatherJson =  new WeatherQuery().queryWeatherById(id);
     	System.out.println(weatherJson);
     	Weather weather = new Gson().fromJson(weatherJson, Weather.class);
