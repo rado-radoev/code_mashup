@@ -25,7 +25,6 @@ public class Clouds implements Documentable {
 		return "Clouds [all=" + all + "]";
 	}
 
-	@Override
 	public Document toDocument() {
 		return new Document("all", getAll());	
 	}

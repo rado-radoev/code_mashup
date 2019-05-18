@@ -46,51 +46,51 @@ public class WeatherQuery {
 //		Properties props = propertiesReader.getProperties("OpenWeatherAPI.properties");
 		
 		Response response = null;
-		
-		Client client = ClientBuilder.newClient();
-		UriBuilder uriBuilder = UriBuilder.fromPath(webURI);
-	
-		if (_cityName.isPresent() && _country.isPresent()) {
-			uriBuilder.queryParam("q", String.format("%s,%s", _cityName.get(), _country.get()));
-		}
-		else if (_cityName.isPresent()) {
-			uriBuilder.queryParam("q", _cityName.get());
-		}
-		else if (_id.isPresent()) {
-			uriBuilder.queryParam("id", _id.get());
-		}
-		else if (_coord.isPresent()) {
-			uriBuilder.queryParam("lat", _coord.get().getLat());
-			uriBuilder.queryParam("lon", _coord.get().getLon());
-		}
-		
-//		uriBuilder.queryParam("appid", props.getProperty("appid"))
-//			  .queryParam("mode", "json")
-//			  .queryParam("units", "metric");
-	
-
-		uriBuilder.queryParam("appid", "6a0326b54ac62aae38ee842128683084")
-		  .queryParam("mode", "json")
-		  .queryParam("units", "metric");
-		
-		WebTarget target = client.target(uriBuilder);
-		System.out.println(uriBuilder.toString());
-		
-		Invocation.Builder reqBuilder = target.request();
-		
-		AsyncInvoker asyncInvoker = reqBuilder.async();
-		Future<Response> futureResp = asyncInvoker.get();
-		
+		Weather wQuery = null;	
 		try {
-			response = futureResp.get();
-		} catch (InterruptedException | ExecutionException e) {
+			Client client = ClientBuilder.newClient();
+			UriBuilder uriBuilder = UriBuilder.fromPath(webURI);
+		
+			if (_cityName.isPresent() && _country.isPresent()) {
+				uriBuilder.queryParam("q", String.format("%s,%s", _cityName.get(), _country.get()));
+			}
+			else if (_cityName.isPresent()) {
+				uriBuilder.queryParam("q", _cityName.get());
+			}
+			else if (_id.isPresent()) {
+				uriBuilder.queryParam("id", _id.get());
+			}
+			else if (_coord.isPresent()) {
+				uriBuilder.queryParam("lat", _coord.get().getLat());
+				uriBuilder.queryParam("lon", _coord.get().getLon());
+			}
+			
+	//		uriBuilder.queryParam("appid", props.getProperty("appid"))
+	//			  .queryParam("mode", "json")
+	//			  .queryParam("units", "metric");
+	
+			uriBuilder.queryParam("appid", "6a0326b54ac62aae38ee842128683084")
+			  .queryParam("mode", "json")
+			  .queryParam("units", "metric");
+			
+			WebTarget target = client.target(uriBuilder);
+			System.out.println(uriBuilder.toString());
+			
+			Invocation.Builder reqBuilder = target.request();
+			
+			AsyncInvoker asyncInvoker = reqBuilder.async();
+			Future<Response> futureResp = asyncInvoker.get();
+			
+			
+				response = futureResp.get();
+	
+			wQuery = response.readEntity(Weather.class);
+	
+			client.close();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		Weather wQuery = response.readEntity(Weather.class);
-
-		client.close();
-		
 		return gson.toJson(wQuery);
 	}
 	
