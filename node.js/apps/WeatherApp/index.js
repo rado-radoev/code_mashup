@@ -37,8 +37,8 @@ function launchJava() {
 }
 
 //launchJava()
-//launchPythonServer()
-//launchPythonClient()
+launchPythonServer()
+launchPythonClient()
 
 // Default applicaiton port
 const port = 3000;
