@@ -1,16 +1,46 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 
+<div class="row">
+    <div class="col-8 align-self-left">
+        <form>
+            <div class="form-group">
+                <div class="row" >
+                    <div class="col-3">
+                        <label for="Height">Height</label>
+                        <input type="number" min='0' max='100' step='.1' class="form-control" id="allownumericwithdecimal" aria-describedby="heightHelp" placeholder="Enter height">
+                        <small id="heightHelp" class="form-text text-muted">Kid's height</small>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-group">
+                        <label for="Weight">Weight</label>
+                        <input type="number" class="form-control" min='0' max='100' step='.1' id="allownumericwithdecimal" placeholder="Enter weight" aria-describedby="weightHelp">
+                        <small id="weightHelp" class="form-text text-muted">Kid's weight</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col">
+                        <div id="height_chart"></div>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col">
+                        <div id="weight_chart"></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-4 ">
+        <img src="/images/baby2.png" class="img-responsive" alt="Responsive image">
+    </div>
+</div>
 
-<form>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="number" min='0' max='100' step='.1' class="form-control" id="allownumericwithdecimal" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="number" class="form-control" id="allownumericwithdecimal" placeholder="Password">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+
+

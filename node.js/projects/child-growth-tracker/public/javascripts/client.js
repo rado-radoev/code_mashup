@@ -9,7 +9,6 @@ function only_decimals() {
 }
 
 
-
 $( document ).ready(function() {
     console.log( "ready!" );
     only_decimals();
