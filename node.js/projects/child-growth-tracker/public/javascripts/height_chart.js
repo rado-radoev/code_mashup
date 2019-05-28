@@ -4,7 +4,7 @@ google.charts.setOnLoadCallback(drawBasic);
 function drawBasic() {
 
       var data = new google.visualization.DataTable();
-      data.addColumn('number', 'X');
+      data.addColumn('number', 'Month');
       data.addColumn('number', 'CM');
 
       data.addRows([
@@ -19,26 +19,38 @@ function drawBasic() {
         [48, 72], [49, 68], [50, 66], [51, 65], [52, 67], [53, 70],
         [54, 71], [55, 72], [56, 73], [57, 75], [58, 70], [59, 68],
         [60, 64], [61, 60], [62, 65], [63, 67], [64, 68], [65, 69],
-        [66, 70], [67, 72], [68, 75], [69, 80]
+        [66, 70]
       ]);
 
+      heightTticks = []
+      for (var i = 0; i <= 70; i += 10) {
+        heightTticks.push(i)
+      }
+
+      ageTicks = []
+      for (var i = 0; i <= 60; i += 10) {
+        ageTicks.push(i)
+      }
+ 
       var options = {
         hAxis: {
           title: 'Age (months)',
-          ticks: [5,10,15,20]
+          ticks: ageTicks
         },
         vAxis: {
-          title: 'Height'
+          title: 'Height',
+          ticks: heightTticks
         },
         animation: {
           duration: 1000,
           startup: true,
           easing: "inAndOut"
-        }
+        },
+        interpolateNulls: true
+
       };
 
       var chart = new google.visualization.LineChart(document.getElementById('height_chart'));
-      console.log(chart.getDataTable.getNumberOfRows());
 
       chart.draw(data, options);
     }

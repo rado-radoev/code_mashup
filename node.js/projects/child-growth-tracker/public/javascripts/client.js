@@ -8,6 +8,11 @@ function only_decimals() {
     });
 }
 
+// Prevent the webapge to be reloated on submit
+const dataEntryForm = document.getElementById('data-entry-form')
+dataEntryForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+})
 
 $( document ).ready(function() {
     console.log( "ready!" );
