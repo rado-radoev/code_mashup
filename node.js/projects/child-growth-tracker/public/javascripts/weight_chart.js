@@ -36,7 +36,7 @@ function drawBasic() {
         hAxis: {
           title: 'Age (months)',
           ticks: ageTicks
-        },
+        }, 
         vAxis: {
           title: 'Weight',
           ticks: weightTticks
