@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs')
 
-const {MongoClient} = require('mongodb');
+const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://rradoev:M34M26kb8b@cluster0-yc4wz.mongodb.net/test?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
@@ -19,7 +19,7 @@ client.connect(err => {
   var heightCollection = db.collection('height')
   var weightCollection = db.collection('weight')
 
-  heightCollection.find().toArray(err, docs => {
+  heightCollection.find().toArray((err, docs) => {
     if (err) {
       return console.log('Error finding docs')
     }
