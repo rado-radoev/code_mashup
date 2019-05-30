@@ -18,17 +18,34 @@ client.connect(err => {
   var db = client.db("child-data")
   var heightCollection = db.collection('height')
   var weightCollection = db.collection('weight')
+  var childCollection = db.collection('child')
 
-  heightCollection.find().toArray((err, docs) => {
+  childCollection.insertOne({
+    name: 'Victor',
+    birthdate: new Date('08/17/2017')
+  })
+
+  childCollection.find().toArray((err, docs) => {
     if (err) {
       return console.log('Error finding docs')
     }
 
-    console.log(docs)
+    // console.log(Date.parse(docs))
     docs.forEach(element => {
       console.log(element)
     });
   })
+
+  // heightCollection.find().toArray((err, docs) => {
+  //   if (err) {
+  //     return console.log('Error finding docs')
+  //   }
+
+  //   console.log(docs)
+  //   docs.forEach(element => {
+  //     console.log(element)
+  //   });
+  // })
 
   // heightCollection.insertOne({
   //   age: 19,
@@ -48,7 +65,6 @@ client.connect(err => {
 
   client.close();
 });
-
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
