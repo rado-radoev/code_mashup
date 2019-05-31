@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const childSchema = new monogoose.Schema({
+const childSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -10,18 +10,20 @@ const childSchema = new monogoose.Schema({
         type: Date,
         required: true
     }
+}, {
+    collection: 'child'
 })
 
-userSchema.virtual('weight', {
+childSchema.virtual('weight', {
     ref: 'Weight',
     localField: '_id',
-    foreighField: 'owner'
+    foreignField: 'owner'
 })
 
-userSchema.virtual('height', {
+childSchema.virtual('height', {
     ref: 'Height',
     localField: '_id',
-    foreighField: 'owner'
+    foreignField: 'owner'
 })
 
 const Child = mongoose.model('Child', childSchema)

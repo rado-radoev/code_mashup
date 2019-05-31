@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('hbs')
 
+const Height = require('./playground/models/height')
+
 const { MongoClient } = require('mongodb');
 const uri = "mongodb+srv://rradoev:M34M26kb8b@cluster0-yc4wz.mongodb.net/test?retryWrites=true";
 const client = new MongoClient(uri, { useNewUrlParser: true });
@@ -20,31 +22,31 @@ client.connect(err => {
   var weightCollection = db.collection('weight')
   var childCollection = db.collection('child')
 
-  childCollection.insertOne({
-    name: 'Victor',
-    birthdate: new Date('08/17/2017')
+ const main = async () => {
+  
+  const baby = await childCollection.findOne({name: 'Victor'})
+  console.log(baby)
+
+  const height = new Height({
+    height: 155,
+    owner: baby._id
   })
 
-  childCollection.find().toArray((err, docs) => {
-    if (err) {
-      return console.log('Error finding docs')
-    }
+  console.log(height)
+  height.save()
+  
 
-    // console.log(Date.parse(docs))
-    docs.forEach(element => {
-      console.log(element)
-    });
-  })
+  // const height = new Height({
+  //   height: 255
+  // })
+  // await height.populate('owner').execPopulate()
+ }
 
-  // heightCollection.find().toArray((err, docs) => {
-  //   if (err) {
-  //     return console.log('Error finding docs')
-  //   }
-
-  //   console.log(docs)
-  //   docs.forEach(element => {
-  //     console.log(element)
-  //   });
+ main()
+ 
+  // childCollection.insertOne({
+  //   name: 'Victor',
+  //   birthdate: new Date('08/17/2017')
   // })
 
   // heightCollection.insertOne({
@@ -63,7 +65,31 @@ client.connect(err => {
   //   console.log(result.ops)
   // })
 
-  client.close();
+  // childCollection.find().toArray((err, docs) => {
+  //   if (err) {
+  //     return console.log('Error finding docs')
+  //   }
+
+  //   // console.log(Date.parse(docs))
+  //   docs.forEach(element => {
+  //     console.log(element)
+  //   });
+  // })
+
+  // heightCollection.find().toArray((err, docs) => {
+  //   if (err) {
+  //     return console.log('Error finding docs')
+  //   }
+
+  //   console.log(docs)
+  //   docs.forEach(element => {
+  //     console.log(element)
+  //   });
+  // })
+
+ 
+
+  // client.close();
 });
 
 var indexRouter = require('./routes/index');
