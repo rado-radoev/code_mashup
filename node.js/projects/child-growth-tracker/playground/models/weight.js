@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
 
-const weightSchema = new monogoose.Schema({
+const weightSchema = new mongoose.Schema({
     weight: {
         type: Number,
         required: true,
     },
     owner: {
-        type: monogoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Child'
     }
