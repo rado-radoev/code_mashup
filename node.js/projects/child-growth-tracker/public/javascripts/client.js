@@ -17,4 +17,8 @@ dataEntryForm.addEventListener('submit', (e) => {
 $( document ).ready(function() {
     console.log( "ready!" );
     only_decimals();
+
+    $('#datetimepicker4').datetimepicker({
+        format: 'L'
+    });
 });
