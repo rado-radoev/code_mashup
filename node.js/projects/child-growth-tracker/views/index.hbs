@@ -1,26 +1,30 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
 
-<div class="container">
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-4">    
-                <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                    <input type="text" placeholder="Select Birthdate" class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
-                    <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
-                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <div class="row">
     <div class="col-8 align-self-left">
         <form id="data-entry-form" >
             <div class="form-group">
-                <div class="row" >
+                <div class="row mt-2" id='baby-name-birthdate-form-entry'>
+                    <div class="col-3">
+                        <label for="exampleInputEmail1">Child Name</label>
+                        <input type="text" class="form-control" id="babyInputName" aria-describedby="babyNameHelp" placeholder="Enter baby's name">
+                        <small id="babyNameHelp" class="form-text text-muted">Baby's name</small>
+                    </div>
+                    <div class="col-3">    
+                        <label for="exampleInputEmail1">Birthdate</label>
+                        <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
+                            <input type="text" placeholder={{currDate}} class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
+                            <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
+                        </div>
+                        <small id="babyBirthdateHelp" class="form-text text-muted">Baby's birthdate</small>
+                    </div>
+                </div>
+                <div class="row mt-2" >
                     <div class="col-3">
                         <label for="Height">Height</label>
                         <input type="number" min='0' max='100' step='.1' class="form-control" id="allownumericwithdecimal" aria-describedby="heightHelp" placeholder="Enter height">
@@ -34,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mt-2">
                     <div class="col">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>

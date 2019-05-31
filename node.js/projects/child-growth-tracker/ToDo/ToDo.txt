@@ -2,6 +2,7 @@ Check if child db is empty
     If empty - display a form to enter child Name and Birthdate
     Save data to DB and hide form
     Else if data already in child db, do not display form
+        Display baby's name, birthdate and age
 
 
 Calculate child age

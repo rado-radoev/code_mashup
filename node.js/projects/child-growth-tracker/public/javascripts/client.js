@@ -19,6 +19,9 @@ $( document ).ready(function() {
     only_decimals();
 
     $('#datetimepicker4').datetimepicker({
+        startDate: 0,
+        autoclose: true,
+        clearBtn: true,
         format: 'L'
     });
 });
