@@ -25,41 +25,48 @@ async function childExists(childName) {
   return child;
 }
 
-router.use(function(req, res, next) {
+// router.use(function(req, res, next) {
 
-  var io = req.app.get('socketio')
+//   var io = req.app.get('socketio')
   
+//   var childName = "Test"
+//   // Check if child exists
+//   child = childExists('Victor')
+//   child.then((result) => {
+//     let name = result.name
+//     childName = name
+//     io.on('connection', (socket) => {
+//       socket.join(name, () => {
+//         io.to(name).emit('childName', name)
+//       })
+//     })
 
-  // Check if child exists
-  child = childExists('Victor')
-  child.then((result) => {
-    let name = result.name
-    io.on('connection', (socket) => {
-      socket.join(name, () => {
-        io.to(name).emit('childName', name)
-      })
-    })
-  }).catch((e) => {
-    console.log(e)
-  })
+//   }).then((name) => {
+//     console.log(name)
+//     req.cn = name;
+//   })
+//   .catch((e) => {
+//     console.log(e)
+//   })
   
   
-  // If child exists send socket io to client
-  // hide the name and birthdate form and
-  // display the add child button
+//   // If child exists send socket io to client
+//   // hide the name and birthdate form and
+//   // display the add child button
 
 
-  next()
-})
-
+//   next()
+// })
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
+
+  var name = await childExists('Victor')
 
   res.render('index', { 
     title: 'Baby Monitor',
-    subTitle: `Monitoring ${req.cn}`,
+    subTitle: `Monitoring ${name.name}`,
     currDate: (new Date()).toShortFormat()
   });
 });
