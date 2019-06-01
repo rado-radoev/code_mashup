@@ -25,38 +25,27 @@ async function childExists(childName) {
   return child;
 }
 
-// router.use(function(req, res, next) {
+router.use(function(req, res, next) {
 
-//   var io = req.app.get('socketio')
+  var io = req.app.get('socketio')
   
-//   var childName = "Test"
-//   // Check if child exists
-//   child = childExists('Victor')
-//   child.then((result) => {
-//     let name = result.name
-//     childName = name
-//     io.on('connection', (socket) => {
-//       socket.join(name, () => {
-//         io.to(name).emit('childName', name)
-//       })
-//     })
+  // Check if child exists
+  var child = childExists('Victor')
+  child.then((result) => {
+    let name = result.name
+    
+    io.on('connection', (socket) => {
+      socket.join(name, () => {
+        io.to(name).emit('childName', name)
+      })
+    })
 
-//   }).then((name) => {
-//     console.log(name)
-//     req.cn = name;
-//   })
-//   .catch((e) => {
-//     console.log(e)
-//   })
-  
-  
-//   // If child exists send socket io to client
-//   // hide the name and birthdate form and
-//   // display the add child button
+  }).catch((e) => {
+    console.log(e)
+  })
 
-
-//   next()
-// })
+  next()
+})
 
 
 /* GET home page. */

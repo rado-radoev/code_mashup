@@ -33,15 +33,27 @@ dataEntryForm.addEventListener('submit', (e) => {
     e.preventDefault();
 })
 
+$('#add-child-btn').click(() => {
+    $('#name-birthdate-entry-form').show()
+    $('#add-child-btn').hide() 
+})
+
+/**
+ * TO DO 
+ * 
+ * Implement socket that on click 
+ * submits data from weight and height form inputs
+ * Sends data bask to server and server
+ * sends data back to MongoDB
+ * 
+ * Do a validation with validator that the data is a decimal number
+ *  */ 
+
+
 
 $( document ).ready(function() {
     console.log( "ready!" );
     only_decimals();
-
-    $('#add-child-btn').click(() => {
-        $('#name-birthdate-entry-form').show()
-        $('#add-child-btn').hide() 
-    })
 
     $('#datetimepicker4').datetimepicker({
         startDate: 0,
