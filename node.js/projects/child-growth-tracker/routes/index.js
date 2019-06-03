@@ -38,6 +38,9 @@ router.use(function(req, res, next) {
       socket.join(name, () => {
         io.to(name).emit('childName', name)
       })
+      socket.on('new-child', (childData) => {
+        console.log(childData)
+      })
     })
 
   }).catch((e) => {
@@ -52,6 +55,8 @@ router.use(function(req, res, next) {
 router.get('/', async function(req, res, next) {
 
   var name = await childExists('Victor')
+
+  // TO DO display birthdate and age
 
   res.render('index', { 
     title: 'Baby Monitor',

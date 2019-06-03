@@ -31,6 +31,25 @@ function only_decimals() {
 const dataEntryForm = document.getElementById('height-weigh-entry-form')
 dataEntryForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    console.log('clicked submit in height-weigh-entry-form')
+})
+
+// Prevent the webapge to be reloated on submit
+const dataEntryForm2 = document.getElementById('name-birthdate-entry-form')
+dataEntryForm2.addEventListener('submit', (e) => {
+    
+    console.log('clicked submit in name-birthdate-entry-form')
+    // TO DO 
+    // Send socket.io request to server with baby name and birthdate
+    // server will listen for that request and add data to db
+    var name = $('#babyInputName').val()
+    var date = $("#datetimepicker4").find("input").val();
+    socket.emit('new-child', { 
+        name,
+        date
+    }, console.log('emitting data'))
+
+    e.preventDefault();
 })
 
 $('#add-child-btn').click(() => {
