@@ -46,9 +46,12 @@ dataEntryForm2.addEventListener('submit', (e) => {
     var date = $("#datetimepicker4").find("input").val();
     socket.emit('new-child', { 
         name,
-        date
+        birthdate: date
     }, console.log('emitting data'))
 
+    $('#add-child-btn').show()
+    $('#name-birthdate-entry-form').hide()
+    
     e.preventDefault();
 })
 

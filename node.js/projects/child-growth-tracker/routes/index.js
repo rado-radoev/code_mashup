@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var { addChildToDb } = require('../src/db/db_control')
+var { calcAge, convertDaysToMonths, convertDaysToYears } = require('../src/util/utils')
 
 // var mongoose = require('../src/db/mongoose')
-const Child = require('../playground/models/child')
-const Height = require('../playground/models/height')
-const Weight = require('../playground/models/weight')
+const Child = require('../src/models/child')
+const Height = require('../src/models/height')
+const Weight = require('../src/models/weight')
 
 Date.prototype.toShortFormat = function() {
 
@@ -17,7 +19,8 @@ Date.prototype.toShortFormat = function() {
   var month_index = this.getMonth();
   var year = this.getFullYear();
   
-  return "" + day + "-" + month_names[month_index] + "-" + year;
+  return "" + (month_index + 1) + "/" + day + "/" + year;  
+  // return "" + day + "/" + month_names[month_index] + "/" + year;
 }
 
 async function childExists(childName) {
@@ -38,8 +41,9 @@ router.use(function(req, res, next) {
       socket.join(name, () => {
         io.to(name).emit('childName', name)
       })
+
       socket.on('new-child', (childData) => {
-        console.log(childData)
+        addChildToDb(childData)
       })
     })
 
@@ -51,16 +55,25 @@ router.use(function(req, res, next) {
 })
 
 
+
 /* GET home page. */
 router.get('/', async function(req, res, next) {
 
   var name = await childExists('Victor')
+  var id = name._id
+  let ageTemp = calcAge(name.birthdate)
+  var age = ageTemp > 365 ? convertDaysToYears(ageTemp) : convertDaysToMonths(ageTemp)
+  let age_t = ['months', 'year(s)']
+  var age_type = ageTemp > 365 ? age_t[1] : age_t[0]
+
 
   // TO DO display birthdate and age
 
   res.render('index', { 
     title: 'Baby Monitor',
-    subTitle: `Monitoring ${name.name}`,
+    childName: name.name,
+    childBirthDate: (name.birthdate).toShortFormat(),
+    childAge: `${age} ${age_type} old.`,
     currDate: (new Date()).toShortFormat()
   });
 });
