@@ -42,11 +42,19 @@ router.use(function(req, res, next) {
         io.to(name).emit('childName', name)
       })
 
-      socket.on('new-child', (childData) => {
-        addChildToDb(childData)
+      socket.on('new-child', async (childData) => {
+        var added = await addChildToDb(childData);
+        if (added) {
+          socket.emit('child-added-to-db-notify', (added.name))
+        }
       })
-    })
 
+      socket.on('height-weight', (height, weight) => {
+        console.log(height)
+        console.log(weight)
+      })
+
+    })
   }).catch((e) => {
     console.log(e)
   })

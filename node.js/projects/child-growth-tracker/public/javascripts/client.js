@@ -12,6 +12,9 @@ socket.on('childName', (childName) => {
     }
 })
 
+socket.on('child-added-to-db-notify', (childName) => {
+    $.notify(`${childName} added to database`, "info");
+})
 
 socket.on('date', () => {
    $("#datetimepicker4").find("input").val();
@@ -31,7 +34,12 @@ function only_decimals() {
 const dataEntryForm = document.getElementById('height-weigh-entry-form')
 dataEntryForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log('clicked submit in height-weigh-entry-form')
+    console.log('clicked submit in height-weight-entry-form')
+    var height = $('#heightInput').val()
+    var weight = $('#weightInput').val()
+
+    socket.emit('heihgt-weight', (height, weight));
+
 })
 
 // Prevent the webapge to be reloated on submit
@@ -39,9 +47,6 @@ const dataEntryForm2 = document.getElementById('name-birthdate-entry-form')
 dataEntryForm2.addEventListener('submit', (e) => {
     
     console.log('clicked submit in name-birthdate-entry-form')
-    // TO DO 
-    // Send socket.io request to server with baby name and birthdate
-    // server will listen for that request and add data to db
     var name = $('#babyInputName').val()
     var date = $("#datetimepicker4").find("input").val();
     socket.emit('new-child', { 

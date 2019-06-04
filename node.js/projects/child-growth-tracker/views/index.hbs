@@ -32,14 +32,14 @@
         <form id="height-weigh-entry-form" >
             <div class="form-group">
                 <div class="row mt-5" >
-                    <div class="col-3">
+                    <div class="col-3 allownumericwithdecimal">
                         <label for="Height">Height</label>
-                        <input type="number" min='0' max='100' step='.1' class="form-control" id="allownumericwithdecimal" aria-describedby="heightHelp" placeholder="Enter height">
+                        <input type="number" min='0' max='100' step='.1' class="form-control" id="heightInput" aria-describedby="heightHelp" placeholder="Enter height">
                         <small id="heightHelp" class="form-text text-muted">Child's height</small>
                     </div>
-                    <div class="col-3">
+                    <div class="col-3 allownumericwithdecimal">
                         <label for="Weight">Weight</label>
-                        <input type="number" class="form-control" min='0' max='100' step='.1' id="allownumericwithdecimal" placeholder="Enter weight" aria-describedby="weightHelp">
+                        <input type="number" class="form-control" min='0' max='100' step='.1' id="weightInput" placeholder="Enter weight" aria-describedby="weightHelp">
                         <small id="weightHelp" class="form-text text-muted">Child's weight</small>
                     </div>
                 </div>

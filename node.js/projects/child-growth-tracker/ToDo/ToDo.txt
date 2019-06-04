@@ -6,7 +6,7 @@
 
 
 -Calculate child age
-    User current date and child birtdate to calculate how many months
+-    User current date and child birtdate to calculate how many months
     That data will be used in the height_chart and weight_chart scripts
     to be displayed on the charts
 
