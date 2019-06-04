@@ -1,11 +1,11 @@
 -Check if child db is empty
 -    If empty - display a form to enter child Name and Birthdate
-    Save data to DB and hide form
+-    Save data to DB and hide form
 -    Else if data already in child db, do not display form
-        Display baby's name, birthdate and age
+-        Display baby's name, birthdate and age
 
 
-Calculate child age
+-Calculate child age
     User current date and child birtdate to calculate how many months
     That data will be used in the height_chart and weight_chart scripts
     to be displayed on the charts
