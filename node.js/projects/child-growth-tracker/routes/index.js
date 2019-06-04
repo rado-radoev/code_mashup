@@ -67,8 +67,6 @@ router.get('/', async function(req, res, next) {
   var age_type = ageTemp > 365 ? age_t[1] : age_t[0]
 
 
-  // TO DO display birthdate and age
-
   res.render('index', { 
     title: 'Baby Monitor',
     childName: name.name,
