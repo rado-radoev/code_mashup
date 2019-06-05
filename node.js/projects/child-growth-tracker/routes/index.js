@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var { addChildToDb } = require('../src/db/db_control')
+var { addChildToDb, addChildDataToDB } = require('../src/db/db_control')
 var { calcAge, convertDaysToMonths, convertDaysToYears } = require('../src/util/utils')
 
 // var mongoose = require('../src/db/mongoose')
@@ -49,9 +49,8 @@ router.use(function(req, res, next) {
         }
       })
 
-      socket.on('height-weight', (height, weight) => {
-        console.log(height)
-        console.log(weight)
+      socket.on('height-weight', (size) => {
+        addChildDataToDB(size, '5cf0660b57019f452c48a141')
       })
 
     })
