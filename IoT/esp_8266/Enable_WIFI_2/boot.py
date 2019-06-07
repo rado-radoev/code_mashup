@@ -46,5 +46,3 @@ webrepl.start()
 gc.collect()
 
 do_connect()
-
-led = Pin(2, Pin.OUT)

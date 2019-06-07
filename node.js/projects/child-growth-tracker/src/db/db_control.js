@@ -13,6 +13,8 @@ function addChildToDb(childInfo) {
 }
 
 async function addChildDataToDB(childData, childId) {
+    var saved = false;
+    
     var height = new Height({
         height: childData.height,
         owner: childId
@@ -31,11 +33,29 @@ async function addChildDataToDB(childData, childId) {
     await hId.populate('owner').execPopulate()
     await wId.populate('owner').execPopulate()
 
-    console.log(hId)
-    console.log(wId)
+    if (heightSaved && weightSaved) {
+        saved = true;
+    }
+
+    return saved;
 }
+
+async function getAllHeights(childId) {
+    var heights = new Array();
+
+    var find = await Height.find({owner: new mongoose.mongo.ObjectId(childId)});
+    let counter = 1
+    find.forEach((element) => {
+        let temp = [counter, element.height]
+        heights.push(temp);
+        counter++;
+    })
+
+    return heights;
+ }
 
 module.exports = {
     addChildToDb,
-    addChildDataToDB
+    addChildDataToDB,
+    getAllHeights
 }

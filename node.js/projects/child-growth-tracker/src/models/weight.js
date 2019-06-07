@@ -10,6 +10,8 @@ const weightSchema = new mongoose.Schema({
         required: true,
         ref: 'Child'
     }
+}, {
+    collection: 'weight'
 })
 
 const Weight = mongoose.model('Weight', weightSchema)

@@ -1,6 +1,9 @@
 google.charts.load('current', {packages: ['corechart', 'line']});
 google.charts.setOnLoadCallback(drawBasic);
 
+
+var chart;
+
 function drawBasic() {
 
       var data = new google.visualization.DataTable();
@@ -50,7 +53,7 @@ function drawBasic() {
 
       };
 
-      var chart = new google.visualization.LineChart(document.getElementById('height_chart'));
+      chart = new google.visualization.LineChart(document.getElementById('height_chart'));
 
       chart.draw(data, options);
     }
