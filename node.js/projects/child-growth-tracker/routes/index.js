@@ -56,6 +56,11 @@ router.use(function(req, res, next) {
         }
       })
 
+      socket.emit('update_height', async () => {
+        var heights = await getAllHeights('5cf0660b57019f452c48a141')
+        return heights
+      })
+
     })
   }).catch((e) => {
     console.log(e)
@@ -76,8 +81,8 @@ router.get('/', async function(req, res, next) {
   let age_t = ['months', 'year(s)']
   var age_type = ageTemp > 365 ? age_t[1] : age_t[0]
 
-  var g = await getAllHeights('5cf0660b57019f452c48a141')
-  console.log(g)
+  // var g = await getAllHeights('5cf0660b57019f452c48a141')
+  // console.log(g)
 
   res.render('index', { 
     title: 'Baby Monitor',

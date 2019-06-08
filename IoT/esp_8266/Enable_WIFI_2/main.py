@@ -32,7 +32,7 @@ while True:
       last_message = time.time()
       counter += 1
       led = Pin(2, Pin.OUT)
-      time.sleep(.5)
+      time.sleep(.2)
       led.value(not led.value())
   except OSError as e:
     restart_and_reconnect()
