@@ -44,7 +44,7 @@ async function getAllHeights(childId) {
     var heights = new Array();
 
     var find = await Height.find({owner: new mongoose.mongo.ObjectId(childId)});
-    let counter = 1
+    let counter = 0
     find.forEach((element) => {
         let temp = [counter, element.height]
         heights.push(temp);
@@ -54,8 +54,23 @@ async function getAllHeights(childId) {
     return heights;
  }
 
+ async function getAllWeights(childId) {
+    var weights = new Array();
+
+    var find = await Weight.find({owner: new mongoose.mongo.ObjectId(childId)});
+    let counter = 0
+    find.forEach((element) => {
+        let temp = [counter, element.weight]
+        weights.push(temp);
+        counter++;
+    })
+
+    return weights;
+ }
+
 module.exports = {
     addChildToDb,
     addChildDataToDB,
-    getAllHeights
+    getAllHeights,
+    getAllWeights
 }

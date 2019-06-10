@@ -19,3 +19,10 @@ Refresh data in graphs
     Create middleware to retrieve data from DB
     Add each entry to array. That will be added to data.addRows.
     Adding the data, use this: https://stackoverflow.com/questions/20712712/how-to-pass-variable-from-app-js-to-routes-index-js
+
+
+Adding Height - Weight data
+    Add age to height/weight data
+    when adding new data check if we have skipped a months
+    if a month has been scipped copy data from previous month
+    

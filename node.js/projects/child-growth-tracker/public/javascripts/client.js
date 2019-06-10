@@ -44,6 +44,10 @@ dataEntryForm.addEventListener('submit', (e) => {
     var weight = $('#weightInput').val()
 
     socket.emit('height-weight', {height, weight});
+    socket.emit('request_height')
+
+    $('#heightInput').val("")
+    $('#weightInput').val("")
 
 })
 

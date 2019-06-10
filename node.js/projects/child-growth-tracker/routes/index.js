@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var { addChildToDb, addChildDataToDB, getAllHeights } = require('../src/db/db_control')
+var { addChildToDb, addChildDataToDB, getAllHeights, getAllWeights } = require('../src/db/db_control')
 var { calcAge, convertDaysToMonths, convertDaysToYears } = require('../src/util/utils')
 
 // var mongoose = require('../src/db/mongoose')
@@ -36,6 +36,8 @@ router.use(function(req, res, next) {
   var child = childExists('Victor')
   child.then((result) => {
     let name = result.name
+    let id = result._id
+    console.log(id)
     
     io.on('connection', (socket) => {
       socket.join(name, () => {
@@ -50,15 +52,20 @@ router.use(function(req, res, next) {
       })
 
       socket.on('height-weight', async (size) => {
-        var added = await addChildDataToDB(size, '5cf0660b57019f452c48a141')
+        var added = await addChildDataToDB(size, id)
         if (added) {
           socket.emit('child-data-added-to-db-notify',(name))
         }
       })
 
-      socket.emit('update_height', async () => {
-        var heights = await getAllHeights('5cf0660b57019f452c48a141')
-        return heights
+      socket.on('request_height', async () => {
+        var heights = await getAllHeights(id)
+        socket.emit('update_height', heights)
+      })
+
+      socket.on('request_weight', async () => {
+        var weights = await getAllWeights(id)
+        socket.emit('update_weight', weights)
       })
 
     })
