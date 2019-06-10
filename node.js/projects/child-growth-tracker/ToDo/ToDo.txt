@@ -25,4 +25,7 @@ Adding Height - Weight data
     Add age to height/weight data
     when adding new data check if we have skipped a months
     if a month has been scipped copy data from previous month
+
+    To get the age check the current month  and get the age that way
+    do not make the user type the age
     

@@ -5,6 +5,11 @@ const weightSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    age: {
+        type: Number,
+        required: true
+    }
+    ,
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,

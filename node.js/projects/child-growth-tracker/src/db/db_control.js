@@ -2,7 +2,8 @@ const mongoose = require('./mongoose')
 const Child = require('../models/child')
 const Height = require('../models/height')
 const Weight = require('../models/weight')
-
+const { calcAge, convertDaysToMonths } = require('../util/utils')
+ 
 function addChildToDb(childInfo) {
     var newChild = new Child({
         name: childInfo.name,
@@ -13,23 +14,29 @@ function addChildToDb(childInfo) {
 }
 
 async function addChildDataToDB(childData, childId) {
-    var saved = false;
-    
-    var height = new Height({
+    let saved = false;
+
+    let child = await Child.findById(childId)
+    let childBday = calcAge(child.birthdate)
+    let childAgeMonths = convertDaysToMonths(childBday)
+
+    let height = new Height({
         height: childData.height,
+        age: childAgeMonths,
         owner: childId
     });
 
-    var weight = new Weight({
+    let weight = new Weight({
         weight: childData.weight,
+        age: childAgeMonths,
         owner: childId
     });
 
-    var heightSaved = await height.save();
-    var weightSaved = await weight.save();
+    let heightSaved = await height.save();
+    let weightSaved = await weight.save();
     
-    const hId = await Height.findById(heightSaved._id)
-    const wId = await Weight.findById(weightSaved._id)
+    var hId = await Height.findById(heightSaved._id)
+    var wId = await Weight.findById(weightSaved._id)
     await hId.populate('owner').execPopulate()
     await wId.populate('owner').execPopulate()
 
@@ -44,7 +51,8 @@ async function getAllHeights(childId) {
     var heights = new Array();
 
     var find = await Height.find({owner: new mongoose.mongo.ObjectId(childId)});
-    let counter = 0
+    let counter = calcAgeFirstEntry(find)
+    
     find.forEach((element) => {
         let temp = [counter, element.height]
         heights.push(temp);
@@ -58,7 +66,8 @@ async function getAllHeights(childId) {
     var weights = new Array();
 
     var find = await Weight.find({owner: new mongoose.mongo.ObjectId(childId)});
-    let counter = 0
+    let counter = calcAgeFirstEntry(find)
+
     find.forEach((element) => {
         let temp = [counter, element.weight]
         weights.push(temp);
@@ -66,6 +75,10 @@ async function getAllHeights(childId) {
     })
 
     return weights;
+ }
+
+ function calcAgeFirstEntry(entry) {
+     return entry[0].age;
  }
 
 module.exports = {
