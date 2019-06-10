@@ -74,9 +74,21 @@ $('#add-child-btn').click(() => {
     $('#add-child-btn').hide() 
 })
 
+function focusOnInput() {
+    var nameEntryVisible = $('#name-birthdate-entry-form').is(':visible')
+
+    if (nameEntryVisible) {
+        $('#babyInputName').focus()
+    } else {
+        $('#heightInput').focus()
+    }
+}
+
 $( document ).ready(function() {
     console.log( "ready!" );
     only_decimals();
+
+    focusOnInput()
 
     $('#datetimepicker4').datetimepicker({
         startDate: 0,

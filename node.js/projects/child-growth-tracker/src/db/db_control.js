@@ -51,12 +51,13 @@ async function getAllHeights(childId) {
     var heights = new Array();
 
     var find = await Height.find({owner: new mongoose.mongo.ObjectId(childId)});
-    let counter = calcAgeFirstEntry(find)
+    // let counter = getEntryAgeAtIndex(find, 0)
 
     find.forEach((element) => {
+        counter = element.age;
         let temp = [counter, element.height]
         heights.push(temp);
-        counter++;
+        
     })
 
     return heights;
@@ -66,25 +67,22 @@ async function getAllHeights(childId) {
     var weights = new Array();
 
     var find = await Weight.find({owner: new mongoose.mongo.ObjectId(childId)});
-    let counter = calcAgeFirstEntry(find)
+    // let counter = getEntryAgeAtIndex(find, 0)
 
     find.forEach((element) => {
+        counter = element.age;
         let temp = [counter, element.weight]
         weights.push(temp);
-        counter++;
+        
     })
 
     return weights;
  }
 
- function calcAgeFirstEntry(entry) {
-     return entry[0].age;
+ function getEntryAgeAtIndex(entry, index) {
+     return entry[index].age;
  }
 
- function calcAgeLastEntry(entry) {
-    let arrLen = entry.length
-    return entry[arrLen -1].age
- }
 
 
 module.exports = {
