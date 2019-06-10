@@ -52,7 +52,7 @@ async function getAllHeights(childId) {
 
     var find = await Height.find({owner: new mongoose.mongo.ObjectId(childId)});
     let counter = calcAgeFirstEntry(find)
-    
+
     find.forEach((element) => {
         let temp = [counter, element.height]
         heights.push(temp);
@@ -80,6 +80,12 @@ async function getAllHeights(childId) {
  function calcAgeFirstEntry(entry) {
      return entry[0].age;
  }
+
+ function calcAgeLastEntry(entry) {
+    let arrLen = entry.length
+    return entry[arrLen -1].age
+ }
+
 
 module.exports = {
     addChildToDb,
