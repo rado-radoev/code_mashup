@@ -1,7 +1,7 @@
 const socket = io()
 
 socket.on('childName', (childName) => {
-    console.log("Client received child name: ", childName)
+    // console.log("Client received child name: ", childName)
     // var isAddBabyButtonVisible = $('#add-child-btn').is(':visible')
     if (childName) {
         $('#add-child-btn').show()
@@ -17,7 +17,7 @@ socket.on('child-added-to-db-notify', (childName) => {
 })
 
 socket.on('child-data-added-to-db-notify', (childName) => {
-    console.log(childName)
+    // console.log(childName)
     $.notify(`${childName} height and weight saved`, "info");
 })
 
@@ -54,8 +54,7 @@ dataEntryForm.addEventListener('submit', (e) => {
 // Prevent the webapge to be reloated on submit
 const dataEntryForm2 = document.getElementById('name-birthdate-entry-form')
 dataEntryForm2.addEventListener('submit', (e) => {
-    
-    console.log('clicked submit in name-birthdate-entry-form')
+    // console.log('clicked submit in name-birthdate-entry-form')
     var name = $('#babyInputName').val()
     var date = $("#datetimepicker4").find("input").val();
     socket.emit('new-child', { 
@@ -85,7 +84,10 @@ function focusOnInput() {
 }
 
 $( document ).ready(function() {
-    console.log( "ready!" );
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+
     only_decimals();
 
     focusOnInput()

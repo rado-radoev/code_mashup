@@ -79,6 +79,11 @@ async function getAllHeights(childId) {
     return weights;
  }
 
+ // Get all child names in the DB and return array
+ async function getAllChildren() {
+    let children = await Child.find()
+    console.log(children)  
+ }
  function getEntryAgeAtIndex(entry, index) {
      return entry[index].age;
  }
@@ -89,5 +94,6 @@ module.exports = {
     addChildToDb,
     addChildDataToDB,
     getAllHeights,
-    getAllWeights
+    getAllWeights,
+    getAllChildren
 }

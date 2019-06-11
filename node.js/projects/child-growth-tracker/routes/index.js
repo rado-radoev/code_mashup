@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var { addChildToDb, addChildDataToDB, getAllHeights, getAllWeights } = require('../src/db/db_control')
+var { addChildToDb, addChildDataToDB, getAllHeights, getAllWeights, getAllChildren } = require('../src/db/db_control')
 var { calcAge, convertDaysToMonths, convertDaysToYears } = require('../src/util/utils')
 
 // var mongoose = require('../src/db/mongoose')
@@ -37,7 +37,7 @@ router.use(function(req, res, next) {
   child.then((result) => {
     let name = result.name
     let id = result._id
-    console.log(id)
+    // console.log(id)
     
     io.on('connection', (socket) => {
       socket.join(name, () => {
@@ -88,8 +88,8 @@ router.get('/', async function(req, res, next) {
   let age_t = ['months', 'year(s)']
   var age_type = ageTemp > 365 ? age_t[1] : age_t[0]
 
-  // var g = await getAllHeights('5cf0660b57019f452c48a141')
-  // console.log(g)
+  var g = await getAllChildren()
+  console.log(g)
 
   res.render('index', { 
     title: 'Baby Monitor',

@@ -1,3 +1,19 @@
+<!-- Example single danger button -->
+<p>
+<div class="btn-group">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Action
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+  </div>
+</div>
+</p>
+
 
 <button type="button" id="add-child-btn" class="btn btn-primary">Add child</button>
 <div class="row">
@@ -13,7 +29,8 @@
                     <div class="col-3">    
                         <label for="exampleInputEmail1">Birthdate</label>
                         <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                            <input type="text" placeholder={{currDate}} class="form-control datetimepicker-input" data-target="#datetimepicker4"/>
+                            <input type="text" placeholder={{currDate}} class="form-control datetimepicker-input" data-target="#datetimepicker4" 
+                            data-toggle="tooltip" data-placement="top" title="mm/dd/yyyy"/>
                             <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                             </div>
