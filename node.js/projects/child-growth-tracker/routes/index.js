@@ -29,7 +29,7 @@ router.use(async function(req, res, next) {
 
   let c = await getAllChildren()
   let c_name = c[0].name
-  res.locals.child = c_name
+  req.child = c_name
   
   // Check if child exists
   var child = childExists(c_name)
@@ -69,8 +69,9 @@ router.use(async function(req, res, next) {
 
       socket.on('newDefaultChildName', (newChildName) => {
         socket.emit('newChildSelected', (newChildName))
-        res.locals.child = newChildName
-      })
+        // res.locals.child = undefined
+        req.child = newChildName
+       })
 
     })
   }).catch((e) => {
@@ -83,8 +84,8 @@ router.use(async function(req, res, next) {
 /* GET home page. */
 router.get('/', async function(req, res, next) {
 
-
-  var name = await childExists(res.locals.child)
+  console.log(req.child)
+  var name = await childExists(req.child)
   var id = name._id
   let ageTemp = calcAge(name.birthdate)
   var age = ageTemp > 365 ? convertDaysToYears(ageTemp) : convertDaysToMonths(ageTemp)
