@@ -5,10 +5,9 @@
     {{DefaultChildName}}
   </button>
   <div class="dropdown-menu">
-      {{!-- {{#each children}} --}}
-    <a class="dropdown-item {{status}}" href="#">Action</a>
-    <a class="dropdown-item {{status}}" href="#">Another action</a>
-    <a class="dropdown-item {{status}}" href="#">Something else here</a>
+    {{#each children}}
+        <a class="dropdown-item {{status}}" href="#">{{dropdownChildName}}</a>
+    {{/each}}
   </div>
 </div>
 </p>

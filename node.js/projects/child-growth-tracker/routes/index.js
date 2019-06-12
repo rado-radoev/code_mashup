@@ -28,12 +28,16 @@ async function childExists(childName) {
   return child;
 }
 
-router.use(function(req, res, next) {
+router.use(async function(req, res, next) {
 
   var io = req.app.get('socketio')
+
+  let c = await getAllChildren()
+  let c_name = c[0].name
+  res.locals.child = c_name
   
   // Check if child exists
-  var child = childExists('Victor')
+  var child = childExists(c_name)
   child.then((result) => {
     let name = result.name
     let id = result._id
@@ -81,18 +85,19 @@ router.use(function(req, res, next) {
 /* GET home page. */
 router.get('/', async function(req, res, next) {
 
-  var name = await childExists('Victor')
+  var name = await childExists(res.locals.child)
   var id = name._id
   let ageTemp = calcAge(name.birthdate)
   var age = ageTemp > 365 ? convertDaysToYears(ageTemp) : convertDaysToMonths(ageTemp)
   let age_t = ['months', 'year(s)']
   var age_type = ageTemp > 365 ? age_t[1] : age_t[0]
 
-  var g = await getAllChildren()
-  console.log(g)
+  // var g = await getAllChildren()
+  // console.log(g)
 
   res.render('index', { 
     title: 'Baby Monitor',
+    DefaultChildName: 'Victor',
     childName: name.name,
     childBirthDate: (name.birthdate).toShortFormat(),
     childAge: `${age} ${age_type} old.`,
