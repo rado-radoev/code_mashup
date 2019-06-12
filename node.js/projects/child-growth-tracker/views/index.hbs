@@ -1,12 +1,12 @@
 <!-- Example single danger button -->
 <p>
 <div class="btn-group">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button id='options' type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     {{DefaultChildName}}
   </button>
   <div class="dropdown-menu">
-    {{#each children}}
-        <a class="dropdown-item {{status}}" href="#">{{dropdownChildName}}</a>
+    {{#each object}}
+        <a class="dropdown-item" href="#">{{this.name}}</a>
     {{/each}}
   </div>
 </div>

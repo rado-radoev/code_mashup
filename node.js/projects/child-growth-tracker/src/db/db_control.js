@@ -79,6 +79,11 @@ async function getAllHeights(childId) {
     return weights;
  }
 
+ async function childExists(childName) {
+    var child = await Child.findOne({name: childName});
+    return child;
+  }
+
  // Get all child names in the DB and return array
  async function getAllChildren() {
     let children = await Child.find()
@@ -95,5 +100,6 @@ module.exports = {
     addChildDataToDB,
     getAllHeights,
     getAllWeights,
-    getAllChildren
+    getAllChildren,
+    childExists
 }

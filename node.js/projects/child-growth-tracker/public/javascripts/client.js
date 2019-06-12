@@ -1,5 +1,14 @@
 const socket = io()
 
+$('.dropdown-menu a').click(function(){
+    var selText = $(this).text()
+    socket.emit('newDefaultChildName', selText)
+});
+
+socket.on('newChildSelected', (newDefaultChildName) => {
+    $('#options').html(newDefaultChildName)
+})
+
 socket.on('childName', (childName) => {
     // console.log("Client received child name: ", childName)
     // var isAddBabyButtonVisible = $('#add-child-btn').is(':visible')
@@ -88,7 +97,7 @@ $( document ).ready(function() {
         $('[data-toggle="tooltip"]').tooltip()
       })
 
-    only_decimals();
+      only_decimals();
 
     focusOnInput()
 
