@@ -38,6 +38,21 @@ router.use(async function(req, res, next) {
     let id = result._id
     // console.log(id)
     
+
+/*
+may be play around with socket io rooms
+leave a room when you change the name 
+and join new room ?
+
+See if you can move some of the middleware and the router
+funcitons to outside funcitons
+
+move router methods to middleware and pass them as parameters.
+
+*/
+
+
+
     io.on('connection', (socket) => {
       socket.join(name, () => {
         io.to(name).emit('childName', name)
@@ -71,7 +86,7 @@ router.use(async function(req, res, next) {
         socket.emit('newChildSelected', (newChildName))
         // res.locals.child = undefined
         req.child = newChildName
-       })
+      })
 
     })
   }).catch((e) => {
