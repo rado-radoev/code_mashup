@@ -1,3 +1,5 @@
+/*jshint esversion: 8 */ 
+
 var express = require('express');
 var router = express.Router();
 var { addChildToDb, addChildDataToDB, getAllHeights, getAllWeights, getAllChildren, childExists } = require('../src/db/db_control');
@@ -32,7 +34,7 @@ router.use(async function(req, res, next) {
   req.child = c_name;
   
   // Check if child exists
-  var child = childExists(c_name)
+  var child = childExists(c_name);
   child.then((result) => {
     let name = result.name;
     let id = result._id;
@@ -56,7 +58,7 @@ move router methods to middleware and pass them as parameters.
     io.on('connection', (socket) => {
       socket.join(name, () => {
         io.to(name).emit('childName', name);
-      })
+      });
 
       socket.on('new-child', async (childData) => {
         var added = await addChildToDb(childData);
@@ -95,6 +97,10 @@ move router methods to middleware and pass them as parameters.
 
   next();
 });
+
+router.get('/name:id', async (req, res, next) => {
+  res.send(req.params.id)
+})
 
 /* GET home page. */
 router.get('/', async function(req, res, next) {
