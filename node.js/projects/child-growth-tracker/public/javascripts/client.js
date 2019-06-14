@@ -1,13 +1,23 @@
 const socket = io()
 
+var defaultChild;
+
+socket.on('requsted_child_name', (child) => {
+    defaultChild = child;
+}); 
+
 $('.dropdown-menu a').click(function(){
-    var selText = $(this).text()
-    socket.emit('newDefaultChildName', selText)
+    var selectedChild = $(this).text()
+    socket.emit('newDefaultChildName', (selectedChild));
 });
 
 socket.on('newChildSelected', (newDefaultChildName) => {
-    $('#options').html(newDefaultChildName)
-})
+    $('#options').html(newDefaultChildName.name)
+
+    let childId = newDefaultChildName._id
+    socket.emit('request_weight', childId);
+    socket.emit('request_height', childId);
+});
 
 socket.on('childName', (childName) => {
     // console.log("Client received child name: ", childName)
@@ -48,14 +58,14 @@ function only_decimals() {
 const dataEntryForm = document.getElementById('height-weigh-entry-form')
 dataEntryForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    var height = $('#heightInput').val()
-    var weight = $('#weightInput').val()
+    var height = $('#heightInput').val();
+    var weight = $('#weightInput').val();
 
     socket.emit('height-weight', {height, weight});
     socket.emit('request_height')
 
-    $('#heightInput').val("")
-    $('#weightInput').val("")
+    $('#heightInput').val("");
+    $('#weightInput').val("");
 });
 
 // Prevent the webapge to be reloated on submit
@@ -69,8 +79,8 @@ dataEntryForm2.addEventListener('submit', (e) => {
         birthdate: date
     }, console.log('emitting data'))
 
-    $('#add-child-btn').show()
-    $('#name-birthdate-entry-form').hide()
+    $('#add-child-btn').show();
+    $('#name-birthdate-entry-form').hide();
     
     e.preventDefault();
 });
@@ -96,6 +106,14 @@ function focusOnInput() {
 }
 
 $( document ).ready(function() {
+
+    if (!defaultChild) {
+        socket.emit('request_child_object', (defaultChild));
+    }
+    else {
+
+    }
+
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
       })

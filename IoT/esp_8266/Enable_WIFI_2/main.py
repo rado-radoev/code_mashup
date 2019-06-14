@@ -25,14 +25,14 @@ except OSError as e:
 while True:
   try:
     client.check_msg()
-    time.sleep(.5)
     if (time.time() - last_message) > message_interval:
       msg = b'Hello #%d' % counter
       client.publish(topic_pub, msg)
       last_message = time.time()
       counter += 1
-      led = Pin(2, Pin.OUT)
+      led.value(0)
       time.sleep(.2)
-      led.value(not led.value())
+      led.value(1)
   except OSError as e:
     restart_and_reconnect()
+  time.sleep(1)

@@ -21,14 +21,17 @@ except OSError as e:
   restart_and_reconnect()
 
 while True:
-  try:
+  
     new_message = client.check_msg()
-    if new_message != 'None':
+    if new_message:
+      print('teeeest')
       client.publish(topic_pub, b'received')
-      led = Pin(2, Pin.OUT)
-      time.sleep(.5)
-      led.value(not led.value())
-    time.sleep(1)
+      
+      led.value(0)
+      time.sleep(.1)
+      led.value(1)
+    else:
+      print('seeping')
+      time.sleep(1)
 
-  except OSError as e:
-    restart_and_reconnect()
+  

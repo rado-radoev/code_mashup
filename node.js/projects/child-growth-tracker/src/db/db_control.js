@@ -84,10 +84,25 @@ async function getAllHeights(childId) {
     return child;
   }
 
+  async function findChildByName(childName) {
+    var child = await Child.findOne({name: childName});
+    return child;
+  }
+
+  async function findChildById(childId) {
+    var child = await Child.findOne({id: childId});
+    return child;
+  }
+
  // Get all child names in the DB and return array
  async function getAllChildren() {
     let children = await Child.find()
     return children
+ }
+
+ async function getFirstChild() {
+    let children = await getAllChildren() 
+    return children[0]
  }
  function getEntryAgeAtIndex(entry, index) {
      return entry[index].age;
@@ -101,5 +116,8 @@ module.exports = {
     getAllHeights,
     getAllWeights,
     getAllChildren,
-    childExists
+    childExists,
+    getFirstChild,
+    findChildByName,
+    findChildById
 }
