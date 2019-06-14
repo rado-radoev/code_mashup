@@ -3,43 +3,37 @@
 var express = require('express');
 var router = express.Router();
 var { addChildToDb, addChildDataToDB, getAllHeights, getAllWeights, getAllChildren, childExists } = require('../src/db/db_control');
-var { calcAge, convertDaysToMonths, convertDaysToYears } = require('../src/util/utils');
+var { calcAge, convertDaysToMonths, convertDaysToYears, toShortFormat } = require('../src/util/utils');
 
-// var mongoose = require('../src/db/mongoose')
-const Child = require('../src/models/child');
-const Height = require('../src/models/height');
-const Weight = require('../src/models/weight');
 
-Date.prototype.toShortFormat = function() {
-
-  var month_names =["Jan","Feb","Mar",
-                    "Apr","May","Jun",
-                    "Jul","Aug","Sep",
-                    "Oct","Nov","Dec"];
-  
-  var day = this.getDate();
-  var month_index = this.getMonth();
-  var year = this.getFullYear();
-  
-  return "" + (month_index + 1) + "/" + day + "/" + year;  
-  // return "" + day + "/" + month_names[month_index] + "/" + year;
-};
-
-router.use(async function(req, res, next) {
-
-  var io = req.app.get('socketio');
-
+var c_name = async function (req, res, next) {
   let c = await getAllChildren();
   let c_name = c[0].name;
   req.child = c_name;
-  
+
+  next();
+};
+
+var test = function (options) {
+  return function (req, res, next) {
+    console.log(options)
+    next();
+  };
+};
+
+router.use(c_name);
+router.use(test({opt1: '1', opt2: '2'}))
+
+router.use(async (req, res, next) => {
+
+
+  var io = req.app.get('socketio');
   // Check if child exists
-  var child = childExists(c_name);
+  var child = childExists(req.child);
+
   child.then((result) => {
     let name = result.name;
-    let id = result._id;
-    // console.log(id)
-    
+    let id = result._id; 
 
 /*
 may be play around with socket io rooms
@@ -53,9 +47,7 @@ move router methods to middleware and pass them as parameters.
 
 */
 
-
-
-    io.on('connection', (socket) => {
+    io.once('connection', (socket) => {
       socket.join(name, () => {
         io.to(name).emit('childName', name);
       });
@@ -63,29 +55,30 @@ move router methods to middleware and pass them as parameters.
       socket.on('new-child', async (childData) => {
         var added = await addChildToDb(childData);
         if (added) {
-          socket.to(name).emit('child-added-to-db-notify', (added.name));
+          socket.emit('child-added-to-db-notify', (added.name));
         }
       });
 
       socket.on('height-weight', async (size) => {
         var added = await addChildDataToDB(size, id);
         if (added) {
-          socket.to(name).emit('child-data-added-to-db-notify',(name));
+          socket.emit('child-data-added-to-db-notify',(name));
         }
       });
 
       socket.on('request_height', async () => {
         var heights = await getAllHeights(id);
-        socket.to(name).emit('update_height', heights);
+        socket.emit('update_height', heights);
       });
 
       socket.on('request_weight', async () => {
         var weights = await getAllWeights(id);
-        socket.to(name).emit('update_weight', weights);
+        socket.emit('update_weight', weights);
       });
 
       socket.on('newDefaultChildName', (newChildName) => {
-        socket.to(name).emit('newChildSelected', (newChildName));
+        console.log(newChildName)
+        socket.emit('newChildSelected', (newChildName));
         // res.locals.child = undefined
         // req.child = newChildName
       });
@@ -98,8 +91,12 @@ move router methods to middleware and pass them as parameters.
   next();
 });
 
-router.get('/name:id', async (req, res, next) => {
+router.get('/name/:id', async (req, res, next) => {
   res.send(req.params.id)
+})
+
+router.get('/users/:userId/books/:bookId', function (req, res) {
+  res.send(req.params)
 })
 
 /* GET home page. */
@@ -121,9 +118,9 @@ router.get('/', async function(req, res, next) {
     title: 'Baby Monitor',
     DefaultChildName: name.name,
     childName: name.name,
-    childBirthDate: (name.birthdate).toShortFormat(),
+    childBirthDate: toShortFormat(name.birthdate),
     childAge: `${age} ${age_type} old.`,
-    currDate: (new Date()).toShortFormat()
+    currDate: toShortFormat(new Date())
   });
 });
 

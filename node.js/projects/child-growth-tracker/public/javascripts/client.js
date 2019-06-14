@@ -48,7 +48,6 @@ function only_decimals() {
 const dataEntryForm = document.getElementById('height-weigh-entry-form')
 dataEntryForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log('clicked submit in height-weight-entry-form')
     var height = $('#heightInput').val()
     var weight = $('#weightInput').val()
 
@@ -57,8 +56,7 @@ dataEntryForm.addEventListener('submit', (e) => {
 
     $('#heightInput').val("")
     $('#weightInput').val("")
-
-})
+});
 
 // Prevent the webapge to be reloated on submit
 const dataEntryForm2 = document.getElementById('name-birthdate-entry-form')
@@ -75,7 +73,12 @@ dataEntryForm2.addEventListener('submit', (e) => {
     $('#name-birthdate-entry-form').hide()
     
     e.preventDefault();
-})
+});
+dataEntryForm2.addEventListener('reset', (e) => {
+    e.preventDefault();
+    $('#add-child-btn').show()
+    $('#name-birthdate-entry-form').hide()
+});
 
 $('#add-child-btn').click(() => {
     $('#name-birthdate-entry-form').show()
