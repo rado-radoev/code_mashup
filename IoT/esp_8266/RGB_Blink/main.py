@@ -23,15 +23,10 @@ except OSError as e:
 while True:
   
     new_message = client.check_msg()
-    if new_message:
+    if new_message != None:
       print('teeeest')
       client.publish(topic_pub, b'received')
-      
-      led.value(0)
-      time.sleep(.1)
-      led.value(1)
     else:
-      print('seeping')
       time.sleep(1)
 
   

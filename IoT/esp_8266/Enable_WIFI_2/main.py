@@ -30,9 +30,6 @@ while True:
       client.publish(topic_pub, msg)
       last_message = time.time()
       counter += 1
-      led.value(0)
-      time.sleep(.2)
-      led.value(1)
   except OSError as e:
     restart_and_reconnect()
   time.sleep(1)

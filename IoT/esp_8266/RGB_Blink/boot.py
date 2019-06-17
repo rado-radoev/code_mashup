@@ -41,11 +41,13 @@ last_messsage = 0
 message_interval = 5
 counter = 0
 
+# led = Pin(2, Pin.OUT)
+
 esp.osdebug(None)
 webrepl.start()
 gc.collect()
 
 do_connect()
 
-led = Pin(2, Pin.OUT)
+
 

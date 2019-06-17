@@ -41,7 +41,7 @@ last_message = 0
 message_interval = 5
 counter = 0
 
-led = Pin(2, Pin.OUT)
+# led = Pin(2, Pin.OUT)
 
 esp.osdebug(None)
 webrepl.start()

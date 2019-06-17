@@ -98,8 +98,11 @@ move router methods to middleware and pass them as parameters.
         let child = await findChildByName(newChildName)
         socket.emit('newChildSelected', (child));
         socket.emit('requsted_child_name', (child))
-
-
+        let tempC = {
+          name: child.name,
+          birthDate: toShortFormat(child.birthdate),
+          age: calcAge(child.birthdate)
+        }
         // TO DO 
 
 

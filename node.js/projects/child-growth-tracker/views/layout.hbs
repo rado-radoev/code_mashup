@@ -8,7 +8,10 @@
   </head>
   <body>
     <h1>{{title}}</h1>
-    <p>Monitoring {{childName}}, born on {{childBirthDate}}. {{childName}} is now {{childAge}} </p>
+    <script type='text/template' id='tpl'>
+      <p>{{greeting}}</p>
+    </script>
+    {{!-- <p>Monitoring {{childName}}, born on {{childBirthDate}}. {{childName}} is now {{childAge}} </p> --}}
     {{{body}}}
   </body>
 

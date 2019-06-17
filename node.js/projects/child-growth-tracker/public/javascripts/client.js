@@ -19,6 +19,11 @@ socket.on('newChildSelected', (newDefaultChildName) => {
     socket.emit('request_height', childId);
 });
 
+var template = Handlebars.compile($('#tpl').html() );
+Handlebars.registerHelper('greeting', (childdata) => {
+    return `Monitoring ${childdata.name}, born on ${childdata.birthDate}. ${childdata.name} is now ${childdata.age} </p>`
+  })
+
 socket.on('childName', (childName) => {
     // console.log("Client received child name: ", childName)
     // var isAddBabyButtonVisible = $('#add-child-btn').is(':visible')
