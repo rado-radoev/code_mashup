@@ -103,7 +103,7 @@ move router methods to middleware and pass them as parameters.
           birthDate: toShortFormat(child.birthdate),
           age: calcAge(child.birthdate)
         }
-        // TO DO 
+        res.redirect(`/name/${tempC.name}`)
 
 
         // UPDATE THE CHILD NAME AND DB ON THE WEBSITE WHEN 
@@ -117,7 +117,6 @@ move router methods to middleware and pass them as parameters.
   }).catch((e) => {
     console.log(e);
   });
-
   next();
 });
 
