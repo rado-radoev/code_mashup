@@ -58,22 +58,13 @@ io.once('connection', (socket) => {
     socket.on('newDefaultChildName', async (newChildName) => {
       console.log(newChildName)
       let child = await findChildByName(newChildName)
-      
+      socket.emit('newChildSelected', child);
+
       let tempC = {
         name: child.name,
         birthDate: toShortFormat(child.birthdate),
         age: calcAge(child.birthdate)
       };
-
-      socket.emit('requsted_child_name', (child))
-      socket.emit('newChildSelected', (child));
-
-      // res.writeHead('200', {Location: `${req.baseUrl}/name/${tempC.name}`})
-      // res.redirect(`${req.baseUrl}/name/${tempC.name}`)
-      // res.end()
-
-      // res.locals.child = undefined
-      // req.child = newChildName
     });
 });
 

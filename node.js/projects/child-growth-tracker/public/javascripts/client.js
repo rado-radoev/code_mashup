@@ -2,17 +2,15 @@ const socket = io()
 
 var defaultChild;
 
-socket.on('requsted_child_name', (child) => {
-    defaultChild = child;
-}); 
+// socket.on('requsted_child_name', (child) => {
+//     defaultChild = child;
+// }); 
 
-socket.on('newChildSelected', (newDefaultChildName) => {
+socket.on('newChildSelected', (selectedChild) => {
    
-    let childId = newDefaultChildName._id
+    let childId = selectedChild._id
     socket.emit('request_weight', childId);
     socket.emit('request_height', childId);
-
-    location.href = `/name/${newDefaultChildName.name}`
 });
 
 socket.on('childName', (childName) => {
@@ -76,11 +74,6 @@ dataEntryForm2.addEventListener('reset', (e) => {
     $('#name-birthdate-entry-form').hide()
 });
 
-$('#add-child-btn').click(() => {
-    $('#name-birthdate-entry-form').show()
-    $('#add-child-btn').hide() 
-});
-
 function joinRoom(roomName) {
     socket.emit('join', roomName, (error) => {
         if (error) {
@@ -110,23 +103,20 @@ function only_decimals() {
     });
 }
 
-// $('.dropdown-menu').change(function() {
-//     var selectedChild = $(this).find(':selected').text();
-//     console.log(selectedChild)
-//     $('#options').html(selectedChild)
-//     socket.emit('newDefaultChildName', (selectedChild));
-// });
+$('#add-child-btn').click(() => {
+    $('#name-birthdate-entry-form').show()
+    $('#add-child-btn').hide() 
+});
 
-$(".dropdown-menu a").click(function(){
+$(".dropdown-menu a").click(function() {
     var a = $(this).text()
     $(".btn:first-child").html(a);
-
-    location.href = `/name/${a}`
+    
+    socket.emit('newDefaultChildName', a);
+    location.href = `http://localhost:3000/name/${a}`    
   });
 
 $( document ).ready(function() {
-
-    socket.emit('request_child_object', '');
 
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
