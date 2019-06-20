@@ -96,13 +96,13 @@ async function getAllHeights(childId) {
 
  // Get all child names in the DB and return array
  async function getAllChildren() {
-    let children = await Child.find()
-    return children
+    let children = await Child.find();
+    return children;
  }
 
  async function getFirstChild() {
-    let children = await getAllChildren() 
-    return children[0]
+    let children = await getAllChildren() ;
+    return children[0];
  }
  function getEntryAgeAtIndex(entry, index) {
      return entry[index].age;

@@ -4,17 +4,15 @@ var defaultChild;
 
 socket.on('requsted_child_name', (child) => {
     defaultChild = child;
-    socket.emit('newChildSelected', child)
 }); 
 
-
 socket.on('newChildSelected', (newDefaultChildName) => {
-    $('#options').html(newDefaultChildName.name)
-
+   
     let childId = newDefaultChildName._id
     socket.emit('request_weight', childId);
     socket.emit('request_height', childId);
-    joinRoom();
+
+    location.href = `/name/${newDefaultChildName.name}`
 });
 
 socket.on('childName', (childName) => {
@@ -83,8 +81,8 @@ $('#add-child-btn').click(() => {
     $('#add-child-btn').hide() 
 });
 
-function joinRoom() {
-    socket.emit('join', defaultChild.name, (error) => {
+function joinRoom(roomName) {
+    socket.emit('join', roomName, (error) => {
         if (error) {
             alert(error)
             location.href = '/'
@@ -112,22 +110,26 @@ function only_decimals() {
     });
 }
 
+// $('.dropdown-menu').change(function() {
+//     var selectedChild = $(this).find(':selected').text();
+//     console.log(selectedChild)
+//     $('#options').html(selectedChild)
+//     socket.emit('newDefaultChildName', (selectedChild));
+// });
+
+$(".dropdown-menu a").click(function(){
+    var a = $(this).text()
+    $(".btn:first-child").html(a);
+
+    location.href = `/name/${a}`
+  });
+
 $( document ).ready(function() {
 
-    if (!defaultChild) {
-        socket.emit('request_child_object', (defaultChild));
-    }
-    else {
-        joinRoom();
-    }
+    socket.emit('request_child_object', '');
 
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
-    });
-
-    $('.dropdown-menu a').click(function(){
-        var selectedChild = $(this).text()
-        socket.emit('newDefaultChildName', (selectedChild));
     });
 
     $('#datetimepicker4').datetimepicker({
@@ -136,6 +138,10 @@ $( document ).ready(function() {
         clearBtn: true,
         format: 'L'
     });
+
+    $(window).on('popstate', function() {
+        location.reload(true);
+     });
 
     only_decimals();
 
