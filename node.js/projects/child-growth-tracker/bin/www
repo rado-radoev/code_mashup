@@ -8,6 +8,8 @@ var app = require('../app');
 var debug = require('debug')('child-growth-tracker:server');
 var http = require('http');
 var mongoose = require('../src/db/mongoose')
+var socket_api = require('../src/sockets/socket_api')
+var io = socket_api.io;
 
 /**
  * Get port from environment and store in Express.
@@ -21,11 +23,12 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-var io = require('socket.io')(server)
-/**
- * Listen on provided port, on all network interfaces.
- */
-app.set('socketio', io)
+io.attach(server)
+// var io = require('socket.io')(server)
+// /**
+//  * Listen on provided port, on all network interfaces.
+//  */
+// app.set('socketio', io)
 
 server.listen(port);
 server.on('error', onError);

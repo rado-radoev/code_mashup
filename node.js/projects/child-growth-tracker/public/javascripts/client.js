@@ -4,12 +4,9 @@ var defaultChild;
 
 socket.on('requsted_child_name', (child) => {
     defaultChild = child;
+    socket.emit('newChildSelected', child)
 }); 
 
-$('.dropdown-menu a').click(function(){
-    var selectedChild = $(this).text()
-    socket.emit('newDefaultChildName', (selectedChild));
-});
 
 socket.on('newChildSelected', (newDefaultChildName) => {
     $('#options').html(newDefaultChildName.name)
@@ -17,6 +14,7 @@ socket.on('newChildSelected', (newDefaultChildName) => {
     let childId = newDefaultChildName._id
     socket.emit('request_weight', childId);
     socket.emit('request_height', childId);
+    joinRoom();
 });
 
 socket.on('childName', (childName) => {
@@ -43,16 +41,6 @@ socket.on('child-data-added-to-db-notify', (childName) => {
 socket.on('date', () => {
    $("#datetimepicker4").find("input").val();
 })
-
-function only_decimals() {
-    $(".allownumericwithdecimal").on("keypress keyup blur",function (event) {
-    //this.value = this.value.replace(/[^0-9\.]/g,'');
-        $(this).val($(this).val().replace(/[^0-9\.]/g,''));
-        if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
-            event.preventDefault();
-        }
-    });
-}
 
 // Prevent the webapge to be reloated on submit
 const dataEntryForm = document.getElementById('height-weigh-entry-form')
@@ -93,7 +81,16 @@ dataEntryForm2.addEventListener('reset', (e) => {
 $('#add-child-btn').click(() => {
     $('#name-birthdate-entry-form').show()
     $('#add-child-btn').hide() 
-})
+});
+
+function joinRoom() {
+    socket.emit('join', defaultChild.name, (error) => {
+        if (error) {
+            alert(error)
+            location.href = '/'
+        }
+    });
+}
 
 function focusOnInput() {
     var nameEntryVisible = $('#name-birthdate-entry-form').is(':visible')
@@ -105,22 +102,33 @@ function focusOnInput() {
     }
 }
 
+function only_decimals() {
+    $(".allownumericwithdecimal").on("keypress keyup blur",function (event) {
+    //this.value = this.value.replace(/[^0-9\.]/g,'');
+        $(this).val($(this).val().replace(/[^0-9\.]/g,''));
+        if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+            event.preventDefault();
+        }
+    });
+}
+
 $( document ).ready(function() {
 
     if (!defaultChild) {
         socket.emit('request_child_object', (defaultChild));
     }
     else {
-
+        joinRoom();
     }
 
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
-      })
+    });
 
-      only_decimals();
-
-    focusOnInput()
+    $('.dropdown-menu a').click(function(){
+        var selectedChild = $(this).text()
+        socket.emit('newDefaultChildName', (selectedChild));
+    });
 
     $('#datetimepicker4').datetimepicker({
         startDate: 0,
@@ -128,4 +136,8 @@ $( document ).ready(function() {
         clearBtn: true,
         format: 'L'
     });
+
+    only_decimals();
+
+    focusOnInput();
 });
