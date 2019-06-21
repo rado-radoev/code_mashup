@@ -55,8 +55,12 @@ io.once('connection', (socket) => {
       socket.emit('update_weight', weights);
     });
 
+    socket.on('test', () => {
+        console.log('aaaaaaaaaa')
+    } )
+
     socket.on('newDefaultChildName', async (newChildName) => {
-      console.log(newChildName)
+      console.log('THis is the new child obj', newChildName)
       let child = await findChildByName(newChildName)
       socket.emit('newChildSelected', child);
 

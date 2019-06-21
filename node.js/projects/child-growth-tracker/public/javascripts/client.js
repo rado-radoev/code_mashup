@@ -113,6 +113,7 @@ $(".dropdown-menu a").click(function() {
     $(".btn:first-child").html(a);
     
     socket.emit('newDefaultChildName', a);
+    socket.emit('test')
     location.href = `http://localhost:3000/name/${a}`    
   });
 
@@ -128,10 +129,6 @@ $( document ).ready(function() {
         clearBtn: true,
         format: 'L'
     });
-
-    $(window).on('popstate', function() {
-        location.reload(true);
-     });
 
     only_decimals();
 
