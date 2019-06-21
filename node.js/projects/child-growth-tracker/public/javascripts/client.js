@@ -9,10 +9,10 @@ socket.on('newChildSelected', (selectedChild) => {
     socket.emit('request_height', childId);
 });
 
-socket.on('childName', (childName) => {
+socket.on('addChildHide', () => {
     // console.log("Client received child name: ", childName)
     // var isAddBabyButtonVisible = $('#add-child-btn').is(':visible')
-    if (childName) {
+    if (!sessionStorage.getItem('defaultChild')) {
         $('#add-child-btn').show()
         $('#name-birthdate-entry-form').hide()
     } else {
@@ -101,6 +101,17 @@ function only_decimals() {
     });
 }
 
+function hideOrDisplayAddChildBtn() {
+    if (sessionStorage.getItem('defaultChild')) {
+        $('#add-child-btn').show()
+        $('#name-birthdate-entry-form').hide()
+    } else {
+        $('#add-child-btn').hide() 
+        $('#name-birthdate-entry-form').show()
+    }
+}
+
+
 $('#add-child-btn').click(() => {
     $('#name-birthdate-entry-form').show()
     $('#add-child-btn').hide() 
@@ -116,7 +127,6 @@ $(".dropdown-menu a").click(function() {
   });
 
 $( document ).ready(function() {
-
     let childId = JSON.parse(sessionStorage.getItem('defaultChild'));
     socket.emit('request_weight', childId._id);
     socket.emit('request_height', childId._id);
@@ -131,6 +141,8 @@ $( document ).ready(function() {
         clearBtn: true,
         format: 'L'
     });
+
+    hideOrDisplayAddChildBtn()
 
     only_decimals();
 
