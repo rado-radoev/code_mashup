@@ -1,8 +1,9 @@
 const socket = io()
 
-var defaultChild;
-
 socket.on('newChildSelected', (selectedChild) => {
+
+    sessionStorage.setItem('defaultChild', JSON.stringify(selectedChild))
+
     let childId = selectedChild._id
     socket.emit('request_weight', childId);
     socket.emit('request_height', childId);
@@ -29,9 +30,9 @@ socket.on('child-data-added-to-db-notify', (childName) => {
     $.notify(`${childName} height and weight saved`, "info");
 })
 
-socket.on('date', () => {
-   $("#datetimepicker4").find("input").val();
-})
+// socket.on('date', () => {
+//    $("#datetimepicker4").find("input").val();
+// })
 
 // Prevent the webapge to be reloated on submit
 const dataEntryForm = document.getElementById('height-weigh-entry-form')
@@ -40,9 +41,10 @@ dataEntryForm.addEventListener('submit', (e) => {
     var height = $('#heightInput').val();
     var weight = $('#weightInput').val();
 
-    socket.emit('height-weight', {height, weight});
-    socket.emit('request_height')
-    socket.emit('request_weight')
+    let childId = JSON.parse(sessionStorage.getItem('defaultChild'));
+    socket.emit('height-weight', {height, weight}, childId._id, childId.name);
+    socket.emit('request_height', childId._id)
+    socket.emit('request_weight', childId._id)
 
     $('#heightInput').val("");
     $('#weightInput').val("");
@@ -107,19 +109,17 @@ $('#add-child-btn').click(() => {
 $(".dropdown-menu a").click(function() {
     var a = $(this).text()
     $(".btn:first-child").html(a);
-    // location.href = `http://localhost:3000/name/${a}`  
+    location.href = `http://localhost:3000/name/${a}`  
 
-    function f() {
-        socket.emit('newDefaultChildName', a); 
-    }
-    setTimeout(f, 1500)
+    socket.emit('newDefaultChildName', a); 
        
   });
 
 $( document ).ready(function() {
 
-    // socket.emit('request_height')
-    // socket.emit('request_weight')
+    let childId = JSON.parse(sessionStorage.getItem('defaultChild'));
+    socket.emit('request_weight', childId._id);
+    socket.emit('request_height', childId._id);
 
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()

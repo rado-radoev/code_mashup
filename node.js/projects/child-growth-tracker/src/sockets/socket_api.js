@@ -3,8 +3,7 @@ var io = socket_io();
 var socket_api = {};
 
 var { addChildToDb, addChildDataToDB, getAllHeights,  getAllWeights,
-        getFirstChild, findChildByName } = require('../db/db_control');
-var { calcAge, toShortFormat } = require('../util/utils');
+        getFirstChild, findChildByName, findChildById } = require('../db/db_control');
 
 
 socket_api.io = io;
@@ -30,7 +29,7 @@ io.on('connection', (socket) => {
       }
     });
 
-    socket.on('height-weight', async (size) => {
+    socket.on('height-weight', async (size, id, name) => {
       var added = await addChildDataToDB(size, id);
       if (added) {
         socket.emit('child-data-added-to-db-notify',(name));
