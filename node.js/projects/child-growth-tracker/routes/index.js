@@ -34,7 +34,7 @@ router.get('/', async function(req, res, next) {
 
 router.get('/name/:id', async (req, res, next) => {
   // res.send(req.params.id)
-  console.log(req.params.id)
+  // console.log(req.params.id)
   var name = await childExists(req.params.id);
   let ageTemp = calcAge(name.birthdate);
   var age = ageTemp > 365 ? convertDaysToYears(ageTemp) : convertDaysToMonths(ageTemp);

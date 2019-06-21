@@ -9,7 +9,7 @@ var { calcAge, toShortFormat } = require('../util/utils');
 
 socket_api.io = io;
 
-io.once('connection', (socket) => {
+io.on('connection', (socket) => {
 
     socket.on('join', (name) => {
         socket.join(name)
@@ -55,20 +55,10 @@ io.once('connection', (socket) => {
       socket.emit('update_weight', weights);
     });
 
-    socket.on('test', () => {
-        console.log('aaaaaaaaaa')
-    } )
-
     socket.on('newDefaultChildName', async (newChildName) => {
-      console.log('THis is the new child obj', newChildName)
+    //   console.log('THis is the new child obj', newChildName)
       let child = await findChildByName(newChildName)
-      socket.emit('newChildSelected', child);
-
-      let tempC = {
-        name: child.name,
-        birthDate: toShortFormat(child.birthdate),
-        age: calcAge(child.birthdate)
-      };
+      socket.emit('newChildSelected', (child));
     });
 });
 

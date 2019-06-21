@@ -1,7 +1,5 @@
 google.charts.load('current', {packages: ['corechart', 'line']});
 
-socket.emit('request_height');
-
 socket.on('update_height', (height) => {
   google.charts.setOnLoadCallback(drawBasic);
 

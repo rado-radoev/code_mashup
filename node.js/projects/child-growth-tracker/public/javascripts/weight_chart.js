@@ -1,7 +1,5 @@
 google.charts.load('current', {packages: ['corechart', 'line']});
 
-socket.emit('request_weight');
-
 socket.on('update_weight', (weights) => {
   google.charts.setOnLoadCallback(drawBasic);
 

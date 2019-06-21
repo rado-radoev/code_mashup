@@ -2,12 +2,7 @@ const socket = io()
 
 var defaultChild;
 
-// socket.on('requsted_child_name', (child) => {
-//     defaultChild = child;
-// }); 
-
 socket.on('newChildSelected', (selectedChild) => {
-   
     let childId = selectedChild._id
     socket.emit('request_weight', childId);
     socket.emit('request_height', childId);
@@ -47,6 +42,7 @@ dataEntryForm.addEventListener('submit', (e) => {
 
     socket.emit('height-weight', {height, weight});
     socket.emit('request_height')
+    socket.emit('request_weight')
 
     $('#heightInput').val("");
     $('#weightInput').val("");
@@ -61,7 +57,7 @@ dataEntryForm2.addEventListener('submit', (e) => {
     socket.emit('new-child', { 
         name,
         birthdate: date
-    }, console.log('emitting data'))
+    })
 
     $('#add-child-btn').show();
     $('#name-birthdate-entry-form').hide();
@@ -111,13 +107,19 @@ $('#add-child-btn').click(() => {
 $(".dropdown-menu a").click(function() {
     var a = $(this).text()
     $(".btn:first-child").html(a);
-    
-    socket.emit('newDefaultChildName', a);
-    socket.emit('test')
-    location.href = `http://localhost:3000/name/${a}`    
+    // location.href = `http://localhost:3000/name/${a}`  
+
+    function f() {
+        socket.emit('newDefaultChildName', a); 
+    }
+    setTimeout(f, 1500)
+       
   });
 
 $( document ).ready(function() {
+
+    // socket.emit('request_height')
+    // socket.emit('request_weight')
 
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
