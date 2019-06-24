@@ -3,12 +3,12 @@ const mongoose = require('mongoose')
       SALT_WORK_FACTOR = 10;
 
 const userSchema = new mongoose.Schema( {
-    name: {
-        first: String,
-        last: String, 
-        required: true,
-        trim: true
-    },
+    // name: {
+    //     first: String,
+    //     last: String, 
+    //     required: true,
+    //     trim: true
+    // },
     firstName: {
         type: String,
         required: true,
@@ -31,6 +31,8 @@ const userSchema = new mongoose.Schema( {
         type: String,
         required: true,
     }
+}, {
+    collection: 'users'
 });
 
 userSchema.pre('save', (next) => { 

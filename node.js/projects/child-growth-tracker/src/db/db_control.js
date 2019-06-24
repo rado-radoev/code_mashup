@@ -1,5 +1,6 @@
 const mongoose = require('./mongoose')
 const Child = require('../models/child')
+const User = require('../models/user')
 const Height = require('../models/height')
 const Weight = require('../models/weight')
 const { calcAge, convertDaysToMonths } = require('../util/utils')
@@ -11,6 +12,23 @@ function addChildToDb(childInfo) {
     })
 
     return newChild.save();
+}
+
+async function createNewUser() {
+    let fName = 'Radoslav'
+    let lName = 'Radoev'
+    let uName = 'rradoev'
+    let pass = 123456
+    var user = await new User({
+        firstName; fName,
+        lastName: lName,
+        userName; uName,
+        password: pass
+    })
+
+    user.save((err) => {
+        if (err) throw err;
+    } 
 }
 
 async function addChildDataToDB(childData, childId) {
