@@ -3,6 +3,12 @@ const mongoose = require('mongoose')
       SALT_WORK_FACTOR = 10;
 
 const userSchema = new mongoose.Schema( {
+    name: {
+        first: String,
+        last: String, 
+        required: true,
+        trim: true
+    },
     firstName: {
         type: String,
         required: true,
@@ -51,4 +57,13 @@ userSchema.methods.comparePassword = (candidatePassword, cb) => {
         if (err) return cb(err);
         cb(nul, isMatch);
     })
-}
+};
+
+
+userSchema.virtual('fullname').get(() => {
+    return this.name.first + " " + this.name.last;
+})
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
