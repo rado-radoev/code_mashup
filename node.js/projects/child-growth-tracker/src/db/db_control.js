@@ -20,16 +20,16 @@ async function createNewUser() {
     let uName = 'rradoev'
     let pass = 123456
     var user = await new User({
-        firstName; fName,
+        firstName: fName,
         lastName: lName,
-        userName; uName,
+        username: uName,
         password: pass
     })
 
     user.save((err) => {
         if (err) throw err;
-    } 
-}
+    }) 
+};
 
 async function addChildDataToDB(childData, childId) {
     let saved = false;
@@ -137,5 +137,6 @@ module.exports = {
     childExists,
     getFirstChild,
     findChildByName,
-    findChildById
+    findChildById, 
+    createNewUser
 }
