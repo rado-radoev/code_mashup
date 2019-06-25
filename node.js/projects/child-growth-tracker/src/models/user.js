@@ -1,22 +1,27 @@
-const mongoose = require('mongoose')
-      bcrypt = require('bcrypt')
-      SALT_WORK_FACTOR = 10;
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const validator = require('validator');
+const SALT_WORK_FACTOR = 10;
 
 const userSchema = new mongoose.Schema( {
-    // name: {
-    //     first: String,
-    //     last: String, 
-    //     required: true,
-    //     trim: true
-    // },
+    email: {
+        type: String,
+        unique: true,
+        required: true,
+        trim: true,
+        lowercase: true,
+        validate(value) {
+            if (!validator.isEmail(value)) {
+                throw new Error('Email is invalid')
+            }
+        }
+    },
     firstName: {
         type: String,
-        required: true,
         trim: true
     },
     lastName: {
         type: String, 
-        required: true,
         trim: true
     },
     username: {
@@ -35,22 +40,31 @@ const userSchema = new mongoose.Schema( {
     collection: 'users'
 });
 
-userSchema.pre('save', function(next) { 
-    var user = this;
-    // only hash password if the password is new or modified
-    if (!user.isModified('password')) return next();
+userSchema.statics.findByCredentials = async (email, password) => {
+    const user = await User.findOne({ email })
 
-    // generate bcypt salt
-    bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
-        if (err) return next(err);
+    if (!user) {
+        throw new Error('Unable to login')
+    }
 
-        // now hash the password with the new salt
-        bcrypt.hash(user.password, salt, (err, hash) => {
-            // overide clear text password with hasdhed
-            user.password = hash;
-            next();
-        })
-    })
+    const isMatch = await bcrypt.compare(password, user.password)
+
+    if (!isMatch) {
+        throw new Error('Unable to login')
+    }
+
+    return user
+}
+
+// Hash the plain password before saving
+userSchema.pre('save', async function(next) { 
+    const user = this
+
+    if (user.isModified('password')) {
+        user.password = await bcrypt.hash(user.password, SALT_WORK_FACTOR)
+    }
+
+    next()
 });
 
 

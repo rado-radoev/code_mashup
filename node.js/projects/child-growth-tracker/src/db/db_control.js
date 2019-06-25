@@ -19,14 +19,16 @@ async function createNewUser() {
     let lName = 'Radoev'
     let uName = 'rradoev'
     let pass = 123456
+    let email = 'peshteradko@yahoo.com'
     var user = await new User({
         firstName: fName,
         lastName: lName,
         username: uName,
-        password: pass
+        password: pass,
+        email
     })
 
-    user.save((err) => {
+    return user.save((err) => {
         if (err) throw err;
     }) 
 };
