@@ -7,6 +7,7 @@ var hbs = require('hbs')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var testsRouter = require('./routes/tests');
 var partialsDir = path.join(__dirname, './views/partials')
 
 var app = express();
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
+app.use('/', testsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
