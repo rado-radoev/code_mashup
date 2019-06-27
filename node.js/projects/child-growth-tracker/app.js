@@ -23,11 +23,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req, res, next) => {
-  console.log(req.method, req.path);
+// app.use((req, res, next) => {
+//   res.status(503).send('Server is currently in maitenance!')
+// })
 
-  next();
-})
+// app.use((req, res, next) => {
+//   if (req.methds === 'GET') {
+//     res.send('GET requests are disabled');
+//   } else {
+//     next();
+//   }
+// })
 
 app.use('/', indexRouter);
 app.use('/', usersRouter);
