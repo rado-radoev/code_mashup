@@ -2,15 +2,21 @@
 
 var express = require('express');
 var router = express.Router();
-var { getAllChildren, getFirstChild, childExists} = require('../src/db/db_control');
+var { getAllChildren, getFirstChild, childExists, addChildToDb} = require('../src/db/db_control');
 var { calcAge, convertDaysToMonths, convertDaysToYears, toShortFormat } = require('../src/util/utils');
+var auth = require('../src/middleware/auth')
 
-router.use( async (req, res, next) => {
-  var firstChildName = await getFirstChild();
-  req.child = firstChildName.name;
-  next();
-});
+// router.use( async (req, res, next) => {
+//   var firstChildName = await getFirstChild();
+//   req.child = firstChildName.name;
+//   next();
+// });
 
+router.post('/child', auth, async (req, res) => {
+  console.log(req.body)
+  console.log(req.user._id)
+  // await addChildToDb(req.body, req.user._id)
+})
 
 // var test = function (options) {
 //   return function (req, res, next) {
@@ -22,7 +28,7 @@ router.use( async (req, res, next) => {
 // router.use(test({opt1: '1', opt2: '2'}))
 
 /* GET home page. */
-router.get('/', async function(req, res, next) {
+router.get('/',async function(req, res, next) {
 
   if (!req.childname) {
     var firstChildName = await getFirstChild();

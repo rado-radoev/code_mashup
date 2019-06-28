@@ -5,10 +5,10 @@ const Height = require('../models/height')
 const Weight = require('../models/weight')
 const { calcAge, convertDaysToMonths } = require('../util/utils')
  
-function addChildToDb(childInfo) {
+async function addChildToDb(childInfo, owner) {
     var newChild = new Child({
-        name: childInfo.name,
-        birthdate: new Date(childInfo.birthdate)
+        ...childInfo,
+        owner
     })
 
     return newChild.save();
