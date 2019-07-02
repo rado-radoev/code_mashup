@@ -2,8 +2,12 @@ var express = require('express');
 var router = express.Router();
 
 /* GET users listing. */
-router.get('/', async function(req, res, next) {
+router.get('/test/login', async function(req, res, next) {
   res.render('login');
+});
+
+router.get('/test/signup', async function(req, res, next) {
+  res.send('signup');
 });
 
 router.get('/test', async function(req, res, next) {

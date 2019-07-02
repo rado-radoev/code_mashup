@@ -34,6 +34,14 @@ socket.on('child-data-added-to-db-notify', (childName) => {
 //    $("#datetimepicker4").find("input").val();
 // })
 
+$('.form-signin').submit((event) => {
+    event.preventDefault();
+    var usr = $('#loginEmail').val();
+    var pass = $('#loginPassword').val();
+
+    console.log(usr, pass);
+})
+
 // Prevent the webapge to be reloated on submit
 const dataEntryForm = document.getElementById('height-weigh-entry-form')
 dataEntryForm.addEventListener('submit', (e) => {
@@ -110,6 +118,8 @@ function hideOrDisplayAddChildBtn() {
         $('#name-birthdate-entry-form').show()
     }
 }
+
+
 
 
 $('#add-child-btn').click(() => {
