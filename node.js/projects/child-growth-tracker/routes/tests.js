@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/', async function(req, res, next) {
-  next();
+  res.render('login');
 });
 
 router.get('/test', async function(req, res, next) {
