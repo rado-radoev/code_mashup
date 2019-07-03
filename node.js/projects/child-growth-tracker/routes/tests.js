@@ -7,7 +7,7 @@ router.get('/test/login', async function(req, res, next) {
 });
 
 router.get('/test/signup', async function(req, res, next) {
-  res.send('signup');
+  res.render('signup')
 });
 
 router.get('/test', async function(req, res, next) {

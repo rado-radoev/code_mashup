@@ -34,6 +34,17 @@ socket.on('child-data-added-to-db-notify', (childName) => {
 //    $("#datetimepicker4").find("input").val();
 // })
 
+$('.form-signup').submit((event) => {
+    event.preventDefault();
+    var pass1 = $('#loginPassword').val();
+    var pass2 = $('#repeatLoginPassword').val();
+
+    if (pass1 != pass2) {
+        alert('Passwords do not matchj')
+    }
+})
+
+
 $('.form-signin').submit((event) => {
     event.preventDefault();
     var usr = $('#loginEmail').val();
