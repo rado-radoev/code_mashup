@@ -36,21 +36,77 @@ socket.on('child-data-added-to-db-notify', (childName) => {
 
 $('.form-signup').submit((event) => {
     event.preventDefault();
-    var pass1 = $('#loginPassword').val();
+    var firstName = $('#firstName').val();
+    var lastName = $('#lastName').val();
+    var username = $('#username').val();
+    var email = $('#registerEmail').val();
+    var pass1 = $('#registerPassword').val();
+    console.log(pass1)
     var pass2 = $('#repeatLoginPassword').val();
-
+    console.log(pass2)
     if (pass1 != pass2) {
-        alert('Passwords do not matchj')
+        alert('Passwords do not match')
+        return;
     }
+
+    var data = JSON.stringify( {
+        firstName,
+        lastName, 
+        username, 
+        email,
+        password: pass1
+    })
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener('readystatechange', function() {
+        if (this.readyState === 4 && this.status == 200) {
+            console.log(this.responseText);
+            location.href = `http://localhost:3000/` 
+        }
+    });
+
+    xhr.open('POST', '/users');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('cache-control', 'no-cache');
+
+    xhr.send(data);
+    
+    xhr.open('POST', '/users/login');
+    xhr.send(data);
+
+    
+    // xhr.open('POST', '/users/login');
+    // xhr.send(data);
 })
 
 
 $('.form-signin').submit((event) => {
     event.preventDefault();
-    var usr = $('#loginEmail').val();
-    var pass = $('#loginPassword').val();
+    var email = $('#loginEmail').val();
+    var password = $('#loginPassword').val();
 
-    console.log(usr, pass);
+    var data = JSON.stringify({
+        email,
+        password
+    })
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener('readystatechange', function() {
+        if (this.readyState === 4 && this.status == 200) {
+            console.log(this.responseText);
+            location.href = `http://localhost:3000/` 
+        }
+    });
+
+    xhr.open('POST', '/users/login');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('cache-control', 'no-cache');
+
+    xhr.send(data);
 })
 
 // Prevent the webapge to be reloated on submit
