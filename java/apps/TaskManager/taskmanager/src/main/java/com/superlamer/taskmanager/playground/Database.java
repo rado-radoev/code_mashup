@@ -1,0 +1,43 @@
+package com.superlamer.taskmanager.playground;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+public class Database {
+
+	public void getAllDataFromDB() {
+		String url = "jdbc:mysql://127.0.0.1:3306/taskdb?serverTimezone=UTC";
+    	String user = "root";
+    	String password = "rado";
+        try (Connection myConn = DriverManager.getConnection(url, user, password);) {
+        	Statement myStatement = myConn.createStatement();
+        	String sql = "SELECT * FROM tasks";
+        	
+        	ResultSet rs = myStatement.executeQuery(sql);
+        	ResultSetMetaData rsmd = rs.getMetaData();
+        	int columnCount = rsmd.getColumnCount();
+        	ArrayList<String> columnNames = new ArrayList<String>();
+        	
+        	// Column count starts from 1
+        	for (int i = 1; i <= columnCount; i++) {
+        		String name = rsmd.getColumnName(i);
+        		columnNames.add(name);
+        	}
+        	
+        	while (rs.next()) {
+        		for (String column : columnNames) {
+					System.out.println(column + ": " + rs.getString(column));
+				}
+        	}
+        	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
