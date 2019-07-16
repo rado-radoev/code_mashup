@@ -9,7 +9,33 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Database {
-
+	
+	public void getSingleRecordFromDB() { }
+	
+	public void addRecordToDB() { }
+	
+	public void addMultipleRecordsToDB() { }
+	
+	public void removeRecordFromDB() { }
+	
+	public void removeMultiplRecordsFromDB() { }
+	
+	public void connectToDB() { }
+	
+	public void disconnectFromDB() { }
+	
+	public void queryRecordsByID() { }
+	
+	public void queryRecordsByTaskName() { }
+	
+	public void queryRecordsByTime() { }
+	
+	public void queryRecordsByDate() { }
+	
+	public void queryRecordsByCompletionStatus() { }
+	
+	public void displayRecordsToConsole() { } 
+	
 	public void getAllDataFromDB() {
 		String url = "jdbc:mysql://127.0.0.1:3306/taskdb?serverTimezone=UTC";
     	String user = "root";
