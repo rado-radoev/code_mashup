@@ -1,5 +1,6 @@
 package com.superlamer.taskmanager.playground;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Tasks {
@@ -32,10 +33,11 @@ public class Tasks {
 		this.duration = duration;
 	}
 
-	public Date getDate() {
-		return date;
+	public String getDate() {
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		return format.format(date);
 	}
-
+	
 	public void setDate(Date date) {
 		this.date = date;
 	}
