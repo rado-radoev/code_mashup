@@ -8,6 +8,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.TextField;
 import java.awt.Toolkit;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,6 +32,10 @@ import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
+
 public class View extends JFrame {
 	
 	public View(String name) {
@@ -37,7 +43,7 @@ public class View extends JFrame {
 		setResizable(true);
 	}
 	
-	private void addTasksToPane(final Container pane) {
+	private void addTasksToPane(final Container pane) throws ParseException {
 		JPanel taskListPane = new JPanel();
 		
 		GridLayout spr = new GridLayout(0, 4);
@@ -48,14 +54,14 @@ public class View extends JFrame {
 		
 		for (int i = 0; i <= 100; i++) {
 			Tasks task = new Tasks("Test Task " + i, i, new Date(), true);
-				
+			
+			
 			JTextField taskField = new JTextField();
 			JTextField durationField = new JTextField();
 			JTextField dateField = new JTextField();
 			JComboBox completedBox = new JComboBox(comboBoxValues);
 
 			taskField.setText(task.getTask());
-			durationField.setText(Integer.toString(task.getDuration()));
 			dateField.setText(task.getDate().toString());
 			completedBox.setSelectedIndex(task.getCompleted() ? 0 : 1);
 
@@ -98,7 +104,7 @@ public class View extends JFrame {
 	}
 	
 
-	private static void createAndShowGUI() {
+	private static void createAndShowGUI() throws ParseException {
 		View frame = new View("Tasks app");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -115,7 +121,12 @@ public class View extends JFrame {
 			
 			@Override
 			public void run() {
-				createAndShowGUI();
+				try {
+					createAndShowGUI();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 	}
