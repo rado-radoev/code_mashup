@@ -1,40 +1,24 @@
 package com.superlamer.taskmanager.playground;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.TextField;
 import java.awt.Toolkit;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.GroupLayout;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.SpringLayout;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
-
-import org.jdatepicker.impl.JDatePanelImpl;
-import org.jdatepicker.impl.JDatePickerImpl;
-import org.jdatepicker.impl.UtilDateModel;
 
 public class View extends JFrame {
 	
@@ -43,11 +27,11 @@ public class View extends JFrame {
 		setResizable(true);
 	}
 	
-	private void addTasksToPane(final Container pane) throws ParseException {
+	private void addTasksToPane(final Container pane, List<Tasks> tasks) {
 		JPanel taskListPane = new JPanel();
 		
-		GridLayout spr = new GridLayout(0, 4);
-		taskListPane.setLayout(spr);
+		GridLayout layout = new GridLayout(0, 4);
+		taskListPane.setLayout(layout);
 			
 		JScrollPane panel = new JScrollPane(taskListPane);
 		String[] comboBoxValues = { "yes", "no"};
@@ -55,11 +39,22 @@ public class View extends JFrame {
 		for (int i = 0; i <= 100; i++) {
 			Tasks task = new Tasks("Test Task " + i, i, new Date(), true);
 			
-			
 			JTextField taskField = new JTextField();
 			JTextField durationField = new JTextField();
 			JTextField dateField = new JTextField();
-			JComboBox completedBox = new JComboBox(comboBoxValues);
+			JComboBox<String> completedBox = new JComboBox<String>(comboBoxValues);
+			completedBox.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					JComboBox cb = (JComboBox)e.getSource();
+			        String completed = (String)cb.getSelectedItem();
+					if (completed.equals("yes")) {
+						// remove task from array - redraw pane
+						pane.revalidate();
+					}
+				}
+			});
 
 			taskField.setText(task.getTask());
 			dateField.setText(task.getDate().toString());
@@ -78,11 +73,7 @@ public class View extends JFrame {
 	private void addComponentsToPane(final Container pane) {
 	
 		JPanel headers = new JPanel();
-				
-//		GroupLayout groupLayout = new GroupLayout(headers);
-//		groupLayout.setAutoCreateContainerGaps(true);
-//		groupLayout.setAutoCreateGaps(true);
-		
+					
 		JLabel taskLabel = new JLabel("Task");
 		JLabel timeLabel = new JLabel("Time");
 		JLabel dateLabel = new JLabel("Date");
@@ -104,7 +95,7 @@ public class View extends JFrame {
 	}
 	
 
-	private static void createAndShowGUI() throws ParseException {
+	private static void createAndShowGUI() {
 		View frame = new View("Tasks app");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -113,7 +104,7 @@ public class View extends JFrame {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		frame.setSize(430, screenSize.height);
 		frame.addComponentsToPane(frame.getContentPane());
-		frame.addTasksToPane(frame.getContentPane());
+		frame.addTasksToPane(frame.getContentPane(), null);
 	}
 	
 	public static void main(String[] args) {
@@ -121,12 +112,7 @@ public class View extends JFrame {
 			
 			@Override
 			public void run() {
-				try {
-					createAndShowGUI();
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				createAndShowGUI();
 			}
 		});
 	}
