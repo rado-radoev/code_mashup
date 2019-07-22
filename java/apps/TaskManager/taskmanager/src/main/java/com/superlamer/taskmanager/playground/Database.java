@@ -10,6 +10,27 @@ import java.util.ArrayList;
 
 public class Database {
 	
+	private Database instance = null;
+	
+	public Database getInstance() {
+		if (instance == null) 
+			instance = new Databse();
+		
+		return instance;
+	}
+	
+	public Connection connectToDB() {
+		String url = "jdbc:mysql://127.0.0.1:3306/taskdb?serverTimezone=UTC";
+    	String user = "root";
+    	String password = "rado";
+    	
+    	try {
+			Connection myConn = DriverManager.getConnection(url, user, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void getSingleRecordFromDB() { }
 	
 	public void addRecordToDB() { }
@@ -19,8 +40,6 @@ public class Database {
 	public void removeRecordFromDB() { }
 	
 	public void removeMultiplRecordsFromDB() { }
-	
-	public void connectToDB() { }
 	
 	public void disconnectFromDB() { }
 	
