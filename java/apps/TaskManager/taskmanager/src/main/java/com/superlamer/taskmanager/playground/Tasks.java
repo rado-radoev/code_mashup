@@ -1,16 +1,17 @@
 package com.superlamer.taskmanager.playground;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Tasks {
 	
 	private String task;
-	private int duration;
-	private Date date;
+	private long duration;
+	private long date;
 	private Boolean completed;
 	
-	public Tasks(String task, int duration, Date date, Boolean completed) {
+	public Tasks(String task, long duration, long date, Boolean completed) {
 		this.task = task;
 		this.duration = duration;
 		this.date = date;
@@ -25,20 +26,19 @@ public class Tasks {
 		this.task = task;
 	}
 
-	public int getDuration() {
+	public long getDuration() {
 		return duration;
 	}
 
-	public void setTime(int duration) {
+	public void setTime(long duration) {
 		this.duration = duration;
 	}
 
-	public String getDate() {
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-		return format.format(date);
+	public long getDate() {
+		return date;
 	}
 	
-	public void setDate(Date date) {
+	public void setDate(long date) {
 		this.date = date;
 	}
 
@@ -50,6 +50,18 @@ public class Tasks {
 		this.completed = completed;
 	}
 	
-	
+	@Override
+	public String toString() {
+		DateFormat duration = new SimpleDateFormat("HH:mm");
+		DateFormat date = new SimpleDateFormat("dd/MM/yyyy");
+		
+		return String.format("Task: %s%n" +
+				"Time: %s%n" + 
+				"Date: %s%n" + 
+				"Completed: %s", this.getTask(),
+								 duration.format(new Date(this.getDuration())),
+								 date.format(new Date(this.getDate())),
+								 this.getCompleted());
+	}
 
 }
