@@ -1,0 +1,5 @@
+I want to scrape all products from a website https://www.dischem.co.za. It is cloudflare protected and quite slow. Has over 10000 products. I need 3 things to be scraped:
+product name
+sku/barcode
+image url
+Need it in few hours.
