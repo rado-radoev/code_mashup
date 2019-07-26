@@ -9,29 +9,37 @@ soup = bs.BeautifulSoup(sause.text, 'lxml')
 print(soup)
 
 items = [item for item in soup.find_all(class_='product-item')]
-item = items[0]
-item_img = item.findAll('img')[0]['data-original']
-item_name = item.find('a', class_='product-item-link').text
-item_link = item.find('a', class_='product-item-link').get('href')
 
-item_sauce = requests.get(item_link)
-item_soup = bs.BeautifulSoup(item_sauce.text, 'lxml')
+for item in items: 
+    item_img = item.findAll('img')[0]['data-original']
+    item_name = item.find('a', class_='product-item-link').text
+    item_link = item.find('a', class_='product-item-link').get('href')
 
-price = item_soup.find(class_='product-info-price')
-product_id = price.attrs.get('data-product-id')
-old_price = price.find('div', {'id': "old-price-{}".format(product_id)}).find(class_='price').text
-final_price = price.find('div', {'id': "product-price-{}".format(product_id)}).find(class_='price').text
-sku = item_soup.find('table', {'id': 'product-attribute-specs-table'}).tr.td.text
-product_reference_number
+    item_sauce = requests.get(item_link)
+    item_soup = bs.BeautifulSoup(item_sauce.text, 'lxml')
 
-for tr in item_soup.find('table'): 
-  td = tr.findAll('td')
-  for d in td:
-    if d.get('data-th') == 'SKU':
-        sku = d.text
-    elif d.get('data-th') == 'Product Reference Number':
-        product_reference_number = d.text
-    
-   
-    
+    product = item_soup.find(class_='product-info-price')
+    price = product.find('div', class_='price-final_price')
+    product_id = price.attrs.get('data-product-id')
+    old_price = price.find('div', {'id': "old-price-{}".format(product_id)})
+    if old_price: 
+        old_price = old_price.find(class_='price').text
+    final_price = price.find('div', {'id': "product-price-{}".format(product_id)}).find(class_='price').text
+    # sku = item_soup.find('table', {'id': 'product-attribute-specs-table'}).tr.td.text
+
+    for tr in item_soup.find('table'): 
+        td = tr.findAll('td')
+        for d in td:
+            if d.get('data-th') == 'SKU':
+                sku = d.text
+            elif d.get('data-th') == 'Product Reference Number':
+                product_reference_number = d.text
+
+    print(item_name)
+    print(item_img)
+    if old_price: 
+        print(old_price)
+    print(final_price)
+    print(sku)
+    print(product_reference_number)
 
