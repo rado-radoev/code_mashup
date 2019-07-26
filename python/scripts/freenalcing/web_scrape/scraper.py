@@ -43,3 +43,10 @@ for item in items:
     print(sku)
     print(product_reference_number)
 
+
+'''
+    check for sale. look for this div tag with text save. or two prices?
+    <div class="amasty-label-text" style="font-size: 14px; color: rgb(255, 255, 255); padding-top: 10px; position: absolute; white-space: nowrap; width: 100%;">SAVE</div>
+
+    for data structure. may be use dict. the key will be the sku number. or the prod ref number. they should be unique
+'''
