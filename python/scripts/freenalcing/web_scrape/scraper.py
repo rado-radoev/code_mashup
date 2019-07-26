@@ -1,12 +1,15 @@
 import requests
 import urllib.request
 import bs4 as bs
+from product import Product
 
 url = 'https://www.dischem.co.za/shop-by-department/'
 sause = requests.get(url)
 soup = bs.BeautifulSoup(sause.text, 'lxml')
 
-print(soup)
+products_list = {}
+max_products = soup.find('p', id='toolbar-amount').findAll('span', class_='toolbar-number')
+max_products = int(max_products[len(max_products) - 1].text)
 
 items = [item for item in soup.find_all(class_='product-item')]
 
@@ -19,11 +22,11 @@ for item in items:
     item_soup = bs.BeautifulSoup(item_sauce.text, 'lxml')
 
     product = item_soup.find(class_='product-info-price')
+    on_sale = item_soup.find('div', class_='amasty-label-text')
     price = product.find('div', class_='price-final_price')
     product_id = price.attrs.get('data-product-id')
-    old_price = price.find('div', {'id': "old-price-{}".format(product_id)})
-    if old_price: 
-        old_price = old_price.find(class_='price').text
+    if on_sale:
+        old_price = price.find('div', {'id': "old-price-{}".format(product_id)}).find(class_='price').text
     final_price = price.find('div', {'id': "product-price-{}".format(product_id)}).find(class_='price').text
     # sku = item_soup.find('table', {'id': 'product-attribute-specs-table'}).tr.td.text
 
@@ -35,18 +38,20 @@ for item in items:
             elif d.get('data-th') == 'Product Reference Number':
                 product_reference_number = d.text
 
-    print(item_name)
-    print(item_img)
-    if old_price: 
-        print(old_price)
-    print(final_price)
-    print(sku)
-    print(product_reference_number)
+    pr = Product(
+        item_name, 
+        item_img,
+        old_price,
+        final_price,
+        None,
+        sku,
+        product_reference_number)
+    
+    products_list[sku] = pr
 
 
 '''
-    check for sale. look for this div tag with text save. or two prices?
-    <div class="amasty-label-text" style="font-size: 14px; color: rgb(255, 255, 255); padding-top: 10px; position: absolute; white-space: nowrap; width: 100%;">SAVE</div>
-
-    for data structure. may be use dict. the key will be the sku number. or the prod ref number. they should be unique
+    add multithreading.
+    50 threads
+    divide 10 000 
 '''
