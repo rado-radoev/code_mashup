@@ -20,3 +20,18 @@ item_soup = bs.BeautifulSoup(item_sauce.text, 'lxml')
 price = item_soup.find(class_='product-info-price')
 product_id = price.attrs.get('data-product-id')
 old_price = price.find('div', {'id': "old-price-{}".format(product_id)}).find(class_='price').text
+final_price = price.find('div', {'id': "product-price-{}".format(product_id)}).find(class_='price').text
+sku = item_soup.find('table', {'id': 'product-attribute-specs-table'}).tr.td.text
+product_reference_number
+
+for tr in item_soup.find('table'): 
+  td = tr.findAll('td')
+  for d in td:
+    if d.get('data-th') == 'SKU':
+        sku = d.text
+    elif d.get('data-th') == 'Product Reference Number':
+        product_reference_number = d.text
+    
+   
+    
+
