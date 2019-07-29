@@ -79,15 +79,16 @@ def get_product(items_list):
                 old_price = 0
                 final_price = 0
 
+            product_reference_number 0 
+
             for tr in item_soup.find('table'): 
                 td = tr.findAll('td')
                 for d in td:
                     if d.get('data-th') == 'SKU':
                         sku = d.text
                     elif d.get('data-th') == 'Product Reference Number':
-                        product_reference_number = d.text if d.text != None else 0
-            
-
+                        product_reference_number = d.text
+                        
             pr = Product(
                 item_name, 
                 item_img,
