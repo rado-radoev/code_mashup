@@ -1,0 +1,54 @@
+Simple HTTP data reporter
+
+Hi, This project is about collecting status data from
+a local device and reporting it to an online data logger for future analysis and presentation.
+This is a small test project with a roadmap for future add-ons and more features.
+I am looking at experience, quality of work, communication and documentation
+
+Project Specs:
+1) Phython script that can run on windows/linux , designed to run in the end on Raspberry Pi.
+2) Settings include: data origin ip address, data destination settings (user+password+web address) and desired update frequency.
+3) Display should show that last reported data and the connection status to both data origin and destination
+It is possible to use the sample code provided from the data origin device if this helps to speed up things (will be provided)
+4) A preselected set of information will be posted in the data destination online logger.
+
+Milestone 1
+Create a simple data request that will present the 3 types of data types
+Create a simple data post with some dummy information 
+Instruct on installing the right testing enviroment on a local PC (windows)
+
+Milestone 2
+Complete task, fix bugs
+
+Milestone 3
+Instruct on how to run this on Raspberry Pi
+
+Additional specs
+
+Data Origian - sample code exist
+communicate using HTTP GET requests , one HTTP request at a time
+interface looks like this:
+Establish a connection rr_connect?password=XXX&time=YYY
+Send a status request (rr_status?type=2) there are 3 types in total 1 ,2 or 3
+rr_disconnect
+
+
+Data Destination 
+
+simple REST API for POSTing device data. 
+You post a JSON body of properties, to https://xxxxxxx name of server xxxx
+for example:
+{
+"$id": "demo",
+"param1": 51.503530,
+"param2": -0.127560,
+"name": "My sensor",
+"speed": 22.4
+} 
+We use token authentication so you'll need to supply two headers to the POST:
+"Authorization: Token xxxxyyyyzzzz"
+"Content-Type: application/json"
+API key will be provided
+Your objects may contain any properties you like, so long as they do not begin with $ (system objects)
+
+https://www.freelancer.com/projects/python/Python-script-collecting-deivce-status/details
