@@ -27,7 +27,7 @@ products_list = queue.Queue()
 missing_products_list = queue.Queue()
 
 max_pages = math.ceil(max_products / 64)
-MAX_THREADS = 100
+MAX_THREADS = 30
 pages_per_thread = math.ceil(max_pages / 20)
 
 URLs = []
@@ -37,6 +37,7 @@ for addr in range(1, max_pages + 1):
 lock = threading.RLock()
 
 def scraping(url):
+    print('link served: ' + url)
     URLs.remove(url)
     with cfscrape.create_scraper() as scraper:
         scraper.headers = request_headers
@@ -112,13 +113,15 @@ def get_product(items_list):
                 lock.acquire()
                 products_list.put(pr)
                 lock.release()
-                print('qsize is: ' + str(products_list.qsize()))
+                # print('qsize is: ' + str(products_list.qsize()))
             except Exception as e:
                 lock.acquire()
                 missing_products_list.put(item_link)
                 lock.release()
                 print('Product skipped')
                 print(str(e))
+            finally:
+                lock.release()
 
 
 if __name__ == '__main__':
