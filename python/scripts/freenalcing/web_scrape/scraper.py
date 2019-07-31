@@ -11,7 +11,7 @@ from product import Product
 
 home_url = 'https://www.dischem.co.za/shop-by-department'
 
-SCRAPER_DELAY = 60
+SCRAPER_DELAY = 180
 scraper = cfscrape.create_scraper(delay=SCRAPER_DELAY)
 url = 'https://www.dischem.co.za/shop-by-department'
 client_header = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
