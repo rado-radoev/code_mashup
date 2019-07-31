@@ -11,7 +11,8 @@ from product import Product
 
 home_url = 'https://www.dischem.co.za/shop-by-department'
 
-scraper = cfscrape.create_scraper(delay=20)
+SCRAPER_DELAY = 60
+scraper = cfscrape.create_scraper(delay=SCRAPER_DELAY)
 url = 'https://www.dischem.co.za/shop-by-department'
 client_header = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
 request_headers = {'User-Agent' : client_header}
@@ -27,7 +28,7 @@ products_list = queue.Queue()
 missing_products_list = queue.Queue()
 
 max_pages = math.ceil(max_products / 64)
-MAX_THREADS = 30
+MAX_THREADS = 50
 pages_per_thread = math.ceil(max_pages / 20)
 
 URLs = []
@@ -37,9 +38,10 @@ for addr in range(1, max_pages + 1):
 lock = threading.RLock()
 
 def scraping(url):
-    print('link served: ' + url)
+    lock.acquire()
     URLs.remove(url)
-    with cfscrape.create_scraper() as scraper:
+    lock.release()
+    with cfscrape.create_scraper(delay=SCRAPER_DELAY) as scraper:
         scraper.headers = request_headers
         sauce = scraper.get(url)
         soup = bs.BeautifulSoup(sauce.content, 'lxml')
@@ -50,7 +52,7 @@ def scraping(url):
         splitted_items = split_list(items)
         with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
             # start = time.time()
-            futures = [executor.submit(get_product, ls) for ls in splitted_items]
+            futures = {executor.submit(get_product, ls): ls for ls in splitted_items}
             # end = time.time()
             # print("Time Taken: {:.6f}s".format(end-start))
 
@@ -60,7 +62,7 @@ def split_list(list_to_split):
     return list_to_split[:half_items], list_to_split[half_items:]
 
 def get_product(items_list):
-    with cfscrape.create_scraper() as scraper:
+    with cfscrape.create_scraper(delay=SCRAPER_DELAY) as scraper:
         for item in items_list: 
             try:
                 item_img = item.findAll('img')[0]['data-original']
@@ -113,29 +115,42 @@ def get_product(items_list):
                 lock.acquire()
                 products_list.put(pr)
                 lock.release()
-                # print('qsize is: ' + str(products_list.qsize()))
+                print('qsize is: ' + str(products_list.qsize()))
             except Exception as e:
                 lock.acquire()
                 missing_products_list.put(item_link)
                 lock.release()
                 print('Product skipped')
                 print(str(e))
-            finally:
+            else:
                 lock.release()
 
 
 if __name__ == '__main__':
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
         start = time.time()
-        futures = [ executor.submit(scraping, url) for url in URLs ]
+        future_to_url = {executor.submit(scraping, url): url for url in URLs}
+        # for future in concurrent.futures.as_completed(future_to_url):
+        #     url = future_to_url[future]
+        #     try:
+        #         data = future.result()
+        #     except Exception as exc:
+        #         print('%r generated an exception: %s' % (url, exc))
+        #         missing_products_list.put(url)
+        #     else:
+        #         print('%r page is %d bytes' % (url, len(data)))
+                # print(data)
 
-        results = []
-        for result in concurrent.futures.as_completed(futures):
-            results.append(result)
+
+
+        # futures = [ executor.submit(scraping, url) for url in URLs ]
+
+        # results = []
+        # for result in concurrent.futures.as_completed(futures):
+        #     results.append(result)
         end = time.time()
         print("Time Taken: {:.6f}s".format(end-start))
 
-        print(results)
         # for url in URLs:
         #     print('URLs len is: ' + str(len(URLs)))
         #     print('Starting thread with url: ' + url)
