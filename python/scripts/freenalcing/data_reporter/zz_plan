@@ -1,4 +1,7 @@
 1. Build python script
+    
+    .argv: update_frequency, rabbitMQ queue, 
+
     a. Collect data:
         - IP Address
         - Destination settings (user, password, url)
@@ -7,6 +10,7 @@
     c. if server has provided update frequency do not set one in the script
     d. When new device shows up it should send a message to the server 
         - rabbitMQ queue that will be listening for new device on the server
+    
 
 2. web server
     a. 3 types of requests: 
