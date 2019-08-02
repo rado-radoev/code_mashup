@@ -1,0 +1,47 @@
+1. Build python script
+    a. Collect data:
+        - IP Address
+        - Destination settings (user, password, url)
+        - Update frequency
+    b. return data as JSON
+    c. if server has provided update frequency do not set one in the script
+    d. When new device shows up it should send a message to the server 
+        - rabbitMQ queue that will be listening for new device on the server
+
+2. web server
+    a. 3 types of requests: 
+        - rr_connect (type 1)
+        - rr_status (type 2) This can be a rabbitMQ queue
+        - rr_disconnect (type 3)
+
+    b. GET / POST requests
+        - POST request headers:
+            - "Authorization: Token xxxxyyyyzzzz"
+              "Content-Type: application/json"
+    
+        - GET
+            - Show last reported data
+              connection status on both origin and destination
+    c. rabbitMQ queues:
+        - Generic for all devices
+        - All devices with set update frequency
+        - New devices only
+        - Device status
+
+Play:
+1. Server is up
+2. Server sends rabbitMQ message to generic queue
+    If the server has a force update frequency set
+    client settings will be ovewrited and server will send
+    update requests on the generic queue. Or use topics? Or publish, subscribe?
+2.1. Server should also be listening for new devices
+3. All clients should be listening for new messages
+    Each client will be setting the update frequency,
+    unless forced by the server
+4. Each device submits a POST request to the server
+   with the requested data
+5. Server does GET request and displays the data on the page on every POST
+   - Simple display:
+     Table:
+        Device name:, Device type, IP address, Status, Update frequency
+    If name already in table update only
