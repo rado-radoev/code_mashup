@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/anaconda3/bin/python",
+    "python.pythonPath": "C:\\Users\\radra\\AppData\\Local\\Programs\\Python\\Python37-32\\python.exe",
     "python.linting.banditEnabled": false,
     "python.linting.pylintEnabled": true,
     "python.linting.flake8Enabled": false,
