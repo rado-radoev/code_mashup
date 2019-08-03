@@ -1,6 +1,6 @@
 1. Build python script
     
-    .argv: update_frequency, rabbitMQ queue, 
+    .argv: rabbitMQ IP
 
     a. Collect data:
         - IP Address
