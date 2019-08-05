@@ -1,10 +1,12 @@
+#!/usr/bin/env python
+
 import client_data
 import pika
 import sys
 import json
 
 connection = pika.BlockingConnection(
-    pika.ConnectionParameters(sys.argv[1])
+    pika.ConnectionParameters('localhost')
 )
 channel = connection.channel()
 
