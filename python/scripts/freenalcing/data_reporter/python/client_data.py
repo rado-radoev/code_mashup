@@ -10,6 +10,8 @@ url (will get those form server)
 update frequencey if not set from sys.argv use the one from the server (defualt 5 min)
 '''
 
+import json
+
 class ClientData:
     def __init__(self, ip, user, password, url, upd_frequency):
         self.ip, self.user, self.password, self.url, self.upd_frequency = ip, user, password, url, upd_frequency
@@ -31,4 +33,8 @@ class ClientData:
             update_frequency: {self.update_frequency}
         """
         return message
+
+    def toJSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__, 
+            sort_keys=True, indent=4)
 

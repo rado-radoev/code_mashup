@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var os = require('os');
 var networkInterfaces = os.networkInterfaces();
-var amqp = require('amqplib');
+var amqp = require('amqplib/callback_api');
 
 var ip = getLocalIP();
 
@@ -12,17 +12,7 @@ router.get('/', async (req, res, next) => {
 });
 
 
-async function test() {
-  var everything = 'everything';
-  var results = 'results';
-
-
-  var conn = await amqp.connect('amqp://localhost');
-  var ch = await conn.createChannel();
-  var everythingQueue = await ch.assertQueue(everything, {durable: false});
-  everythingQueue.sendToQueue(everything, Buffer.from)
-
-
+function test(req, res, next) {
   amqp.connect('amqp://localhost', (err, conn) => {
     console.log('starting amqp')
     if (err != null) bail (err);
