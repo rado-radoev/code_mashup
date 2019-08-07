@@ -4,6 +4,31 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Google Chrome",
+            "program": "${workspaceFolder}/app.js"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach by Process ID",
+            "processId": "${command:PickProcess}"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch via NPM",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script",
+                "debug"
+            ],
+            "port": 9229,
+            "cwd": "${workspaceFolder}"
+        },
         {
             "name": "Python: Current File (Integrated Terminal)",
             "type": "python",

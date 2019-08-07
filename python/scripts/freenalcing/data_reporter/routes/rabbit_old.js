@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var os = require('os');
 var networkInterfaces = os.networkInterfaces();
-var amqp = require('amqplib/callback_api');
+var amqp = require('amqplib');
 
 var ip = getLocalIP();
 
