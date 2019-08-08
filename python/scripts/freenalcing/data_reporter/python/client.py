@@ -5,6 +5,8 @@ import pika
 import sys
 import json
 
+from utility import getIP
+
 connection = pika.BlockingConnection(
     pika.ConnectionParameters('localhost')
 )
@@ -14,12 +16,13 @@ channel.queue_declare(queue='everything')
 channel.queue_declare(queue='results')
 
 def callback(ch, method, properties, body):
-    print(body)
+    received_body = json.loads(body)
+    
     client = client_data.ClientData(
-        '192.168.186.5',
-        'user', 
-        'pass', 
-        'http://www.google.com', 
+        getIP()[1],
+        received_body['user'], 
+        received_body['pass'], 
+        received_body['url'], 
         5)
     json_client = client.toJSON()
 
