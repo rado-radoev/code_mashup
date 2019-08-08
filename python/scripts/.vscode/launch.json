@@ -5,30 +5,30 @@
     "version": "0.2.0",
     "configurations": [
         
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Google Chrome",
-            "program": "${workspaceFolder}/app.js"
-        },
+        // {
+        //     "type": "node",
+        //     "request": "launch",
+        //     "name": "Google Chrome",
+        //     "program": "${workspaceFolder}/app.js"
+        // },
         {
             "type": "node",
             "request": "attach",
             "name": "Attach by Process ID",
             "processId": "${command:PickProcess}"
         },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch via NPM",
-            "runtimeExecutable": "npm",
-            "runtimeArgs": [
-                "run-script",
-                "debug"
-            ],
-            "port": 9229,
-            "cwd": "${workspaceFolder}"
-        },
+        // {
+        //     "type": "node",
+        //     "request": "launch",
+        //     "name": "Launch via NPM",
+        //     "runtimeExecutable": "npm",
+        //     "runtimeArgs": [
+        //         "run-script",
+        //         "debug"
+        //     ],
+        //     "port": 9229,
+        //     "cwd": "${workspaceFolder}"
+        // },
         {
             "name": "Python: Current File (Integrated Terminal)",
             "type": "python",
@@ -36,54 +36,54 @@
             "program": "${file}",
             "console": "integratedTerminal"
         },
-        {
-            "name": "Python: Remote Attach",
-            "type": "python",
-            "request": "attach",
-            "port": 5678,
-            "host": "localhost",
-            "pathMappings": [
-                {
-                    "localRoot": "${workspaceFolder}",
-                    "remoteRoot": "."
-                }
-            ]
-        },
-        {
-            "name": "Python: Module",
-            "type": "python",
-            "request": "launch",
-            "module": "enter-your-module-name-here",
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "Python: Django",
-            "type": "python",
-            "request": "launch",
-            "program": "${workspaceFolder}/manage.py",
-            "console": "integratedTerminal",
-            "args": [
-                "runserver",
-                "--noreload",
-                "--nothreading"
-            ],
-            "django": true
-        },
-        {
-            "name": "Python: Flask",
-            "type": "python",
-            "request": "launch",
-            "module": "flask",
-            "env": {
-                "FLASK_APP": "app.py"
-            },
-            "args": [
-                "run",
-                "--no-debugger",
-                "--no-reload"
-            ],
-            "jinja": true
-        },
+        // {
+        //     "name": "Python: Remote Attach",
+        //     "type": "python",
+        //     "request": "attach",
+        //     "port": 5678,
+        //     "host": "localhost",
+        //     "pathMappings": [
+        //         {
+        //             "localRoot": "${workspaceFolder}",
+        //             "remoteRoot": "."
+        //         }
+        //     ]
+        // },
+        // {
+        //     "name": "Python: Module",
+        //     "type": "python",
+        //     "request": "launch",
+        //     "module": "enter-your-module-name-here",
+        //     "console": "integratedTerminal"
+        // },
+        // {
+        //     "name": "Python: Django",
+        //     "type": "python",
+        //     "request": "launch",
+        //     "program": "${workspaceFolder}/manage.py",
+        //     "console": "integratedTerminal",
+        //     "args": [
+        //         "runserver",
+        //         "--noreload",
+        //         "--nothreading"
+        //     ],
+        //     "django": true
+        // },
+        // {
+        //     "name": "Python: Flask",
+        //     "type": "python",
+        //     "request": "launch",
+        //     "module": "flask",
+        //     "env": {
+        //         "FLASK_APP": "app.py"
+        //     },
+        //     "args": [
+        //         "run",
+        //         "--no-debugger",
+        //         "--no-reload"
+        //     ],
+        //     "jinja": true
+        // },
         {
             "name": "Python: Current File (External Terminal)",
             "type": "python",
