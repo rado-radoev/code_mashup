@@ -9,10 +9,8 @@ const UPDATE_INTERVAL = 5;
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
-  test(req, res);
-
-});
-
+    test(req, res);
+  })
 
 async function test(req, res) {
   var everything = 'everything';
