@@ -40,14 +40,13 @@ def send_data_to_server(json_data):
 
 def callback(ch, method, properties, body):
     received_body = json.loads(body)
-    
+    print('Msg received on ', method.routing_key)
     # timer = Timer(5, send_data_to_server, args=(received_body,))
     # timer.start()
     # time.sleep(5)
     # timer.cancel()
     # time.sleep(received_body['update_interval'])
     # timer.cancel()
-
 
     client = client_data.ClientData(
         getIP()[1],
