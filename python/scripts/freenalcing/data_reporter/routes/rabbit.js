@@ -5,7 +5,7 @@ var networkInterfaces = os.networkInterfaces();
 var amqp = require('amqplib');
 
 var ip = getLocalIP();
-const UPDATE_INTERVAL = 5;
+const UPDATE_INTERVAL = 1;
 
 /* GET home page. */
 router.get('/', async (req, res, next) => {
@@ -29,13 +29,11 @@ async function test(req, res) {
   var ok = ch.sendToQueue(everything, Buffer.from(JSON.stringify(objToSend)))
   console.log(ok ? 'Message sent' : "Message not sent")
   
-
   ch.assertQueue(results, {durable: false});
   ch.consume(results, (msg) => {
     if (msg != null) {
       console.log(msg.content.toString())
       ch.ack(msg);
-      res.send(JSON.parse(msg.content.toString()));
     }
   });
   }

@@ -6,7 +6,7 @@ import sys
 import json
 import time
 
-from TimerThread import TimerThread
+# from threading import Timer
 from utility import getIP
 
 
@@ -18,7 +18,9 @@ channel = connection.channel()
 channel.queue_declare(queue='everything')
 channel.queue_declare(queue='results')
 
+@DeprecationWarning
 def send_data_to_server(json_data):
+    print(json_data)
     client = client_data.ClientData(
         getIP()[1],
         json_data['user'], 
@@ -27,17 +29,22 @@ def send_data_to_server(json_data):
         5)
 
     json_client = client.toJSON()
+    print(json_client)
 
     channel.basic_publish(
         exchange='', 
         routing_key='results',
         body=json_client)
 
+
+
 def callback(ch, method, properties, body):
     received_body = json.loads(body)
     
-    # timer = TimerThread(1, send_data_to_server, args=(received_body,))
+    # timer = Timer(5, send_data_to_server, args=(received_body,))
     # timer.start()
+    # time.sleep(5)
+    # timer.cancel()
     # time.sleep(received_body['update_interval'])
     # timer.cancel()
 
