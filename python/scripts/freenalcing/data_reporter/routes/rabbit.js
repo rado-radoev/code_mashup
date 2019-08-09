@@ -30,18 +30,14 @@ async function test(req, res) {
   console.log(ok ? 'Message sent' : "Message not sent")
   
   ch.assertQueue(results, {durable: false});
-  ch.consume(results, (msg) => {
+  var consume = await ch.consume(results, (msg) => {
     if (msg != null) {
       console.log(msg.content.toString())
       ch.ack(msg);
-      try {
-        res.send(JSON.parse(msg.content.toString()));
-      } catch (error) {
-        console.log('Are you trying to send another response')
-        console.log(msg.content.toString())
-      }
-      
+      return res.send(JSON.parse(msg.content.toString()));
     }
+
+    console.log('Konsumeto e: ', consume)
   });
   }
 
