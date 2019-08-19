@@ -1,4 +1,8 @@
 from django.db import models
+import datetime
 
-class Blogs(models.Model):
-    post = models.C
+class Blog(models.Model):
+    title = models.CharField(max_length=255)
+    pub_date = models.DateTimeField()
+    body = models.TextField()
+    image = models.ImageField(upload_to='images/')
