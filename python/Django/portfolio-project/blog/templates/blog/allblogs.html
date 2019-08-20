@@ -31,42 +31,32 @@
             <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" href="#">Twitter</a>
             <a class="nav-item nav-link" href="#">Resume</a>
-            <a class="nav-item nav-link" href="#">Blog</a>
+            <a class="nav-item nav-link active" href="#">Blog</a>
             </div>
         </div>
         </nav>
     </header>
 
     <main role="main">
-
-      <section class="jumbotron text-center">
         <div class="container">
-          <h1 class="jumbotron-heading">Hi, I am Rado!</h1>
-          <p class="lead text-muted">Hey my name is Radoslav Radoev and I like to code. I would turn any idea I have into a program.</p>
-          <p>
-            <a href="mailto:rado@gmail.com" class="btn btn-primary my-2">E-mail me</a>
-          </p>
-        </div>
-      </section>
+            <h1 class="text-center pt-3 ">Welcome to Rado's Blog</h1>
+            <br />
+            <br />
+            <h2>Latest Posts</h2>
 
-      <div class="album py-5 bg-light">
-        <div class="container">
-          <div class="row">
-
-            {% for job in jobs.all %}
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow" style="width: 18rem;">
-                <img class="card-img-top" src="{{ job.image.url }}">
-                <div class="card-body">
-                  <p class="card-text">{{ job.summary }}</p>
+            {% for blog in blogs.all %}
+            <div class="row">  
+                <div class="card border-secondary bg-light mb-4 box-shadow">
+                <img class="img-fluid" height=300 width=300 src={{ blog.image.url }} class="card-img-top">
+                    <div class="card-body">
+                        <h5> <p class="card-title font-weight-bold text-uppercase">{{ blog.title }}</p> </h5>
+                        <p class="card-text text-wrap text-break">{{ blog.summary }}</p>
+                        <br />
+                        <p class="card-text"><small class="text-muted">{{ blog.pub_date_pretty }}</small></p>
+                    </div>
                 </div>
-              </div>
             </div>
             {% endfor %}
-            </div>
-        </div>
-      </div>
-
     </main>
 
     <footer class="text-muted">
