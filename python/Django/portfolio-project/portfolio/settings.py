@@ -30,7 +30,7 @@ SECRET_KEY = '&8gn*$-ijtry4d*1n4t287#%1xjt4g$39cf#*g5dtw(1wg0yay'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['shrouded-dusk-68478.heroku.com']
 
 
 # Application definition
