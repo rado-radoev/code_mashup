@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import django_heroku
+import urllib
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -76,16 +79,27 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'portfoliodb',
+#         'USER': 'postgres',
+#         'PASSWORD': 'rado',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'djongo',
         'NAME': 'portfoliodb',
-        'USER': 'postgres',
-        'PASSWORD': 'rado',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'USER': os.getenv('MONGO_USER'),
+        'PASSWORD': os.getenv('MONGO_PASS'),
+        'HOST': f'mongodb+srv://{urllib.parse.quote_plus(os.getenv("MONGO_USER"))}:{urllib.parse.quote_plus(os.getenv("MONGO_PASS"))}@cluster0-yc4wz.mongodb.net/test?retryWrites=true&w=majority',
     }
 }
+
 
 
 # Password validation
@@ -135,5 +149,3 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# Activate Django-Heroku.
-django_heroku.settings(locals())
