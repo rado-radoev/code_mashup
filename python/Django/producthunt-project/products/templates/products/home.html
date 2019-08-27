@@ -2,7 +2,20 @@
 
 {% block content %}
      <h1>
-        Hello
+        {% for product in products.all %}
+            <div class="row">
+                <div class="col-2">
+                    <img src="{{ product.image.url }}" class="img-fluid" alt="" srcset="">
+                </div>
+                <div class="col-6">
+                    <h1>{{ prodouct.title }}</h1>
+                    <p>{{ product.summary }}</p>
+                </div>
+                <div class="col-4">
+
+                </div>
+            </div>
+        {% endfor %}
     </h1>
 {% endblock content %}
 
