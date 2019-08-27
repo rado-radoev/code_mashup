@@ -19,7 +19,7 @@ def create(request):
                 product.url = 'http://' + request.POST['url']
 
             product.icon = request.FILES['icon']
-            product.icon = request.FILES['image']
+            product.image = request.FILES['image']
             product.hunter = request.user
             product.save()
 
@@ -28,6 +28,4 @@ def create(request):
             return render(request, 'products/create.html', {
                 'error': 'All fields are required'
             })
-
-
     return render(request, 'products/create.html')
