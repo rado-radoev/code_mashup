@@ -70,6 +70,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'commsite.wsgi.application'
+
+# Channels
 ASGI_APPLICATION = "commsite.routing.application"
 
 # Database
