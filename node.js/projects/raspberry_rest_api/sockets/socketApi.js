@@ -1,11 +1,15 @@
-var socket_io = require(socket_io);
-var io = socket_io();
-var socketApi = {};
+var io = require('socket.io')();
+var SocketApi = {};
 
-socketApi.io = io;
+SocketApi.io = io;
 
 io.on('connection', (socket) => {
-    console.log('socket connected');
-})
+    console.log(`socket with id ${socket.id} connected`)
 
-module.exports = socketApi;
+    socket.on('hello', (msg) => {
+        console.log(msg)
+        socket.emit('back', 'hello back');
+    })
+});
+
+module.exports = SocketApi;

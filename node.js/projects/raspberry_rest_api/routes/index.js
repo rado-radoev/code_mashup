@@ -1,22 +1,10 @@
-module.exports = function(io) {
+var express = require('express');
+var router = express.Router();
 
-  var express = require('express');
-  var router = express.Router();
-  
-  /* GET home page. */
-  router.get('/', function(req, res, next) {
-      console.log(io.sockets.connected)
-      io.emit('cipher', 'text');
+/* GET home page. */
+router.get('/', function(req, res, next) {
 
-    
-    
-    res.render('index', { title: 'Express' });
-  });
-  
-  return router;
+  res.render('index', { title: 'Express' });
+});
 
-
-}
-
-
-
+module.exports = router;
