@@ -2,7 +2,7 @@ GET http://localhost:3000/subscribers
 
 ###
 
-GET http://localhost:3000/subscribers/12
+GET http://localhost:3000/subscribers/5d7160954ebab018a850587e
 
 ### 
 POST http://localhost:3000/subscribers
@@ -12,3 +12,6 @@ Content-Type: application/json
     "name": "Rado",
     "subscribedToChannel": "I Suck"
 }
+
+### 
+DELETE http://localhost:3000/subscribers/12

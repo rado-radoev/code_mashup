@@ -1,4 +1,4 @@
-const socket = io()
+const socket = io();
 
 socket.emit('hello', 'this is me');
 

@@ -12,7 +12,7 @@ var usersRouter = require('./routes/users');
 var subscribersRouter = require('./routes/subscribers');
 
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true});
-var db = mongoose.connection
+var db = mongoose.connection;
 db.on('error', (error) => console.log(error));
 db.once('open', () => console.log('Conncted to Database'));
 
