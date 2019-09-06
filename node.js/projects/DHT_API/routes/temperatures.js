@@ -5,7 +5,22 @@ const Temperature = require('../models/temperature');
 // Getting all
 router.get('/', async (req, res) => {
     try {
-        let temp = await Temperature.find();
+        // Parsing the url for search params
+        let temp
+        let urlParams = req.originalUrl.slice(req.originalUrl.indexOf('?') + 1);
+        var searchParams = new URLSearchParams(urlParams);
+        // Only allows search params defined in the Mongoose Shcema
+        const ALLOWED_QUERY_PARAMS = Object.keys(Temperature.schema.paths);
+
+        let t = {};
+        for (let key of searchParams.keys()) {
+            if (ALLOWED_QUERY_PARAMS.includes(key)) {
+                t[key] = searchParams.get(key);
+            }
+        }
+
+        // If no search params are provided, all objects are returned
+        temp = await Temperature.find(t);
         res.status(200).json(temp);
     } catch (error) {
         res.status(500).json({ message: error.message });

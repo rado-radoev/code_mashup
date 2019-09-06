@@ -14,7 +14,7 @@ const temperatureSchema = new mongoose.Schema({
         type: Date,
         default: moment().format()
     },
-    dayOfWeek: {
+    dayofweek: {
         type: Number,
         default: moment().format('d')
     },
