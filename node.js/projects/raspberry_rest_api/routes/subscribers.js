@@ -55,7 +55,7 @@ router.delete('/:id', getSubscriber, async (req, res) => {
         await res.subsiber.remove();
         res.json({ message: 'Deleted subscriber' });
     } catch (error) {
-        res.send(500).json({ message: error.message });
+        res.status(500).json({ message: error.message });
     }
 })
 
