@@ -8,7 +8,11 @@ router.get('/', function(req, res, next) {
   request({url}, (error, response) => {
     console.log(response.statusCode);
   })
-  res.render('index', { title: 'Express' });
+  res.render('index', { 
+    title: 'Express',
+    temp: 11.45,
+    humidity: 44.6
+   });
 });
 
 module.exports = router;
