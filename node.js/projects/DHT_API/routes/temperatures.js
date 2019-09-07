@@ -5,6 +5,20 @@ const Temperature = require('../models/temperature');
 // Getting all
 router.get('/', async (req, res) => {
     try {
+        let temp = await Temperature.find();
+        res.status(200).json(temp);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+// Getting one
+router.get('/:id', getTemperature , async (req, res) => {
+    res.status(200).json(res.temp);
+});
+
+// Search
+router.get('/temp/search', async (req, res) => {
+    try {
         // Parsing the url for search params
         let temp
         let urlParams = req.originalUrl.slice(req.originalUrl.indexOf('?') + 1);
@@ -25,11 +39,8 @@ router.get('/', async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-});
-// Getting one
-router.get('/:id', getTemperature , async (req, res) => {
-    res.status(200).send(res.temp);
-});
+})
+
 // Getting newest
 router.get('/temp/latest', async (req, res) => {
     try {
@@ -88,7 +99,7 @@ async function getTemperature(req, res, next) {
             return res.status(404).json({ message: 'Cannot find temperature data' });
         }
     } catch (error) {
-        return res.status(500).send({ message: error.message });
+        return res.status(500).json({ message: error.message });
     }
 
     res.temp = temp;
