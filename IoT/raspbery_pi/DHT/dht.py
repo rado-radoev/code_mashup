@@ -17,7 +17,7 @@ try:
     dic = { "temp": temp, "humid": humid  }
     js = json.dumps(dic)
     print(js)
-    sleep(2)
+    time.sleep(2)
 except:
     print('closing...')
 finally:
