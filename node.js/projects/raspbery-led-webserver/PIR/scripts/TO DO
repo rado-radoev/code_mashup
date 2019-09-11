@@ -1,0 +1,27 @@
+The user connects to the website
+    User is presented with a message if the system is armed or disarmed
+    if armed disable arm button
+    else (if disarmed) enable arm button and disable disarmed button
+
+if user clicks on arm
+    start function to arm the system
+
+    two sensor should be turned on
+    the PIR sensor
+    and the magnetic sensor
+
+    the sensors:
+        If motion is detectd form the PIR sensor or magnetic sensor is opened
+        send notification and call cell phone
+        send notifications to me and the wife
+
+    wifi led bulb:
+        turn on the light
+
+if the system is disarmed:
+    PIR, magnetic should still detect, but do not send notifications, phone calls and do not turn on light
+
+
+If it is midnight and system is not armed only send reminder notification if we forgot to turn the system on. Do not take any furher actions.
+
+??? Turn off system automatically at 7 am ???

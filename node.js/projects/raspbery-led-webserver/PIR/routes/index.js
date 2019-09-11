@@ -1,23 +1,15 @@
 module.exports = function(io) {
   var express = require('express');
   var router = express.Router();
-  // var Gpio = require('onoff').Gpio;
+  var Gpio = require('onoff').Gpio;
 
-  // const led = new Gpio(5, 'out');
+  const led = new Gpio(5, 'out');
 
 
-  // io.on('connection', (socket) => {
-  //   socket.on('ledclicked', () => {
-  //     if (led.readSync() === 1) {
-  //       led.writeSync(0);
-  //     } else {
-  //       led.writeSync(1);
-  //     }
+  io.on('connection', (socket) => {
+    socket.emit('connected', {payload: 'Hello from server. You are connected'});
 
-  //     socket.emit('ledstatus', led.readSync());
-  //   });
-
-  // });
+  });
 
   /* GET home page. */
   router.get('/', function(req, res, next) {
