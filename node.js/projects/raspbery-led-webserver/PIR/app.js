@@ -11,11 +11,14 @@ var app = express();
 var io = socketio();
 app.io = io;
 
+var partialsDir = path.join(__dirname, './views/partials')
+
 var indexRouter = require('./routes/index')(io);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+hbs.registerPartials(partialsDir)
 
 app.use(logger('dev'));
 app.use(express.json());
