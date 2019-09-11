@@ -1,9 +1,6 @@
 module.exports = function(io) {
   var express = require('express');
   var router = express.Router();
-  // var Gpio = require('onoff').Gpio;
-
-  // const led = new Gpio(5, 'out');
 
   var armed = false;
 
@@ -20,8 +17,10 @@ module.exports = function(io) {
       console.log('Button pressed - ' + btnPressed);
       if (btnPressed === 'btn-on') {
         armed = true;
+        // execute functions to turn pir, magent and light on
       } else {
         armed = false;
+        // execute functions to turn pir, magent and light off
       }
 
       socket.emit('newSystemStatus', armed);

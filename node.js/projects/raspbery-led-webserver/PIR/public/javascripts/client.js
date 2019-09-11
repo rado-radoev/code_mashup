@@ -26,9 +26,12 @@ function btnControl(btn) {
 }
 
 socket.on('newSystemStatus', (systemStatus) => {
-    var currStatus = document.getElementById('system-status').innerHTML;
+    var systemStatusElement = document.getElementById('system-status')
+    var currStatus = systemStatusElement.innerHTML;
     var newStatus = currStatus.substring(0 , currStatus.indexOf(': ')) + `: ${convertStatusToString(systemStatus)}`;
-    document.getElementById('system-status').innerHTML = newStatus;
+    
+    systemStatusElement.innerHTML = newStatus;
+        
     console.log(`System is currently ${convertStatusToString(systemStatus)}`);
 });
 
