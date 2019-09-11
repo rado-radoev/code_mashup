@@ -1,27 +1,31 @@
 module.exports = function(io) {
   var express = require('express');
   var router = express.Router();
-  var Gpio = require('onoff').Gpio;
+  // var Gpio = require('onoff').Gpio;
 
-  const led = new Gpio(5, 'out');
+  // const led = new Gpio(5, 'out');
 
 
-  io.on('connection', (socket) => {
-    socket.on('ledclicked', () => {
-      if (led.readSync() === 1) {
-        led.writeSync(0);
-      } else {
-        led.writeSync(1);
-      }
+  // io.on('connection', (socket) => {
+  //   socket.on('ledclicked', () => {
+  //     if (led.readSync() === 1) {
+  //       led.writeSync(0);
+  //     } else {
+  //       led.writeSync(1);
+  //     }
 
-      socket.emit('ledstatus', led.readSync());
-    });
+  //     socket.emit('ledstatus', led.readSync());
+  //   });
 
-  });
+  // });
 
   /* GET home page. */
   router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
+    var secSystemStatus = 'Disarmed';
+    res.render('index', { 
+      title: 'Welcome to VR Security',
+      subtitle: `Security System is current ${secSystemStatus}`
+    });
   });
   
   process.on('SIGINT', () => {
