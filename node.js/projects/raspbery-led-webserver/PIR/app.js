@@ -12,7 +12,6 @@ var io = socketio();
 app.io = io;
 
 var indexRouter = require('./routes/index')(io);
-var usersRouter = require('./routes/users')(io);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
