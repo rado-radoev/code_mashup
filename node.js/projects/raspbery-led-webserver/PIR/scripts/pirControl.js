@@ -1,7 +1,7 @@
 var Gpio = require('onoff').Gpio;
 
 const led = new Gpio(5, 'out');
-const pir = new gpio(21, 'in', 'both');
+const pir = new Gpio(21, 'in', 'both');
 
 pir.watch( (err, value) => {
 
