@@ -13,6 +13,7 @@
     "hbs": "^4.0.4",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
+    "node-cleanup": "^2.1.2",
     "onoff": "^4.1.4",
     "request": "^2.88.0",
     "socket.io": "^2.2.0"

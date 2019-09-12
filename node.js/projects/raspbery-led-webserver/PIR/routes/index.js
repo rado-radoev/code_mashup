@@ -8,6 +8,8 @@ module.exports = function(io) {
   io.on('connection', (socket) => {
     socket.emit('connected', {
       payload: 'Hello from server. You are connected'
+    }, () => {
+      io.emit('newSystemStatus', armed);
     });
 
     socket.on('getSystemStatus', (callback) => {

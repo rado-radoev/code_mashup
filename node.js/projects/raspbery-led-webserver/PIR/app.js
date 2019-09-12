@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var socketio = require('socket.io');
-var hbs = require('hbs')
+var hbs = require('hbs');
 
 var app = express();
 
