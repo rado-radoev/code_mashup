@@ -26,7 +26,7 @@ module.exports = function(io) {
         pir.unwatch();
       }
 
-      socket.emit('newSystemStatus', armed);
+      io.emit('newSystemStatus', armed);
     });
   });
 
