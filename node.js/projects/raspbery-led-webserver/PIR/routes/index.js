@@ -1,7 +1,7 @@
 module.exports = function(io) {
   var express = require('express');
   var router = express.Router();
-  require('../scripts/pirControl')
+  var pir = require('../scripts/pirControl');
 
   var armed = false;
 
@@ -19,9 +19,11 @@ module.exports = function(io) {
       if (btnPressed === 'btn-on') {
         armed = true;
         // execute functions to turn pir, magent and light on
+        pir.pirWatch();
       } else {
         armed = false;
         // execute functions to turn pir, magent and light off
+        pir.unwatch();
       }
 
       socket.emit('newSystemStatus', armed);
