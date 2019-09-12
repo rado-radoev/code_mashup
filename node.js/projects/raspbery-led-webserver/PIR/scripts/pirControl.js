@@ -36,7 +36,7 @@ function ifttPost(iftt_event_url) {
         value3: ""
     }
 
-    var url = iftt_url_event;
+    var url = iftt_event_url;
 
     var options = {
         method: 'post',
