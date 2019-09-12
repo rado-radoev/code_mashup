@@ -50,7 +50,7 @@ socket.on('connected', (data) => {
         var systemStatus = callbackData ? "Armed" : "Disarmed"
         console.log(`System is currently ${systemStatus}`);
 
-        if (systemStatus) {
+        if (callbackData) {
             btnControl('btn-on');
         } else {
             btnControl('btn-off');
