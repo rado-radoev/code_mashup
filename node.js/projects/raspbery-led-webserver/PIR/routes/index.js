@@ -38,10 +38,6 @@ module.exports = function(io) {
       subtitle: secSystemStatus
     });
   });
-  
-  process.on('SIGINT', () => {
-    //led.unexport();
-  });
 
   return router;
 };

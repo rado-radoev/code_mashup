@@ -25,3 +25,8 @@ if the system is disarmed:
 If it is midnight and system is not armed only send reminder notification if we forgot to turn the system on. Do not take any furher actions.
 
 ??? Turn off system automatically at 7 am ???
+
+iF the node js server is killed or stopped send notification that the security system is down
+    this will require new webhook
+    use the node-cleanup module
+        add iftt cleaup post request in the nodecleanup function
