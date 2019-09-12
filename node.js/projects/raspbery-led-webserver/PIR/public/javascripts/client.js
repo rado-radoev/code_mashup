@@ -33,6 +33,12 @@ socket.on('newSystemStatus', (systemStatus) => {
     systemStatusElement.innerHTML = newStatus;
         
     console.log(`System is currently ${convertStatusToString(systemStatus)}`);
+
+    if (systemStatus) {
+        btnControl('btn-on');
+    } else {
+        btnControl('btn-off');
+    }
 });
 
 socket.on('connected', (data) => {
