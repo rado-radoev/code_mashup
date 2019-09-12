@@ -2,10 +2,10 @@ const socket = io();
 
 /* Events */
 document.getElementById('btn-on').addEventListener('click', function() {
-    btnControl('btn-on');
+    btnClicked('btn-on');
 });
 document.getElementById('btn-off').addEventListener('click', function() {
-    btnControl('btn-off');
+    btnClicked('btn-off');
 });
 
 /* Functions */
@@ -13,9 +13,11 @@ function convertStatusToString(systemStatus) {
     return (systemStatus ? "Armed": "Disarmed");
 }
 
-function btnControl(btn) {
+function btnClicked(btn) {
     socket.emit('btnPressed', btn);
-    
+}
+
+function btnControl(btn) {
     if (btn === 'btn-on') {
         document.getElementById('btn-on').disabled = true;
         document.getElementById('btn-off').disabled = false;
