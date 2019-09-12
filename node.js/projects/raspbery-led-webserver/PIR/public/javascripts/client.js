@@ -49,5 +49,11 @@ socket.on('connected', (data) => {
     socket.emit('getSystemStatus', (callbackData) => {
         var systemStatus = callbackData ? "Armed" : "Disarmed"
         console.log(`System is currently ${systemStatus}`);
+
+        if (systemStatus) {
+            btnControl('btn-on');
+        } else {
+            btnControl('btn-off');
+        }
     });
 });
