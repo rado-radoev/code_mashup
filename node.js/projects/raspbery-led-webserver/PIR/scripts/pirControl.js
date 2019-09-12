@@ -1,7 +1,7 @@
 var Gpio = require('onoff').Gpio;
 
 const led = new Gpio(5, 'out');
-const pir = new gpio(12, 'in', 'both');
+const pir = new gpio(21, 'in', 'both');
 
 pir.watch( (err, value) => {
 
@@ -12,11 +12,11 @@ pir.watch( (err, value) => {
     if (value == 1) {
         console.log('Intruder alert');
         console.log('led on');
-        // led.writeSync(1);
+        led.writeSync(1);
     } else {
         console.log('Intruder gone');
         console.log('led off');
-        // led.writeSync(0);
+        led.writeSync(0);
     }
 });
 

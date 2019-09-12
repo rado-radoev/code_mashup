@@ -1,6 +1,7 @@
 module.exports = function(io) {
   var express = require('express');
   var router = express.Router();
+  require('../scripts/pirControl')
 
   var armed = false;
 
