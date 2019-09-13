@@ -2,6 +2,7 @@ module.exports = function(io) {
   var express = require('express');
   var router = express.Router();
   var pir = require('../scripts/pirControl');
+  var magnet = require('../scripts/magentic_sensor');
 
   var armed = false;
 
