@@ -1,6 +1,6 @@
 var Gpio = require('onoff').Gpio;
 
-const sensor = new Gpio(27, 'in', 'rising');
+const sensor = new Gpio(20, 'in', 'rising');
 const led = new Gpio(19, 'out');
 
 sensor.watch( (err, value) => {

@@ -41,7 +41,7 @@ int main() {
     cout << "Vector_2d size: " << vector_2d.size() << endl;
     
     vector1.at(0) = 1000;
-    cout << "Updated value in vector1" << endl;
+    cout << "\nUpdated value in vector1" << endl;
     
     cout << "At index 0: " << vector_2d.at(0).at(0) << endl;
     cout << "At index 1: " << vector_2d.at(1).at(0) << endl;
