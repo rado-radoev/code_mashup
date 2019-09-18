@@ -1,6 +1,6 @@
 var Gpio = require('onoff').Gpio;
 
-const sensor = new Gpio(20, 'in', 'rising');
+const sensor = new Gpio(20, 'in', 'both');
 const led = new Gpio(19, 'out');
 
 sensor.watch( (err, value) => {
@@ -22,6 +22,12 @@ sensor.watch( (err, value) => {
 function unwatch() {
     sensor.unwatch();
 };
+
+process.on('SIGINT', () => {
+    unwatch();
+    led.unexport();
+    sensor.unexport();
+  });
 
 module.exports = {
     unwatch
