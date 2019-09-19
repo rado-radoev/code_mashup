@@ -92,3 +92,14 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+// Handle ^C
+process.on('SIGINT', shutdown);
+
+// Do graceful shutdown
+function shutdown() {
+  console.log('graceful shutdown express');
+  server.close(function () {
+    console.log('closed express');
+  });
+}

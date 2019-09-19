@@ -46,15 +46,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-
-
-// Handle ^C
-process.on('SIGINT', shutdown);
-
-// Do graceful shutdown
-function shutdown() {
-  console.log('graceful shutdown express');
-  server.close(function () {
-    console.log('closed express');
-  });
-}
