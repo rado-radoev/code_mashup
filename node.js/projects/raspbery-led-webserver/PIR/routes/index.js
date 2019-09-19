@@ -20,9 +20,14 @@ module.exports = function(io) {
       if (btnPressed === 'btn-on') {
         armed = true;
         // execute functions to turn pir, magent and light on
-        var res = pir.pirWatch();
-        console.log('PIR RESULT IS', res);
+        pir.pirWatch();
         sensor.sensorWatch();
+      } else if (btnPressed === 'btn-on-window') {
+        armed = true;
+        sensor.sensorWatch();
+      } else if (btnPressed === 'btn-on-motion') {
+        armed = true;
+        pir.pirWatch();
       } else {
         armed = false;
         // execute functions to turn pir, magent and light off
@@ -30,7 +35,7 @@ module.exports = function(io) {
         sensor.unwatch();
       }
 
-      io.emit('newSystemStatus', armed);
+      io.emit('newSystemStatus', armed, btnPressed);
     });
   });
 

@@ -13,15 +13,13 @@ function sensorWatch() {
         }
 
         if (value == 1) {
-            console.log('value is 1');
-            console.log('led on');
+            console.log('Window is open');
             led.writeSync(1);
 
             let event_url = process.env.IFTT_MOTION_DETECTED_URL;
             // ifttPost(event_url, 'Window Sensor', undefined, undefined);
         } else {
-            console.log('value is 0')
-            console.log('led off');
+            console.log('Window is closed')
             led.writeSync(0);
         }
     });

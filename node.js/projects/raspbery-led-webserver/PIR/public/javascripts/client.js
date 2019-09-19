@@ -7,6 +7,13 @@ document.getElementById('btn-on').addEventListener('click', function() {
 document.getElementById('btn-off').addEventListener('click', function() {
     btnClicked('btn-off');
 });
+document.getElementById('btn-on-window').addEventListener('click', function() {
+    btnClicked('btn-on-window');
+});
+document.getElementById('btn-on-motion').addEventListener('click', function() {
+    btnClicked('btn-on-motion');
+});
+
 
 /* Functions */
 function convertStatusToString(systemStatus) {
@@ -21,13 +28,17 @@ function btnControl(btn) {
     if (btn === 'btn-on') {
         document.getElementById('btn-on').disabled = true;
         document.getElementById('btn-off').disabled = false;
+    } else if (btn === 'btn-on-window') {
+        document.getElementById('btn-on-window').disabled = true;
+        document.getElementById('btn-on').disabled = true;
+        document.getElementById('btn-off').disabled = false;
     } else {
         document.getElementById('btn-on').disabled = false;
         document.getElementById('btn-off').disabled = true;
     }
 }
 
-socket.on('newSystemStatus', (systemStatus) => {
+socket.on('newSystemStatus', (systemStatus, btnPressed) => {
     var systemStatusElement = document.getElementById('system-status')
     var currStatus = systemStatusElement.innerHTML;
     var newStatus = currStatus.substring(0 , currStatus.indexOf(': ')) + `: ${convertStatusToString(systemStatus)}`;

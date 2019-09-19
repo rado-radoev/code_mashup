@@ -15,22 +15,16 @@ function pirWatch() {
     
         if (value == 1) {
             // console.log('Intruder alert');
-            // console.log('led on');
             led.writeSync(1);
 
             let event_url = process.env.IFTT_MOTION_DETECTED_URL;
             // ifttPost(event_url, 'Motion Sensor', undefined, undefined);
-            return 'motion detected';
-
         } else {
             // console.log('Intruder gone');
-            // console.log('led off');
             led.writeSync(0);
-            return 'no motoin';
         }
     });
 }
-
 
 function unwatch() {
     pir.unwatch();
