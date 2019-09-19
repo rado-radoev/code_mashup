@@ -31,16 +31,16 @@ function btnClicked(btn) {
 }
 
 function btnControl(btn) {
-    if (btn === 'btn-on') {
+    if (btn === btnOn.id) {
         btnOn.disabled = true;
         btnOnWindow.disabled = true;
         btnOnMotion.disabled = true;
         btnOff.disabled = false;
-    } else if (btn === 'btn-on-window') {
+    } else if (btn === btnOnWindow.id) {
         btnOn.disabled = true;
         btnOnWindow.disabled = true;
         btnOff.disabled = false;
-    } else if (btn === 'btn-on-motion') {
+    } else if (btn === btnOnMotion.id) {
         btnOn.disabled = true;
         btnOnMotion.disabled = true;
         btnOff.disabled = false;
@@ -64,7 +64,7 @@ socket.on('newSystemStatus', (systemStatus, btnPressed) => {
     if (systemStatus) {
         btnControl(btnPressed);
     } else {
-        btnControl('btn-off');
+        btnControl(btnOff.id);
     }
 });
 
@@ -76,9 +76,9 @@ socket.on('connected', (data) => {
         console.log(`System is currently ${systemStatus}`);
 
         if (callbackData) {
-            btnControl('btn-on');
+            btnControl(btnOn.id);
         } else {
-            btnControl('btn-off');
+            btnControl(btnOff.id);
         }
     });
 });
