@@ -30,4 +30,6 @@ function ifttPost(iftt_event_url, value1, value2, value3) {
     })
 }
 
-module.exports = ifttPost;
+module.exports = { 
+    ifttPost
+};
