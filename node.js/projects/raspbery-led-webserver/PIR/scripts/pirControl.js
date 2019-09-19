@@ -1,6 +1,7 @@
-var Gpio = require('onoff').Gpio;
-var request = require('request');
 require('dotenv').config();
+
+var Gpio = require('onoff').Gpio;
+var { ifttPost } = require('./iftt_actions');
 
 const led = new Gpio(5, 'out');
 const pir = new Gpio(21, 'in', 'both');
@@ -18,7 +19,7 @@ function pirWatch() {
             led.writeSync(1);
 
             let event_url = process.env.IFTT_MOTION_DETECTED_URL;
-            ifttPost(event_url);
+            // ifttPost(event_url);
 
 
         } else {
@@ -27,36 +28,6 @@ function pirWatch() {
             led.writeSync(0);
         }
     });
-}
-
-function ifttPost(iftt_event_url) {
-    var postData = {
-        value1 : "",
-        value2 : "",
-        value3: ""
-    }
-
-    var url = iftt_event_url;
-
-    var options = {
-        method: 'post',
-        body: postData,
-        json: true,
-        url
-    }
-
-    request(options, (error, res, body) => {
-        if (error) {
-            console.error('error posting to IFTT', error);
-            throw error;
-        }
-
-        var headers = res.headers
-        var statusCode = res.statusCode
-        console.log('headers: ', headers)
-        console.log('statusCode: ', statusCode)
-        console.log('body: ', body)
-    })
 }
 
 

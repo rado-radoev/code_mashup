@@ -2,7 +2,7 @@ module.exports = function(io) {
   var express = require('express');
   var router = express.Router();
   var pir = require('../scripts/pirControl');
-  var magnet = require('../scripts/magentic_sensor');
+  var sensor = require('../scripts/magentic_sensor');
 
   var armed = false;
 
@@ -21,10 +21,12 @@ module.exports = function(io) {
         armed = true;
         // execute functions to turn pir, magent and light on
         pir.pirWatch();
+        sensor.sensorWatch();
       } else {
         armed = false;
         // execute functions to turn pir, magent and light off
         pir.unwatch();
+        sensor.unwatch();
       }
 
       io.emit('newSystemStatus', armed);
