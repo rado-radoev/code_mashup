@@ -19,7 +19,7 @@ function pirWatch() {
             led.writeSync(1);
 
             let event_url = process.env.IFTT_MOTION_DETECTED_URL;
-            // ifttPost(event_url);
+            ifttPost(event_url, 'Motion Sensor', undefined, undefined);
 
 
         } else {
