@@ -20,7 +20,8 @@ module.exports = function(io) {
       if (btnPressed === 'btn-on') {
         armed = true;
         // execute functions to turn pir, magent and light on
-        pir.pirWatch();
+        var res = pir.pirWatch();
+        console.log('PIR RESULT IS', res);
         sensor.sensorWatch();
       } else {
         armed = false;
