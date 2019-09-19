@@ -4,9 +4,12 @@
  * Module dependencies.
  */
 
+require('dotenv').config();
 var app = require('../app');
 var debug = require('debug')('pir:server');
 var http = require('http');
+var { createTerminus } = require('@godaddy/terminus');
+var { ifttPost } = require('../scripts/iftt_actions');
 
 /**
  * Get port from environment and store in Express.
@@ -83,7 +86,7 @@ function onError(error) {
 
 /**
  * Event listener for HTTP server "listening" event.
- */
+ */ 
 
 function onListening() {
   var addr = server.address();
@@ -93,13 +96,20 @@ function onListening() {
   debug('Listening on ' + bind);
 }
 
-// Handle ^C
-process.on('SIGINT', shutdown);
+process.on('SIGINT', () => {
+  let ifttUrl = process.env.IFFT_SERVER_DOWN_URL;
+  ifttPost(ifttUrl);
+});
 
-// Do graceful shutdown
-function shutdown() {
-  console.log('graceful shutdown express');
-  server.close(function () {
-    console.log('closed express');
-  });
-}
+// function onSignal() {
+//   console.log('server is starting cleanup');
+//   let ifttUrl = process.env.IFFT_SERVER_DOWN_URL;
+//   return Promise.all([
+//     ifttPost(ifttUrl);
+//   ]);
+  
+// }
+
+// function onShutdown() {
+
+// }
