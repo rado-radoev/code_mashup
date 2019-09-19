@@ -46,6 +46,8 @@ function btnControl(btn) {
         btnOff.disabled = false;
     } else {
         btnOn.disabled = false;
+        btnOnWindow.disabled = false;
+        btnOnMotion.disabled = false;
         btnOff.disabled = true;
     }
 }
