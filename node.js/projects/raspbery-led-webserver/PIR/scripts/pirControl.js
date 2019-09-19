@@ -18,7 +18,7 @@ function pirWatch() {
             led.writeSync(1);
 
             let event_url = process.env.IFTT_MOTION_DETECTED_URL;
-            // ifttPost(event_url, 'Motion Sensor', undefined, undefined);
+            ifttPost(event_url, 'Motion Sensor', undefined, undefined);
         } else {
             // console.log('Intruder gone');
             led.writeSync(0);
