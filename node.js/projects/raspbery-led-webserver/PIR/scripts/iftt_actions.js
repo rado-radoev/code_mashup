@@ -1,10 +1,10 @@
 var request = require('request');
 
-function ifttPost(iftt_event_url) {
+function ifttPost(iftt_event_url, value1, value2, value3) {
     var postData = {
-        value1 : "",
-        value2 : "",
-        value3: ""
+        value1,
+        value2,
+        value3
     }
 
     var url = iftt_event_url;

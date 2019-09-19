@@ -18,7 +18,7 @@ function sensorWatch() {
             led.writeSync(1);
 
             let event_url = process.env.IFTT_MOTION_DETECTED_URL;
-            // ifttPost(event_url);
+            ifttPost(event_url, 'Motion Sensor', undefined, undefined);
         } else {
             console.log('value is 0')
             console.log('led off');
