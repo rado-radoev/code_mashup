@@ -1,17 +1,23 @@
 const socket = io();
 
+/* Globals */
+const btnOn = document.getElementById('btn-on');
+const btnOff = document.getElementById('btn-off');
+const btnOnWindow = document.getElementById('btn-on-window');
+const btnOnMotion = document.getElementById('btn-on-motion');
+
 /* Events */
-document.getElementById('btn-on').addEventListener('click', function() {
-    btnClicked('btn-on');
+btnOn.addEventListener('click', function() {
+    btnClicked(btnOn.id);
 });
-document.getElementById('btn-off').addEventListener('click', function() {
-    btnClicked('btn-off');
+btnOff.addEventListener('click', function() {
+    btnClicked(btnOff.id);
 });
-document.getElementById('btn-on-window').addEventListener('click', function() {
-    btnClicked('btn-on-window');
+btnOnWindow.addEventListener('click', function() {
+    btnClicked(btnOnWindow.id);
 });
-document.getElementById('btn-on-motion').addEventListener('click', function() {
-    btnClicked('btn-on-motion');
+btnOnMotion.addEventListener('click', function() {
+    btnClicked(btnOnMotion.id);
 });
 
 
@@ -26,15 +32,21 @@ function btnClicked(btn) {
 
 function btnControl(btn) {
     if (btn === 'btn-on') {
-        document.getElementById('btn-on').disabled = true;
-        document.getElementById('btn-off').disabled = false;
+        btnOn.disabled = true;
+        btnOnWindow.disabled = true;
+        btnOnMotion.disabled = true;
+        btnOff.disabled = false;
     } else if (btn === 'btn-on-window') {
-        document.getElementById('btn-on-window').disabled = true;
-        document.getElementById('btn-on').disabled = true;
-        document.getElementById('btn-off').disabled = false;
+        btnOn.disabled = true;
+        btnOnWindow.disabled = true;
+        btnOff.disabled = false;
+    } else if (btn === 'btn-on-motion') {
+        btnOn.disabled = true;
+        btnOnMotion.disabled = true;
+        btnOff.disabled = false;
     } else {
-        document.getElementById('btn-on').disabled = false;
-        document.getElementById('btn-off').disabled = true;
+        btnOn.disabled = false;
+        btnOff.disabled = true;
     }
 }
 
