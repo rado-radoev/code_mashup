@@ -46,3 +46,8 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+
+process.on('SIGINT', () => {
+  console.log('closing node.js')
+});
