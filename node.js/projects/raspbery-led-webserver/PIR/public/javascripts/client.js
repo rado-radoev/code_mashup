@@ -48,7 +48,7 @@ socket.on('newSystemStatus', (systemStatus, btnPressed) => {
     console.log(`System is currently ${convertStatusToString(systemStatus)}`);
 
     if (systemStatus) {
-        btnControl('btn-on');
+        btnControl(btnPressed);
     } else {
         btnControl('btn-off');
     }
