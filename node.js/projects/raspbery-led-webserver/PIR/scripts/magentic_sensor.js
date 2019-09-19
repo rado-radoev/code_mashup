@@ -9,7 +9,7 @@ const led = new Gpio(19, 'out');
 function sensorWatch() {
     sensor.watch( (err, value) => {
         if (err) {
-            throw err;
+            return err;
         }
 
         if (value == 1) {

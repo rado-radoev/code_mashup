@@ -10,7 +10,7 @@ function pirWatch() {
     pir.watch( (err, value) => {
 
         if (err) {
-            throw err;
+            return err;
         }
     
         if (value == 1) {
