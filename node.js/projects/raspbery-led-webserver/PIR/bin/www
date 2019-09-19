@@ -97,7 +97,7 @@ function onListening() {
 }
 
 process.on('SIGINT', () => {
-  let ifttUrl = process.env.IFFT_SERVER_DOWN_URL;
+  let ifttUrl = process.env.IFTT_SERVER_DOWN_URL;
   ifttPost(ifttUrl);
 });
 
