@@ -4,7 +4,7 @@ var Gpio = require('onoff').Gpio;
 var { ifttPost } = require('./iftt_actions');
 
 const led = new Gpio(5, 'out');
-const pir = new Gpio(21, 'in', 'both');
+const pir = new Gpio(21, 'in', 'both', { debounceTimeout: 10 });
 
 function pirWatch() {
     pir.watch( (err, value) => {
@@ -14,18 +14,19 @@ function pirWatch() {
         }
     
         if (value == 1) {
-            console.log('Intruder alert');
-            console.log('led on');
+            // console.log('Intruder alert');
+            // console.log('led on');
             led.writeSync(1);
 
             let event_url = process.env.IFTT_MOTION_DETECTED_URL;
-            ifttPost(event_url, 'Motion Sensor', undefined, undefined);
-
+            // ifttPost(event_url, 'Motion Sensor', undefined, undefined);
+            return 'motion detected';
 
         } else {
-            console.log('Intruder gone');
-            console.log('led off');
+            // console.log('Intruder gone');
+            // console.log('led off');
             led.writeSync(0);
+            return 'no motoin';
         }
     });
 }
