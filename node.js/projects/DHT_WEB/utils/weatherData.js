@@ -14,4 +14,5 @@ const getLatestData = (url, callback) => {
     });
 }
 
+
 module.exports = getLatestData;
