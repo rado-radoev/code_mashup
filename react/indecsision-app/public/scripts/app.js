@@ -2,18 +2,35 @@
 
 console.log("app.js is running");
 
+var app = {
+    title: 'Indecision App',
+    subtitle: 'Catchy subtitle',
+    options: ['One', 'Two']
+};
+
+function getOptions(options) {
+    if (options.length > 0) {
+        return options;
+    }
+}
+
 var template = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        'Indecsision App'
+        app.title
+    ),
+    app.subtitle && React.createElement(
+        'p',
+        null,
+        app.subtitle
     ),
     React.createElement(
         'p',
         null,
-        'This is some paragrapsh'
+        app.options.length > 0 ? 'Here are your options' : 'No options'
     ),
     React.createElement(
         'ol',
@@ -33,35 +50,56 @@ var template = React.createElement(
 
 var user = {
     name: 'Rado',
-    age: 33,
+    age: 29,
     location: 'SD'
 
     // var userName = 'Rado Radoev'
     // var userAge = 34;
     // var userLocation = 'San Diego';
 
-};var template1 = React.createElement(
+};function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            location
+        );
+    }
+}
+
+var template1 = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        user.name
+        user.name ? user.name : 'Anonymous'
     ),
-    React.createElement(
+    user.age && user.age >= 18 && React.createElement(
         'p',
         null,
         'Age: ',
         user.age
     ),
+    getLocation(user.location)
+);
+
+var appTemplate = React.createElement(
+    'div',
+    null,
     React.createElement(
-        'p',
+        'h1',
         null,
-        'Location: ',
-        user.location
+        app.title
+    ),
+    React.createElement(
+        'h4',
+        null,
+        app.subtitle
     )
 );
 
 var appRoute = document.getElementById('app');
 
-ReactDOM.render(template1, appRoute);
+ReactDOM.render(template, appRoute);
