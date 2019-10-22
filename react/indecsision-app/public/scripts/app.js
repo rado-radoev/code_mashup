@@ -1,53 +1,64 @@
-"use strict";
+'use strict';
 
 console.log("app.js is running");
 
 var template = React.createElement(
-    "div",
+    'div',
     null,
     React.createElement(
-        "h1",
+        'h1',
         null,
-        "Indecsision App"
+        'Indecsision App'
     ),
     React.createElement(
-        "p",
+        'p',
         null,
-        "This is some paragrapsh"
+        'This is some paragrapsh'
     ),
     React.createElement(
-        "ol",
+        'ol',
         null,
         React.createElement(
-            "li",
+            'li',
             null,
-            "Item one"
+            'Item one'
         ),
         React.createElement(
-            "li",
+            'li',
             null,
-            "Item two"
+            'Item two'
         )
     )
 );
 
-var template1 = React.createElement(
-    "div",
+var user = {
+    name: 'Rado',
+    age: 33,
+    location: 'SD'
+
+    // var userName = 'Rado Radoev'
+    // var userAge = 34;
+    // var userLocation = 'San Diego';
+
+};var template1 = React.createElement(
+    'div',
     null,
     React.createElement(
-        "h1",
+        'h1',
         null,
-        "Radoslav Radoev"
+        user.name
     ),
     React.createElement(
-        "p",
+        'p',
         null,
-        "Age: 33"
+        'Age: ',
+        user.age
     ),
     React.createElement(
-        "p",
+        'p',
         null,
-        "Location: San Diego"
+        'Location: ',
+        user.location
     )
 );
 
