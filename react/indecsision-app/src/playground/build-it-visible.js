@@ -6,7 +6,7 @@ const button = {
 
 const toggleButton = () => {
     button.state = !button.state;
-    console.log(button.state);
+    // console.log(button.state);
     render();
 }
 
