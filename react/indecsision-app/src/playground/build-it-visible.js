@@ -18,7 +18,11 @@ const render = () => {
             <button id="btn" key='1' onClick={toggleButton}>
                 {button.state ? "Show Details" : "Hide Details"}
             </button>
-            {!button.state && <p>Hey. These are some details you can now see.</p>}
+            {!button.state && 
+                <div>
+                    <p>Hey. These are some details you can now see.</p>
+                </div>
+            }
         </div>
         
     );

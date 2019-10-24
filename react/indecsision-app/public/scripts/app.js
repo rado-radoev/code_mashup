@@ -28,9 +28,13 @@ var render = function render() {
             button.state ? "Show Details" : "Hide Details"
         ),
         !button.state && React.createElement(
-            'p',
+            'div',
             null,
-            'Hey. These are some details you can now see.'
+            React.createElement(
+                'p',
+                null,
+                'Hey. These are some details you can now see.'
+            )
         )
     );
 
