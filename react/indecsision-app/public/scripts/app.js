@@ -26,6 +26,12 @@ var reset = function reset() {
     renderApp();
 };
 
+var onMakeDecision = function onMakeDecision() {
+    var randomNum = Math.floor(Math.random() * app.options.length);
+    var option = app.options[randomNum];
+    alert(option);
+};
+
 var renderApp = function renderApp() {
     var template = React.createElement(
         'div',
@@ -54,6 +60,11 @@ var renderApp = function renderApp() {
             'button',
             { onClick: reset },
             'Remove All'
+        ),
+        React.createElement(
+            'button',
+            { disabled: app.options.length === 0, onClick: onMakeDecision },
+            'What should I do?'
         ),
         React.createElement(
             'ol',
