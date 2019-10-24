@@ -5,8 +5,8 @@ const button = {
 }
 
 const toggleButton = () => {
-    button.state = !button.state
-    console.log(button.state)
+    button.state = !button.state;
+    console.log(button.state);
     render();
 }
 
@@ -21,10 +21,10 @@ const render = () => {
             {!button.state && <p>Hey. These are some details you can now see.</p>}
         </div>
         
-    )
+    );
 
     ReactDOM.render(template, appRoute);
-}
+};
 
 render();
 
