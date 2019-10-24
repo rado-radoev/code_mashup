@@ -48,58 +48,47 @@ var template = React.createElement(
     )
 );
 
-var user = {
-    name: 'Rado',
-    age: 29,
-    location: 'SD'
+var count = 0;
 
-    // var userName = 'Rado Radoev'
-    // var userAge = 34;
-    // var userLocation = 'San Diego';
+var addOne = function addOne() {
+    console.log('addOne');
+};
 
-};function getLocation(location) {
-    if (location) {
-        return React.createElement(
-            'p',
-            null,
-            'Location: ',
-            location
-        );
-    }
-}
+var minusOne = function minusOne() {
+    console.log('minusOne');
+};
 
-var template1 = React.createElement(
+var reset = function reset() {
+    console.log('reset');
+};
+
+var templateTwo = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        user.name ? user.name : 'Anonymous'
-    ),
-    user.age && user.age >= 18 && React.createElement(
-        'p',
-        null,
-        'Age: ',
-        user.age
-    ),
-    getLocation(user.location)
-);
-
-var appTemplate = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        app.title
+        'Count: ',
+        count
     ),
     React.createElement(
-        'h4',
-        null,
-        app.subtitle
+        'button',
+        { onClick: addOne },
+        '+1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: minusOne },
+        '-1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: reset },
+        'reset'
     )
 );
 
+console.log(templateTwo);
 var appRoute = document.getElementById('app');
 
-ReactDOM.render(template, appRoute);
+ReactDOM.render(templateTwo, appRoute);
