@@ -6,7 +6,7 @@ class Person {
 
     getGreeting() {
         // return 'Hi ' + this.name + '!';
-        return `Hi ${this.name}, grandpa ${this.age} !`
+        return `Hi ${this.name} !`
     }
 
     getDescription() {
@@ -32,6 +32,27 @@ class Student extends Person {
         return description;
     }
 }
+
+class Traveler extends Person {
+    constructor(name, homeLocation) {
+        super(name);
+
+        this.homeLocation = homeLocation;
+    }
+
+    getGreeting() {
+        let greeting = super.getGreeting();
+        if (this.homeLocation) {
+            greeting += ` I am visiting from ${this.homeLocation}.`
+        }
+
+        return greeting;
+    }
+}
+
+const traveler = new Traveler('Rado', 'Pleven');
+console.log(traveler.getGreeting());
+
 
 const student = new Student('Radoslav Radoev', 34, 'Sucker')
 console.log(student)
