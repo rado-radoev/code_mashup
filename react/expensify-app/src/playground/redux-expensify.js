@@ -24,7 +24,16 @@ const removeExpense = ({id}) => ({
     id
 });
 // EDIT_EXPENSE
+const editExpense = (id, updates) => ({
+    type: 'EDIT_EXPENSE',
+    id,
+    updates
+});
 // SET_TEXT_FILTER
+const setTextFilter = (text = '') => ({
+    type: 'SET_TEXT_FILTER',
+    text
+}); 
 // SORT_BY_DATE
 // SORT_BY_AMOUNT
 // SET_START_DATE
@@ -32,7 +41,7 @@ const removeExpense = ({id}) => ({
 
 // Expenses reducer
 const expensesReducerDefaultState = [];
-const expensesReducer = (state = expensesReducerDefaultState, action) => {
+const expensesReducer = (action, state = expensesReducerDefaultState) => {
     switch(action.type) {
         case 'ADD_EXPENSE': 
            return [
@@ -41,6 +50,17 @@ const expensesReducer = (state = expensesReducerDefaultState, action) => {
            ];
         case 'REMOVE_EXPENSE':
             return state.filter(({ id }) => action.id !== id);
+        case 'EDIT_EXPENSE':
+            return state.map((expense) => {
+                if (expense.id === action.id) {
+                    return {
+                        ...expense,
+                        ...action.updates
+                    };
+                } else {
+                    return expense;
+                }
+            });
         default:
             return state;
     }
@@ -54,8 +74,13 @@ const filtersReducerDefaultState = {
     endDate: undefined
 };
 
-const filtersReducer = (state = filtersReducerDefaultState, action) => {
+const filtersReducer = (action, state = filtersReducerDefaultState) => {
     switch (action.type) {
+        case 'SET_TEXT_FILTER':
+            return {
+                ...state,
+                text: action.text
+            };
         default:
             return state;
     }
@@ -78,6 +103,12 @@ const expenseTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 30
 
 store.dispatch(removeExpense({ id: expenseOne.expense.id }));
 
+store.dispatch(editExpense(expenseTwo.expense.id, { amount: 500 }));
+
+store.dispatch(setTextFilter('rent'));
+store.dispatch(setTextFilter(''));
+
+
 const demo = {
     expenses: [{
         id: 'idgoeshere',
@@ -93,16 +124,3 @@ const demo = {
         endDate: undefined
     }
 };
-
-
-const user = {
-    name: 'Jen',
-    age: 24
-}
-
-console.log({
-    age: 27,
-    ...user,
-    location: 'SD'
-    
-})
