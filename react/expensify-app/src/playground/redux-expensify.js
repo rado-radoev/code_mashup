@@ -93,3 +93,16 @@ const demo = {
         endDate: undefined
     }
 };
+
+
+const user = {
+    name: 'Jen',
+    age: 24
+}
+
+console.log({
+    age: 27,
+    ...user,
+    location: 'SD'
+    
+})
