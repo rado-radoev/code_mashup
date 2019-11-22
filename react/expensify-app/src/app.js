@@ -18,7 +18,7 @@ store.subscribe( () => {
 });
 
 // addExpense -> Water bill
-store.dispatch(addExpense({description: 'Water bill'}));
+store.dispatch(addExpense({description: 'Water bill', amount: 4500}));
 // addExpense -> Gas bill
 store.dispatch(addExpense({description: 'Gas bill'}));
 // setTextFilter -> bill (2 items) -> water (1 item)
@@ -26,7 +26,7 @@ store.dispatch(setTextFilter('bill'));
 store.dispatch(setTextFilter('water'));
 
 setTimeout(() => {
-    store.dispatch(setTextFilter('rent'));
+    store.dispatch(setTextFilter('bill'));
 }, 3000);
 
 const jsx = (
