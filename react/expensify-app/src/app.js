@@ -23,7 +23,5 @@ store.dispatch(addExpense({description: 'Gas bill'}));
 // setTextFilter -> bill (2 items) -> water (1 item)
 store.dispatch(setTextFilter('bill'));
 store.dispatch(setTextFilter('water'));
-// getVisibleExpenses -> print visible ones to screen
-
 
 ReactDOM.render(<AppRouter />, document.getElementById('app'));
