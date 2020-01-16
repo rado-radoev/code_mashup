@@ -1,7 +1,6 @@
 const utils = require('./utils');
 const validator = require('validator');
-
-validator
+const chalk = require('chalk');
 
 // const name = 'Rado'
 // console.log(name)
@@ -11,4 +10,16 @@ validator
 
 
 
-console.log(validator.isEmail('rradoev@gmail.com'))
+// console.log(validator.isURL('http://google.com'));
+
+// console.log(chalk.blue('Hello'));
+// console.log(chalk.bgGreen.bold.blue('Success1'));
+
+console.log(process.argv)
+const command = process.argv[2];
+
+if (command === 'add') {
+    console.log('Adding note');
+} else if (command === 'remove') {
+    console.log('Removing note');
+}
