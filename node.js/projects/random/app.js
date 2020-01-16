@@ -10,11 +10,10 @@ const yargs = require('yargs');
 // console.log(sum)
 
 
-
 // console.log(validator.isURL('http://google.com'));
 
 // console.log(chalk.blue('Hello'));
-// console.log(chalk.bgGreen.bold.blue('Success1'));
+// console.log(chalk.bgGreen .bold.blue('Success1'));
 
 
 
@@ -30,8 +29,22 @@ const yargs = require('yargs');
 yargs.command({
     command: 'add',
     describe: 'Add new note',
-    handler: function() {
-        console.log('Adding a new note')
+    builder:{
+        title: {
+            describe: 'Add title',
+            demandOption: true,
+            type: 'string'
+
+        },
+        body: {
+            describe: 'Note',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function(argv) {
+        console.log('Title: ' + argv.title)
+        console.log('Note body: ' + argv.body )
     }
 })
 
@@ -43,7 +56,7 @@ yargs.command({
     }
 })
 
-yargs.command({
+syargs.command({
     command: 'list',
     describe: 'List notes',
     handler: function () {
@@ -60,4 +73,5 @@ yargs.command({
     }
 })
 
-console.log(yargs.argv)
+yargs.parse();
+//console.log(yargs.argv)
