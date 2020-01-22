@@ -13,7 +13,7 @@
     "babel-preset-es2015": "^6.24.1"
   },
   "scripts": {
-    "babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch",
+    "babel": "babel src/build.js --out-file=public/scripts/app.js --presets=env,react --watch",
     "babel-playground": "babel src/playground/counter-example.js --out-file=public/scripts/app.js --presets=env,react --watch"
   }
 }
