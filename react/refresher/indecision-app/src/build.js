@@ -1,20 +1,9 @@
 class VisibilityApp extends React.Component {
     render() {
-        const title = 'Visibility Toggle';
         return (
             <div>
-                <Header title={title} />
+                <Header />
                 <Action />
-            </div>
-        );
-    }
-}
-
-class Header extends React.Component {
-    render() {
-        return (
-            <div>
-                <h1>{this.props.title}</h1>
             </div>
         );
     }
@@ -30,11 +19,7 @@ class Action extends React.Component {
     }
 
     handleToggleView() {
-        this.setState((prevState) => {
-            return {
-                visibility: !prevState.visibility
-            }
-        });
+        this.setState((prevState) => ({ visibility: !prevState.visibility }))
     }
 
     render() {
@@ -47,43 +32,31 @@ class Action extends React.Component {
     }
 }
 
-class DisplayMessage extends React.Component {
-    render() {
-        return (
-            <div>
-                <p>{this.props.message}</p>
-            </div>
-        );
-    }
+const Header = (props) => {
+    return (
+        <div>
+            <h1>{props.title}</h1>
+        </div>
+    );
+}
+
+Header.defaultProps = {
+    title: 'Visibility Toggle'
+}
+
+const DisplayMessage = (props) => {
+    return (
+        <div>
+            <p>{props.message}</p>
+        </div>
+
+    );
+}
+
+DisplayMessage.defaultProps = {
+    message: 'A message should be displayed here, but none was set. So ... "Hello!"'
 }
 
 
 ReactDOM.render(<VisibilityApp />, document.getElementById('app'));
-
-
-// const appRoot = document.getElementById('app');
-
-// const button = {
-//     clicked: false
-// }
-
-// const toggle = () => {
-//     button.clicked = !button.clicked
-//     render();
-// }
-
-// const render = () => {
-
-//     const template = (
-//         <div>
-//             <h1>Visibility Toggle</h1>
-//             <button onClick={toggle}>{button.clicked ? 'Hide details' : 'Show details'}</button>
-//             {button.clicked && <p>Hey.These are some details you can now see!</p>}
-//         </div>
-//     );
-
-//     ReactDOM.render(template, appRoot);
-// }
-
-// render();
 
