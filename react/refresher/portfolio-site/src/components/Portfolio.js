@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Item from './Item';
 
 const Portfolio = (props) => {
     console.log(props)
