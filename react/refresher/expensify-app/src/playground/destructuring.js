@@ -33,13 +33,25 @@
 // console.log(publisherName);
 
 
-const address = [
-    '1299 South Juniper St',
-    'Philadelphia',
-    'Pensylvania',
-    '19147'
+// const address = [
+//     '1299 South Juniper St',
+//     'Philadelphia',
+//     'Pensylvania',
+//     '19147'
+// ];
+
+// const [street, city, state = 'New Your', zip] = address;
+// const [, , state = 'New Your'] = address;
+
+// console.log(street)
+
+const item = [
+    'Coffee (hot)',
+    '$2.00',
+    '$2.50',
+    '$2.75'
 ];
 
-const [street, city, state, zip] = address;
+const [drink, , mediumSizePrice] =  item;
 
-console.log(street)
+console.log(`A Medium ${drink} costs ${mediumSizePrice}`);
