@@ -8,6 +8,8 @@ import './styles/styles.scss';
 
 const store = configureStore();
 
+
+
 console.log(store.getState());
 
 ReactDOM.render(<AppRouter />, document.getElementById('app'));
