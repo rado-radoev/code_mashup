@@ -164,7 +164,7 @@ const expense2 = store.dispatch(addExpense({description:'Coffee', amount:300, cr
 
 // store.dispatch(editExpense(expense2.expense.id, { amount: 500 }));
 
-store.dispatch(setTextFilter('rent'));
+store.dispatch(setTextFilter('ffe'));
 // store.dispatch(setTextFilter());
 
 // store.dispatch(sortByAmount());
