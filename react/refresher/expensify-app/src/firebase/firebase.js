@@ -14,44 +14,81 @@ var firebaseConfig = {
 
   const database = firebase.database();
 
-  database.ref().set({
-      name: 'Rado',
-      age: 44,
-      stressLevel: 66,
-      job: {
-          title: 'developer',
-          company: 'Google'
-      },
-      location: {
-          city: 'Los Angeles',
-          country: 'USA'
-      }
-  }).then(() => {
-      console.log('data is saved')
-  }).catch((e) => {
-      console.log('error', e)
-  });
+  database.ref().on('value', (snapshot) => {
+      const val = snapshot.val();
+      console.log(`${val.name} is a ${val.job.title} at ${val.job.company }`)
+  })
 
-  database.ref('age').set('35');
-  database.ref('location/city').set('dge')
+  setTimeout(() => {
+      database.ref('job/company').set('Amazon')
+  }, (3000));
 
-//   database.ref('/attributes').set({
-//       height: 100,
-//       wight: 100
-//   })
+//   const onValueChange = database.ref().on('value', (snapshot) => {
+//         console.log(snapshot.val());
+//     }, (e) => {
+//         console.log('error with data fetching', e)
+//     });
+    
+//     setTimeout(() => {
+//         database.ref('age').set(29);
+//     }, 3500);
 
-  const attr = database.ref('attributes11111');
-  attr.remove()
-    .then(() => {
-        console.log('removed')
-    })
-    .catch((err) => {
-        console.log('error', err)
-    })
+//     setTimeout(() => {
+//         database.ref().off('value', onValueChange);
+//     }, 7000);
 
-    const db = database.ref('/');
-    db.update({
-        stressLevel: 100,
-        'job/company': 'Amazon',
-        'location/city': 'Seattle'
-    })
+//     setTimeout(() => {
+//         database.ref('age').set(30);
+//     }, 10500);
+
+//   database.ref('location/city')
+//     .once('value')
+//     .then((snapshot) => {
+//         const val = snapshot.val();
+//         console.log(val);
+//     })
+//     .catch((e) => {
+//         console.log('error fetching data', e)
+//     })
+
+//   database.ref().set({
+//       name: 'Rado',
+//       age: 44,
+//       stressLevel: 66,
+//       job: {
+//           title: 'developer',
+//           company: 'Google'
+//       },
+//       location: {
+//           city: 'Los Angeles',
+//           country: 'USA'
+//       }
+//   }).then(() => {
+//       console.log('data is saved')
+//   }).catch((e) => {
+//       console.log('error', e)
+//   });
+
+//   database.ref('age').set('35');
+//   database.ref('location/city').set('dge')
+
+// //   database.ref('/attributes').set({
+// //       height: 100,
+// //       wight: 100
+// //   })
+
+//   const attr = database.ref('attributes11111');
+//   attr.remove()
+//     .then(() => {
+//         console.log('removed')
+//     })
+//     .catch((err) => {
+//         console.log('error', err)
+//     })
+
+//     const db = database.ref('/');
+//     db.update({
+//         stressLevel: 100,
+//         'job/company': 'Amazon',
+//         'location/city': 'Seattle'
+//     })
