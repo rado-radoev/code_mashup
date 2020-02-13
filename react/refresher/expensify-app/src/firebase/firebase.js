@@ -14,14 +14,107 @@ var firebaseConfig = {
 
   const database = firebase.database();
 
-  database.ref().on('value', (snapshot) => {
-      const val = snapshot.val();
-      console.log(`${val.name} is a ${val.job.title} at ${val.job.company }`)
-  })
+  export {firebase, database as default};
 
-  setTimeout(() => {
-      database.ref('job/company').set('Amazon')
-  }, (3000));
+//   const onValueChange = database.ref('expenses')
+//     .on('value', (snapshot) => {
+//         const expenses = [];
+//         snapshot.forEach((childSnapshot) => {
+//             expenses.push({
+//                 id: childSnapshot.key,
+//                 ...childSnapshot.val()
+//             });
+//         });
+
+//         console.log(expenses);
+//     });
+
+// database.ref('expenses').on('child_removed', (snapshot) => {
+//     console.log(snapshot.key, snapshot.val());
+// });
+
+// database.ref('expenses').on('child_changed', (snapshot) => {
+//     console.log(snapshot.key, snapshot.val());
+// });
+
+// database.ref('expenses').on('child_added', (snapshot) => {
+//     console.log(snapshot.key, snapshot.val());
+// });
+
+//   database.ref('expenses')
+//     .once('value')
+//     .then((snapshot) => {
+//         const expenses = [];
+//         snapshot.forEach((childSnapshot) => {
+//             expenses.push({
+//                 id: childSnapshot.key,
+//                 ...childSnapshot.val()
+//             });
+//         });
+
+//         console.log(expenses);
+//     });
+
+//   database.ref('expenses').push({
+//       description: 'Rent',
+//       amount: '45656',
+//       createdAt: 0
+//   });
+
+//   database.ref('expenses').push({
+//       description: 'Mortgaage',
+//       amount: 4456,
+//       createdAt: 1
+//   });
+
+//   database.ref('expenses').push({
+//     description: 'bored',
+//     amount: 454566,
+//     createdAt:34
+//   });
+
+
+//   database.ref('notes/-M-xBeZmTWBzyW_jkv5l').remove()
+
+//   database.ref('notes').push({
+//       title: 'Course topics',
+//       body: 'react native, angular, python'
+//   });
+
+
+//   const firebasseNotes = {
+//       notes: {
+//           '12': {
+//             title: 'first note',
+//             body: 'this is my note'
+//           }, 
+//           '1234': {
+//             title: 'another note',
+//             body: 'this is my note'
+//           }
+//       }
+//   }
+
+//   const notes = [{
+//       id: '12',
+//       title: 'first note',
+//       body: 'this is my note'
+//   }, {
+//       id: '3435',
+//       title: 'another note',
+//       body: 'this is my note'
+//   }];
+
+//   database.ref('notes').set(notes);
+
+//   database.ref().on('value', (snapshot) => {
+//       const val = snapshot.val();
+//       console.log(`${val.name} is a ${val.job.title} at ${val.job.company }`)
+//   })
+
+//   setTimeout(() => {
+//       database.ref('job/company').set('Amazon')
+//   }, (3000));
 
 //   const onValueChange = database.ref().on('value', (snapshot) => {
 //         console.log(snapshot.val());
