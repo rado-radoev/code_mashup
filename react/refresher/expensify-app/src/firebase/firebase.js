@@ -1,3 +1,4 @@
+
 import * as firebase from 'firebase';
 
 var firebaseConfig = {
@@ -13,8 +14,9 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
   const database = firebase.database();
+  const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-  export {firebase, database as default};
+  export {firebase, googleAuthProvider, database as default};
 
 //   const onValueChange = database.ref('expenses')
 //     .on('value', (snapshot) => {

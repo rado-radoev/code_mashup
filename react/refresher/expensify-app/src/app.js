@@ -9,7 +9,7 @@ import './styles/styles.scss';
 import {addExpense, startSetExpenses} from './actions/expenses';
 import {setTextFilter} from './actions/filters';
 import getVisibleExpenses from './selectors/expenses';
-import './firebase/firebase';
+import {firebase} from './firebase/firebase';
 // import './playground/promises';
 
 const store = configureStore();
@@ -39,5 +39,11 @@ store.dispatch(startSetExpenses()).then(() => {
    ReactDOM.render(jsx, document.getElementById('app'));
 }) ;
 
-
+firebase.auth().onAuthStateChanged((user) => {
+   if (user) {
+      console.log('logged in')
+   } else {
+      console.log('logged out')
+   }
+});
 
