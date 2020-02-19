@@ -18,18 +18,15 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="box-layout">
                 <form onSubmit={this.onSubmit}>
-                    <input 
-                        type="text"
-                        placeholder="username"
-                        autoFocus
-                    />
-                    <input 
-                        type="password"
-                        placeholder="password"
-                    />
-                    <button>Login</button>
+
+                    <div className="box-layout__box">
+                        <h1 className="box-layout__titile">Expensify App</h1>
+                        <p>It's time to get your expenses under control</p>
+                        <button>Login</button>
+                    </div>
+                    
                 </form>
             </div>
         );
