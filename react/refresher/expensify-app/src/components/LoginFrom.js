@@ -24,7 +24,7 @@ class LoginForm extends React.Component {
                     <div className="box-layout__box">
                         <h1 className="box-layout__titile">Expensify App</h1>
                         <p>It's time to get your expenses under control</p>
-                        <button>Login</button>
+                        <button className="button">Login with Google</button>
                     </div>
                     
                 </form>
