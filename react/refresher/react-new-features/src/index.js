@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
@@ -18,6 +18,10 @@ const NoteApp = () => {
         setTitle('');
         setBody('');
     };
+
+    useEffect(() => {
+        
+    });
 
     const removeNote = (title) => {
         setNotes(notes.filter((note) => note.title !== title))
@@ -51,32 +55,36 @@ const NoteApp = () => {
 
 };
  
-// const App = (props) => {
+const App = (props) => {
 
-//     const [count, setCount] = useState(props.count);
-//     const [text, setText] = useState('');
+    const [count, setCount] = useState(props.count);
+    const [text, setText] = useState('');
 
-//     return (
-//         <div>
-//             <p>The current {text || 'count'} is {count}</p>
-//             <button onClick={() => setCount(count + 1)}>+1</button>
-//             <button onClick={() => setCount(count - 1)}>-1</button>
-//             <button onClick={() => setCount(props.count)}>Reset</button>
-//             <input 
-//                 type="text" 
-//                 placeholder="Enter text here"
-//                 value={text}
-//                 onChange={(e) => setText(e.target.value)}
-//             />
-//         </div>
-//     );
-// };
+    useEffect(() => {
+        document.title = count;
+    });
 
-// App.defaultProps = {
-//     count: 0
-// }
+    return (
+        <div>
+            <p>The current {text || 'count'} is {count}</p>
+            <button onClick={() => setCount(count + 1)}>+1</button>
+            <button onClick={() => setCount(count - 1)}>-1</button>
+            <button onClick={() => setCount(props.count)}>Reset</button>
+            <input 
+                type="text" 
+                placeholder="Enter text here"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+            />
+        </div>
+    );
+};
 
-ReactDOM.render(<NoteApp />, document.getElementById('root'));
+App.defaultProps = {
+    count: 0
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
