@@ -2,8 +2,8 @@ const sql = require('mssql');
 require('msnodesqlv8');
 
 const config = {
-    user: 'radra',
-    password: 'Superzebra85',
+    user: '',
+    password: '',
     database: process.env.DATABASE,
     server: process.env.DB_HOST,
     domain: process.env.DOMAIN,
